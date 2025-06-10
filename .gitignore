@@ -1,0 +1,66 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.pot
+*.sqlite3
+media/
+staticfiles/
+static/img/
+migrations/*.py
+!migrations/__init__.py
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache and Temporary Files
+*.cache
+*.bak
+*.swp
+*~
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# Build
+dist/
+build/
+*.egg
+*.egg-info/
+
+# Other
+*.sql
+*.dump
+*.txt
+*.json
