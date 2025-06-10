@@ -64,3 +64,4 @@ build/
 *.dump
 *.txt
 *.json
+.pylintrc
