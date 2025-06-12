@@ -78,7 +78,7 @@ body {
     justify-content: space-between;
     margin-bottom: 20px;
     gap: 20px;
-    height: 380px;
+    /*height: 380px;*/
 }
 
 .choosing_dresses_item_left {
@@ -173,8 +173,12 @@ body {
 }
 
 @media (max-width: 768px) {
+    .choosing_dresses_categories {
+        flex-direction: column;
+    }
     .choosing_dresses_row {
         flex-direction: column;
+        height: auto;
     }
 
     .choosing_dresses_item_left,
@@ -216,6 +220,7 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 30px;
+    margin-bottom: 20px;
 }
 
 .write_us_label {
@@ -273,11 +278,15 @@ body {
     .container_write_us {
         flex-direction: column;
         gap: 40px;
+        height: auto;
     }
 
-    .write_us_image-box,
-    .write_us_text-form-box {
+    .write_us_image-box {
         width: 100%;
+        flex: 1 0 100%;
+    }
+    .write_us_text-form-box {
+        width: 80%;
         flex: 1 0 100%;
     }
 
@@ -369,7 +378,7 @@ body {
 .items-preview_cards {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 }
 
 /* --- Каждая карточка --- */
@@ -571,6 +580,219 @@ body {
     }
 
     .accessories_description {
+        font-size: 12px;
+    }
+}
+
+/* -------------------------------------- */
+/* --- Основные стили для секции счетчика --- */
+/* -------------------------------------- */
+
+.counter_section {
+    max-width: 80%;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.counter_section_line {
+    width: 100%;
+    height: 3px;
+    background-color: #b37f60;
+}
+
+.counter_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Каждый блок счетчика --- */
+
+.counter_item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-wrap: wrap;
+}
+
+.counter_icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.counter_stats {
+    text-align: center;
+}
+
+.counter_number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #b37f60; /* Цвет чисел */
+}
+
+.counter_label {
+    font-size: 14px;
+    color: #b37f60; /* Цвет текста */
+    text-transform: uppercase;
+}
+
+/* --- Адаптивность --- */
+
+@media (max-width: 992px) {
+    .counter_container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .counter_item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .counter_number {
+        font-size: 20px;
+    }
+
+    .counter_label {
+        font-size: 12px;
+    }
+}
+
+
+/* -------------------------------------- */
+/* --- Основные стили для секции блога --- */
+/* -------------------------------------- */
+
+
+.blog_section {
+    max-width: 80%;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.blog_container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Заголовок и кнопка --- */
+
+.blog_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.blog_title {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.blog_button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #b37f60;
+    background-color: transparent;
+    border: 1px solid #b37f60;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blog_button:hover {
+    background-color: #b37f60;
+    color: #fff;
+}
+
+/* --- Блоки постов --- */
+
+.blog_posts {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.blog_post {
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog_image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.blog_post:hover .blog_image {
+    transform: scale(1.05);
+}
+
+.blog_author {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #b37f60;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: #F5EBE1;
+}
+
+.blog_post_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.blog_description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.blog_read_more {
+    font-size: 14px;
+    color: #b37f60;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.blog_read_more:hover {
+    color: #a06e52;
+}
+
+.blog_read_more::after {
+    content: "→";
+}
+
+/* --- Адаптивность --- */
+
+@media (max-width: 992px) {
+    .blog_posts {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .blog_title {
+        font-size: 24px;
+    }
+
+    .blog_description {
         font-size: 12px;
     }
 }
