@@ -12,17 +12,17 @@
 .footer {
     background-color: var(--footer-bg);
     color: var(--footer-text-color);
-    font-family: Arial, sans-serif;
+    /*font-family: Arial, sans-serif;*/
 }
 
 .footer__inner {
+    display: flex;
+    flex-direction: row;
     max-width: 1200px;
     margin: 0 auto;
     padding: var(--footer-padding) 20px;
-    display: flex;
     justify-content: space-between;
     gap: 30px;
-    flex-wrap: wrap;
 }
 
 .footer__column {
@@ -91,8 +91,9 @@
 /* Адаптивность */
 @media (max-width: 992px) {
     .footer__inner {
-        flex-direction: column;
-        gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        padding: var(--footer-padding) 10px;
     }
 
     .footer__column {

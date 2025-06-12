@@ -4,17 +4,26 @@
         <div class="logo">
             <img src="{% static 'img/logo.png' %}" alt="logo">
         </div>
-        <ul class="nav-menu">
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Подобрать платье</a></li>
-            <li><a href="#">Аксессуары</a></li>
-            <li><a href="#">Блог</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#">Узнать больше</a></li>
-        </ul>
-        <div class="nav-icons">
-            <a href="#"><img class="icon" src="{% static 'img/heart.png' %}" alt="heart"></a>
+
+        <!-- Бургер-кнопка -->
+        <button class="burger-btn" aria-label="Меню" aria-expanded="false">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Подобрать платье</a></li>
+                <li><a href="#">Аксессуары</a></li>
+                <li><a href="#">Блог</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное"></a>
+            </div>
         </div>
     </nav>
 </header>

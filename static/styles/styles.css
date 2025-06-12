@@ -565,7 +565,7 @@ body {
     }
 
     .accessories_line {
-        width: 200px;
+        width: 50px;
     }
 
     .accessories_cards {
@@ -818,6 +818,7 @@ body {
 
 .contact_info {
     flex: 1;
+    padding: 20px 0;
 }
 
 .contact_header {
