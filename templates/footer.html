@@ -1,74 +1,57 @@
+{% load static %}
 <footer class="footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Компания</h4>
-                <ul>
-                    <li>
-                        <a href="#">О нас</a>
-                    </li>
-                    <li>
-                        <a href="#">Команда</a>
-                    </li>
-                    <li>
-                        <a href="#">Карьера</a>
-                    </li>
-                    <li>
-                        <a href="#">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Услуги</h4>
-                <ul>
-                    <li>
-                        <a href="#">Прокат платьев</a>
-                    </li>
-                    <li>
-                        <a href="#">Стилист</a>
-                    </li>
-                    <li>
-                        <a href="#">Аксессуары</a>
-                    </li>
-                    <li>
-                        <a href="#">Консультации</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Поддержка</h4>
-                <ul>
-                    <li>
-                        <a href="#">Помощь</a>
-                    </li>
-                    <li>
-                        <a href="#">FAQ</a>
-                    </li>
-                    <li>
-                        <a href="#">Возврат</a>
-                    </li>
-                    <li>
-                        <a href="#">Доставка</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Правовая информация</h4>
-                <ul>
-                    <li>
-                        <a href="#">Политика конфиденциальности</a>
-                    </li>
-                    <li>
-                        <a href="#">Условия использования</a>
-                    </li>
-                    <li>
-                        <a href="#">Публичная оферта</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Fashion Studio. Все права защищены.</p>
-        </div>
+  <div class="footer__inner">
+    <!-- Колонка 1 -->
+    <div class="footer__column">
+      <h3 class="footer__title">Платья в прокат</h3>
+      <ul class="footer__list">
+        <li><a href="#" class="footer__link">Вечерние</a></li>
+        <li><a href="#" class="footer__link">Короткие</a></li>
+        <li><a href="#" class="footer__link">Длинные</a></li>
+        <li><a href="#" class="footer__link">Коктейльные</a></li>
+      </ul>
     </div>
+
+    <!-- Колонка 2 -->
+    <div class="footer__column">
+      <h3 class="footer__title">Покупателям</h3>
+      <ul class="footer__list">
+        <li><a href="#" class="footer__link">Напишите нам</a></li>
+        <li><a href="#" class="footer__link">Часто задаваемые вопросы</a></li>
+        <li><a href="#" class="footer__link">Блог</a></li>
+      </ul>
+    </div>
+
+    <!-- Колонка 3 -->
+    <div class="footer__column">
+      <h3 class="footer__title">О нас</h3>
+      <ul class="footer__list">
+        <li><a href="#" class="footer__link">Наша компания</a></li>
+        <li><a href="#" class="footer__link">Вступить в команду</a></li>
+        <li><a href="#" class="footer__link">Соглашение</a></li>
+        <li><a href="#" class="footer__link">Скидки</a></li>
+      </ul>
+    </div>
+
+    <!-- Колонка 4 -->
+    <div class="footer__column">
+      <h3 class="footer__title">Мы в соцсетях</h3>
+      <div class="footer__socials">
+        <a href="#" class="footer__social-link" aria-label="Instagram">
+            <img src="{% static 'img/instagram_logo_round.png' %}" alt="">
+        </a>
+        <a href="#" class="footer__social-link" aria-label="VKontakte">
+            <img src="{% static 'img/vk_logo_round.png' %}" alt="">
+        </a>
+        <a href="#" class="footer__social-link" aria-label="YouTube">
+            <img src="{% static 'img/yt_logo_round.png' %}" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Копирайт -->
+  <div class="footer__copyright">
+    Angel Dress © 2025. All Rights Reserved.
+  </div>
 </footer>
