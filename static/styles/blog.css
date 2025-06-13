@@ -1,0 +1,103 @@
+.blog-container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.blog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Общие стили для карточки новости --- */
+.blog-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .blog-card {
+        flex-direction: column-reverse;
+    }
+}
+
+/* --- Левая часть: текстовый контент --- */
+.blog-text-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blog-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #F6F4F0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #D5B0A0;
+    font-weight: 800;
+}
+
+.blog-description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.open-button {
+    background-color: #D5B0A0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.open-button:hover {
+    background-color: #a06e52;
+}
+
+/* --- Правая часть: изображение --- */
+.blog-image {
+    flex: 1;
+    overflow: hidden;
+    height: 300px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .blog-image {
+        margin-top: 20px;
+        height: auto;
+        max-height: 300px;
+    }
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
