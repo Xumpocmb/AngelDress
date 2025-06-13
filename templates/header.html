@@ -17,12 +17,12 @@
                 <li><a href="{% url 'app_home:home' %}">Главная</a></li>
                 <li><a href="{%  url 'app_catalog:catalog' %}">Подобрать платье</a></li>
                 <li><a href="#">Аксессуары</a></li>
-                <li><a href="#">Блог</a></li>
+                <li><a href="{% url 'app_blog:blog' %}">Блог</a></li>
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Контакты</a></li>
             </ul>
             <div class="nav-icons">
-                <a href="#"><img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное"></a>
+                <a href="{% url 'app_wishlist:wishlist' %}"><img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное"></a>
             </div>
         </div>
     </nav>
