@@ -357,18 +357,28 @@
 /* --- Каждая карточка --- */
 
 .items-preview_card {
-    position: relative;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
+.img-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.product-image {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
 .items-preview_card img {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
 }
 
 .items-preview_card:hover img {
@@ -377,16 +387,44 @@
 
 .items-preview_card_content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    padding: 10px;
+    padding: 12px 0;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-.items-preview_like_icon {
-    font-size: 20px;
+.items-preview_card_price {
+    font-size: 16px;
+    font-weight: 500;
     color: #b37f60;
+    margin-top: 8px;
+}
+
+.items-preview_favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
+    z-index: 3;
+    transition: transform 0.2s ease;
+}
+
+.items-preview_favorite:hover {
+    transform: scale(1.1);
+}
+
+.items-preview_favorite img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Стиль для активного состояния (когда товар в избранном) */
+.items-preview_favorite.active {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .items-preview_card_title {

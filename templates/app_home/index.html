@@ -1,348 +1,382 @@
 {% extends 'base.html' %}
 {% load static %}
-    {% block title %}
-    	<title>Прокат Платьев</title>
-    {% endblock %}
+{% block title %}
+    <title>Прокат Платьев</title>
+{% endblock %}
 
-    {% block styles %}
+{% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    {% endblock styles %}
+{% endblock styles %}
 
 {% block content %}
-<div class="wrapper">
-    <!-- Секция слайдера -->
-    <section class="slider"></section>
-    <!-- Секция заголовка страницы -->
-    <section class="heading">
-        <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
-    </section>
-    <!-- Секция выбора платьев -->
-    <section class="choosing_dresses">
-        <div class="choosing_dresses_categories">
-            <div class="choosing_dresses_row">
-                <div class="choosing_dresses_item_left">
-                    <img src="{% static 'img/ch_c_image1.png' %}" alt="Свадебные Платья">
-                    <div class="content">
-                        <h2>Свадебные Платья</h2>
-                        <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                        <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+    <div class="wrapper">
+        <!-- Секция слайдера -->
+        <section class="slider"></section>
+        <!-- Секция заголовка страницы -->
+        <section class="heading">
+            <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
+        </section>
+        <!-- Секция выбора платьев -->
+        <section class="choosing_dresses">
+            <div class="choosing_dresses_categories">
+                <div class="choosing_dresses_row">
+                    <div class="choosing_dresses_item_left">
+                        <img src="{% static 'img/ch_c_image1.png' %}" alt="Свадебные Платья">
+                        <div class="content">
+                            <h2>Свадебные Платья</h2>
+                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
+                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                        </div>
+                    </div>
+                    <div class="choosing_dresses_item_right">
+                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Ночные платья">
+                        <div class="content">
+                            <h2>Ночные платья</h2>
+                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
+                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                        </div>
                     </div>
                 </div>
-                <div class="choosing_dresses_item_right">
-                    <img src="{% static 'img/ch_c_image2.png' %}" alt="Ночные платья">
-                    <div class="content">
-                        <h2>Ночные платья</h2>
-                        <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                        <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                <div class="choosing_dresses_row">
+                    <div class="choosing_dresses_item_right">
+                        <img src="{% static 'img/ch_c_image3.png' %}" alt="Ночные платья">
+                        <div class="content">
+                            <h2>Ночные платья</h2>
+                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
+                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                        </div>
+                    </div>
+                    <div class="choosing_dresses_item_left">
+                        <img src="{% static 'img/ch_c_image4.png' %}" alt="Свадебные Платья">
+                        <div class="content">
+                            <h2>Свадебные Платья</h2>
+                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
+                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="choosing_dresses_row">
-                <div class="choosing_dresses_item_right">
-                    <img src="{% static 'img/ch_c_image3.png' %}" alt="Ночные платья">
-                    <div class="content">
-                        <h2>Ночные платья</h2>
-                        <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                        <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
-                    </div>
-                </div>
-                <div class="choosing_dresses_item_left">
-                    <img src="{% static 'img/ch_c_image4.png' %}" alt="Свадебные Платья">
-                    <div class="content">
-                        <h2>Свадебные Платья</h2>
-                        <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                        <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Секция accessories -->
-    <section class="write_us">
-        <div class="section_write_us">
-            <div class="container_write_us">
-                <!-- Левая часть -->
-                <div class="write_us_image-box">
-                    <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
+        </section>
+        <!-- Секция accessories -->
+        <section class="write_us">
+            <div class="section_write_us">
+                <div class="container_write_us">
+                    <!-- Левая часть -->
+                    <div class="write_us_image-box">
+                        <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
                              alt="full-length-happy-beautiful-young-woman.png">
-                </div>
-
-                <!-- Правая часть -->
-                <div class="write_us_text-form-box">
-                    <div class="write_us_text-content">
-                        <p class="write_us_label">НАПИШИТЕ НАМ</p>
-                        <h2 class="write_us_title">Супер Стиль С<br>Нашим Стилистом</h2>
-
                     </div>
 
-                    <form class="write_us_contact-form">
-                        <label for="name" class="write_us_description">
-                            В целом, конечно, глубокий уровень погружения обеспечивает.
-                        </label>
-                        <input id="name" name="email" type="text" autocomplete="email" placeholder="Имя Фамилия"
-                               class="write_us_input-name"/>
-                        <button type="submit" class="write_us_btn-submit">ОТПРАВИТЬ</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    <!-- Правая часть -->
+                    <div class="write_us_text-form-box">
+                        <div class="write_us_text-content">
+                            <p class="write_us_label">НАПИШИТЕ НАМ</p>
+                            <h2 class="write_us_title">Супер Стиль С<br>Нашим Стилистом</h2>
 
-    </section>
-    <!-- Секция предпросмотра некоторых платьев -->
-    <section class="items-preview_section">
-        <!-- Заголовок -->
-        <div class="items-preview_header">
-            <div class="items-preview_text_section">
-                <div class="items-preview_line"></div>
-                <p class="items-preview_subtitle">НА ЛЮБОЙ СЛУЧАЙ</p>
-                <h2 class="items-preview_title">
-                    Найдите Прекрасное Платье<br>
-                    На Любой Случай
-                </h2>
-            </div>
-            <button class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</button>
-        </div>
+                        </div>
 
-        <!-- Карточки -->
-        <div class="items-preview_cards">
-            <!-- Карточка 1 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-
-            <!-- Карточка 2 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-
-            <!-- Карточка 4 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-
-            <!-- Карточка 5 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-
-            <!-- Карточка 6 -->
-            <div class="items-preview_card">
-                <img src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
-                <div class="items-preview_card_content">
-                    <i class="items-preview_like_icon">&#9825;</i>
-                    <p class="items-preview_card_title">Модель Весна-Осень</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Секция accessories -->
-    <section class="accessories_section">
-        <div class="accessories_container">
-
-            <div class="accessories_content">
-                <!-- Текстовая часть -->
-                <div class="accessories_text">
-                    <div class="accessories_heading">
-                        <div class="accessories_line"></div>
-                        <p class="accessories_subtitle">ЛУЧШИЙ ВЫБОР</p>
+                        <form class="write_us_contact-form">
+                            <label for="name" class="write_us_description">
+                                В целом, конечно, глубокий уровень погружения обеспечивает.
+                            </label>
+                            <input id="name" name="email" type="text" autocomplete="email" placeholder="Имя Фамилия"
+                                   class="write_us_input-name"/>
+                            <button type="submit" class="write_us_btn-submit">ОТПРАВИТЬ</button>
+                        </form>
                     </div>
-                    <h2 class="accessories_title">
-                        Дополните Свой<br>
-                        Образ
+                </div>
+            </div>
+
+        </section>
+        <!-- Секция предпросмотра некоторых платьев -->
+        <section class="items-preview_section">
+            <!-- Заголовок -->
+            <div class="items-preview_header">
+                <div class="items-preview_text_section">
+                    <div class="items-preview_line"></div>
+                    <p class="items-preview_subtitle">НА ЛЮБОЙ СЛУЧАЙ</p>
+                    <h2 class="items-preview_title">
+                        Найдите Прекрасное Платье<br>
+                        На Любой Случай
                     </h2>
-                    <p class="accessories_description">
-                        В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий уровень
-                        погружения
-                    </p>
                 </div>
-
-                <!-- Карточки аксессуаров -->
-                <div class="accessories_cards">
-                    <div class="accessories_card">
-                        <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                        <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                    </div>
-                    <div class="accessories_card">
-                        <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                        <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                    </div>
-                    <div class="accessories_card">
-                        <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                        <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                    </div>
-                    <div class="accessories_card">
-                        <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                        <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Фоновое изображение модели -->
-            <img src="{% static 'img/model_with_accessories.png' %}" alt="Model with Accessories">
-        </div>
-    </section>
-    <!-- Секция счетчика -->
-    <section class="counter_section">
-        <hr class="counter_section_line">
-        <div class="counter_container">
-            <!-- Блок 1: Платьев было выбрано -->
-            <div class="counter_item">
-                <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
-                <div class="counter_stats">
-                    <span class="counter_number">132</span>
-                    <p class="counter_label">Платьев было выбрано</p>
-                </div>
+                <button class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</button>
             </div>
 
-            <!-- Блок 2: Довольных клиентов -->
-            <div class="counter_item">
-                <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
-                <div class="counter_stats">
-                    <span class="counter_number">64</span>
-                    <p class="counter_label">Довольных клиентов</p>
-                </div>
-            </div>
-
-            <!-- Блок 3: Новых поступлений ежемесячно -->
-            <div class="counter_item">
-                <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
-                <div class="counter_stats">
-                    <span class="counter_number">10+</span>
-                    <p class="counter_label">Новых поступлений ежемесячно</p>
-                </div>
-            </div>
-        </div>
-        <hr class="counter_section_line">
-    </section>
-    <!-- Секция блога -->
-    <section class="blog_section">
-        <div class="blog_container">
-            <!-- Заголовок и кнопка -->
-            <div class="blog_header">
-                <h2 class="blog_title">Наши Специалисты<br>Говорят На Темы</h2>
-                <button class="blog_button">ОТКРЫТЬ БЛОГ</button>
-            </div>
-
-            <!-- Блоки постов -->
-            <div class="blog_posts">
-                <!-- Пост 1 -->
-                <div class="blog_post">
-                    <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                    <p class="blog_author">Екатерина Шумская</p>
-                    <h3 class="blog_post_title">100 Идей На Лето</h3>
-                    <p class="blog_description">
-                        В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий уровень
-                        погружения
-                    </p>
-                    <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
-                </div>
-
-                <!-- Пост 2 -->
-                <div class="blog_post">
-                    <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                    <p class="blog_author">Екатерина Шумская</p>
-                    <h3 class="blog_post_title">100 Идей На Лето</h3>
-                    <p class="blog_description">
-                        В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий уровень
-                        погружения
-                    </p>
-                    <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
-                </div>
-
-                <!-- Пост 3 -->
-                <div class="blog_post">
-                    <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                    <p class="blog_author">Екатерина Шумская</p>
-                    <h3 class="blog_post_title">100 Идей На Лето</h3>
-                    <p class="blog_description">
-                        В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий уровень
-                        погружения
-                    </p>
-                    <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Секция контактов -->
-    <section class="contact_section">
-        <div class="contact_container">
-            <!-- Левая часть: контактная информация -->
-            <div class="contact_info">
-                <div class="contact_header">
-                    <div class="contact_line"></div>
-                    <p class="contact_subtitle">НАС МОЖНО НАЙТИ</p>
-                </div>
-                <h2 class="contact_title">
-                    Свяжитесь с Нами По<br>
-                    Любым Вопросам
-                </h2>
-
-                <!-- Контакты -->
-                <div class="contact_details">
-                    <!-- Instagram -->
-                    <div class="contact_detail">
-                        <img src="{% static 'img/instagram_logo.png' %}" alt="Instagram Icon"
-                             class="contact_icon">
-                        <a href="#" class="contact_link">@ANGELDRESS.RU</a>
-                        <p class="contact_description">Найдите нас в Instagram</p>
+            <!-- Карточки -->
+            <div class="items-preview_cards">
+                <!-- Карточка 1 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
                     </div>
-
-                    <!-- Электронная почта -->
-                    <div class="contact_detail">
-                        <img src="{% static 'img/email_logo.png' %}" alt="Mail Icon" class="contact_icon">
-                        <a href="mailto:info@example.com" class="contact_link">INFO@EXAMPLE.COM</a>
-                        <p class="contact_description">Напишите нам</p>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
                     </div>
+                </div>
 
-                    <!-- Телефон -->
-                    <div class="contact_detail">
-                        <img src="{% static 'img/phone_logo.png' %}" alt="Phone Icon" class="contact_icon">
-                        <a href="tel:+785-000-000-000" class="contact_link">+785-000-000-000</a>
-                        <p class="contact_description">Позвоните нам</p>
+                <!-- Карточка 2 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
                     </div>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
+                    </div>
+                </div>
 
-                    <!-- Адрес -->
-                    <div class="contact_detail">
-                        <img src="{% static 'img/map_logo.png' %}" alt="Map Icon" class="contact_icon">
-                        <p class="contact_address">УЛ. МОСКОВСКАЯ 64/7</p>
-                        <p class="contact_description">Примерьте платье в Шоу-рум</p>
+                <!-- Карточка 3 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
+                    </div>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
+                    </div>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
+                    </div>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
+                    </div>
+                </div>
+
+                <!-- Карточка 5 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
+                    </div>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
+                    </div>
+                </div>
+
+                <!-- Карточка 6 -->
+                <div class="items-preview_card">
+                    <div class="img-section">
+                        <div class="items-preview_favorite">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress1_sample.png' %}" alt="Model Spring-Autumn">
+                    </div>
+                    <div class="items-preview_card_content">
+                        <p class="items-preview_card_title">Модель Весна-Осень</p>
+                        <p class="items-preview_card_price">8700 - 14500 ₽</p>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- Секция accessories -->
+        <section class="accessories_section">
+            <div class="accessories_container">
 
-            <!-- Правая часть: карта -->
-            <div class="contact_map">
-                <!-- Замените на реальный виджет карты Google Maps или Яндекс.Карты -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2280.043474775955!2d37.4531115771658!3d55.14751793844858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x413543cb39737957%3A0xae22242c91096df5!2z0YPQuy4g0JzQvtGB0LrQvtCy0YHQutCw0Y8sIDY0LCA3LCDQp9C10YXQvtCyLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LsuLCDQoNC-0YHRgdC40Y8sIDE0MjMwNg!5e0!3m2!1sru!2sby!4v1749712101253!5m2!1sru!2sby"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="accessories_content">
+                    <!-- Текстовая часть -->
+                    <div class="accessories_text">
+                        <div class="accessories_heading">
+                            <div class="accessories_line"></div>
+                            <p class="accessories_subtitle">ЛУЧШИЙ ВЫБОР</p>
+                        </div>
+                        <h2 class="accessories_title">
+                            Дополните Свой<br>
+                            Образ
+                        </h2>
+                        <p class="accessories_description">
+                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                            уровень
+                            погружения
+                        </p>
+                    </div>
+
+                    <!-- Карточки аксессуаров -->
+                    <div class="accessories_cards">
+                        <div class="accessories_card">
+                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
+                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
+                        </div>
+                        <div class="accessories_card">
+                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
+                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
+                        </div>
+                        <div class="accessories_card">
+                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
+                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
+                        </div>
+                        <div class="accessories_card">
+                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
+                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Фоновое изображение модели -->
+                <img src="{% static 'img/model_with_accessories.png' %}" alt="Model with Accessories">
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+        <!-- Секция счетчика -->
+        <section class="counter_section">
+            <hr class="counter_section_line">
+            <div class="counter_container">
+                <!-- Блок 1: Платьев было выбрано -->
+                <div class="counter_item">
+                    <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">132</span>
+                        <p class="counter_label">Платьев было выбрано</p>
+                    </div>
+                </div>
+
+                <!-- Блок 2: Довольных клиентов -->
+                <div class="counter_item">
+                    <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">64</span>
+                        <p class="counter_label">Довольных клиентов</p>
+                    </div>
+                </div>
+
+                <!-- Блок 3: Новых поступлений ежемесячно -->
+                <div class="counter_item">
+                    <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">10+</span>
+                        <p class="counter_label">Новых поступлений ежемесячно</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="counter_section_line">
+        </section>
+        <!-- Секция блога -->
+        <section class="blog_section">
+            <div class="blog_container">
+                <!-- Заголовок и кнопка -->
+                <div class="blog_header">
+                    <h2 class="blog_title">Наши Специалисты<br>Говорят На Темы</h2>
+                    <button class="blog_button">ОТКРЫТЬ БЛОГ</button>
+                </div>
+
+                <!-- Блоки постов -->
+                <div class="blog_posts">
+                    <!-- Пост 1 -->
+                    <div class="blog_post">
+                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
+                        <p class="blog_author">Екатерина Шумская</p>
+                        <h3 class="blog_post_title">100 Идей На Лето</h3>
+                        <p class="blog_description">
+                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                            уровень
+                            погружения
+                        </p>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                    </div>
+
+                    <!-- Пост 2 -->
+                    <div class="blog_post">
+                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
+                        <p class="blog_author">Екатерина Шумская</p>
+                        <h3 class="blog_post_title">100 Идей На Лето</h3>
+                        <p class="blog_description">
+                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                            уровень
+                            погружения
+                        </p>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                    </div>
+
+                    <!-- Пост 3 -->
+                    <div class="blog_post">
+                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
+                        <p class="blog_author">Екатерина Шумская</p>
+                        <h3 class="blog_post_title">100 Идей На Лето</h3>
+                        <p class="blog_description">
+                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                            уровень
+                            погружения
+                        </p>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Секция контактов -->
+        <section class="contact_section">
+            <div class="contact_container">
+                <!-- Левая часть: контактная информация -->
+                <div class="contact_info">
+                    <div class="contact_header">
+                        <div class="contact_line"></div>
+                        <p class="contact_subtitle">НАС МОЖНО НАЙТИ</p>
+                    </div>
+                    <h2 class="contact_title">
+                        Свяжитесь с Нами По<br>
+                        Любым Вопросам
+                    </h2>
+
+                    <!-- Контакты -->
+                    <div class="contact_details">
+                        <!-- Instagram -->
+                        <div class="contact_detail">
+                            <img src="{% static 'img/instagram_logo.png' %}" alt="Instagram Icon"
+                                 class="contact_icon">
+                            <a href="#" class="contact_link">@ANGELDRESS.RU</a>
+                            <p class="contact_description">Найдите нас в Instagram</p>
+                        </div>
+
+                        <!-- Электронная почта -->
+                        <div class="contact_detail">
+                            <img src="{% static 'img/email_logo.png' %}" alt="Mail Icon" class="contact_icon">
+                            <a href="mailto:info@example.com" class="contact_link">INFO@EXAMPLE.COM</a>
+                            <p class="contact_description">Напишите нам</p>
+                        </div>
+
+                        <!-- Телефон -->
+                        <div class="contact_detail">
+                            <img src="{% static 'img/phone_logo.png' %}" alt="Phone Icon" class="contact_icon">
+                            <a href="tel:+785-000-000-000" class="contact_link">+785-000-000-000</a>
+                            <p class="contact_description">Позвоните нам</p>
+                        </div>
+
+                        <!-- Адрес -->
+                        <div class="contact_detail">
+                            <img src="{% static 'img/map_logo.png' %}" alt="Map Icon" class="contact_icon">
+                            <p class="contact_address">УЛ. МОСКОВСКАЯ 64/7</p>
+                            <p class="contact_description">Примерьте платье в Шоу-рум</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Правая часть: карта -->
+                <div class="contact_map">
+                    <!-- Замените на реальный виджет карты Google Maps или Яндекс.Карты -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2280.043474775955!2d37.4531115771658!3d55.14751793844858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x413543cb39737957%3A0xae22242c91096df5!2z0YPQuy4g0JzQvtGB0LrQvtCy0YHQutCw0Y8sIDY0LCA3LCDQp9C10YXQvtCyLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LsuLCDQoNC-0YHRgdC40Y8sIDE0MjMwNg!5e0!3m2!1sru!2sby!4v1749712101253!5m2!1sru!2sby"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}
