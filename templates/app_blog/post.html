@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{ title|default:"Angel Dress - Блог>" }}</title>
+{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/post.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <!-- Главный контейнер -->
+    <div class="wrapper">
+        <div class="post-container">
+            <!-- Основное содержимое -->
+            <main class="post-content">
+                <!-- Карточка новости -->
+                <div class="post-header">
+                    <div class="post-date">
+                        <span class="day">8</span>
+                        <span class="month">МАР</span>
+                    </div>
+                    <h1 class="post-title">100 Идей На Лето</h1>
+                </div>
+
+                <div class="post-image-wrapper">
+                    <img src="{% static 'img/Rectangle_52.png' %}" alt="Fashion Image" class="post-image"/>
+                </div>
+
+                <div class="post-text-block">
+                    <p>
+                        Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является качественно
+                        новой ступенью позиции, занимаемых участниками в отношении поставленных задач. Повседневная
+                        практика показывает, что курс на социально-ориентированный национальный проект Равным образом,
+                        разбавленное изрядной долей эмпатии, рациональное мышление является качественно новой ступенью
+                        позиции, занимаемых участниками в отношении поставленных задач. Повседневная практика
+                        показывает, что курс на социально-ориентированный национальный проект Равным образом...
+                    </p>
+                    <p>
+                        Повседневная практика показывает, что курс на социально-ориентированный национальный проект
+                        Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является качественно
+                        новой ступенью позиции, занимаемых участниками в отношении поставленных задач.
+                    </p>
+                    <p>
+                        Повседневная практика показывает, что курс на социально-ориентированный национальный проект
+                        Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является качественно
+                        новой ступенью позиции, занимаемых участниками в отношении поставленных задач.
+                    </p>
+                </div>
+
+                <div class="post-footer">
+                    <div class="post-meta">
+                        <p><span><strong>ТЭГИ:</strong> платья, праздиники, девушки, стиль</span></p>
+                        <p><span><strong>АВТОР:</strong> Марина Кравцова</span></p>
+                    </div>
+                    <div class="post-socials">
+                        <img src="icon-tg.svg" alt="Telegram"/>
+                        <img src="icon-vk.svg" alt="VK"/>
+                        <img src="icon-youtube.svg" alt="YouTube"/>
+                    </div>
+                </div>
+            </main>
+        </div>
+        {% include 'pagination.html' %}
+    </div>
+{% endblock %}
