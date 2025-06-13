@@ -23,8 +23,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    'app_home',
-    'app_catalog',
+    'app_home.apps.AppHomeConfig',
+    'app_blog.apps.AppBlogConfig',
+    'app_catalog.apps.AppCatalogConfig',
+    'app_wishlist.apps.AppWishlistConfig'
 ]
 
 MIDDLEWARE = [
