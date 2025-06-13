@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'app_blog.apps.AppBlogConfig',
     'app_catalog.apps.AppCatalogConfig',
     'app_wishlist.apps.AppWishlistConfig',
-    'app_news.apps.AppNewsConfig'
 ]
 
 MIDDLEWARE = [
