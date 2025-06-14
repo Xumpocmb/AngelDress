@@ -7,14 +7,50 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
+    <script src="{% static 'js/swiper_settings.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'styles/swiper.css' %}">
 {% endblock styles %}
 
 {% block content %}
     <div class="wrapper">
         <!-- Секция слайдера -->
-        <section class="slider"></section>
+        <section class="slider">
+            <div class="swiper">
+            <!-- Обертка слайдов -->
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Slide 1">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Slide 1">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Slide 1">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-inner">
+                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Slide 1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Навигация -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- Пагинация -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        </section>
         <!-- Секция заголовка страницы -->
         <section class="heading">
             <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
