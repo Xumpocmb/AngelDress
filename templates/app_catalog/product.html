@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{ title|default:"Angel Dress - Каталог" }}</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <!-- Главный контейнер -->
+    <div class="wrapper">
+        <div class="product-container">
+
+            <!-- Основное содержимое -->
+            <main class="content">
+                
+            </main>
+        </div>
+        {% include 'pagination.html' %}
+    </div>
+{% endblock %}

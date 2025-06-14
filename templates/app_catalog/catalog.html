@@ -62,7 +62,10 @@
                             <div class="favorite-icon active">
                                 <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
                             </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
+                            <a href="{% url 'app_catalog:product' %}">
+                                <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
+                            </a>
+
                         </div>
 
                         <div class="product-info">
