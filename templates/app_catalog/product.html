@@ -4,6 +4,10 @@
     <title>{{ title|default:"Angel Dress - Каталог" }}</title>
 {% endblock %}
 
+{% block meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/product.css' %}">
@@ -85,7 +89,12 @@
 
                 <div class="buttons">
                     <div class="button button-primary">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
-                    <div class="button button-secondary">ДОБАВИТЬ В ИЗБРАННОЕ</div>
+                    <div class="button button-secondary {% if product.id in request.session.wishlist %}in-wishlist{% endif %}"
+                         id="wishlist-btn-{{ product.id }}"
+                         onclick="toggleWishlistButton(this, {{ product.id }})">
+                        {% if product.id in request.session.wishlist %}✓ В ИЗБРАННОМ{% else %}ДОБАВИТЬ В
+                            ИЗБРАННОЕ{% endif %}
+                    </div>
                 </div>
 
                 <div class="tabs">
@@ -113,9 +122,7 @@
             </div>
         </div>
     </div>
-
     <script>
-        // Инициализация галереи из данных бэкенда
         const productImages = [
             {% for image in images %}
                 "{{ image.image.url }}",
@@ -160,36 +167,10 @@
             changeImage(newIndex);
         }
     </script>
+{% endblock %}
 
-    <script>
-        // Функционал вкладок
-        document.addEventListener('DOMContentLoaded', function () {
-            const tabs = document.querySelectorAll('.tab');
-            const tabPanes = document.querySelectorAll('.tab-pane');
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    const tabId = this.getAttribute('data-tab');
-                    tabPanes.forEach(pane => pane.classList.remove('active'));
-                    document.getElementById(tabId).classList.add('active');
-                });
-            });
-        });
-
-        // ... предыдущий JavaScript код для галереи ...
-    </script>
-
-    <script>
-        document.querySelectorAll('.size-option').forEach(option => {
-            option.addEventListener('click', function () {
-                document.querySelectorAll('.size-option').forEach(el => {
-                    el.classList.remove('active');
-                });
-                this.classList.add('active');
-                this.querySelector('input[type="radio"]').checked = true;
-            });
-        });
-    </script>
+{% block scripts %}
+    <script src="{% static 'js/dress_tabs.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}

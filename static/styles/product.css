@@ -160,10 +160,39 @@
     border: none;
 }
 
-.button-secondary {
+/* Базовый стиль кнопки */
+.button.button-secondary {
     background-color: white;
     color: #333;
     border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Стиль для кнопки в избранном */
+.button.button-secondary.in-wishlist {
+    background-color: #fff0f0;
+    color: #d23c3c;
+    border-color: #ffb6b6;
+    box-shadow: 0 0 10px rgba(255, 100, 100, 0.3);
+}
+
+/* Эффект "свечения" при hover */
+.button.button-secondary:hover,
+.button.button-secondary.in-wishlist:hover {
+    box-shadow: 0 0 15px rgba(255, 100, 100, 0.5);
+}
+
+/* Анимация пульсации при добавлении */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 100, 100, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 100, 100, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 100, 100, 0); }
+}
+
+.button-secondary.just-added {
+    animation: pulse 0.7s;
 }
 
 .tabs {

@@ -1,17 +1,14 @@
 from django.shortcuts import render
-from django.shortcuts import HttpResponse, get_object_or_404
+from django.shortcuts import HttpResponse
 import json
-
-from app_catalog.models import Dress
 
 
 def wishlist_view(request):
     return render(request, 'app_wishlist/wishlist.html')
 
 
-def toggle_favorite(request, dress_id):
+def toggle_wishlist(request, dress_id):
     if request.method == 'POST':
-        dress = get_object_or_404(Dress, pk=dress_id)
         wishlist = request.session.get('wishlist', [])
 
         if dress_id in wishlist:

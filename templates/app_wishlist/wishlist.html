@@ -4,6 +4,10 @@
     <title>{{ title|default:"Angel Dress - Избранное" }}</title>
 {% endblock %}
 
+{% block meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">

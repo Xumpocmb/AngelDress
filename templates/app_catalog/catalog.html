@@ -4,6 +4,10 @@
     <title>{{ title|default:"Angel Dress - Каталог" }}</title>
 {% endblock %}
 
+{% block meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/catalog.css' %}">
@@ -61,7 +65,7 @@
                         <div class="product-card">
                             <div class="img-section">
                                 <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
-                                     onclick="toggleFavorite(this, {{ dress.id }})">
+                                     onclick="toggleWishlist(this, {{ dress.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
                                 </div>
                                 <a href="{% url 'app_catalog:dress_detail' dress.id %}">
@@ -96,5 +100,5 @@
 
 
 {% block scripts %}
-    <script src="{% static 'js/favourite.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}
