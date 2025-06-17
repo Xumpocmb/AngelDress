@@ -11,3 +11,5 @@ def index_view(request):
     return render(request, 'app_home/index.html', context=context)
 
 
+def contact_view(request):
+    return render(request, 'app_home/contacts.html')

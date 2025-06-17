@@ -1,0 +1,337 @@
+/* -------------------------------------- */
+/* --- Contact Info Section --- */
+/* -------------------------------------- */
+
+.contact_section {
+    margin: 40px 0;
+    padding: 20px 0;
+}
+
+.contact_container {
+    display: flex;
+    gap: 40px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    min-height: 500px;
+}
+
+/* --- Текстовая часть --- */
+.contact_info {
+    flex: 1;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact_header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.contact_line {
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.contact_subtitle {
+    font-size: 14px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    margin-left: 60px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.contact_title {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.contact_details {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.contact_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contact_icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+}
+
+.contact_link,
+.contact_address {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact_link:hover {
+    color: var(--secondary-color);
+}
+
+.contact_description {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* --- Карта --- */
+.contact_map {
+    flex: 1;
+    min-height: 500px;
+}
+
+.contact_map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+/* -------------------------------------- */
+/* --- Contact Form Section --- */
+/* -------------------------------------- */
+
+.form_section {
+    margin: 60px 0;
+    padding: 60px 0;
+    background-color: #f9f7f4;
+}
+
+.form_container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form_header {
+    margin-bottom: 40px;
+}
+
+.form_title {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-family: 'Cormorant Infant', serif;
+}
+
+.form_subtitle {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact_form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form_group {
+    position: relative;
+}
+
+.form_input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: #f0f0f0;
+    color: var(--text-color);
+    outline: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Cormorant Infant', serif;
+}
+
+.form_input:focus {
+    background-color: #e8e8e8;
+    box-shadow: 0 0 0 2px var(--secondary-color);
+}
+
+.form_input::placeholder {
+    color: #999;
+}
+
+/* Checkbox styling */
+.checkbox_group {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.checkbox_label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.checkbox_label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 3px;
+    position: relative;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.checkbox_label input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.checkbox_label input[type="checkbox"]:checked + .checkmark::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkbox_text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.submit_btn {
+    padding: 15px 40px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    font-family: 'Cormorant Infant', serif;
+}
+
+.submit_btn:hover {
+    background-color: #a06e52;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(179, 127, 96, 0.3);
+}
+
+.submit_btn:active {
+    transform: translateY(0);
+}
+
+/* -------------------------------------- */
+/* --- Адаптивность --- */
+/* -------------------------------------- */
+
+@media (max-width: 992px) {
+    .contact_container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .contact_map {
+        min-height: 300px;
+    }
+
+    .contact_map iframe {
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    .contact_title {
+        font-size: 28px;
+    }
+
+    .form_title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact_details {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact_info {
+        padding: 30px 20px;
+    }
+
+    .contact_title {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .contact_subtitle {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .contact_line {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .form_container {
+        padding: 0 20px;
+    }
+
+    .form_title {
+        font-size: 24px;
+    }
+
+    .form_subtitle {
+        font-size: 14px;
+    }
+
+    .submit_btn {
+        padding: 12px 30px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact_map {
+        min-height: 250px;
+    }
+
+    .form_section {
+        padding: 40px 0;
+        margin: 40px 0;
+    }
+}
