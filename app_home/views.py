@@ -1,4 +1,13 @@
 from django.shortcuts import render
 
+from app_home.models import SliderImage
+
+
 def index_view(request):
-    return render(request, 'app_home/index.html')
+    slider_images = SliderImage.objects.all().order_by('order')
+    context = {
+        'slider_images': slider_images,
+    }
+    return render(request, 'app_home/index.html', context=context)
+
+
