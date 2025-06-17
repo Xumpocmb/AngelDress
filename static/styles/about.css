@@ -9,7 +9,7 @@
 
 /* CSS Grid Layout for About Section */
 .about-section {
-    padding: 5rem 0;
+    padding: 2rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto 1fr;
