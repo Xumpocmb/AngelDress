@@ -15,59 +15,56 @@
     <!-- Главный контейнер -->
     <div class="wrapper">
         <div class="wishlist-container">
-            <!-- Основное содержимое -->
-            <main class="content">
-                <!-- Карточки товаров -->
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon active">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
+            <!-- Карточки товаров -->
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="img-section">
+                        <div class="favorite-icon active">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
                         </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                            <button class="rent-button">Забронировать прокат</button>
-                        </div>
+                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
                     </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
 
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                            <button class="rent-button">Забронировать прокат</button>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                            <button class="rent-button">Забронировать прокат</button>
-                        </div>
+                    <div class="product-info">
+                        <p class="product-name">Модель Весна-Осень</p>
+                        <p class="product-price">8700 - 14500 ₽</p>
+                        <button class="rent-button">Забронировать прокат</button>
                     </div>
                 </div>
+                <div class="product-card">
+                    <div class="img-section">
+                        <div class="favorite-icon">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
+                    </div>
 
-                <!-- Кнопка бронирования всех платьев -->
-                <div class="rent-all-container">
-                    <button class="rent-all-button">Забронировать все платья</button>
+                    <div class="product-info">
+                        <p class="product-name">Модель Весна-Осень</p>
+                        <p class="product-price">8700 - 14500 ₽</p>
+                        <button class="rent-button">Забронировать прокат</button>
+                    </div>
                 </div>
-            </main>
+                <div class="product-card">
+                    <div class="img-section">
+                        <div class="favorite-icon">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                        </div>
+                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
+                    </div>
+
+                    <div class="product-info">
+                        <p class="product-name">Модель Весна-Осень</p>
+                        <p class="product-price">8700 - 14500 ₽</p>
+                        <button class="rent-button">Забронировать прокат</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопка бронирования всех платьев -->
+            <div class="rent-all-container">
+                <button class="rent-all-button">Забронировать все платья</button>
+            </div>
         </div>
         {% include 'pagination.html' %}
     </div>
