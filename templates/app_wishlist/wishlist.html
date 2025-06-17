@@ -19,7 +19,8 @@
             <div class="product-grid">
                 <div class="product-card">
                     <div class="img-section">
-                        <div class="favorite-icon active">
+                        <div class="favorite-icon {% if dress.id in request.session.favorites %}active{% endif %}"
+                             onclick="toggleFavorite(this, {{ dress.id }})">
                             <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
                         </div>
                         <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
@@ -68,4 +69,9 @@
         </div>
         {% include 'includes/pagination.html' %}
     </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/favourite.js' %}"></script>
 {% endblock %}

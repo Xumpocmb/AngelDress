@@ -15,14 +15,18 @@
         <div class="nav-container">
             <ul class="nav-menu">
                 <li><a href="{% url 'app_home:home' %}">Главная</a></li>
-                <li><a href="{%  url 'app_catalog:dress_catalog' %}">Подобрать платье</a></li>
+                <li><a href="{% url 'app_catalog:dress_catalog' %}">Подобрать платье</a></li>
                 <li><a href="#">Аксессуары</a></li>
                 <li><a href="{% url 'app_blog:blog' %}">Блог</a></li>
                 <li><a href="{% url 'app_home:about' %}">О нас</a></li>
                 <li><a href="{% url 'app_home:contacts' %}">Контакты</a></li>
             </ul>
             <div class="nav-icons">
-                <a href="{% url 'app_wishlist:wishlist' %}"><img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное"></a>
+                <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link">
+                    <img class="icon" src="{% static 'img/heart.png' %}"
+                                                                 alt="Избранное">
+                </a>
+                <span class="wishlist-count" style="display: none;">0</span>
             </div>
         </div>
     </nav>
