@@ -15,28 +15,32 @@
 
 {% block content %}
     <div class="wrapper">
-        <!-- Секция слайдера -->
-        <section class="slider">
-            <div class="swiper">
-                <!-- Обертка слайдов -->
-                <div class="swiper-wrapper">
-                    {% for slide in slider_images %}
-                        <div class="swiper-slide">
-                            <div class="slide-inner">
-                                <img src="{{ slide.image.url }}" alt="{{ slide.alt_text }}">
+
+        {% if slider_images %}
+            <!-- Секция слайдера -->
+            <section class="slider">
+                <div class="swiper">
+                    <!-- Обертка слайдов -->
+                    <div class="swiper-wrapper">
+                        {% for slide in slider_images %}
+                            <div class="swiper-slide">
+                                <div class="slide-inner">
+                                    <img src="{{ slide.image.url }}" alt="{{ slide.alt_text }}">
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- Навигация -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- Пагинация -->
+                    <div class="swiper-pagination"></div>
                 </div>
+            </section>
+        {% endif %}
 
-                <!-- Навигация -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- Пагинация -->
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
         <!-- Секция заголовка страницы -->
         <section class="heading">
             <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
