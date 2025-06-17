@@ -1,29 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+from app_catalog.models import Dress
 
-def catalog_view(request):
-    return render(request, 'app_catalog/catalog.html')
 
+def dress_catalog_view(request):
+    dresses = Dress.objects.all().order_by('-created_at')
 
-def product_view(request):
-    product = {
-        'id': 1,
-        'name': 'Платье пудрово-розовое',
-        'price': '8 700 - 14 500 ₽',
-        'description': 'Элегантное платье для особых случаев...',
-    }
-
-    available_sizes = ['XS', 'S', 'M', 'L', 'XL']
-
-    additional_info = {
-        'material_composition': '95% полиэстер, 5% эластан',
-        'care_instructions': 'Ручная стирка при 30°C...',
-        'delivery_info': 'Доставка 2-5 дней по Москве...',
-        'return_policy': 'Возврат в течение 14 дней...',
-    }
+    paginator = Paginator(dresses, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'product': product,
-        'available_sizes': available_sizes,
-        'additional_info': additional_info,
+        'page_obj': page_obj,
+    }
+    return render(request, 'app_catalog/catalog.html', context)
+
+
+def dress_detail_view(request, dress_id):
+    dress = get_object_or_404(Dress, pk=dress_id)
+    images = dress.images.all().order_by('order')
+    main_image = images.first() if images.exists() else None
+
+    context = {
+        'product': dress,
+        'main_image': main_image,
+        'images': images,
+        'available_sizes': dress.get_sizes_list(),
     }
     return render(request, 'app_catalog/product.html', context)

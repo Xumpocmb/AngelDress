@@ -11,137 +11,85 @@
 
 
 {% block content %}
-    <!-- Главный контейнер -->
-    <div class="wrapper">
-        <div class="catalog-container">
-            <!-- Боковое меню -->
-            <aside class="sidebar">
-                <!-- Заголовок -->
-                <h2 class="filter-title">Категории</h2>
+<!-- Главный контейнер -->
+<div class="wrapper">
+    <div class="catalog-container">
+        <!-- Боковое меню -->
+        <aside class="sidebar">
+            <!-- Заголовок -->
+            <h2 class="filter-title">Категории</h2>
 
-                <!-- Фильтры (десктоп) -->
-                <ul class="filters" id="desktopFilters">
-                    <li><a href="/catalog?category=evening" class="filter active">Вечерние</a></li>
-                    <li><a href="/catalog?category=cocktail" class="filter">Коктейльные</a></li>
-                    <li><a href="/catalog?category=long" class="filter">Длинные</a></li>
-                    <li><a href="/catalog?category=short" class="filter">Короткие</a></li>
-                    <li><a href="/catalog?category=graduation" class="filter">Выпускные</a></li>
-                </ul>
+            <!-- Фильтры (десктоп) -->
+            <ul class="filters" id="desktopFilters">
+                <li><a href="/catalog?category=evening" class="filter active">Вечерние</a></li>
+                <li><a href="/catalog?category=cocktail" class="filter">Коктейльные</a></li>
+                <li><a href="/catalog?category=long" class="filter">Длинные</a></li>
+                <li><a href="/catalog?category=short" class="filter">Короткие</a></li>
+                <li><a href="/catalog?category=graduation" class="filter">Выпускные</a></li>
+            </ul>
 
-                <!-- Горизонтальное меню (мобильные) -->
-                <div class="mobile-category-menu" id="mobileCategoryMenu">
-                    <div class="mobile-category-menu-items">
-                        <a href="/catalog?category=evening" class="mobile-category active">Вечерние</a>
-                        <a href="/catalog?category=cocktail" class="mobile-category">Коктейльные</a>
-                        <a href="/catalog?category=long" class="mobile-category">Длинные</a>
-                        <a href="/catalog?category=short" class="mobile-category">Короткие</a>
-                        <a href="/catalog?category=graduation" class="mobile-category">Выпускные</a>
+            <!-- Горизонтальное меню (мобильные) -->
+            <div class="mobile-category-menu" id="mobileCategoryMenu">
+                <div class="mobile-category-menu-items">
+                    <a href="/catalog?category=evening" class="mobile-category active">Вечерние</a>
+                    <a href="/catalog?category=cocktail" class="mobile-category">Коктейльные</a>
+                    <a href="/catalog?category=long" class="mobile-category">Длинные</a>
+                    <a href="/catalog?category=short" class="mobile-category">Короткие</a>
+                    <a href="/catalog?category=graduation" class="mobile-category">Выпускные</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основное содержимое -->
+        <main class="content">
+            <!-- Сортировка -->
+            <div class="sort-bar">
+                <label for="sort-select">Показывать сначала:</label>
+                <div class="custom-select">
+                    <select class="sort-select" id="sort-select">
+                        <option value="newest">Новые</option>
+                        <option value="price-low">По возрастанию цены</option>
+                        <option value="price-high">По убыванию цены</option>
+                        <option value="popular">Популярные</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Карточки товаров -->
+            <div class="product-grid">
+            {% for dress in page_obj %}
+                <div class="product-card">
+                    <div class="img-section">
+                        <div class="favorite-icon">
+                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites"
+                                 onclick="toggleFavorite(this, {{ dress.id }})">
+                        </div>
+                        <a href="{% url 'app_catalog:dress_detail' dress.id %}">
+                            {% with dress.images.first as main_image %}
+                                {% if main_image %}
+                                    <img class="product-image" src="{{ main_image.image.url }}"
+                                         alt="{{ dress.name }}">
+                                {% else %}
+                                    <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
+                                         alt="Нет изображения">
+                                {% endif %}
+                            {% endwith %}
+                        </a>
+                    </div>
+
+                    <div class="product-info">
+                        <p class="product-name">{{ dress.name }}</p>
+                        <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
                     </div>
                 </div>
-            </aside>
-
-            <!-- Основное содержимое -->
-            <main class="content">
-                <!-- Сортировка -->
-                <div class="sort-bar">
-                    <label for="sort-select">Показывать сначала:</label>
-                    <div class="custom-select">
-                        <select class="sort-select" id="sort-select">
-                            <option value="newest">Новые</option>
-                            <option value="price-low">По возрастанию цены</option>
-                            <option value="price-high">По убыванию цены</option>
-                            <option value="popular">Популярные</option>
-                        </select>
-                    </div>
+                {% empty %}
+                <div class="no-products">
+                    <p>Платьев пока нет в каталоге</p>
                 </div>
-
-                <!-- Карточки товаров -->
-                <div class="product-grid">
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon active">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <a href="{% url 'app_catalog:product' %}">
-                                <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                            </a>
-
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img-section">
-                            <div class="favorite-icon">
-                                <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                            </div>
-                            <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-name">Модель Весна-Осень</p>
-                            <p class="product-price">8700 - 14500 ₽</p>
-                        </div>
-                    </div>
-
-                </div>
-            </main>
-        </div>
-        {% include 'includes/pagination.html' %}
-    </div>
+                {% endfor %}
+            </div>
+        </main>
+</div>
+{% include 'includes/pagination.html' %}
+</div>
 {% endblock %}

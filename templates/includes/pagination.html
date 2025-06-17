@@ -1,41 +1,29 @@
 <div class="pagination">
-    <!-- Реальный код -->
-    {# {% if page_obj.has_previous %} #}
-    <!-- Тестовый вариант - показываем активные ссылки -->
-    <a href="#" class="pagination-link first-page" title="Первая страница">&laquo;&laquo;</a>
-    <a href="#" class="pagination-link prev-page" title="Предыдущая страница">&laquo;</a>
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="pagination-link first-page" title="Первая страница">&laquo;&laquo;</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link prev-page" title="Предыдущая страница">&laquo;</a>
+    {% else %}
+        <span class="pagination-link disabled first-page" title="Первая страница">&laquo;&laquo;</span>
+        <span class="pagination-link disabled prev-page" title="Предыдущая страница">&laquo;</span>
+    {% endif %}
 
-    <!-- Тестовый вариант - показываем неактивные ссылки -->
-    {# {% else %} #}
-    {# <span class="pagination-link disabled first-page">&laquo;&laquo;</span> #}
-    {# <span class="pagination-link disabled prev-page">&laquo;</span> #}
-    {# {% endif %} #}
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <span class="pagination-link current-page">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
+        {% elif num == 1 or num == page_obj.paginator.num_pages %}
+            <a href="?page={{ num }}" class="pagination-link">{{ num }}</a>
+        {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+            <span class="pagination-ellipsis">...</span>
+        {% endif %}
+    {% endfor %}
 
-    <!-- Реальный код -->
-    {# {% for num in page_obj.paginator.page_range %} #}
-    {#     {% if page_obj.number == num %} #}
-    {#         <span class="pagination-link current-page">{{ num }}</span> #}
-    {#     {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} #}
-    {#         <a href="?page={{ num }}" class="pagination-link">{{ num }}</a> #}
-    {#     {% endif %} #}
-    {# {% endfor %} #}
-
-    <!-- Тестовый вариант - фиктивные номера страниц -->
-    <a href="#" class="pagination-link">3</a>
-    <a href="#" class="pagination-link">4</a>
-    <span class="pagination-link current-page">5</span>
-    <a href="#" class="pagination-link">6</a>
-    <a href="#" class="pagination-link">7</a>
-
-    <!-- Реальный код -->
-    {# {% if page_obj.has_next %} #}
-    <!-- Тестовый вариант - показываем активные ссылки -->
-    <a href="#" class="pagination-link next-page" title="Следующая страница">&raquo;</a>
-    <a href="#" class="pagination-link last-page" title="Последняя страница">&raquo;&raquo;</a>
-
-    <!-- Тестовый вариант - показываем неактивные ссылки -->
-    {# {% else %} #}
-    {# <span class="pagination-link disabled next-page">&raquo;</span> #}
-    {# <span class="pagination-link disabled last-page">&raquo;&raquo;</span> #}
-    {# {% endif %} #}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-link next-page" title="Следующая страница">&raquo;</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link last-page" title="Последняя страница">&raquo;&raquo;</a>
+    {% else %}
+        <span class="pagination-link disabled next-page" title="Следующая страница">&raquo;</span>
+        <span class="pagination-link disabled last-page" title="Последняя страница">&raquo;&raquo;</span>
+    {% endif %}
 </div>

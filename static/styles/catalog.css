@@ -172,6 +172,14 @@
     align-items: center;
     margin-bottom: 20px;
 }
+.no-products {
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #666;
+    min-height: 50vh;
+}
 
 .product-grid {
     display: grid;

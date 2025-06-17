@@ -11,15 +11,14 @@
 
 
 {% block content %}
-    <!-- Главный контейнер -->
     <div class="wrapper">
         <div class="product-container">
             <!-- Левая колонка - изображения товара -->
             <div class="product-gallery">
                 <div class="main-image-container">
                     {% if main_image %}
-                        <img src="{{ main_image.image.url }}" alt="{{ product.name }}" class="main-image"
-                             id="mainImage">
+                        <img src="{{ main_image.image.url }}" alt="{{ main_image.alt_text|default:product.name }}"
+                             class="main-image" id="mainImage">
                         <button class="nav-button prev" onclick="prevImage()">❮</button>
                         <button class="nav-button next" onclick="nextImage()">❯</button>
                     {% else %}
@@ -31,7 +30,7 @@
                 <div class="thumbnails">
                     {% for image in images %}
                         <img src="{{ image.image.url }}"
-                             alt="{{ product.name }} - вид {{ forloop.counter }}"
+                             alt="{{ image.alt_text|default:product.name }} - вид {{ forloop.counter }}"
                              class="thumbnail {% if forloop.first %}active{% endif %}"
                              onclick="changeImage({{ forloop.counter0 }})">
                     {% empty %}
@@ -43,44 +42,45 @@
 
             <!-- Правая колонка - информация о товаре -->
             <div class="product-info">
-                <div class="price">8 700 - 14 500 ₽</div>
+                <h1 class="product-name">{{ product.name }}</h1>
+                <div class="price">{{ product.price_min }} - {{ product.price_max }} ₽</div>
 
                 <div class="properties">
                     <div class="property">
                         <div class="property-name">Цвет:</div>
-                        <div class="property-value">Пудрово-розовый</div>
+                        <div class="property-value">{{ product.color }}</div>
                     </div>
                     <div class="property">
                         <div class="property-name">Длина:</div>
-                        <div class="property-value">Миди (до колена)</div>
+                        <div class="property-value">{{ product.get_length_display }}</div>
                     </div>
                     <div class="property">
                         <div class="property-name">Тип застёжки:</div>
-                        <div class="property-value">Молния сзади</div>
+                        <div class="property-value">{{ product.fastener_type }}</div>
                     </div>
                     <div class="property">
                         <div class="property-name">Посадка:</div>
-                        <div class="property-value">Приталенная</div>
+                        <div class="property-value">{{ product.get_fit_display }}</div>
                     </div>
                 </div>
 
                 <div class="details">
-                    Детали: V-образный вырез, открытая спина, легкие воланьи на плечах
+                    Детали: {{ product.details }}
                 </div>
 
                 <div class="sizes-section">
-                        {% csrf_token %}
-                        <div class="sizes-title">Размеры</div>
-                        <div class="size-options">
-                            {% for size in available_sizes %}
-                                <label class="size-option">
-                                    <input type="radio" name="size" value="{{ size }}" style="display: none;">
-                                    {{ size }}
-                                </label>
-                            {% endfor %}
-                        </div>
-                        <div class="size-hint">ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ</div>
-                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                    {% csrf_token %}
+                    <div class="sizes-title">Размеры</div>
+                    <div class="size-options">
+                        {% for size in available_sizes %}
+                            <label class="size-option">
+                                <input type="radio" name="size" value="{{ size }}" style="display: none;">
+                                {{ size }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <div class="size-hint">ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ</div>
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
                 </div>
 
                 <div class="buttons">
@@ -94,18 +94,10 @@
                 </div>
 
                 <div class="tab-content">
-                    <!-- Вкладка с описанием -->
                     <div class="tab-pane active" id="description">
-                        <p>Элегантное платье пудрово-розового цвета для особых случаев. Модель с V-образным вырезом и
-                            открытой спиной подчеркнет вашу женственность, а легкие воланьи на плечах добавят образу
-                            романтичности.</p>
-                        <p>Платье выполнено из качественного плотного трикотажа, хорошо держит форму. Приталенный силуэт
-                            подчеркивает талию. Длина миди - до колена.</p>
-                        <p>Идеально подойдет для свадьбы, выпускного вечера или романтического ужина. Сочетается с
-                            классическими лодочками и клатчем.</p>
+                        {{ product.description|linebreaks }}
                     </div>
 
-                    <!-- Вкладка с дополнительной информацией -->
                     <div class="tab-pane" id="additional-info">
                         <h3>Состав и уход</h3>
                         <p><strong>Состав:</strong> 95% полиэстер, 5% эластан</p>
@@ -116,54 +108,28 @@
                         <p><strong>Сроки доставки:</strong> 2-5 рабочих дней по Москве, 3-7 дней по России</p>
                         <p><strong>Возврат:</strong> Возможен в течение 14 дней с момента получения товара. Товар должен
                             сохранить товарный вид и оригинальную упаковку.</p>
-
-                        <h3>Размерная сетка</h3>
-                        <table>
-                            <tr>
-                                <th>Размер</th>
-                                <th>Обхват груди (см)</th>
-                                <th>Обхват талии (см)</th>
-                                <th>Обхват бедер (см)</th>
-                            </tr>
-                            <tr>
-                                <td>XS</td>
-                                <td>80-84</td>
-                                <td>60-64</td>
-                                <td>88-92</td>
-                            </tr>
-                            <tr>
-                                <td>S</td>
-                                <td>84-88</td>
-                                <td>64-68</td>
-                                <td>92-96</td>
-                            </tr>
-                            <tr>
-                                <td>M</td>
-                                <td>88-92</td>
-                                <td>68-72</td>
-                                <td>96-100</td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        const staticUrl = "{% static '' %}".replace(/\/?$/, '/');
 
+    <script>
+        // Инициализация галереи из данных бэкенда
         const productImages = [
-            staticUrl + 'img/dress_sample.png',
-            staticUrl + 'img/dress1_sample.png',
-            staticUrl + 'img/dress_sample.png',
-            staticUrl + 'img/dress1_sample.png'
+            {% for image in images %}
+                "{{ image.image.url }}",
+            {% empty %}
+                "{% static 'img/No-Image-Placeholder.png' %}",
+            {% endfor %}
         ];
 
         const imageAltTexts = [
-            'Платье пудрово-розовое - вид спереди',
-            'Платье пудрово-розовое - вид сбоку',
-            'Платье пудрово-розовое - деталь спины',
-            'Платье пудрово-розовое - примерка'
+            {% for image in images %}
+                "{{ image.alt_text|default:product.name }} - вид {{ forloop.counter }}",
+            {% empty %}
+                "Нет изображения",
+            {% endfor %}
         ];
 
         let currentImageIndex = 0;
@@ -182,6 +148,16 @@
                     thumb.classList.remove('active');
                 }
             });
+        }
+
+        function prevImage() {
+            const newIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+            changeImage(newIndex);
+        }
+
+        function nextImage() {
+            const newIndex = (currentImageIndex + 1) % productImages.length;
+            changeImage(newIndex);
         }
     </script>
 
@@ -206,14 +182,14 @@
     </script>
 
     <script>
-    document.querySelectorAll('.size-option').forEach(option => {
-        option.addEventListener('click', function() {
-            document.querySelectorAll('.size-option').forEach(el => {
-                el.classList.remove('active');
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function () {
+                document.querySelectorAll('.size-option').forEach(el => {
+                    el.classList.remove('active');
+                });
+                this.classList.add('active');
+                this.querySelector('input[type="radio"]').checked = true;
             });
-            this.classList.add('active');
-            this.querySelector('input[type="radio"]').checked = true;
         });
-    });
-</script>
+    </script>
 {% endblock %}
