@@ -67,3 +67,4 @@ build/
 *.json
 .pylintrc
 
+/fixtures/

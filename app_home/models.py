@@ -23,6 +23,16 @@ class SliderImage(models.Model):
 
     image_tag.short_description = 'Предпросмотр'
 
+    def save(self, *args, **kwargs):
+        # Удаляем старое изображение при обновлении
+        if self.pk:  # Если объект уже существует в БД
+            old_instance = SliderImage.objects.get(pk=self.pk)
+            if old_instance.image and old_instance.image != self.image:
+                if default_storage.exists(old_instance.image.name):
+                    default_storage.delete(old_instance.image.name)
+
+        super().save(*args, **kwargs)
+
     def delete(self, *args, **kwargs):
         # Удаляем файл изображения при удалении записи
         if self.image:

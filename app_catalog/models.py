@@ -15,6 +15,7 @@ class DressCategory(models.Model):
 
 
 class Dress(models.Model):
+    category = models.ForeignKey(DressCategory, verbose_name='Категория', on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=200, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     color = models.CharField(max_length=100, verbose_name='Цвет')

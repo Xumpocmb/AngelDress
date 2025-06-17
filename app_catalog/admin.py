@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from django.contrib import admin
-from .models import Dress, DressImage
-from django.utils.html import format_html
+from .models import Dress, DressImage, DressCategory
+
 
 class DressImageInline(admin.TabularInline):
     model = DressImage
@@ -10,20 +9,22 @@ class DressImageInline(admin.TabularInline):
     readonly_fields = ['image_tag']
     fields = ('image', 'image_tag', 'order', 'alt_text')
 
+
 @admin.register(Dress)
 class DressAdmin(admin.ModelAdmin):
-    list_display = ('name', 'color', 'length', 'price_min', 'created_at')
-    list_filter = ('color', 'length', 'fit')
+    list_display = ('category', 'name', 'color', 'length', 'price_min', 'created_at')
+    list_filter = ('category', 'color', 'length', 'fit')
     search_fields = ('name', 'description')
     inlines = [DressImageInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'color', 'length', 'available_sizes')
+            'fields': ('category', 'name', 'description', 'color', 'length', 'available_sizes')
         }),
         ('Детали', {
             'fields': ('fastener_type', 'fit', 'details', 'price_min', 'price_max')
         }),
     )
+
 
 @admin.register(DressImage)
 class DressImageAdmin(admin.ModelAdmin):
@@ -31,3 +32,10 @@ class DressImageAdmin(admin.ModelAdmin):
     list_editable = ('order',)
     list_filter = ('dress',)
     search_fields = ('dress__name', 'alt_text')
+
+
+@admin.register(DressCategory)
+class DressCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+    ordering = ('name',)
