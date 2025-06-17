@@ -12,6 +12,8 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/wishlist.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
 {% endblock styles %}
 
 
@@ -27,26 +29,25 @@
                             <div class="img-section">
                                 <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
                                      onclick="toggleWishlist(this, {{ dress.id }})">
-                                    <img src="{% static 'img/heart.png' %}" alt="Remove from wishlist">
+                                   <img src="{% static 'img/heart.png' %}" alt="Remove from wishlist">
                                 </div>
                                 <a href="{% url 'app_catalog:dress_detail' dress.id %}">
-                                    {% with dress.images.first as main_image %}
-                                        {% if main_image %}
-                                            <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ dress.name }}">
-                                        {% else %}
-                                            <img class="product-image"
-                                                 src="{% static 'img/No-Image-Placeholder.png' %}"
-                                                 alt="Нет изображения">
-                                        {% endif %}
-                                    {% endwith %}
+                                   {% with dress.images.first as main_image %}
+                                      {% if main_image %}
+                                         <img class="product-image" src="{{ main_image.image.url }}"
+                                                 alt="{{ dress.name }}" data-id="{{ dress.id }}">
+                                      {% else %}
+                                         <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
+                                                 alt="Нет изображения" data-id="{{ dress.id }}">
+                                      {% endif %}
+                                   {% endwith %}
                                 </a>
                             </div>
 
                             <div class="product-info">
                                 <p class="product-name">{{ dress.name }}</p>
                                 <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
-                                <button class="rent-button">Забронировать прокат</button>
+                                <button class="rent-button">Забронировать прокат</button><!-- ВАЖНО: тут правильно -->
                             </div>
                         </div>
                     {% endfor %}
@@ -57,16 +58,59 @@
                 </div>
             {% endif %}
 
-            <!-- Кнопка бронирования всех платьев -->
+            <!-- Кнопка "Забронировать все платья" -->
             <div class="rent-all-container">
-                <button class="rent-all-button">Забронировать все платья</button>
+                <button class="rent-all-button">Забронировать все платья</button><!-- ВАЖНО: правильно -->
             </div>
         </div>
         {% include 'includes/pagination.html' %}
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="rentModal" style="display: none">
+        <div class="modal-overlay" onclick="closeModal(event)"></div>
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(event)">&times;</span>
+
+            <div class="form_container">
+                <div class="form_header">
+                    <h2 class="form_title">Оставьте заявку</h2>
+                    <p class="form_subtitle">
+                      Равным образом, разбалансированное изрядной долей эмпатии, рациональное мышление
+                    </p>
+                </div>
+
+                <form class="contact_form" id="contactForm">
+                    <input type="hidden" id="dress_ids" name="dress_ids" value="">
+                    <div class="form_group">
+                        <input type="text" id="name" name="name" placeholder="Имя и Фамилия" class="form_input" required>
+                    </div>
+
+                    <div class="form_group">
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефона" class="form_input" required>
+                    </div>
+
+                    <div class="form_group">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form_input" required>
+                    </div>
+
+                    <div class="form_group checkbox_group">
+                        <label class="checkbox_label">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox_text">Принимаю условия обработки данных</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 
 {% block scripts %}
     <script src="{% static 'js/wishlist.js' %}"></script>
+    <script src="{% static 'js/rent.js' %}"></script>
 {% endblock %}
