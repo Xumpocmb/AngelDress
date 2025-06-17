@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from django.core.files.storage import default_storage
+from django.utils.text import slugify
 
 
 class DressCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название категории')
+    slug = models.SlugField(max_length=100, unique=True, verbose_name='url', null=False, blank=False)
 
     class Meta:
         verbose_name = 'Категория платья'
@@ -12,6 +14,11 @@ class DressCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Dress(models.Model):
@@ -40,6 +47,10 @@ class Dress(models.Model):
     available_sizes = models.CharField(max_length=200, verbose_name='Доступные размеры',
                                        help_text='Перечислите размеры через запятую, например: XS,S,M,L')
 
+    views_count = models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')
+    favorites_count = models.PositiveIntegerField(default=0, verbose_name='Количество избранных')
+    popularity_score = models.FloatField(default=0.0, verbose_name='Рейтинг популярности', blank=True, null=True)
+
     class Meta:
         verbose_name = 'Платье'
         verbose_name_plural = 'Платья'
@@ -53,6 +64,10 @@ class Dress(models.Model):
 
     def get_sizes_list(self):
         return [s.strip() for s in self.available_sizes.split(',') if s.strip()]
+
+    def update_popularity(self):
+        self.popularity_score = self.views_count * 0.7 + self.favorites_count * 0.3
+        self.save()
 
 
 class DressImage(models.Model):

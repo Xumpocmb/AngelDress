@@ -23,7 +23,11 @@ class DressAdmin(admin.ModelAdmin):
         ('Детали', {
             'fields': ('fastener_type', 'fit', 'details', 'price_min', 'price_max')
         }),
+        ('Рейтинг популярности', {
+            'fields': ('views_count', 'favorites_count', 'popularity_score')
+        }),
     )
+    readonly_fields = ('views_count', 'favorites_count', 'popularity_score')
 
 
 @admin.register(DressImage)
@@ -39,3 +43,4 @@ class DressCategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
     ordering = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
