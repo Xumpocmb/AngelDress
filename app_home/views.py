@@ -13,3 +13,7 @@ def index_view(request):
 
 def contact_view(request):
     return render(request, 'app_home/contacts.html')
+
+
+def about_view(request):
+    return render(request, 'app_home/about.html')
