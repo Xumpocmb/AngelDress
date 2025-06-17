@@ -21,8 +21,7 @@ def dress_catalog_view(request):
     else:
         dresses = dresses.order_by('-created_at')
 
-    # Пагинация
-    paginator = Paginator(dresses, 12)
+    paginator = Paginator(dresses, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 

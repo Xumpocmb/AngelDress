@@ -20,51 +20,42 @@
     <div class="wrapper">
         <div class="wishlist-container">
             <!-- Карточки товаров -->
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="img-section">
-                        <div class="favorite-icon {% if dress.id in request.session.favorites %}active{% endif %}"
-                             onclick="toggleFavorite(this, {{ dress.id }})">
-                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                        </div>
-                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                    </div>
+            {% if page_obj.object_list %}
+                <div class="product-grid">
+                    {% for dress in page_obj %}
+                        <div class="product-card">
+                            <div class="img-section">
+                                <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
+                                     onclick="toggleWishlist(this, {{ dress.id }})">
+                                    <img src="{% static 'img/heart.png' %}" alt="Remove from wishlist">
+                                </div>
+                                <a href="{% url 'app_catalog:dress_detail' dress.id %}">
+                                    {% with dress.images.first as main_image %}
+                                        {% if main_image %}
+                                            <img class="product-image" src="{{ main_image.image.url }}"
+                                                 alt="{{ dress.name }}">
+                                        {% else %}
+                                            <img class="product-image"
+                                                 src="{% static 'img/No-Image-Placeholder.png' %}"
+                                                 alt="Нет изображения">
+                                        {% endif %}
+                                    {% endwith %}
+                                </a>
+                            </div>
 
-                    <div class="product-info">
-                        <p class="product-name">Модель Весна-Осень</p>
-                        <p class="product-price">8700 - 14500 ₽</p>
-                        <button class="rent-button">Забронировать прокат</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="img-section">
-                        <div class="favorite-icon">
-                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
+                            <div class="product-info">
+                                <p class="product-name">{{ dress.name }}</p>
+                                <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
+                                <button class="rent-button">Забронировать прокат</button>
+                            </div>
                         </div>
-                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                    </div>
-
-                    <div class="product-info">
-                        <p class="product-name">Модель Весна-Осень</p>
-                        <p class="product-price">8700 - 14500 ₽</p>
-                        <button class="rent-button">Забронировать прокат</button>
-                    </div>
+                    {% endfor %}
                 </div>
-                <div class="product-card">
-                    <div class="img-section">
-                        <div class="favorite-icon">
-                            <img src="{% static 'img/heart.png' %}" alt="Add to favorites">
-                        </div>
-                        <img class="product-image" src="{% static 'img/dress_sample.png' %}" alt="Product Image">
-                    </div>
-
-                    <div class="product-info">
-                        <p class="product-name">Модель Весна-Осень</p>
-                        <p class="product-price">8700 - 14500 ₽</p>
-                        <button class="rent-button">Забронировать прокат</button>
-                    </div>
+            {% else %}
+                <div class="no-products">
+                    <p>В вашем избранном пока ничего нет.</p>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Кнопка бронирования всех платьев -->
             <div class="rent-all-container">
@@ -77,5 +68,5 @@
 
 
 {% block scripts %}
-    <script src="{% static 'js/favourite.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}
