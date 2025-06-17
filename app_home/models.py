@@ -29,3 +29,29 @@ class SliderImage(models.Model):
             if default_storage.exists(self.image.name):
                 default_storage.delete(self.image.name)
         super().delete(*args, **kwargs)
+
+
+class ContactInfo(models.Model):
+    address = models.CharField(max_length=200, verbose_name='Адрес')
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    email = models.EmailField(verbose_name='Электронная почта')
+    instagram = models.URLField(blank=True, verbose_name='Instagram')
+    vk = models.URLField(blank=True, verbose_name='ВКонтакте')
+    tiktok = models.URLField(blank=True, verbose_name='TikTok')
+    youtube = models.URLField(blank=True, verbose_name='YouTube')
+
+    class Meta:
+        verbose_name = 'Контактная информация'
+        verbose_name_plural = 'Контактная информация'
+
+    def __str__(self):
+        return "Контактная информация магазина"
+
+    def save(self, *args, **kwargs):
+        # Ограничиваем количество записей одной
+        if not self.pk and ContactInfo.objects.exists():
+            return
+        super().save(*args, **kwargs)
+
+    def has_socials(self):
+        return any([self.instagram, self.vk, self.tiktok, self.youtube])

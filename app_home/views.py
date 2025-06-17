@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from app_home.models import SliderImage
+from app_home.models import SliderImage, ContactInfo
 
 
 def index_view(request):

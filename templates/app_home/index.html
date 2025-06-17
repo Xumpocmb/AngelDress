@@ -352,59 +352,7 @@
         </section>
         <!-- Секция контактов -->
         <section class="contact_section">
-            <div class="contact_container">
-                <!-- Левая часть: контактная информация -->
-                <div class="contact_info">
-                    <div class="contact_header">
-                        <div class="contact_line"></div>
-                        <p class="contact_subtitle">НАС МОЖНО НАЙТИ</p>
-                    </div>
-                    <h2 class="contact_title">
-                        Свяжитесь с Нами По<br>
-                        Любым Вопросам
-                    </h2>
-
-                    <!-- Контакты -->
-                    <div class="contact_details">
-                        <!-- Instagram -->
-                        <div class="contact_detail">
-                            <img src="{% static 'img/instagram_logo.png' %}" alt="Instagram Icon"
-                                 class="contact_icon">
-                            <a href="#" class="contact_link">@ANGELDRESS.RU</a>
-                            <p class="contact_description">Найдите нас в Instagram</p>
-                        </div>
-
-                        <!-- Электронная почта -->
-                        <div class="contact_detail">
-                            <img src="{% static 'img/email_logo.png' %}" alt="Mail Icon" class="contact_icon">
-                            <a href="mailto:info@example.com" class="contact_link">INFO@EXAMPLE.COM</a>
-                            <p class="contact_description">Напишите нам</p>
-                        </div>
-
-                        <!-- Телефон -->
-                        <div class="contact_detail">
-                            <img src="{% static 'img/phone_logo.png' %}" alt="Phone Icon" class="contact_icon">
-                            <a href="tel:+785-000-000-000" class="contact_link">+785-000-000-000</a>
-                            <p class="contact_description">Позвоните нам</p>
-                        </div>
-
-                        <!-- Адрес -->
-                        <div class="contact_detail">
-                            <img src="{% static 'img/map_logo.png' %}" alt="Map Icon" class="contact_icon">
-                            <p class="contact_address">УЛ. МОСКОВСКАЯ 64/7</p>
-                            <p class="contact_description">Примерьте платье в Шоу-рум</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Правая часть: карта -->
-                <div class="contact_map">
-                    <!-- Замените на реальный виджет карты Google Maps или Яндекс.Карты -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2280.043474775955!2d37.4531115771658!3d55.14751793844858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x413543cb39737957%3A0xae22242c91096df5!2z0YPQuy4g0JzQvtGB0LrQvtCy0YHQutCw0Y8sIDY0LCA3LCDQp9C10YXQvtCyLCDQnNC-0YHQutC-0LLRgdC60LDRjyDQvtCx0LsuLCDQoNC-0YHRgdC40Y8sIDE0MjMwNg!5e0!3m2!1sru!2sby!4v1749712101253!5m2!1sru!2sby"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
+            {% include "includes/contact_section.html" %}
         </section>
     </div>
 {% endblock %}
