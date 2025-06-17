@@ -360,93 +360,150 @@
 
 /* --- Каждая карточка --- */
 
-.items-preview_card {
-    border-radius: 10px;
+/* Общие стили для карточек товаров */
+.product-card {
+    background: white;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .img-section {
     position: relative;
-    width: 100%;
-    height: 300px;
+    height: 350px;
     overflow: hidden;
 }
 
 .product-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-.items-preview_card img {
-    width: 100%;
-    height: auto;
-    display: block;
+.product-card:hover .product-image {
+    transform: scale(1.03);
 }
 
-.items-preview_card:hover img {
-    transform: scale(1.05);
-}
-
-.items-preview_card_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 12px 0;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.items-preview_card_price {
-    font-size: 16px;
-    font-weight: 500;
-    color: #b37f60;
-    margin-top: 8px;
-}
-
-.items-preview_favorite {
+.favorite-icon {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 24px;
-    height: 24px;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    z-index: 3;
-    transition: transform 0.2s ease;
+    z-index: 2;
+    opacity: 0.7;
+    transition: all 0.3s ease;
 }
 
-.items-preview_favorite:hover {
-    transform: scale(1.1);
+.favorite-icon:hover {
+    opacity: 1;
 }
 
-.items-preview_favorite img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.favorite-icon.active {
+    opacity: 1;
+    background: #ff6b6b;
 }
 
-/* Стиль для активного состояния (когда товар в избранном) */
-.items-preview_favorite.active {
-    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+.favorite-icon.active img {
+    filter: brightness(0) invert(1);
 }
 
-.items-preview_card_title {
-    font-size: 14px;
+.favorite-icon img {
+    width: 18px;
+    height: 18px;
+    transition: all 0.3s ease;
+}
+
+.product-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
     color: #333;
-    margin: 0;
 }
 
-/* --- Адаптивность --- */
+.product-price {
+    font-weight: bold;
+    color: #000;
+}
 
+/* Сетка для карточек */
+.dresses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+/* Секция "Наши платья" */
+.featured-dresses {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-all-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #f8f8f8;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.view-all-link:hover {
+    background: #eee;
+    color: #000;
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
-    .items-preview_cards {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    .dresses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
-    .items-preview_title {
-        font-size: 20px;
+    .img-section {
+        height: 280px;
     }
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+.favorite-icon.just-added {
+    animation: heartPulse 0.5s;
 }
 
 

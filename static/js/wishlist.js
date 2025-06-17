@@ -25,6 +25,12 @@ async function toggleWishlist(element, dressId) {
 
         const data = await response.json();
         element.classList.toggle('active');
+        if (data.status === 'added') {
+            element.classList.add('just-added');
+            setTimeout(() => {
+                element.classList.remove('just-added');
+            }, 500);
+        }
         updateWishlistCount(data.count);
     } catch (error) {
         console.error('Error:', error);
