@@ -1,0 +1,118 @@
+<div class="form_container">
+    <div class="form_header">
+        <h2 class="form_title">Оставьте Заявку</h2>
+        <p class="form_subtitle">
+            Наши стилисты свяжутся с вами в ближайшее время
+        </p>
+    </div>
+
+    <form id="contactForm" class="contact_form" novalidate>
+        <div class="form_group">
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Имя и Фамилия"
+                class="form_input"
+                required
+            >
+            <div class="form_error" id="error_name"></div>
+        </div>
+
+        <div class="form_group">
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Номер телефона"
+                class="form_input"
+                required
+            >
+            <div class="form_error" id="error_phone"></div>
+        </div>
+
+        <div class="form_group">
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                class="form_input"
+                required
+            >
+            <div class="form_error" id="error_email"></div>
+        </div>
+
+        <div class="form_group checkbox_group">
+            <label class="checkbox_label">
+                <input type="checkbox" id="agreement" name="agreement" required>
+                <span class="checkmark"></span>
+                <span class="checkbox_text">Принимаю условия обработки данных</span>
+            </label>
+            <div class="form_error" id="error_agreement"></div>
+        </div>
+
+        <button type="submit" class="submit_btn">Оставить заявку</button>
+        <div id="formMessage" class="form_message" style="margin-top: 1rem;"></div>
+    </form>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    const messageBox = document.getElementById("formMessage");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Очистка прошлых ошибок
+        document.querySelectorAll(".form_error").forEach(el => el.textContent = "");
+        messageBox.textContent = "";
+        messageBox.className = "form_message";
+
+        const data = {
+            name: form.name.value.trim(),
+            phone: form.phone.value.trim(),
+            email: form.email.value.trim(),
+            agreement: form.agreement.checked
+        };
+
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
+        try {
+            const response = await fetch("/callback/ajax/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": csrfToken
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                messageBox.textContent = "Заявка успешно отправлена!";
+                messageBox.classList.add("form_message--success");
+                form.reset();
+            } else {
+                for (const [field, messages] of Object.entries(result.errors)) {
+                    const errorEl = document.getElementById(`error_${field}`);
+                    if (errorEl) {
+                        errorEl.textContent = messages.join(", ");
+                    }
+                }
+                messageBox.textContent = "Пожалуйста, исправьте ошибки в форме.";
+                messageBox.classList.add("form_message--error");
+            }
+        } catch (err) {
+            console.error("AJAX error:", err);
+            messageBox.textContent = "Произошла ошибка. Попробуйте позже.";
+            messageBox.classList.add("form_message--error");
+        }
+    });
+});
+</script>
+
+

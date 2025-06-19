@@ -6,8 +6,6 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/product-card.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
@@ -51,37 +49,46 @@
             <div class="choosing_dresses_categories">
                 <div class="choosing_dresses_row">
                     <div class="choosing_dresses_item_left">
+                        <div class="img-container">
                         <img src="{% static 'img/ch_c_image1.png' %}" alt="Свадебные Платья">
+                        </div>
                         <div class="content">
-                            <h2>Свадебные Платья</h2>
+                            <h2>??? платья</h2>
                             <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
                         </div>
                     </div>
                     <div class="choosing_dresses_item_right">
-                        <img src="{% static 'img/ch_c_image2.png' %}" alt="Ночные платья">
+                        <div class="img-container">
+                            <img src="{% static 'img/ch_c_image2.png' %}" alt="Ночные платья">
+                        </div>
+
                         <div class="content">
-                            <h2>Ночные платья</h2>
+                            <h2>??? платья</h2>
                             <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
                         </div>
                     </div>
                 </div>
                 <div class="choosing_dresses_row">
                     <div class="choosing_dresses_item_right">
+                        <div class="img-container">
                         <img src="{% static 'img/ch_c_image3.png' %}" alt="Ночные платья">
+                        </div>
                         <div class="content">
-                            <h2>Ночные платья</h2>
+                            <h2>??? платья</h2>
                             <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
                         </div>
                     </div>
                     <div class="choosing_dresses_item_left">
+                        <div class="img-container">
                         <img src="{% static 'img/ch_c_image4.png' %}" alt="Свадебные Платья">
+                        </div>
                         <div class="content">
-                            <h2>Свадебные Платья</h2>
+                            <h2>??? Платья</h2>
                             <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="#">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
                         </div>
                     </div>
                 </div>
@@ -105,14 +112,7 @@
 
                         </div>
 
-                        <form class="write_us_contact-form">
-                            <label for="name" class="write_us_description">
-                                В целом, конечно, глубокий уровень погружения обеспечивает.
-                            </label>
-                            <input id="name" name="email" type="text" autocomplete="email" placeholder="Имя Фамилия"
-                                   class="write_us_input-name"/>
-                            <button type="submit" class="write_us_btn-submit">ОТПРАВИТЬ</button>
-                        </form>
+                        {% include 'includes/contact_form.html' %}
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                         На Любой Случай
                     </h2>
                 </div>
-                <button class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</button>
+                <a href="{% url 'app_catalog:dress_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
             </div>
 
             <!-- Карточки -->
@@ -258,8 +258,9 @@
                 <div class="blog_posts">
                     <!-- Пост 1 -->
                     <div class="blog_post">
-                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                        <p class="blog_author">Екатерина Шумская</p>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="blog-text-area">
+                            <p class="blog_author">Екатерина Шумская</p>
                         <h3 class="blog_post_title">100 Идей На Лето</h3>
                         <p class="blog_description">
                             В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
@@ -267,12 +268,15 @@
                             погружения
                         </p>
                         <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                        </div>
+
                     </div>
 
                     <!-- Пост 2 -->
                     <div class="blog_post">
-                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                        <p class="blog_author">Екатерина Шумская</p>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="blog-text-area">
+                            <p class="blog_author">Екатерина Шумская</p>
                         <h3 class="blog_post_title">100 Идей На Лето</h3>
                         <p class="blog_description">
                             В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
@@ -280,12 +284,15 @@
                             погружения
                         </p>
                         <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                        </div>
+
                     </div>
 
                     <!-- Пост 3 -->
                     <div class="blog_post">
-                        <img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image">
-                        <p class="blog_author">Екатерина Шумская</p>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="blog-text-area">
+                            <p class="blog_author">Екатерина Шумская</p>
                         <h3 class="blog_post_title">100 Идей На Лето</h3>
                         <p class="blog_description">
                             В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
@@ -293,6 +300,8 @@
                             погружения
                         </p>
                         <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                        </div>
+
                     </div>
                 </div>
             </div>

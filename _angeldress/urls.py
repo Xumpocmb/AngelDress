@@ -9,7 +9,9 @@ urlpatterns = [
     path('catalog/', include('app_catalog.urls')),
     path('blog/', include('app_blog.urls')),
     path('wishlist/', include('app_wishlist.urls')),
-    path('book/', include('app_book.urls')),]
+    path('book/', include('app_book.urls')),
+    path('callback/', include('app_client_call_back.urls')),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

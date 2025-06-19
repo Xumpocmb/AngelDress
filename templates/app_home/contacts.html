@@ -7,7 +7,6 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
 {% endblock styles %}
 
 
@@ -17,58 +16,7 @@
             {% include "includes/contact_section.html" %}
         </section>
         <section class="form_section">
-            <div class="form_container">
-                <div class="form_header">
-                    <h2 class="form_title">Оставьте Заявку</h2>
-                    <p class="form_subtitle">Равным образом, разбалансированное изрядной долей эмпатии, рациональное
-                        мышление</p>
-                </div>
-
-                <form class="contact_form" id="contactForm">
-                    <div class="form_group">
-                        <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Имя и Фамилия"
-                                class="form_input"
-                                required
-                        >
-                    </div>
-
-                    <div class="form_group">
-                        <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="Номер телефона"
-                                class="form_input"
-                                required
-                        >
-                    </div>
-
-                    <div class="form_group">
-                        <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Email"
-                                class="form_input"
-                                required
-                        >
-                    </div>
-
-                    <div class="form_group checkbox_group">
-                        <label class="checkbox_label">
-                            <input type="checkbox" id="agreement" name="agreement" required>
-                            <span class="checkmark"></span>
-                            <span class="checkbox_text">Принимаю условия обработки данных</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
-                </form>
-            </div>
+            {% include "includes/contact_form.html" %}
         </section>
     </div>
 {% endblock %}
