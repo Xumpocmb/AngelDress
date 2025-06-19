@@ -66,7 +66,7 @@ class Dress(models.Model):
         return [s.strip() for s in self.available_sizes.split(',') if s.strip()]
 
     def update_popularity(self):
-        self.popularity_score = self.views_count * 0.7 + self.favorites_count * 0.3
+        self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7
         self.save()
 
 

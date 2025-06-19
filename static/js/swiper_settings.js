@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 centeredSlides: true,
                 slidesPerView: 1,
                 spaceBetween: 0,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
                 roundLengths: true, // Точные расчёты ширины
                 pagination: {
                     el: '.swiper-pagination',

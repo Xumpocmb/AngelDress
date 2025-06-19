@@ -8,6 +8,22 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Dihjauti S";
+    src: url('/static/fonts/DihjautiS-Regular.otf');
+    font-stretch: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "TT Chocolates";
+    src: url('/static/fonts/TT-Chocolates-Regular.otf');
+    font-stretch: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* --- Основные переменные --- */
 
 :root {
@@ -26,7 +42,7 @@
 }
 
 body {
-    font-family: 'Cormorant Infant', sans-serif;
+    font-family: 'Chocolate Classical Sans', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #fff;
@@ -36,6 +52,44 @@ body {
     max-width: 1200px;
     margin: 100px auto 40px;
 }
+
+/* --------------------------------------------  */
+/* --- Font Rules --- */
+/* --------------------------------------------  */
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Dihjauti S";
+    font-weight: normal;
+}
+p, button {
+    font-family: 'Chocolate Classical Sans', sans-serif;
+}
+h1 {
+    font-size: 52px;
+}
+h2 {
+    font-size: 41.6px;
+}
+h3 {
+    font-size: 31.2px;
+}
+h4 {
+    font-size: 26px;
+}
+h5 {
+    font-size: 21px;
+}
+h6 {
+    font-size: 17px;
+}
+
+p {
+    font-size: 15px;
+}
+button, a {
+    font-size: 13px;
+}
+
 
 
 /* --------------------------------------------  */

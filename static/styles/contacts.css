@@ -327,6 +327,11 @@
     }
 }
 
+label, input, button {
+    font-family: 'Chocolate Classical Sans', sans-serif !important;
+}
+
+
 @media (max-width: 576px) {
     .contact_map {
         min-height: 250px;

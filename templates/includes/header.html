@@ -1,9 +1,7 @@
 {% load static %}
 <header class="header">
     <nav class="nav">
-        <div class="logo">
-            <img src="{% static 'img/logo.png' %}" alt="logo">
-        </div>
+
 
         <!-- Бургер-кнопка -->
         <button class="burger-btn" aria-label="Меню" aria-expanded="false">
@@ -13,6 +11,9 @@
         </button>
 
         <div class="nav-container">
+            <div class="logo">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+        </div>
             <ul class="nav-menu">
                 <li><a href="{% url 'app_home:home' %}">Главная</a></li>
                 <li><a href="{% url 'app_catalog:dress_catalog' %}">Подобрать платье</a></li>

@@ -7,6 +7,7 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product-card.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
@@ -133,7 +134,7 @@
             </div>
 
             <!-- Карточки -->
-            <div class="items-preview_cards">
+            <div class="product-grid">
                 {% if random_dresses %}
                             {% for dress in random_dresses %}
                                 <div class="product-card">
@@ -265,7 +266,7 @@
                             уровень
                             погружения
                         </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                     </div>
 
                     <!-- Пост 2 -->
@@ -278,7 +279,7 @@
                             уровень
                             погружения
                         </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                     </div>
 
                     <!-- Пост 3 -->
@@ -291,7 +292,7 @@
                             уровень
                             погружения
                         </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ →</a>
+                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                     </div>
                 </div>
             </div>
