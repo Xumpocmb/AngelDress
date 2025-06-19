@@ -2896,3 +2896,25 @@ label, input, button {
     font-size: 13px;
     margin-top: 4px;
 }
+
+
+/* styles/modal.css or styles/styles.css */
+
+.modal-content .contact_form .submit_btn.success {
+    background-color: #28a745; /* Green for success */
+    border-color: #28a745;
+    color: white;
+    cursor: default; /* No pointer on success */
+}
+
+.modal-content .contact_form .submit_btn.error {
+    background-color: #dc3545; /* Red for error */
+    border-color: #dc3545;
+    color: white;
+}
+
+.modal-content .contact_form .submit_btn:disabled {
+    background-color: #6c757d; /* Grey out when disabled */
+    border-color: #6c757d;
+    cursor: not-allowed;
+}

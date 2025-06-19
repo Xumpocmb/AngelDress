@@ -24,8 +24,8 @@ class RentalRequest(models.Model):
     notes = models.TextField(blank=True, verbose_name='Примечания')
 
     class Meta:
-        verbose_name = 'Заявка на бронирование'
-        verbose_name_plural = 'Заявки на бронирование'
+        verbose_name = 'Заявка на примерку'
+        verbose_name_plural = 'Заявки на примерку'
         ordering = ['-created_at']
 
     def __str__(self):

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Подтверждение заявки на бронирование Angel Dress</title>
+    <meta charset="UTF-8"/>
+</head>
+<body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f9f9f9;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f9f9f9; padding: 20px 0;">
+    <tr>
+        <td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" border="0"
+                   style="background:#ffffff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); padding: 30px;">
+
+                <!-- Заголовок -->
+                <tr>
+                    <td style="text-align: center; padding-bottom: 20px;">
+                        <h1 style="color: #9a6b50; margin: 0; font-size: 24px;">Angel Dress</h1>
+                        <p style="margin: 0; font-size: 14px; color: #666;">Подтверждение заявки на бронирование</p>
+                    </td>
+                </tr>
+
+                <!-- Приветствие -->
+                <tr>
+                    <td style="font-size: 16px; color: #333; padding-bottom: 15px;">
+                        Здравствуйте, <strong>{{ user_name }}</strong>!
+                    </td>
+                </tr>
+
+                <!-- Основной текст -->
+                <tr>
+                    <td style="font-size: 16px; color: #333; line-height: 1.5; padding-bottom: 15px;">
+                        Мы рады сообщить, что ваша заявка на бронирование платьев в Angel Dress успешно принята.
+                    </td>
+                </tr>
+
+                <!-- Номер заявки -->
+                <tr>
+                    <td style="font-size: 16px; color: #333; padding-bottom: 20px;">
+                        Номер вашей заявки: <strong style="color: #9a6b50;">#{{ request_id }}</strong>
+                    </td>
+                </tr>
+
+                <!-- Список платьев -->
+                <tr>
+                    <td style="font-size: 16px; color: #333; padding-bottom: 20px;">
+                        Вы выбрали следующие платья:
+                        <ul style="padding-left: 20px; margin: 10px 0 0 0; color: #555;">
+                            {% for dress in dresses %}
+                                <li style="margin-bottom: 5px;">
+                                    {{ dress.name }} (от {{ dress.price_min }} ₽ до {{ dress.price_max }} ₽)
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+
+                <!-- Заключительный текст -->
+                <tr>
+                    <td style="font-size: 16px; color: #333; line-height: 1.5; padding-bottom: 20px;">
+                        Мы свяжемся с вами в ближайшее время по указанному Вами номеру телефона {{ phone }} для подтверждения деталей и уточнения даты примерки.
+                    </td>
+                </tr>
+
+                <!-- Подпись -->
+                <tr>
+                    <td style="font-size: 16px; color: #333;">
+                        С уважением,<br/>
+                        <strong>Команда Angel Dress</strong>
+                    </td>
+                </tr>
+
+                <!-- Примечание -->
+                <tr>
+                    <td style="font-size: 12px; color: #999; padding-top: 30px; border-top: 1px solid #eee;">
+                        Это автоматическое письмо, пожалуйста, не отвечайте на него.
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
