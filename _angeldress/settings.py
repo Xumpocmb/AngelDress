@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'app_wishlist.apps.AppWishlistConfig',
     'app_book.apps.AppBookConfig',
     'app_client_call_back.apps.AppClientCallBackConfig',
+    'app_newsletter.apps.AppNewsletterConfig'
 ]
 
 MIDDLEWARE = [
