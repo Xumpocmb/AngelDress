@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
 
+from app_newsletter.models import Subscriber
 from .forms import ClientCallBackForm
 
 
@@ -20,6 +21,12 @@ def ajax_callback_view(request):
 
     if form.is_valid():
         call_request = form.save()
+
+        try:
+            email = call_request.email
+            subscriber = Subscriber.objects.create(email=email)
+        except Exception as e:
+            pass
 
         try:
             context = {

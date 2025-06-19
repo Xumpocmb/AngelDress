@@ -3,6 +3,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 
+from app_newsletter.models import Subscriber
 from .forms import RentalRequestForm
 from .models import Dress
 
@@ -28,6 +29,12 @@ def create_rental_request(request):
 
         rental_request.save()
         rental_request.dresses.set(dresses)
+
+        try:
+            email = rental_request.email
+            subscriber = Subscriber.objects.create(email=email)
+        except Exception as e:
+            pass
 
         try:
             context = {

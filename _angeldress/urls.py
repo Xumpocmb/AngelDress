@@ -11,6 +11,7 @@ urlpatterns = [
     path('wishlist/', include('app_wishlist.urls')),
     path('book/', include('app_book.urls')),
     path('callback/', include('app_client_call_back.urls')),
+    path('newsletter/', include('app_newsletter.urls')),
 ]
 
 if settings.DEBUG:
