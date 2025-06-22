@@ -26,7 +26,7 @@
 }
 
 .footer__column {
-    min-width: 200px;
+    /*min-width: 200px;*/
     flex: 1 1 200px;
 }
 
@@ -92,8 +92,9 @@
 @media (max-width: 992px) {
     .footer__inner {
         display: grid;
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         padding: var(--footer-padding) 10px;
+        gap: 15px;
     }
 
     .footer__column {

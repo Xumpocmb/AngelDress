@@ -227,6 +227,12 @@ button, a {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+@media (max-width: 992px) {
+    .heading_title {
+        font-size: 2rem;
+    }
+}
+
 /* -------------------------------------- */
 /* choosing_dresses */
 /* -------------------------------------- */
@@ -501,6 +507,7 @@ label, input, button {
     align-items: center;
     margin-bottom: 40px;
     gap: 10px;
+
 }
 
 
@@ -516,6 +523,7 @@ label, input, button {
 
 .items-preview_text_section {
     position: relative;
+    width: 60%;
 }
 
 .items-preview_subtitle {
@@ -531,6 +539,12 @@ label, input, button {
     line-height: 1.2;
 }
 
+@media (max-width: 992px) {
+    .items-preview_title {
+        font-size: 1.2rem;
+    }
+}
+
 .items-preview_button {
     padding: 10px 20px;
     font-size: 14px;
@@ -540,6 +554,13 @@ label, input, button {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .items-preview_button {
+        padding: 8px 16px;
+        font-size: 8px;
+    }
 }
 
 .items-preview_button:hover {
@@ -1044,29 +1065,24 @@ label, input, button {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
 }
 
-.contact_detail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.contact_icon {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 5px;
-}
+
+
 
 .contact_link,
 .contact_address {
     font-size: 18px;
-    font-weight: bold;
-    color: #333;
     margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .contact_description {
-    font-size: 14px;
     color: #666;
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 /* --- Карта --- */
@@ -2117,31 +2133,20 @@ p {
 }
 
 .contact_icon {
-    width: 45px;
-    font-size: 24px;
-    margin-bottom: 8px;
+    font-size: 8px;
     color: var(--secondary-color);
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
 }
 
-.contact_link,
-.contact_address {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 5px;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+
 
 .contact_link:hover {
     color: var(--secondary-color);
 }
 
-.contact_description {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.4;
-}
+
 
 /* --- Карта --- */
 .contact_map {
