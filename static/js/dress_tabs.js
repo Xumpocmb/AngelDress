@@ -13,13 +13,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
-
-document.querySelectorAll('.size-option').forEach(option => {
-    option.addEventListener('click', function () {
-        document.querySelectorAll('.size-option').forEach(el => {
-            el.classList.remove('active');
-        });
-        this.classList.add('active');
-        this.querySelector('input[type="radio"]').checked = true;
-    });
-});

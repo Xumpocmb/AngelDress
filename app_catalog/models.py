@@ -40,12 +40,12 @@ class Dress(models.Model):
     ]
     fit = models.CharField(max_length=50, choices=fit_choices, verbose_name='Посадка')
     details = models.TextField(verbose_name='Детали', help_text='Перечислите детали через запятую')
-    price_min = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Минимальная цена')
-    price_max = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Максимальная цена')
+    price_min = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Минимальная цена', null=False, blank=False, default=0)
+    price_max = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Максимальная цена', null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
 
     available_sizes = models.CharField(max_length=200, verbose_name='Доступные размеры',
-                                       help_text='Перечислите размеры через запятую, например: XS,S,M,L')
+                                       help_text='Укажите размеры через дефис: XS-L')
 
     views_count = models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')
     favorites_count = models.PositiveIntegerField(default=0, verbose_name='Количество избранных')
@@ -85,7 +85,6 @@ class DressImage(models.Model):
         return f"Фото {self.id} для {self.dress.name}"
 
     def delete(self, *args, **kwargs):
-        # Удаляем файл изображения при удалении записи
         if self.image:
             if default_storage.exists(self.image.name):
                 default_storage.delete(self.image.name)

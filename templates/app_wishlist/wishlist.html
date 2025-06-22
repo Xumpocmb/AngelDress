@@ -47,15 +47,14 @@
                             <div class="product-info">
                                 <p class="product-name">{{ dress.name }}</p>
                                 <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
-                                <button class="rent-button">Забронировать прокат</button><!-- ВАЖНО: тут правильно -->
+                                <button class="rent-button">Забронировать примерку</button>
                             </div>
                         </div>
                     {% endfor %}
 
                 </div>
-                <!-- Кнопка "Забронировать все платья" -->
                 <div class="rent-all-container">
-                    <button class="rent-all-button">Забронировать все платья</button><!-- ВАЖНО: правильно -->
+                    <button class="rent-all-button">Забронировать все платья</button>
                 </div>
                 {% include 'includes/pagination.html' %}
             {% else %}

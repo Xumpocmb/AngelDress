@@ -98,7 +98,7 @@
 
                             <div class="product-info">
                                 <p class="product-name">{{ dress.name }}</p>
-                                <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
+                                <p class="product-price">{{ dress.price_min }} {% if dress.price_max  %} - {{ dress.price_max }}{% endif %} ₽</p>
                             </div>
                         </div>
                     {% empty %}

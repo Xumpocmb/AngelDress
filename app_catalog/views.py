@@ -49,6 +49,5 @@ def dress_detail_view(request, dress_id):
         'product': dress,
         'main_image': main_image,
         'images': images,
-        'available_sizes': dress.get_sizes_list(),
     }
     return render(request, 'app_catalog/product.html', context)

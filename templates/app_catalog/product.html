@@ -70,21 +70,12 @@
                 </div>
 
                 <div class="sizes-section">
-                    {% csrf_token %}
-                    <div class="sizes-title">Размеры</div>
-                    <div class="size-options">
-                        {% for size in available_sizes %}
-                            <label class="size-option">
-                                <input type="radio" name="size" value="{{ size }}" style="display: none;">
-                                {{ size }}
-                            </label>
-                        {% endfor %}
-                    </div>
-                    <div class="size-hint">ВЫБЕРИТЕ ОДИН ИЗ ВАРИАНТОВ</div>
-                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <div class="sizes-title">Размеры: <p class="size-option">{{ product.available_sizes }}</p></div>
+
                 </div>
 
                 <div class="buttons">
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
                     <div class="button button-primary">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
                     <div class="button button-secondary {% if product.id in request.session.wishlist %}in-wishlist{% endif %}"
                          id="wishlist-btn-{{ product.id }}"

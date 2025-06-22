@@ -2595,22 +2595,8 @@ label, input, button {
 
 .size-option {
     padding: 8px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
     margin: 5px;
     display: inline-block;
-    transition: all 0.3s ease;
-}
-
-.size-option:hover {
-    border-color: #333;
-}
-
-.size-option.active {
-    background-color: #D5B0A0;
-    color: white;
-    border-color: #333;
 }
 
 #size-form {
