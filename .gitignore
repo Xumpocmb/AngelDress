@@ -63,8 +63,8 @@ build/
 # Other
 *.sql
 *.dump
-*.txt
 *.json
 .pylintrc
 
 /fixtures/
+/secrets/
