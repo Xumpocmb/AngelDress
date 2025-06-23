@@ -5,7 +5,7 @@ from django.shortcuts import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from app_catalog.models import Dress
 
-
+# test
 
 def wishlist_view(request) -> HttpResponse:
     wishlist = request.session.get("wishlist", [])
