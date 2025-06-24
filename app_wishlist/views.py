@@ -5,7 +5,6 @@ from django.shortcuts import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from app_catalog.models import Dress
 
-# test
 
 def wishlist_view(request) -> HttpResponse:
     wishlist = request.session.get("wishlist", [])
@@ -14,7 +13,7 @@ def wishlist_view(request) -> HttpResponse:
         wishlist_ids = [int(dress_id) for dress_id in wishlist]
         dresses = Dress.objects.filter(id__in=wishlist_ids).order_by("-created_at")
 
-        paginator = Paginator(dresses, 9)  # по 9 товаров на странице
+        paginator = Paginator(dresses, 9)
         page_number = request.GET.get("page")
 
         try:

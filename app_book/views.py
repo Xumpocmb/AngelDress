@@ -1,10 +1,10 @@
 import json
 
+from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-from django.conf import settings
 
 from app_newsletter.models import Subscriber
 from .forms import RentalRequestForm
