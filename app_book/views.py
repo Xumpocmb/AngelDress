@@ -1,4 +1,5 @@
 import json
+import re
 
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -17,8 +18,12 @@ from django.template.loader import render_to_string
 from django.conf import settings
 
 
-@require_POST
+# @require_POST
 def create_rental_request(request):
+    print("create_rental_request")
+    if request.method != 'POST':
+        return JsonResponse({'success': False, 'error': 'Метод должен быть POST'})
+    
     form = RentalRequestForm(request.POST)
     if form.is_valid():
         rental_request = form.save(commit=False)
@@ -57,7 +62,14 @@ def create_rental_request(request):
             email.send(fail_silently=False)
 
         except Exception as e:
-            return JsonResponse({'success': False, 'errors': {'email': 'Не удалось отправить письмо с подтверждением. Пожалуйста, свяжитесь с нами напрямую.'}}, status=500)
+            print("Ошибка при отправке email:")
+            print("Ошибка:", str(e))
+            return JsonResponse({
+                'success': False,
+                'errors': {
+                    'email': 'Не удалось отправить письмо с подтверждением. Пожалуйста, свяжитесь с нами напрямую.'
+                }
+            }, status=500)
 
         return JsonResponse({'success': True})
     else:

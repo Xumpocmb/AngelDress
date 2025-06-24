@@ -1,7 +1,10 @@
+from urllib.parse import quote_plus
+
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 
+from app_book.forms import RentalRequestForm
 from app_book.models import RentalRequest
 
 class DressInline(admin.TabularInline):
@@ -25,9 +28,38 @@ class DressInline(admin.TabularInline):
 
 @admin.register(RentalRequest)
 class RentalRequestAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'phone', 'email', 'status', 'created_at')
+    list_display = ('id', 'name', 'phone', 'email', 'status', 'created_at', 'whatsapp_button')
     list_filter = ('status', 'created_at')
     search_fields = ('name', 'phone', 'email')
     readonly_fields = ('created_at',)
-
+    form = RentalRequestForm
     inlines = [DressInline]
+
+    def whatsapp_button(self, obj):
+        # Подготавливаем номер телефона (убираем все символы, кроме цифр)
+        phone_clean = ''.join(filter(str.isdigit, obj.phone))
+
+        # Если телефон пустой — не показываем кнопку
+        if not phone_clean:
+            return "-"
+
+        # Формируем текст сообщения
+        dress_names = ", ".join([str(dress) for dress in obj.dresses.all()])
+        message = (
+            f"Здравствуйте, {obj.name}!\n"
+            f"Спасибо за заявку №{obj.id} на примерку следующих платьев: {dress_names}.\n"
+            f"Мы свяжемся с вами в ближайшее время."
+        )
+        encoded_message = quote_plus(message)
+
+        # Формируем ссылку
+        wa_link = f"https://wa.me/{phone_clean}?text={encoded_message}"
+
+        return format_html(
+            '<a href="{0}" target="_blank" style="padding: 5px 10px; background: #25D366; color: white; text-decoration: none; border-radius: 4px;">' 
+            '💬 WhatsApp</a>',
+            wa_link
+        )
+
+    whatsapp_button.short_description = "WhatsApp"
+    whatsapp_button.allow_tags = True
