@@ -36,14 +36,11 @@ class RentalRequestAdmin(admin.ModelAdmin):
     inlines = [DressInline]
 
     def whatsapp_button(self, obj):
-        # Подготавливаем номер телефона (убираем все символы, кроме цифр)
         phone_clean = ''.join(filter(str.isdigit, obj.phone))
 
-        # Если телефон пустой — не показываем кнопку
         if not phone_clean:
             return "-"
 
-        # Формируем текст сообщения
         dress_names = ", ".join([str(dress) for dress in obj.dresses.all()])
         message = (
             f"Здравствуйте, {obj.name}!\n"
@@ -52,7 +49,6 @@ class RentalRequestAdmin(admin.ModelAdmin):
         )
         encoded_message = quote_plus(message)
 
-        # Формируем ссылку
         wa_link = f"https://wa.me/{phone_clean}?text={encoded_message}"
 
         return format_html(
