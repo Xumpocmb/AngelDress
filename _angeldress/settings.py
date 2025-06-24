@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "app_book.apps.AppBookConfig",
     "app_client_call_back.apps.AppClientCallBackConfig",
     "app_newsletter.apps.AppNewsletterConfig",
-    "ckeditor",
+    "django_ckeditor_5",
 ]
 
 MIDDLEWARE = [
@@ -117,10 +117,68 @@ EMAIL_HOST_USER = os.environ.get("YANDEX_EMAIL_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("YANDEX_EMAIL_PASSWORD")
 
 
-CKEDITOR_CONFIGS = {
+customColorPalette = [
+    {"color": "hsl(4, 90%, 58%)", "label": "Red"},
+    {"color": "hsl(340, 82%, 52%)", "label": "Pink"},
+    {"color": "hsl(291, 64%, 42%)", "label": "Purple"},
+    {"color": "hsl(262, 52%, 47%)", "label": "Deep Purple"},
+    {"color": "hsl(231, 48%, 48%)", "label": "Indigo"},
+    {"color": "hsl(207, 90%, 54%)", "label": "Blue"},
+]
+
+CKEDITOR_5_CONFIGS = {
     "default": {
-        "toolbar": "full",
-        "height": 400,
-        "width": "100%",
-    },
+        "toolbar": {
+            "items": [
+                "heading",
+                "|",
+                "bold",
+                "italic",
+                "link",
+                "bulletedList",
+                "numberedList",
+                "blockQuote",
+                "imageUpload",
+                "undo",
+                "redo",
+            ]
+        },
+        "image": {
+            "toolbar": [
+                "imageTextAlternative",
+                "|",
+                "imageStyle:alignLeft",
+                "imageStyle:alignCenter",
+                "imageStyle:alignRight",
+            ],
+            "styles": ["full", "alignLeft", "alignCenter", "alignRight"],
+        },
+        "heading": {
+            "options": [
+                {
+                    "model": "paragraph",
+                    "title": "Paragraph",
+                    "class": "ck-heading_paragraph",
+                },
+                {
+                    "model": "heading1",
+                    "view": "h1",
+                    "title": "Heading 1",
+                    "class": "ck-heading_heading1",
+                },
+                {
+                    "model": "heading2",
+                    "view": "h2",
+                    "title": "Heading 2",
+                    "class": "ck-heading_heading2",
+                },
+                {
+                    "model": "heading3",
+                    "view": "h3",
+                    "title": "Heading 3",
+                    "class": "ck-heading_heading3",
+                },
+            ]
+        },
+    }
 }
