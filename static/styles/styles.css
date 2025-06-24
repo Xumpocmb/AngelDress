@@ -2602,13 +2602,14 @@ button {
     padding: 25px;
     border-radius: 4px;
     flex: 2;
-    text-align: center;
 }
 
 .product-info {
     background-color: #fff;
-    padding: 25px;
-    flex: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .price {
@@ -2684,6 +2685,12 @@ button {
     background-color: #D5B0A0;
     color: white;
     border: none;
+    transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+    background-color: #b37f60;
+    transition: all 0.3s ease;
 }
 
 /* Базовый стиль кнопки */
@@ -2798,6 +2805,9 @@ button {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-card:hover {
@@ -2840,6 +2850,7 @@ button {
 .product-price {
     font-weight: bold;
     color: #000;
+    margin-bottom: 20px;
 }
 
 

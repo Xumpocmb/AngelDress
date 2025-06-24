@@ -97,8 +97,8 @@
                             </div>
 
                             <div class="product-info">
-                                <p class="product-name">{{ dress.name }}</p>
-                                <p class="product-price">{{ dress.price_min }} {% if dress.price_max  %} - {{ dress.price_max }}{% endif %} ₽</p>
+                                <div class="product-name">Арт.: {{ dress.name }}</div>
+                                <div class="product-price">Стоимость от: {{ dress.rental_price }} ₽</div>
                             </div>
                         </div>
                     {% empty %}

@@ -42,9 +42,11 @@
                             </div>
 
                             <div class="card-product-info">
-                                <p class="product-name">{{ dress.name }}</p>
-                                <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
-                                <button class="button button-primary rent-button" id="rent-button" data-id="{{ dress.id }}">Забронировать примерку</button>
+                                <p class="product-name">Арт.: {{ dress.name }}</p>
+                                <p class="product-price">Стоимость: {{ dress.rental_price }} ₽</p>
+                                <div class="button-container" style="text-align: center">
+                                    <button class="button button-primary rent-button" id="rent-button" data-id="{{ dress.id }}">Забронировать примерку</button>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
