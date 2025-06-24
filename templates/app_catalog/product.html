@@ -19,33 +19,49 @@
         <div class="product-container">
             <!-- Левая колонка - изображения товара -->
             <div class="product-gallery">
-                <div class="main-image-container">
-                    {% if main_image %}
-                        <img src="{{ main_image.image.url }}" alt="{{ main_image.alt_text|default:product.name }}"
-                             class="main-image" id="mainImage">
+                <div class="main-media-container">
+                    {% if media_files %}
+                        {% for media in media_files %}
+                            {% if forloop.first %}
+                                {% if media.video %}
+                                    <video id="mainMedia" controls class="main-media" style="width: 100%">
+                                        <source src="{{ media.video.url }}" type="video/mp4">
+                                        Ваш браузер не поддерживает видео.
+                                    </video>
+                                {% else %}
+                                    <img id="mainMedia" src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     {% else %}
-                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-image"
-                             id="mainImage">
+                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media">
                     {% endif %}
                 </div>
-
+            
                 <div class="thumbnails">
-                    {% for image in images %}
-                        <img src="{{ image.image.url }}"
-                             alt="{{ image.alt_text|default:product.name }} - вид {{ forloop.counter }}"
-                             class="thumbnail {% if forloop.first %}active{% endif %}"
-                             onclick="changeImage({{ forloop.counter0 }})">
-                    {% empty %}
-                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения"
-                             class="thumbnail active">
-                    {% endfor %}
+                    {% if media_files %}
+                        {% for media in media_files %}
+                            <div class="thumbnail {% if forloop.first %}active{% endif %}"
+                                 onclick="changeMedia({{ forloop.counter0 }})">
+                                {% if media.video %}
+                                    <video class="thumb-video" muted loop>
+                                        <source src="{{ media.video.url }}" type="video/mp4">
+                                    </video>
+                                {% else %}
+                                    <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumbnail {% if forloop.first %}active{% endif %}">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumbnail active">
+                    {% endif %}
                 </div>
             </div>
 
             <!-- Правая колонка - информация о товаре -->
             <div class="product-info">
                 <h1 class="product-name">{{ product.name }}</h1>
-                <div class="price">{{ product.price_min }} - {{ product.price_max }} ₽</div>
+                <div class="price">{{ product.rental_price }} ₽</div>
 
                 <div class="properties">
                     <div class="property">
@@ -56,19 +72,30 @@
                         <div class="property-name">Длина:</div>
                         <div class="property-value">{{ product.get_length_display }}</div>
                     </div>
+                    {% if product.fastener_type %}
                     <div class="property">
                         <div class="property-name">Тип застёжки:</div>
                         <div class="property-value">{{ product.fastener_type }}</div>
                     </div>
+                    {% endif %}
+
+                    {% if product.fit %}
                     <div class="property">
                         <div class="property-name">Посадка:</div>
                         <div class="property-value">{{ product.get_fit_display }}</div>
                     </div>
+                    {% endif %}
+                    
+                    
                 </div>
 
+                {% if product.details %}
                 <div class="details">
                     Детали: {{ product.details }}
                 </div>
+                {% endif %}
+
+                
 
                 <div class="sizes-section">
                     <div class="sizes-title">Размеры: <p class="size-option">{{ product.available_sizes }}</p></div>
@@ -156,48 +183,58 @@
     <script src="{% static 'js/product_rent.js' %}"></script>
     <script src="{% static 'js/wishlist.js' %}"></script>
     <script>
-        const productImages = [
-            {% for image in images %}
-                "{{ image.image.url }}",
-            {% empty %}
-                "{% static 'img/No-Image-Placeholder.png' %}",
+        window.mediaList = [
+            {% for media in media_files %}
+                {
+                    is_video: {% if media.video %}true{% else %}false{% endif %},
+                    image_url: "{% if media.image %}{{ media.image.url }}{% endif %}",
+                    video_url: "{% if media.video %}{{ media.video.url }}{% endif %}",
+                    alt: "{{ media.alt_text|escapejs }}"
+                }{% if not forloop.last %},{% endif %}
             {% endfor %}
         ];
-
-        const imageAltTexts = [
-            {% for image in images %}
-                "{{ image.alt_text|default:product.name }} - вид {{ forloop.counter }}",
-            {% empty %}
-                "Нет изображения",
-            {% endfor %}
-        ];
-
-        let currentImageIndex = 0;
-        const mainImage = document.getElementById('mainImage');
-        const thumbnails = document.querySelectorAll('.thumbnail');
-
-        function changeImage(index) {
-            currentImageIndex = index;
-            mainImage.src = productImages[index];
-            mainImage.alt = imageAltTexts[index];
-
-            thumbnails.forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
+    
+        let currentMediaIndex = 0;
+    
+        function changeMedia(index) {
+            currentMediaIndex = index;
+            const media = window.mediaList[index];
+            const mainMediaContainer = document.querySelector('.main-media-container');
+    
+            // Удаляем текущий элемент
+            const oldMedia = mainMediaContainer.querySelector('.main-media');
+            if (oldMedia) oldMedia.remove();
+    
+            // Создаём новый элемент
+            let newMedia;
+            if (media.is_video) {
+                newMedia = document.createElement('video');
+                newMedia.setAttribute('controls', true);
+                newMedia.classList.add('main-media');
+                newMedia.style.width = '100%';
+                newMedia.muted = true;
+                newMedia.autoplay = true;
+                newMedia.playsinline = true;
+                const source = document.createElement('source');
+                source.src = media.video_url;
+                source.type = 'video/mp4';
+                newMedia.appendChild(source);
+                newMedia.innerHTML += 'Ваш браузер не поддерживает видео.';
+            } else {
+                newMedia = document.createElement('img');
+                newMedia.src = media.image_url;
+                newMedia.alt = media.alt || '';
+                newMedia.classList.add('main-media');
+            }
+    
+            // Добавляем новый элемент
+            newMedia.id = 'mainMedia';
+            mainMediaContainer.prepend(newMedia);
+    
+            // Обновляем активную миниатюру
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
             });
-        }
-
-        function prevImage() {
-            const newIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
-            changeImage(newIndex);
-        }
-
-        function nextImage() {
-            const newIndex = (currentImageIndex + 1) % productImages.length;
-            changeImage(newIndex);
         }
     </script>
 {% endblock %}

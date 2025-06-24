@@ -1,4 +1,3 @@
-import re
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from app_catalog.models import Dress, DressCategory
@@ -44,20 +43,20 @@ def dress_detail_view(request, dress_id):
 
     dress.update_popularity()
 
-    images = dress.images.all().order_by("order")
-    main_image = images.first() if images.exists() else None
+    images = list(dress.images.all())
+    videos = list(dress.videos.all())
+    media_files = sorted(images + videos, key=lambda x: x.order)
 
     rent_rules = RentRules.objects.first()
     if rent_rules:
         rent_rules_text = rent_rules.text
     else:
         rent_rules_text = "Правила аренды не определены"
-    
 
     context = {
         "product": dress,
-        "main_image": main_image,
         "images": images,
         "rent_rules_text": rent_rules_text,
+        "media_files": media_files,
     }
     return render(request, "app_catalog/product.html", context)

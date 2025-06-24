@@ -2556,7 +2556,7 @@ button {
     overflow: hidden;
 }
 
-.main-image {
+.main-media-container {
     width: 100%;
     height: 500px;
     background-color: #eee;
@@ -2566,6 +2566,12 @@ button {
     margin-bottom: 15px;
     color: #999;
     font-size: 18px;
+}
+
+.main-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .thumbnails {
@@ -2582,6 +2588,12 @@ button {
     justify-content: center;
     font-size: 10px;
     color: #999;
+}
+
+.thumb-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Колонка с информацией */
@@ -2816,6 +2828,13 @@ button {
     margin-bottom: 8px;
     color: #333;
     font-weight: bold;
+}
+
+
+@media (max-width: 992px) {
+    .product-name {
+        font-size: 1.8rem;
+    }
 }
 
 .product-price {

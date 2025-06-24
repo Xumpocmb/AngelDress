@@ -1,7 +1,9 @@
 from django.db import models
+from django.forms import ValidationError
 from django.utils import timezone
 from django.core.files.storage import default_storage
 from django.utils.text import slugify
+import magic
 
 
 class DressCategory(models.Model):
@@ -25,28 +27,33 @@ class Dress(models.Model):
     category = models.ForeignKey(DressCategory, verbose_name='Категория', on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=200, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
-    color = models.CharField(max_length=100, verbose_name='Цвет')
+    color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
     length_choices = [
         ('mini', 'Мини'),
         ('midi', 'Миди (до колена)'),
         ('maxi', 'Макси (до пола)'),
     ]
     length = models.CharField(max_length=50, choices=length_choices, verbose_name='Длина')
-    fastener_type = models.CharField(max_length=100, verbose_name='Тип застёжки')
+    fastener_type = models.CharField(max_length=100, verbose_name='Тип застёжки', blank=True, null=True)
     fit_choices = [
         ('tight', 'Облегающий'),
         ('fitted', 'Приталенный'),
         ('loose', 'Свободный'),
     ]
-    fit = models.CharField(max_length=50, choices=fit_choices, verbose_name='Посадка')
-    details = models.TextField(verbose_name='Детали', help_text='Перечислите детали через запятую')
-    price_min = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Минимальная цена', null=False, blank=False, default=0)
-    price_max = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Максимальная цена', null=True, blank=True)
+    fit = models.CharField(
+        blank=True,
+        null=True,
+        max_length=50,
+        choices=fit_choices,
+        verbose_name="Посадка",
+    )
+    details = models.TextField(blank=True, null=True, verbose_name='Детали', help_text='Перечислите детали через запятую')
+    rental_period = models.PositiveIntegerField(default=3, verbose_name='Срок аренды (дней)')
+    rental_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Стоимость аренды', null=False, blank=False, default=0)
+    pledge_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Залог', null=False, blank=False, default=0)
+    available_sizes = models.CharField(max_length=200, verbose_name='Доступные размеры', help_text='Укажите размеры через дефис: XS-L')
+
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
-
-    available_sizes = models.CharField(max_length=200, verbose_name='Доступные размеры',
-                                       help_text='Укажите размеры через дефис: XS-L')
-
     views_count = models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')
     favorites_count = models.PositiveIntegerField(default=0, verbose_name='Количество избранных')
     popularity_score = models.FloatField(default=0.0, verbose_name='Рейтинг популярности', blank=True, null=True)
@@ -90,10 +97,29 @@ class DressImage(models.Model):
                 default_storage.delete(self.image.name)
         super().delete(*args, **kwargs)
 
-    def image_tag(self):
-        from django.utils.html import mark_safe
-        if self.image:
-            return mark_safe(f'<img src="{self.image.url}" width="150" />')
-        return "Нет изображения"
 
-    image_tag.short_description = 'Предпросмотр'
+class DressVideo(models.Model):
+    dress = models.ForeignKey(Dress, on_delete=models.CASCADE, related_name="videos")
+    video = models.FileField(upload_to="dresses/videos/", verbose_name="Видео")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
+    alt_text = models.CharField(max_length=200, blank=True, verbose_name="Описание")
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Видео"
+        verbose_name_plural = "Видео"
+
+    def __str__(self):
+        return f"Видео для {self.dress.name}"
+
+    def clean(self):
+        if self.video:
+            # Проверяем реальный тип файла по содержимому
+            file_type = magic.from_buffer(self.video.read(1024), mime=True)
+            if not file_type.startswith('video/'):
+                raise ValidationError("Файл должен быть видео.")
+            self.video.seek(0)
+
+    def delete(self, *args, **kwargs):
+        self.video.delete(save=False)
+        super().delete(*args, **kwargs)
