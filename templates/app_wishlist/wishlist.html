@@ -11,8 +11,6 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/wishlist.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
     <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
 {% endblock styles %}
 
@@ -34,19 +32,19 @@
                                     {% with dress.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ dress.name }}" data-id="{{ dress.id }}">
+                                                 alt="{{ dress.name }}">
                                         {% else %}
                                             <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
-                                                 alt="Нет изображения" data-id="{{ dress.id }}">
+                                                 alt="Нет изображения">
                                         {% endif %}
                                     {% endwith %}
                                 </a>
                             </div>
 
-                            <div class="product-info">
+                            <div class="card-product-info">
                                 <p class="product-name">{{ dress.name }}</p>
                                 <p class="product-price">{{ dress.price_min }} - {{ dress.price_max }} ₽</p>
-                                <button class="rent-button">Забронировать примерку</button>
+                                <button class="button button-primary rent-button" id="rent-button" data-id="{{ dress.id }}">Забронировать примерку</button>
                             </div>
                         </div>
                     {% endfor %}

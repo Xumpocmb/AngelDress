@@ -10,6 +10,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
 {% endblock styles %}
 
 
@@ -76,7 +77,7 @@
 
                 <div class="buttons">
                     <input type="hidden" name="product_id" value="{{ product.id }}">
-                    <div class="button button-primary">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
+                    <div class="button button-primary" id="rent-button" data-id="{{ product.id }}">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
                     <div class="button button-secondary {% if product.id in request.session.wishlist %}in-wishlist{% endif %}"
                          id="wishlist-btn-{{ product.id }}"
                          onclick="toggleWishlistButton(this, {{ product.id }})">
@@ -110,6 +111,58 @@
             </div>
         </div>
     </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="rentModal" style="display: none">
+        <div class="modal-overlay" onclick="closeModal(event)"></div>
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal(event)">&times;</span>
+
+            <div class="form_container">
+                <div class="form_header">
+                    <h2 class="form_title">Оставьте заявку</h2>
+                    <p class="form_subtitle">
+                        Равным образом, разбалансированное изрядной долей эмпатии, рациональное мышление
+                    </p>
+                </div>
+
+                <form class="contact_form" id="contactForm">
+                    <input type="hidden" id="dress_ids" name="dress_ids" value="">
+                    <div class="form_group">
+                        <input type="text" id="name" name="name" placeholder="Имя и Фамилия" class="form_input"
+                               required>
+                    </div>
+
+                    <div class="form_group">
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефона" class="form_input"
+                               required>
+                    </div>
+
+                    <div class="form_group">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form_input" required>
+                    </div>
+
+                    <div class="form_group checkbox_group">
+                        <label class="checkbox_label">
+                            <input type="checkbox" id="agreement" name="agreement" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox_text">Принимаю условия обработки данных</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/dress_tabs.js' %}"></script>
+    <script src="{% static 'js/product_rent.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
     <script>
         const productImages = [
             {% for image in images %}
@@ -155,10 +208,4 @@
             changeImage(newIndex);
         }
     </script>
-{% endblock %}
-
-
-{% block scripts %}
-    <script src="{% static 'js/dress_tabs.js' %}"></script>
-    <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}

@@ -21,21 +21,22 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openModal = openModal;
     window.closeModal = closeModal;
 
-    document.querySelectorAll('.rent-button').forEach(button => {
-        button.addEventListener('click', function () {
+    const rentButton = document.getElementById('rent-button');
+    if (rentButton) {
+        rentButton.addEventListener('click', function () {
             const dressId = this.dataset.id;
-            document.getElementById('dress_ids').value = JSON.stringify([dressId]);
-            openModal();
-        });
-    });
+            const dressIdsInput = document.getElementById('dress_ids');
+            if (dressIdsInput) {
+                dressIdsInput.value = JSON.stringify([dressId]);
+            }
 
-    document.querySelector('.rent-all-button').addEventListener('click', function () {
-        const dressIds = Array.from(document.querySelectorAll('.product-card')).map(card => {
-            return card.querySelector('.product-image').dataset.id;
+            if (typeof window.openModal === 'function') {
+                window.openModal();
+            } else {
+                console.error('Функция openModal не определена');
+            }
         });
-        document.getElementById('dress_ids').value = JSON.stringify(dressIds);
-        openModal();
-    });
+    }
 
     contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
