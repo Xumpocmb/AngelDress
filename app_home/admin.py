@@ -1,5 +1,8 @@
 from django.contrib import admin
-from app_home.models import SliderImage, ContactInfo
+from django.db import models
+from django.forms import Textarea
+from app_home.forms import RentRulesForm
+from app_home.models import SliderImage, ContactInfo, RentRules
 
 
 class SliderImageAdmin(admin.ModelAdmin):
@@ -14,3 +17,11 @@ class ContactInfoAdmin(admin.ModelAdmin):
 
 admin.site.register(SliderImage, SliderImageAdmin)
 admin.site.register(ContactInfo, ContactInfoAdmin)
+
+
+@admin.register(RentRules)
+class RentRulesAdmin(admin.ModelAdmin):
+    form = RentRulesForm
+
+    def has_add_permission(self, request):
+        return not RentRules.objects.exists()

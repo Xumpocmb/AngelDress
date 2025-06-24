@@ -4,14 +4,16 @@ from django.core.files.storage import default_storage
 
 
 class SliderImage(models.Model):
-    image = models.ImageField(upload_to='slider/')
-    alt_text = models.CharField(max_length=100, blank=True, verbose_name='Альтернативный текст')
-    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+    image = models.ImageField(upload_to="slider/")
+    alt_text = models.CharField(
+        max_length=100, blank=True, verbose_name="Альтернативный текст"
+    )
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
-        verbose_name = 'Изображение слайдера'
-        verbose_name_plural = 'Изображения слайдера'
-        ordering = ['order']
+        verbose_name = "Изображение слайдера"
+        verbose_name_plural = "Изображения слайдера"
+        ordering = ["order"]
 
     def __str__(self):
         return f"Слайд {self.id}"
@@ -21,7 +23,7 @@ class SliderImage(models.Model):
             return mark_safe(f'<img src="{self.image.url}" width="150" />')
         return "Нет изображения"
 
-    image_tag.short_description = 'Предпросмотр'
+    image_tag.short_description = "Предпросмотр"
 
     def save(self, *args, **kwargs):
         # Удаляем старое изображение при обновлении
@@ -42,17 +44,17 @@ class SliderImage(models.Model):
 
 
 class ContactInfo(models.Model):
-    address = models.CharField(max_length=200, verbose_name='Адрес')
-    phone = models.CharField(max_length=20, verbose_name='Телефон')
-    email = models.EmailField(verbose_name='Электронная почта')
-    instagram = models.URLField(blank=True, verbose_name='Instagram')
-    vk = models.URLField(blank=True, verbose_name='ВКонтакте')
-    tiktok = models.URLField(blank=True, verbose_name='TikTok')
-    youtube = models.URLField(blank=True, verbose_name='YouTube')
+    address = models.CharField(max_length=200, verbose_name="Адрес")
+    phone = models.CharField(max_length=20, verbose_name="Телефон")
+    email = models.EmailField(verbose_name="Электронная почта")
+    instagram = models.URLField(blank=True, verbose_name="Instagram")
+    vk = models.URLField(blank=True, verbose_name="ВКонтакте")
+    tiktok = models.URLField(blank=True, verbose_name="TikTok")
+    youtube = models.URLField(blank=True, verbose_name="YouTube")
 
     class Meta:
-        verbose_name = 'Контактная информация'
-        verbose_name_plural = 'Контактная информация'
+        verbose_name = "Контактная информация"
+        verbose_name_plural = "Контактная информация"
 
     def __str__(self):
         return "Контактная информация магазина"
@@ -65,3 +67,20 @@ class ContactInfo(models.Model):
 
     def has_socials(self):
         return any([self.instagram, self.vk, self.tiktok, self.youtube])
+
+
+class RentRules(models.Model):
+    text = models.TextField(verbose_name="Правила аренды")
+
+    class Meta:
+        verbose_name = "Правила аренды"
+        verbose_name_plural = "Правила аренды"
+
+    def __str__(self):
+        return "Правила аренды"
+
+    def save(self, *args, **kwargs):
+        # Ограничиваем количество записей одной
+        if not self.pk and RentRules.objects.exists():
+            return
+        super().save(*args, **kwargs)
