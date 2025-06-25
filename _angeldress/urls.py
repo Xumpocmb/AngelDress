@@ -12,7 +12,6 @@ urlpatterns = [
     path("book/", include("app_book.urls")),
     path("callback/", include("app_client_call_back.urls")),
     path("newsletter/", include("app_newsletter.urls")),
-    path("ckeditor5/", include("django_ckeditor_5.urls")),
 ]
 
 if settings.DEBUG:

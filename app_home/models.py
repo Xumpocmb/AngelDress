@@ -84,3 +84,19 @@ class RentRules(models.Model):
         if not self.pk and RentRules.objects.exists():
             return
         super().save(*args, **kwargs)
+
+
+class TermsOfUse(models.Model):
+    text = models.TextField(verbose_name="Условия использования")
+
+    class Meta:
+        verbose_name = "Условия использования"
+        verbose_name_plural = "Условия использования"
+
+    def __str__(self):
+        return "Условия использования"
+
+    def save(self, *args, **kwargs):
+        if not self.pk and TermsOfUse.objects.exists():
+            return
+        super().save(*args, **kwargs)

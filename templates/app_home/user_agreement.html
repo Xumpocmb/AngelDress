@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{ title|default:"Angel Dress - Блог" }}</title>
+{% endblock %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <!-- Главный контейнер -->
+    <div class="wrapper">
+        <div class="blog-container">
+            <!-- Основное содержимое -->
+            <main class="blog-content">
+                <div class="agreement-text-card">
+                    <div class="agreement-text-content">
+                        <p class="agreement-description">
+                            {{ rent_rules_text|safe }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="agreement-text-card">
+                    <div class="agreement-text-content">
+                        <h2 class="agreement-title">Часто задаваемые вопросы</h2>
+                        <div class="agreement-question">
+                            <h3>Повседневная практика</h3>
+                            <p class="agreement-description">
+                                Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
+                                качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
+                                Повседневная практика показывает, что курс на социально-ориентированный национальный проект
+                            </p>
+                        </div>
+                        <div class="agreement-question">
+                            <h3>Повседневная практика</h3>
+                            <p class="agreement-description">
+                                Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
+                                качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
+                                Повседневная практика показывает, что курс на социально-ориентированный национальный проект
+                            </p>
+                        </div>
+                        <div class="agreement-question">
+                            <h3>Повседневная практика</h3>
+                            <p class="agreement-description">
+                                Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
+                                качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
+                                Повседневная практика показывает, что курс на социально-ориентированный национальный проект
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="agreement-text-card">
+                    <div class="agreement-text-content">
+                        <div class="agreement-description">
+                            {{ terms_of_use_text|safe }}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

@@ -3008,3 +3008,29 @@ button {
     border-color: #6c757d;
     cursor: not-allowed;
 }
+
+
+.agreement-text-card {
+    background-color: #F7F8F9;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.agreement-question {
+    background-color: #fff;
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+.agreement-title {
+    margin-bottom: 20px;
+}
+
+.agreement-description>p {
+    margin-left: 10px;
+}
+
+.agreement-description>ul {
+    margin-left: 30px;
+}
+
