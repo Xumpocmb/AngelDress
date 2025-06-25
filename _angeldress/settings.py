@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "app_client_call_back.apps.AppClientCallBackConfig",
     "app_newsletter.apps.AppNewsletterConfig",
     "ckeditor",
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

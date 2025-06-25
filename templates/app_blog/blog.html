@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}
     <title>{{ title|default:"Angel Dress - Блог" }}</title>
 {% endblock %}
@@ -17,191 +18,41 @@
         <div class="blog-container">
             <!-- Основное содержимое -->
             <main class="blog-content">
-                <!-- Карточки новостей -->
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <a class="open-button" href="{% url 'app_blog:post' %}">Открыть</a>
-                    </div>
+                {% if posts %}
+                    <!-- Карточки новостей -->
+                    {% for post in posts %}
+                        <div class="blog-card">
+                            <div class="blog-text-content">
+                                <h2 class="blog-title">{{ post.title }}</h2>
 
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
+                                <div class="tags">
+                                    {% for tag in post.tags.all %}
+                                        <span class="tag">{{ tag.name }}</span>
+                                    {% endfor %}
+                                </div>
 
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
+                                <p class="blog-description">
+                                    {{ post.content|truncatewords:30 }}
+                                </p>
 
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
+                                <a class="open-button" href="{% url 'app_blog:post' post.id %}">Открыть</a>
+                            </div>
+                            {% if post.image %}
+                                <div class="blog-image">
+                                    <img src="{{ post.image.url }}" alt="Model Image">
+                                </div>
+                            {% else %}
+                                <div class="blog-image">
+                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Model Image">
+                                </div>
+                            {% endif %}
                         </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-products">
+                        <p>Новостей пока нет, но мы их обязательно добавим</p>
                     </div>
-
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
-
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
-
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
-
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <!-- Левая часть: текст -->
-                    <div class="blog-text-content">
-                        <h2 class="blog-title">100 Идей На Лето</h2>
-                        <div class="tags">
-                            <span class="tag">КРАСОТА</span>
-                            <span class="tag">ЖИЗНЕННЫЙ СТИЛЬ</span>
-                            <span class="tag">ПОПУЛЯРНОЕ</span>
-                        </div>
-                        <p class="blog-description">
-                            Равным образом, разбавленное изрядной долей эмпатии, рациональное мышление является
-                            качественно новой ступенью позиций, занимаемых участниками в отношении поставленных задач.
-                            Повседневная практика показывает, что курс на социально-ориентированный национальный проект
-                        </p>
-                        <button class="open-button">Открыть</button>
-                    </div>
-
-                    <!-- Правая часть: изображение -->
-                    <div class="blog-image">
-                        <!-- Замените src на ваше изображение -->
-                        <img src="{% static 'img/dress1_sample.png' %}" alt="Model Image">
-                    </div>
-                </div>
+                {% endif %}
 
             </main>
         </div>

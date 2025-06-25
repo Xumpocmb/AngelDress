@@ -2514,7 +2514,7 @@ button {
 .post-socials img {
     width: 28px;
     height: 28px;
-    filter: brightness(0) saturate(100%) invert(97%) sepia(0%) saturate(1049%) hue-rotate(333deg) brightness(108%) contrast(100%);
+    /*filter: brightness(0) saturate(100%) invert(97%) sepia(0%) saturate(1049%) hue-rotate(333deg) brightness(108%) contrast(100%);*/
 }
 
 .product-container {
