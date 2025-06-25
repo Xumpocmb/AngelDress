@@ -59,60 +59,70 @@
 
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
-    const messageBox = document.getElementById("formMessage");
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        // Очистка прошлых ошибок
-        document.querySelectorAll(".form_error").forEach(el => el.textContent = "");
-        messageBox.textContent = "";
-        messageBox.className = "form_message";
-
-        const data = {
-            name: form.name.value.trim(),
-            phone: form.phone.value.trim(),
-            email: form.email.value.trim(),
-            agreement: form.agreement.checked
-        };
-
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-
-        try {
-            const response = await fetch("/callback/ajax/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRFToken": csrfToken
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                messageBox.textContent = "Заявка успешно отправлена!";
-                messageBox.classList.add("form_message--success");
-                form.reset();
-            } else {
-                for (const [field, messages] of Object.entries(result.errors)) {
-                    const errorEl = document.getElementById(`error_${field}`);
-                    if (errorEl) {
-                        errorEl.textContent = messages.join(", ");
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const messageBox = document.getElementById("formMessage");
+        const submitBtn = form.querySelector('button[type="submit"]');
+    
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+    
+            // Сохраняем оригинальный текст кнопки
+            const originalBtnText = submitBtn.textContent;
+            
+            // Меняем состояние кнопки
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Отправка заявки...";
+            
+            // Очистка прошлых ошибок
+            document.querySelectorAll(".form_error").forEach(el => el.textContent = "");
+            messageBox.textContent = "";
+            messageBox.className = "form_message";
+    
+            const data = {
+                name: form.name.value.trim(),
+                phone: form.phone.value.trim(),
+                email: form.email.value.trim(),
+                agreement: form.agreement.checked
+            };
+    
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+    
+            try {
+                const response = await fetch("/callback/ajax/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken
+                    },
+                    body: JSON.stringify(data)
+                });
+    
+                const result = await response.json();
+    
+                if (result.success) {
+                    messageBox.textContent = "Заявка успешно отправлена!";
+                    messageBox.classList.add("form_message--success");
+                    form.reset();
+                } else {
+                    for (const [field, messages] of Object.entries(result.errors)) {
+                        const errorEl = document.getElementById(`error_${field}`);
+                        if (errorEl) {
+                            errorEl.textContent = messages.join(", ");
+                        }
                     }
+                    messageBox.textContent = "Пожалуйста, исправьте ошибки в форме.";
+                    messageBox.classList.add("form_message--error");
                 }
-                messageBox.textContent = "Пожалуйста, исправьте ошибки в форме.";
+            } catch (err) {
+                console.error("AJAX error:", err);
+                messageBox.textContent = "Произошла ошибка. Попробуйте позже.";
                 messageBox.classList.add("form_message--error");
+            } finally {
+                // Восстанавливаем состояние кнопки в любом случае
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             }
-        } catch (err) {
-            console.error("AJAX error:", err);
-            messageBox.textContent = "Произошла ошибка. Попробуйте позже.";
-            messageBox.classList.add("form_message--error");
-        }
+        });
     });
-});
-</script>
-
-
+    </script>

@@ -30,9 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.querySelector('.rent-all-button').addEventListener('click', function () {
-        const dressIds = Array.from(document.querySelectorAll('.product-card')).map(card => {
-            return card.querySelector('.product-image').dataset.id;
+        const dressIds = Array.from(document.querySelectorAll('.rent-button')).map(button => {
+            return parseInt(button.dataset.id);
         });
+
+        if (dressIds.length === 0) {
+            alert('Нет платьев для бронирования');
+            return;
+        }
+
         document.getElementById('dress_ids').value = JSON.stringify(dressIds);
         openModal();
     });

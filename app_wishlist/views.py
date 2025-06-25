@@ -58,8 +58,6 @@ def toggle_wishlist(request, dress_id):
     return HttpResponse(status=400)
 
 
-def get_wishlist_count(request):
+def wishlist_count(request):
     wishlist = request.session.get("wishlist", [])
-    return HttpResponse(
-        json.dumps({"count": len(wishlist)}), content_type="application/json"
-    )
+    return JsonResponse({"count": len(wishlist)})

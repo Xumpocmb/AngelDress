@@ -28,7 +28,7 @@
                     <img class="icon" src="{% static 'img/heart.png' %}"
                                                                  alt="Избранное">
                 </a>
-                <span class="wishlist-count" style="display: none;">0</span>
+                <span class="wishlist-count">{{ wishlist_count|default:0 }}</span>
             </div>
         </div>
     </nav>

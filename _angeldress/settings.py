@@ -9,7 +9,8 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
-
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID=os.getenv("TELEGRAM_CHAT_ID")
 ALLOWED_HOSTS = ["*"]
 
 
@@ -53,6 +54,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "app_home.context_processors.contact_info",
+                "app_home.context_processors.get_wishlist_count",
             ],
         },
     },

@@ -74,7 +74,6 @@ function updateWishlistCount(count) {
     const counterElements = document.querySelectorAll('.wishlist-count');
     counterElements.forEach(el => {
         el.textContent = count;
-        el.style.display = count > 0 ? 'block' : 'none';
     });
 }
 
