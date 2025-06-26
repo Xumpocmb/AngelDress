@@ -2,23 +2,24 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from app_catalog.models import Dress, DressCategory
 from app_home.models import RentRules
+from django.db import models
 
 
 def dress_catalog_view(request):
-    category_slug = request.GET.get("category")  # Получаем выбранную категорию из URL
+    category_slug = request.GET.get("category")
+    dresses = Dress.objects.all().select_related('category')
 
-    # Получаем все платья с фильтрацией по категории
-    dresses = Dress.objects.all()
     if category_slug:
         dresses = dresses.filter(category__slug=category_slug)
 
+    # Сортировка
     sort = request.GET.get("sort", "newest")
     if sort == "price-low":
-        dresses = dresses.order_by("price_min")
+        dresses = dresses.order_by("rental_price")
     elif sort == "price-high":
-        dresses = dresses.order_by("-price_min")
+        dresses = dresses.order_by("-rental_price")
     elif sort == "popular":
-        dresses = dresses.order_by("-popularity_score")
+        dresses = dresses.order_by("-popularity_score", "-views_count", "-favorites_count")
     else:
         dresses = dresses.order_by("-created_at")
 

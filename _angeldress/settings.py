@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "app_newsletter.apps.AppNewsletterConfig",
     "ckeditor",
     'django.contrib.humanize',
+    'django.contrib.sitemaps',
+
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,7 @@ CKEDITOR_CONFIGS = {
         "width": "100%",
     },
 }
+
+SESSION_COOKIE_AGE = 1209600  # 2 недели в секундах
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False

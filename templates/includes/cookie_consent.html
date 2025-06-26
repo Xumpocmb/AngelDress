@@ -1,0 +1,76 @@
+<div id="cookie-consent-banner" class="cookie-consent" style="display: none;">
+    <div class="cookie-consent-content">
+        <p>Мы используем файлы cookie для улучшения работы сайта. Оставаясь на сайте, вы соглашаетесь с <a href="{% url 'app_home:user_agreement' %}" target="_blank">Политикой использования cookies</a>.</p>
+        <button id="cookie-consent-accept" class="cookie-consent-button">Принять</button>
+    </div>
+</div>
+
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+}
+.cookie-consent-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.cookie-consent-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.cookie-consent-button:hover {
+    background: #2980b9;
+}
+.cookie-consent a {
+    color: #3498db;
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .cookie-consent-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-consent-accept');
+
+    // Проверяем, было ли уже дано согласие
+    if (!localStorage.getItem('cookie_consent')) {
+        banner.style.display = 'block';
+    }
+
+    // Обработка принятия
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'true');
+        banner.style.display = 'none';
+    });
+
+    // Обработка закрытия
+    // banner.addEventListener('click', function() {
+    //     localStorage.setItem('cookie_consent', 'true');
+    //     banner.style.display = 'none';
+    // });
+});
+</script>

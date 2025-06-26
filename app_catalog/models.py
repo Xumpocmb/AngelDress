@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ValidationError
+from django.urls import reverse
 from django.utils import timezone
 from django.core.files.storage import default_storage
 from django.utils.text import slugify
@@ -75,6 +76,9 @@ class Dress(models.Model):
     def update_popularity(self):
         self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7
         self.save()
+
+    def get_absolute_url(self):
+        return reverse('app_catalog:dress_detail', args=[self.id])
 
 
 class DressImage(models.Model):

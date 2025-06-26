@@ -1,7 +1,7 @@
 import os
 
 from django.db import models
-
+from django.urls import reverse
 
 
 class Author(models.Model):
@@ -87,3 +87,6 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+    def get_absolute_url(self):
+        return reverse('app_blog:post', args=[self.id])
