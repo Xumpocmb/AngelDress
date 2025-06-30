@@ -59,7 +59,7 @@ class RentalRequestAdmin(admin.ModelAdmin):
         dress_names = ", ".join([str(dress) for dress in obj.dresses.all()])
         message = (
             f"Здравствуйте, {obj.name}!\n"
-            f"Спасибо за заявку №{obj.id} на примерку следующих платьев: {dress_names}.\n"
+            f"Спасибо за Вашу заявку! Вы записались на примерку следующих платьев: {dress_names}.\n"
             f"Мы свяжемся с вами в ближайшее время."
         )
         encoded_message = quote_plus(message)
