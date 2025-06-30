@@ -62,8 +62,8 @@
                         <div class="author-socials">
                             {% for social in post.author.authorsocial_set.all %}
                                 {% if social.link %}
-                                    <a href="{{ social.link }}" target="_blank">
-                                        <img src="{% static 'img/social_icons/'|add:social.type.name|add:'.svg' %}"
+                                    <a href="{{ social.link }}" target="_blank" class="social-link">
+                                        <img src="{% static 'img/social_icons/'|add:social.type.name|add:'.png' %}"
                                              alt="{{ social.type.get_name_display }}"></a>
                                 {% endif %}
                             {% endfor %}

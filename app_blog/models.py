@@ -11,35 +11,37 @@ class Author(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Автор'
-        verbose_name_plural = 'Авторы'
+        verbose_name = "Автор"
+        verbose_name_plural = "Авторы"
 
 
 class SocialTypes(models.Model):
     SOCIAL_TYPES = [
-        ('telegram', 'Telegram'),
-        ('instagram', 'Instagram'),
-        ('youtube', 'YouTube'),
-        ('tiktok', 'TikTok'),
-        ('facebook', 'Facebook'),
-        ('twitter', 'Twitter'),
-        ('linkedin', 'LinkedIn'),
-        ('snapchat', 'Snapchat'),
-        ('pinterest', 'Pinterest'),
-        ('reddit', 'Reddit'),
-        ('whatsapp', 'WhatsApp'),
-        ('discord', 'Discord'),
-        ('twitch', 'Twitch'),
-        ('vk', 'VK'),
+        ("telegram", "Telegram"),
+        ("instagram", "Instagram"),
+        ("youtube", "YouTube"),
+        ("tiktok", "TikTok"),
+        ("facebook", "Facebook"),
+        ("x", "X (Twitter)"),
+        ("linkedin", "LinkedIn"),
+        ("snapchat", "Snapchat"),
+        ("pinterest", "Pinterest"),
+        ("reddit", "Reddit"),
+        ("whatsapp", "WhatsApp"),
+        ("discord", "Discord"),
+        ("twitch", "Twitch"),
+        ("vk", "VK"),
     ]
-    name = models.CharField(max_length=20, choices=SOCIAL_TYPES, verbose_name='Тип социальной сети')
+    name = models.CharField(
+        max_length=20, choices=SOCIAL_TYPES, verbose_name="Тип социальной сети"
+    )
 
     def __str__(self):
         return self.get_name_display()
 
     class Meta:
-        verbose_name = 'Тип социальной сети'
-        verbose_name_plural = 'Типы социальных сетей'
+        verbose_name = "Тип социальной сети"
+        verbose_name_plural = "Типы социальных сетей"
 
 
 class AuthorSocial(models.Model):
@@ -51,8 +53,8 @@ class AuthorSocial(models.Model):
         return f"{self.author.name} - {self.type.get_name_display()}"
 
     class Meta:
-        verbose_name = 'Социальная сеть'
-        verbose_name_plural = 'Социальные сети'
+        verbose_name = "Социальная сеть"
+        verbose_name_plural = "Социальные сети"
 
 
 class Tag(models.Model):
@@ -62,16 +64,16 @@ class Tag(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        verbose_name = "Тег"
+        verbose_name_plural = "Теги"
 
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    tags = models.ManyToManyField(Tag, related_name='posts')
+    tags = models.ManyToManyField(Tag, related_name="posts")
     content = models.TextField()
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
-    image = models.ImageField(upload_to='blog_images/', null=True, blank=True)
+    image = models.ImageField(upload_to="blog_images/", null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -85,8 +87,8 @@ class Post(models.Model):
         super(Post, self).delete(*args, **kwargs)
 
     class Meta:
-        verbose_name = 'Пост'
-        verbose_name_plural = 'Посты'
+        verbose_name = "Пост"
+        verbose_name_plural = "Посты"
 
     def get_absolute_url(self):
-        return reverse('app_blog:post', args=[self.id])
+        return reverse("app_blog:post", args=[self.id])
