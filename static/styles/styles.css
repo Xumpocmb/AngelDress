@@ -262,133 +262,75 @@ a {
 
 
 .choosing_dresses {
-    margin: 0 auto 40px;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.choosing_dresses_categories {
-    display: flex;
-    flex-wrap: wrap;
+.choosing_dresses_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
 }
 
-.choosing_dresses_row {
-    width: 100%;
+.choosing_dresses_item {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    gap: 20px;
-    /*height: 380px;*/
-}
-
-.choosing_dresses_item_left {
-    display: flex;
-    flex-direction: column;
+    background-color: #F6F4F0;
     overflow: hidden;
     transition: transform 0.3s ease;
-    width: 34%;
-    min-height: 300px;
-    background: #F6F4F0;
 }
 
-.choosing_dresses_item_right {
-    width: 64%;
-    min-height: 300px;
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    background: #F6F4F0;
+.choosing_dresses_item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.choosing_dresses_item_right .img-container,
-.choosing_dresses_item_left .img-container {
+.choosing_dresses_item.reversed {
+    flex-direction: row-reverse;
+}
+
+.img-container {
+    flex: 0 0 50%;
     overflow: hidden;
 }
 
-.choosing_dresses_item_left img {
-    width: 100%;
-    height: 206px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.choosing_dresses_item_right img {
+.img-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.choosing_dresses_item_left .content {
-    width: 100%;
-    height: 174px;
-    background: #F6F4F0;
-    /* Полупрозрачный фон */
-    color: #333;
+.choosing_dresses_content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
-    transition: opacity 0.3s ease;
 }
 
-.choosing_dresses_item_right .content {
-    width: 100%;
-    height: 100%;
-    background: #F6F4F0;
-    /* Полупрозрачный фон */
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    transition: opacity 0.3s ease;
-}
-
-.choosing_dresses_item_left img:hover,
-.choosing_dresses_item_right img:hover {
-    transform: scale(1.1);
-}
-
-.content h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
-.content a {
+.choosing_dresses_content a {
     font-size: 13px;
     color: #D5B0A0;
     text-decoration: none;
     font-weight: bold;
 }
 
-@media (max-width: 768px) {
-    .choosing_dresses_categories {
+@media (max-width: 992px) {
+    .choosing_dresses_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .choosing_dresses_item,
+    .choosing_dresses_item.reversed {
         flex-direction: column;
     }
 
-    .choosing_dresses_row {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .choosing_dresses_item_left,
-    .choosing_dresses_item_right {
+    .img-container {
         width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .choosing_dresses_item_right {
-        flex-direction: column;
+        height: 300px;
+        flex: none;
     }
 }
 
@@ -3033,4 +2975,3 @@ button {
 .agreement-description>ul {
     margin-left: 30px;
 }
-

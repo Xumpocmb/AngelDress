@@ -44,59 +44,35 @@
         <section class="heading">
             <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
         </section>
+        
+        
+        
         <!-- Секция выбора платьев -->
         <section class="choosing_dresses">
-            <div class="choosing_dresses_categories">
-                <div class="choosing_dresses_row">
-                    <div class="choosing_dresses_item_left">
+            <div class="choosing_dresses_grid">
+                {% for category in main_page_categories %}
+                    <div class="choosing_dresses_item {% cycle '' 'reversed' 'reversed' '' %}">
                         <div class="img-container">
-                        <img src="{% static 'img/ch_c_image1.png' %}" alt="Свадебные Платья">
+                            {% if category.image %}
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                            {% else %}
+                                <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="{{ category.name }}">
+                            {% endif %}
                         </div>
-                        <div class="content">
-                            <h2>??? платья</h2>
-                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                        <div class="choosing_dresses_content">
+                            <h2>{{ category.name }} платья</h2>
+                            <p>{{ category.description }}</p>
+                            <a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ →</a>
                         </div>
                     </div>
-                    <div class="choosing_dresses_item_right">
-                        <div class="img-container">
-                            <img src="{% static 'img/ch_c_image2.png' %}" alt="Ночные платья">
-                        </div>
-
-                        <div class="content">
-                            <h2>??? платья</h2>
-                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="choosing_dresses_row">
-                    <div class="choosing_dresses_item_right">
-                        <div class="img-container">
-                        <img src="{% static 'img/ch_c_image3.png' %}" alt="Ночные платья">
-                        </div>
-                        <div class="content">
-                            <h2>??? платья</h2>
-                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
-                        </div>
-                    </div>
-                    <div class="choosing_dresses_item_left">
-                        <div class="img-container">
-                        <img src="{% static 'img/ch_c_image4.png' %}" alt="Свадебные Платья">
-                        </div>
-                        <div class="content">
-                            <h2>??? Платья</h2>
-                            <p>В целом, конечно, глубокий уровень погружения обеспечивает</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}">ПОДБРАТЬ ПЛАТЬЕ →</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </section>
+        
+        
+        
         <!-- Секция accessories -->
         <section class="write_us">
-            <div class="section_write_us">
                 <div class="container_write_us">
                     <!-- Левая часть -->
                     <div class="write_us_image-box">
@@ -115,7 +91,6 @@
                         {% include 'includes/contact_form.html' %}
                     </div>
                 </div>
-            </div>
 
         </section>
         <!-- Секция предпросмотра некоторых платьев -->

@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from app_catalog.models import Dress, DressCategory
 from app_home.models import RentRules
-from django.db import models
 
 
 def dress_catalog_view(request):
