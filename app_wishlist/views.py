@@ -8,10 +8,23 @@ from app_catalog.models import Dress
 
 def wishlist_view(request) -> HttpResponse:
     wishlist = request.session.get("wishlist", [])
-    
+    valid_wishlist = []
+
     if wishlist:
+        # Проверяем, существуют ли такие Dress в БД
         wishlist_ids = [int(dress_id) for dress_id in wishlist]
-        dresses = Dress.objects.filter(id__in=wishlist_ids).order_by("-created_at")
+        existing_dresses = Dress.objects.filter(id__in=wishlist_ids).values_list(
+            "id", flat=True
+        )
+
+        valid_wishlist = [
+            str(dress_id) for dress_id in wishlist_ids if dress_id in existing_dresses
+        ]
+
+        request.session["wishlist"] = valid_wishlist
+        request.session.modified = True
+
+        dresses = Dress.objects.filter(id__in=valid_wishlist).order_by("-created_at")
 
         paginator = Paginator(dresses, 9)
         page_number = request.GET.get("page")
@@ -28,7 +41,7 @@ def wishlist_view(request) -> HttpResponse:
 
     context = {
         "page_obj": page_obj,
-        "wishlist": wishlist,
+        "wishlist": valid_wishlist,
     }
     return render(request, "app_wishlist/wishlist.html", context=context)
 

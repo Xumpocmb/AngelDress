@@ -1,7 +1,3 @@
-import json
-
-from django.http import HttpResponse
-
 from app_home.models import ContactInfo
 
 
