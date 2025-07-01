@@ -1,7 +1,14 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Dress, DressImage, DressCategory, DressVideo
+from .models import (
+    Dress,
+    DressImage,
+    DressCategory,
+    DressVideo,
+    Accessory,
+    AccessoryImage,
+)
 
 
 class DressImageInline(admin.TabularInline):
@@ -49,17 +56,17 @@ class DressAdmin(admin.ModelAdmin):
         "color",
         "length",
         "fit",
-    )  # Изменено с category на categories
+    )
     search_fields = ("name", "description")
     inlines = [DressImageInline, DressVideoInline]
-    filter_horizontal = ("categories",)  # Добавлено для удобного выбора категорий
+    filter_horizontal = ("categories",)
 
     fieldsets = (
         (
             "Основное",
             {
                 "fields": (
-                    "categories",  # Изменено с category на categories
+                    "categories",
                     "name",
                     "description",
                     "color",
@@ -98,19 +105,31 @@ class DressAdmin(admin.ModelAdmin):
     def display_categories(self, obj):
         return ", ".join([category.name for category in obj.categories.all()])
 
-    display_categories.short_description = (
-        "Категории"  # Задаём читаемое название колонки
-    )
+    display_categories.short_description = "Категории"
 
 
 @admin.register(DressCategory)
 class DressCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "dress_count")  # Добавлено отображение количества платьев
+    list_display = ("name", "show_on_main_page", "dress_count")
     search_fields = ("name",)
     ordering = ("name",)
     prepopulated_fields = {"slug": ("name",)}
+    list_editable = ("show_on_main_page",)
 
     def dress_count(self, obj):
-        return obj.dresses.count()  # Используем related_name='dresses'
+        return obj.dresses.count()
 
-    dress_count.short_description = "Количество платьев"
+    dress_count.short_description = "Количество"
+
+
+class AccessoryImageInline(admin.TabularInline):
+    model = AccessoryImage
+    extra = 1
+
+
+@admin.register(Accessory)
+class AccessoryAdmin(admin.ModelAdmin):
+    inlines = [AccessoryImageInline]
+    list_display = ("name",)
+    search_fields = ("name",)
+    prepopulated_fields = {"slug": ("name",)}

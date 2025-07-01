@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{ title|default:"Angel Dress - Каталог" }}</title>
+{% endblock %}
+
+{% block meta %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    <!-- Главный контейнер -->
+    <div class="wrapper">
+        <div class="catalog-container">
+            <!-- Основное содержимое -->
+            <main class="content">
+                <!-- Сортировка -->
+                <div class="sort-bar">
+                    <label for="sort-select">Показывать сначала:</label>
+                    <div class="custom-select">
+                        <select class="sort-select" id="sort-select" onchange="location = this.value;">
+                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=newest"
+                                    {% if current_sort == 'newest' %}selected{% endif %}>Новые
+                            </option>
+                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=price-low"
+                                    {% if current_sort == 'price-low' %}selected{% endif %}>По возрастанию цены
+                            </option>
+                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=price-high"
+                                    {% if current_sort == 'price-high' %}selected{% endif %}>По убыванию цены
+                            </option>
+                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=popular"
+                                    {% if current_sort == 'popular' %}selected{% endif %}>Популярные
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Карточки товаров -->
+                <div class="product-grid">
+                    {% for accessory in page_obj %}
+                        <div class="product-card">
+                            <div class="img-section">
+                                <div class="favorite-icon {% if accessory.id in request.session.wishlist %}active{% endif %}"
+                                     onclick="toggleWishlist(this, {{ accessory.id }})">
+                                    <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
+                                </div>
+                                <a href="{% url 'app_catalog:accessory_detail' accessory.id %}">
+                                    {% with accessory.images.first as main_image %}
+                                        {% if main_image %}
+                                            <img class="product-image" src="{{ main_image.image.url }}"
+                                                 alt="{{ accessory.name }}">
+                                        {% else %}
+                                            <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
+                                                 alt="Нет изображения">
+                                        {% endif %}
+                                    {% endwith %}
+                                </a>
+                            </div>
+
+                            <div class="product-info">
+                                <div class="product-name">Арт.: {{ accessory.name }}</div>
+                                <div class="product-price">Стоимость от: {{ accessory.rental_price }} ₽</div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="no-products">
+                            <p>Аксессуаров пока нет в каталоге</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
+        </div>
+        {% include 'includes/pagination.html' %}
+    </div>
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/wishlist.js' %}"></script>
+{% endblock %}

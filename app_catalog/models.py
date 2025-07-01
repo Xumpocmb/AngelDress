@@ -1,4 +1,3 @@
-from email.mime import image
 from django.db import models
 from django.forms import ValidationError
 from django.urls import reverse
@@ -25,8 +24,8 @@ class DressCategory(models.Model):
         return reverse("app_catalog:dress_catalog")
 
     class Meta:
-        verbose_name = "Категория платья"
-        verbose_name_plural = "Категории платьев"
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.name
@@ -114,8 +113,8 @@ class Dress(models.Model):
     )
 
     class Meta:
-        verbose_name = "Платье-Акссессуар"
-        verbose_name_plural = "Платья-Акссессуары"
+        verbose_name = "Платье"
+        verbose_name_plural = "Платья"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -173,6 +172,108 @@ class DressVideo(models.Model):
 
     def __str__(self):
         return f"Видео для {self.dress.name}"
+
+    def clean(self):
+        if self.video:
+            # Проверяем реальный тип файла по содержимому
+            file_type = magic.from_buffer(self.video.read(1024), mime=True)
+            if not file_type.startswith("video/"):
+                raise ValidationError("Файл должен быть видео.")
+            self.video.seek(0)
+
+    def delete(self, *args, **kwargs):
+        self.video.delete(save=False)
+        super().delete(*args, **kwargs)
+
+
+class Accessory(models.Model):
+    name = models.CharField(
+        max_length=100, verbose_name="Название аксессуара", null=False, blank=False
+    )
+    slug = models.SlugField(
+        max_length=100, unique=True, verbose_name="url", null=False, blank=False
+    )
+    description = models.TextField(verbose_name="Описание", blank=True, null=True)
+    rental_period = models.PositiveIntegerField(
+        default=3,
+        verbose_name="Срок аренды (дней)",
+        null=True,
+        blank=True,
+    )
+    rental_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Стоимость аренды",
+        null=False,
+        blank=False,
+        default=0,
+    )
+
+    created_at = models.DateTimeField(
+        default=timezone.now, verbose_name="Дата создания"
+    )
+    views_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество просмотров"
+    )
+    favorites_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество избранных"
+    )
+    popularity_score = models.FloatField(
+        default=0.0, verbose_name="Рейтинг популярности", blank=True, null=True
+    )
+
+    class Meta:
+        verbose_name = "Аксессуар"
+        verbose_name_plural = "Аксессуары"
+
+    def __str__(self):
+        return self.name
+
+    def update_popularity(self):
+        self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7
+        self.save()
+
+    def get_absolute_url(self):
+        return reverse("app_catalog:accessory_detail", args=[self.slug])
+
+
+class AccessoryImage(models.Model):
+    accessory = models.ForeignKey(
+        Accessory,
+        on_delete=models.CASCADE,
+        related_name="images",
+        verbose_name="Аксессуар",
+    )
+    image = models.ImageField(upload_to="accessories/", verbose_name="Фотография")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
+    alt_text = models.CharField(
+        max_length=200, blank=True, verbose_name="Альтернативный текст"
+    )
+
+    class Meta:
+        verbose_name = "Фотография аксессуара"
+        verbose_name_plural = "Фотографии аксессуаров"
+        ordering = ["order"]
+
+    def __str__(self):
+        return f"Фото {self.id} для {self.accessory.name}"
+
+
+class AccesoryVideo(models.Model):
+    accessory = models.ForeignKey(
+        Accessory, on_delete=models.CASCADE, related_name="videos"
+    )
+    video = models.FileField(upload_to="accessories/videos/", verbose_name="Видео")
+    order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
+    alt_text = models.CharField(max_length=200, blank=True, verbose_name="Описание")
+
+    class Meta:
+        ordering = ["order"]
+        verbose_name = "Видео"
+        verbose_name_plural = "Видео"
+
+    def __str__(self):
+        return f"Видео для {self.accessory.name}"
 
     def clean(self):
         if self.video:
