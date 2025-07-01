@@ -24,13 +24,13 @@
 
 .logo {
     display: block;
-    width: 40px;
+    /* width: 100%px; */
     height: 40px;
     overflow: hidden;
 }
 
 .logo img {
-    width: 40px;
+    width: 100%px;
     height: 40px;
     /* overflow: hidden; */
 }
