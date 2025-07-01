@@ -1,3 +1,4 @@
+from email.mime import image
 from django.db import models
 from django.forms import ValidationError
 from django.urls import reverse
@@ -10,6 +11,12 @@ import magic
 class DressCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name='Название категории')
     slug = models.SlugField(max_length=100, unique=True, verbose_name='url', null=False, blank=False)
+    description = models.TextField(verbose_name='Описание', blank=True, null=True)
+    image = models.ImageField(upload_to='dress_category/', verbose_name='Изображение', blank=True, null=True)
+    show_on_main_page = models.BooleanField(default=True, verbose_name='Показывать на главной странице')
+
+    def get_absolute_url(self):
+        return reverse("app_catalog:dress_catalog")
 
     class Meta:
         verbose_name = 'Категория платья'

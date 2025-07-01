@@ -2,7 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from app_blog.models import Post
 from app_catalog.models import Dress
-from app_home.models import RentRules, TermsOfUse
+
 
 class StaticViewSitemap(Sitemap):
     priority = 0.5
