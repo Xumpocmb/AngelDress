@@ -45,7 +45,7 @@
                 <p class="contact_description">Примерьте платье в Шоу-рум</p>
             </div>
 
-            <!-- Дополнительные соцсети -->
+            <!-- vk -->
             {% if contact_info.vk %}
                 <div class="contact_detail">
                     <img src="{% static 'img/vk_logo_round.png' %}" alt="VK Icon" class="contact_icon">
@@ -54,6 +54,7 @@
                 </div>
             {% endif %}
 
+            <!-- tiktok -->
             {% if contact_info.tiktok %}
                 <div class="contact_detail">
                     <img src="{% static 'img/social_icons/tiktok.png' %}" alt="TikTok Icon" class="contact_icon">
@@ -62,11 +63,20 @@
                 </div>
             {% endif %}
 
+        <!-- youtube -->
             {% if contact_info.youtube %}
                 <div class="contact_detail">
                     <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube Icon" class="contact_icon">
                     <a href="{{ contact_info.youtube }}" class="contact_link">YouTube</a>
                     <p class="contact_description">Наш канал YouTube</p>
+                </div>
+            {% endif %}
+        <!-- telegram -->
+            {% if contact_info.telegram %}
+                <div class="contact_detail">
+                    <img src="{% static 'img/social_icons/telegram.png' %}" alt="Telegram Icon" class="contact_icon">
+                    <a href="{{ contact_info.telegram }}" class="contact_link">Telegram</a>
+                    <p class="contact_description">Наш канал Telegram</p>
                 </div>
             {% endif %}
         </div>
