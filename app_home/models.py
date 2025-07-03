@@ -46,6 +46,7 @@ class SliderImage(models.Model):
 class SocialTypes(models.Model):
     SOCIAL_TYPES = [
         ("phone", "Телефон"),
+        ("address", "Адрес"),
         ("telegram", "Telegram"),
         ("instagram", "Instagram"),
         ("youtube", "YouTube"),
