@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from app_blog.models import Post
 from app_catalog.models import Item, ItemCategory
-from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse
+from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse, Questions
 
 
 def index_view(request):
@@ -42,6 +42,8 @@ def user_agreement_view(request):
     rent_rules = RentRules.objects.first()
     terms_of_use = TermsOfUse.objects.first()
 
+    questions = Questions.objects.filter(is_active=True)
+
     if terms_of_use:
         terms_of_use_text = terms_of_use.text
     else:
@@ -55,5 +57,6 @@ def user_agreement_view(request):
     context = {
         "rent_rules_text": rent_rules_text,
         "terms_of_use_text": terms_of_use_text,
+        "questions": questions,
     }
     return render(request, "app_home/user_agreement.html", context=context)

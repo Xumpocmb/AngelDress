@@ -101,3 +101,14 @@ class TermsOfUse(models.Model):
         if not self.pk and TermsOfUse.objects.exists():
             return
         super().save(*args, **kwargs)
+
+
+class Questions(models.Model):
+    question_text = models.TextField(verbose_name="Вопрос", null=False, blank=False)
+    answer_text = models.TextField(verbose_name="Ответ", null=False, blank=False)
+    is_active = models.BooleanField(default=True, verbose_name="Выводить на страницу?")
+
+    class Meta:
+        db_table = "app_home_questions"
+        verbose_name = "Частый вопрос"
+        verbose_name_plural = "Частые вопросы"

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from app_home.forms import RentRulesForm, TermsOfUseForm
-from app_home.models import SliderImage, ContactInfo, RentRules, TermsOfUse
+from app_home.models import SliderImage, ContactInfo, RentRules, TermsOfUse, Questions
 
 
 class SliderImageAdmin(admin.ModelAdmin):
@@ -31,3 +31,9 @@ class TermsOfUseAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return not TermsOfUse.objects.exists()
+
+
+@admin.register(Questions)
+class QuestionsAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'is_active')
+    list_editable = ('is_active',)
