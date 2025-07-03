@@ -51,6 +51,7 @@ class ContactInfo(models.Model):
     vk = models.URLField(blank=True, verbose_name="ВКонтакте")
     tiktok = models.URLField(blank=True, verbose_name="TikTok")
     youtube = models.URLField(blank=True, verbose_name="YouTube")
+    telegram = models.URLField(blank=True, verbose_name="Telegram")
 
     class Meta:
         verbose_name = "Контактная информация"
