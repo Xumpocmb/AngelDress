@@ -7,19 +7,16 @@ from app_catalog.models import Item
 
 
 def wishlist_view(request) -> HttpResponse:
-    wishlist = request.session.get("wishlist", [])
-    valid_wishlist = []
 
+    wishlist = list(set(request.session.get("wishlist", [])))
     if wishlist:
-        # Проверяем, существуют ли такие Dress в БД
-        wishlist_ids = [int(dress_id) for dress_id in wishlist]
-        existing_dresses = Item.objects.filter(id__in=wishlist_ids).values_list(
-            "id", flat=True
-        )
+        try:
+            wishlist_ids = [int(dress_id) for dress_id in wishlist]
+        except ValueError as e:
+            wishlist_ids = []
 
-        valid_wishlist = [
-            str(dress_id) for dress_id in wishlist_ids if dress_id in existing_dresses
-        ]
+        existing_dresses = Item.objects.filter(id__in=wishlist_ids).values_list("id", flat=True)
+        valid_wishlist = [dress_id for dress_id in wishlist_ids if dress_id in existing_dresses]
 
         request.session["wishlist"] = valid_wishlist
         request.session.modified = True
@@ -35,13 +32,14 @@ def wishlist_view(request) -> HttpResponse:
             page_obj = paginator.page(1)
         except EmptyPage:
             page_obj = paginator.page(paginator.num_pages)
+
     else:
         paginator = Paginator(Item.objects.none(), 9)
         page_obj = paginator.page(1)
 
     context = {
         "page_obj": page_obj,
-        "wishlist": valid_wishlist,
+        "wishlist": request.session.get("wishlist", []),
     }
     return render(request, "app_wishlist/wishlist.html", context=context)
 
@@ -49,7 +47,11 @@ def wishlist_view(request) -> HttpResponse:
 def toggle_wishlist(request, dress_id):
     if request.method == "POST":
         wishlist = request.session.get("wishlist", [])
-        dress = get_object_or_404(Item, pk=dress_id)
+
+        try:
+            dress = Item.objects.get(pk=dress_id)
+        except Item.DoesNotExist:
+            return HttpResponse(status=404)
 
         if dress_id in wishlist:
             wishlist.remove(dress_id)
@@ -65,11 +67,11 @@ def toggle_wishlist(request, dress_id):
         request.session.modified = True
 
         dress.update_popularity()
+        dress.save()
 
         return JsonResponse({"status": status, "count": len(wishlist)})
-
-    return HttpResponse(status=400)
-
+    else:
+        return HttpResponse(status=400)
 
 def wishlist_count(request):
     wishlist = request.session.get("wishlist", [])
