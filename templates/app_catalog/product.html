@@ -29,7 +29,8 @@
                                         Ваш браузер не поддерживает видео.
                                     </video>
                                 {% else %}
-                                    <img id="mainMedia" src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media">
+                                    <img id="mainMedia" src="{{ media.image.url }}" alt="{{ media.alt_text }}"
+                                         class="main-media">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
@@ -37,7 +38,7 @@
                         <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media">
                     {% endif %}
                 </div>
-            
+
                 <div class="thumbnails">
                     {% if media_files %}
                         {% for media in media_files %}
@@ -48,12 +49,14 @@
                                         <source src="{{ media.video.url }}" type="video/mp4">
                                     </video>
                                 {% else %}
-                                    <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumbnail {% if forloop.first %}active{% endif %}">
+                                    <img src="{{ media.image.url }}" alt="{{ media.alt_text }}"
+                                         class="thumbnail {% if forloop.first %}active{% endif %}">
                                 {% endif %}
                             </div>
                         {% endfor %}
                     {% else %}
-                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumbnail active">
+                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения"
+                             class="thumbnail active">
                     {% endif %}
                 </div>
             </div>
@@ -61,58 +64,96 @@
             <!-- Правая колонка - информация о товаре -->
             <div class="card-product-info">
                 <h1 class="product-name">{{ product.name }}</h1>
-                <div class="price">{{ product.rental_price }} ₽</div>
 
+                <!-- Цена -->
+                {% if product.rental_price %}
+                    <div class="price">{{ product.rental_price }} ₽</div>
+                {% endif %}
+
+                <!-- Характеристики -->
                 <div class="properties">
-                    <div class="property">
-                        <div class="property-name">Цвет:</div>
-                        <div class="property-value">{{ product.color }}</div>
-                    </div>
-                    <div class="property">
-                        <div class="property-name">Длина:</div>
-                        <div class="property-value">{{ product.get_length_display }}</div>
-                    </div>
+                    {% if product.color %}
+                        <div class="property">
+                            <div class="property-name">Цвет:</div>
+                            <div class="property-value">{{ product.color }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if product.length %}
+                        <div class="property">
+                            <div class="property-name">Длина:</div>
+                            <div class="property-value">{{ product.get_length_display }}</div>
+                        </div>
+                    {% endif %}
+
                     {% if product.fastener_type %}
-                    <div class="property">
-                        <div class="property-name">Тип застёжки:</div>
-                        <div class="property-value">{{ product.fastener_type }}</div>
-                    </div>
+                        <div class="property">
+                            <div class="property-name">Тип застёжки:</div>
+                            <div class="property-value">{{ product.fastener_type }}</div>
+                        </div>
                     {% endif %}
 
                     {% if product.fit %}
-                    <div class="property">
-                        <div class="property-name">Посадка:</div>
-                        <div class="property-value">{{ product.get_fit_display }}</div>
-                    </div>
+                        <div class="property">
+                            <div class="property-name">Посадка:</div>
+                            <div class="property-value">{{ product.get_fit_display }}</div>
+                        </div>
                     {% endif %}
-                    
-                    
+
+                    {% if product.details %}
+                        <div class="property">
+                            <div class="property-name">Детали:</div>
+                            <div class="property-value">{{ product.details }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if product.available_sizes %}
+                        <div class="property">
+                            <div class="property-name">Размеры:</div>
+                            <div class="property-value">{{ product.available_sizes }}</div>
+                        </div>
+                    {% endif %}
+
+                    {% if product.photoset_price and product.photoset_price > 0 %}
+                        <div class="property">
+                            <div class="property-name">Стоимость фотосессии:</div>
+                            <div class="property-value">{{ product.photoset_price }} ₽</div>
+                        </div>
+                    {% endif %}
+
+                    {% if product.pledge_price and product.pledge_price > 0 %}
+                        <div class="property">
+                            <div class="property-name">Залог:</div>
+                            <div class="property-value">{{ product.pledge_price }} ₽</div>
+                        </div>
+                    {% endif %}
+
+                    {% if product.rental_period and product.rental_period > 0 %}
+                        <div class="property">
+                            <div class="property-name">Срок аренды:</div>
+                            <div class="property-value">{{ product.rental_period }} дней</div>
+                        </div>
+                    {% endif %}
                 </div>
 
-                {% if product.details %}
-                <div class="details">
-                    Детали: {{ product.details }}
-                </div>
-                {% endif %}
-
-                
-
-                <div class="sizes-section">
-                    <div class="sizes-title">Размеры: <p class="size-option">{{ product.available_sizes }}</p></div>
-
-                </div>
-
+                <!-- Кнопки -->
                 <div class="buttons">
                     <input type="hidden" name="product_id" value="{{ product.id }}">
-                    <div class="button button-primary" id="rent-button" data-id="{{ product.id }}">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
+                    <div class="button button-primary" id="rent-button" data-id="{{ product.id }}">ЗАБРОНИРОВАТЬ
+                        ПРИМЕРКУ
+                    </div>
                     <div class="button button-secondary {% if product.id in request.session.wishlist %}in-wishlist{% endif %}"
                          id="wishlist-btn-{{ product.id }}"
                          onclick="toggleWishlistButton(this, {{ product.id }})">
-                        {% if product.id in request.session.wishlist %}✓ В ИЗБРАННОМ{% else %}ДОБАВИТЬ В
-                            ИЗБРАННОЕ{% endif %}
+                        {% if product.id in request.session.wishlist %}
+                            ✓ В ИЗБРАННОМ
+                        {% else %}
+                            ДОБАВИТЬ В ИЗБРАННОЕ
+                        {% endif %}
                     </div>
                 </div>
 
+                <!-- Табы -->
                 <div class="tabs">
                     <div class="tab active" data-tab="description">ОПИСАНИЕ</div>
                     <div class="tab" data-tab="additional-info">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
@@ -120,11 +161,19 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="description">
-                        {{ product.description|linebreaks }}
+                        {% if product.description %}
+                            {{ product.description|linebreaks }}
+                        {% else %}
+                            Описание отсутствует.
+                        {% endif %}
                     </div>
 
                     <div class="tab-pane" id="additional-info">
-                        {{ rent_rules_text|safe }}
+                        {% if rent_rules_text %}
+                            {{ rent_rules_text|safe }}
+                        {% else %}
+                            Правила аренды не заданы.
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -174,7 +223,7 @@
             </div>
         </div>
     </div>
-    
+
 {% endblock %}
 
 
@@ -193,18 +242,18 @@
                 }{% if not forloop.last %},{% endif %}
             {% endfor %}
         ];
-    
+
         let currentMediaIndex = 0;
-    
+
         function changeMedia(index) {
             currentMediaIndex = index;
             const media = window.mediaList[index];
             const mainMediaContainer = document.querySelector('.main-media-container');
-    
+
             // Удаляем текущий элемент
             const oldMedia = mainMediaContainer.querySelector('.main-media');
             if (oldMedia) oldMedia.remove();
-    
+
             // Создаём новый элемент
             let newMedia;
             if (media.is_video) {
@@ -226,11 +275,11 @@
                 newMedia.alt = media.alt || '';
                 newMedia.classList.add('main-media');
             }
-    
+
             // Добавляем новый элемент
             newMedia.id = 'mainMedia';
             mainMediaContainer.prepend(newMedia);
-    
+
             // Обновляем активную миниатюру
             document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
                 thumb.classList.toggle('active', i === index);

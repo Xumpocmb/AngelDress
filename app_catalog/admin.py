@@ -90,6 +90,7 @@ class ItemAdmin(admin.ModelAdmin):
                 "fields": (
                     "rental_period",
                     "rental_price",
+                    "photoset_price",
                     "pledge_price",
                 )
             },

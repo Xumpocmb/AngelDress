@@ -1109,7 +1109,7 @@ button {
 
 .contact_map iframe {
     width: 100%;
-    height: -webkit-fill-available;
+    height: 100%;
 }
 
 
@@ -2610,12 +2610,12 @@ button {
 
 .property-name {
     font-weight: bold;
-    min-width: 120px;
     color: #666;
 }
 
 .property-value {
     color: #333;
+    margin-left: 10px;
 }
 
 .details {

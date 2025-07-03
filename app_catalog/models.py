@@ -56,7 +56,9 @@ class Item(models.Model):
     available_sizes = models.CharField(blank=True, null=True, max_length=200, verbose_name="Доступные размеры",help_text="Укажите размеры через дефис: XS-L")
 
     rental_period = models.PositiveIntegerField(blank=True, null=True, default=3, verbose_name="Срок аренды (дней)")
-    rental_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды", default=0)
+    rental_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на указанный срок", default=0)
+    photoset_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на фотосессию", default=0)
+
     pledge_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2, verbose_name="Залог",default=0)
 
     is_active = models.BooleanField(default=True, verbose_name="Активен")
@@ -74,9 +76,6 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_details_list(self):
-        return [d.strip() for d in self.details.split(",") if d.strip()]
 
     def update_popularity(self):
         self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7

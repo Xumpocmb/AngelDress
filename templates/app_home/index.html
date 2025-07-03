@@ -161,28 +161,25 @@
                             Твоя финальная деталь
                         </h2>
                         <p class="accessories_description">
-                            Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или текстуру — и образ заиграет по-новому.
+                            Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или текстуру
+                            — и образ заиграет по-новому.
                         </p>
                     </div>
 
                     <!-- Карточки аксессуаров -->
                     <div class="accessories_cards">
-                        <div class="accessories_card">
-                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                        </div>
-                        <div class="accessories_card">
-                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                        </div>
-                        <div class="accessories_card">
-                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                        </div>
-                        <div class="accessories_card">
-                            <img src="{% static 'img/klatch.png' %}" alt="Classic Clutch">
-                            <p class="accessories_card_title">КЛАССИЧЕСКИЙ КЛАТЧ</p>
-                        </div>
+                        {% for item in random_accessories %}
+                            <div class="accessories_card">
+                                <a href="{% url 'app_catalog:dress_detail' item.id %}">
+                                    {% if item.images.exists %}
+                                        <img src="{{ item.images.first.image.url }}" alt="{{ item.name }}">
+                                    {% else %}
+                                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения">
+                                    {% endif %}
+                                </a>
+                                <p class="accessories_card_title">{{ item.name|upper }}</p>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Фоновое изображение модели -->
@@ -234,55 +231,27 @@
                 <!-- Блоки постов -->
                 <div class="blog_posts">
                     <!-- Пост 1 -->
-                    <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
-                                                        class="blog_image"></div>
-                        <div class="blog-text-area">
-                            <p class="blog_author">Екатерина Шумская</p>
-                            <h3 class="blog_post_title">100 Идей На Лето</h3>
-                            <p class="blog_description">
-                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                                уровень
-                                погружения
-                            </p>
-                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                    {% for post in latest_posts %}
+                        <div class="blog_post">
+                            <div class="img-container">
+                                {% if post.image %}
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog_image">
+                                {% else %}
+                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Default Image"
+                                         class="blog_image">
+                                {% endif %}
+                            </div>
+                            <div class="blog-text-area">
+                                <p class="blog_author">{{ post.author.name }}</p>
+                                <h3 class="blog_post_title">{{ post.title }}</h3>
+                                <p class="blog_description">
+                                    {{ post.content|truncatewords:20 }}
+                                </p>
+                                <a href="{{ post.get_absolute_url }}" class="blog_read_more">ПРОЧИТАТЬ</a>
+                            </div>
                         </div>
+                    {% endfor %}
 
-                    </div>
-
-                    <!-- Пост 2 -->
-                    <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
-                                                        class="blog_image"></div>
-                        <div class="blog-text-area">
-                            <p class="blog_author">Екатерина Шумская</p>
-                            <h3 class="blog_post_title">100 Идей На Лето</h3>
-                            <p class="blog_description">
-                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                                уровень
-                                погружения
-                            </p>
-                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
-                        </div>
-
-                    </div>
-
-                    <!-- Пост 3 -->
-                    <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
-                                                        class="blog_image"></div>
-                        <div class="blog-text-area">
-                            <p class="blog_author">Екатерина Шумская</p>
-                            <h3 class="blog_post_title">100 Идей На Лето</h3>
-                            <p class="blog_description">
-                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                                уровень
-                                погружения
-                            </p>
-                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </section>
