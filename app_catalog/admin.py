@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 from .models import (
@@ -40,15 +41,15 @@ class ItemVideoInline(admin.TabularInline):
 
 
 @admin.register(Item)
-class Itemdmin(admin.ModelAdmin):
+class ItemAdmin(admin.ModelAdmin):
+    inlines = [ItemImageInline, ItemVideoInline]
     list_display = (
+        "thumbnail_preview",
         "name",
-        "display_categories",
-        "color",
-        "length",
-        "rental_price",
+        "is_active",
         "created_at",
     )
+    list_editable = ("is_active",)
     list_filter = (
         "categories",
         "color",
@@ -56,7 +57,6 @@ class Itemdmin(admin.ModelAdmin):
         "fit",
     )
     search_fields = ("name", "description")
-    inlines = [ItemImageInline, ItemVideoInline]
     filter_horizontal = ("categories",)
 
     fieldsets = (
@@ -67,7 +67,7 @@ class Itemdmin(admin.ModelAdmin):
                     "categories",
                     "name",
                     "description",
-                    "color",
+                    "is_active",
                 )
             },
         ),
@@ -75,11 +75,12 @@ class Itemdmin(admin.ModelAdmin):
             "Детали",
             {
                 "fields": (
-                    "available_sizes",
+                    "color",
                     "length",
                     "fastener_type",
                     "fit",
                     "details",
+                    "available_sizes",
                 )
             },
         ),
@@ -102,17 +103,27 @@ class Itemdmin(admin.ModelAdmin):
 
     def display_categories(self, obj):
         return ", ".join([category.name for category in obj.categories.all()])
-
     display_categories.short_description = "Категории"
+
+    def thumbnail_preview(self, obj):
+        if obj.get_first_image_url():
+            return format_html(
+                '<img src="{}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" />',
+                obj.get_first_image_url(),
+            )
+        return ""
+
+    thumbnail_preview.short_description = "Миниатюра"
+    thumbnail_preview.allow_tags = True
 
 
 @admin.register(ItemCategory)
 class ItemCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "show_on_main_page", "items_count")
+    list_display = ("name", "items_count", "show_on_main_page",  "is_active")
     search_fields = ("name",)
     ordering = ("name",)
     prepopulated_fields = {"slug": ("name",)}
-    list_editable = ("show_on_main_page",)
+    list_editable = ("is_active", "show_on_main_page",)
 
     def items_count(self, obj):
         return obj.items.count()

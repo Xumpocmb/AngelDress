@@ -9,10 +9,12 @@ from django.utils.text import slugify
 
 class ItemCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название категории")
-    slug = models.SlugField(max_length=100, unique=True, verbose_name="url", null=False, blank=False)
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
     image = models.ImageField(upload_to="dress_category/", verbose_name="Изображение", blank=True, null=True)
+    is_active = models.BooleanField(default=False, verbose_name="Активна")
     show_on_main_page = models.BooleanField(default=True, verbose_name="Показывать на главной странице")
+    slug = models.SlugField(max_length=100, unique=True, verbose_name="url", null=False, blank=False)
+
 
     class Meta:
         db_table = "app_catalog_category"
@@ -45,15 +47,19 @@ class Item(models.Model):
     categories = models.ManyToManyField(ItemCategory, verbose_name="Категории", related_name="items")
     name = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
+
     color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
     length = models.CharField(blank=True, null=True, max_length=50, choices=length_choices, verbose_name="Длина")
     fastener_type = models.CharField(blank=True, null=True, max_length=100, verbose_name="Тип застёжки")
     fit = models.CharField(blank=True, null=True, max_length=50, choices=fit_choices, verbose_name="Посадка", )
     details = models.TextField(blank=True, null=True, verbose_name="Детали",help_text="Перечислите детали через запятую")
     available_sizes = models.CharField(blank=True, null=True, max_length=200, verbose_name="Доступные размеры",help_text="Укажите размеры через дефис: XS-L")
+
     rental_period = models.PositiveIntegerField(blank=True, null=True, default=3, verbose_name="Срок аренды (дней)")
     rental_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды", default=0)
     pledge_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2, verbose_name="Залог",default=0)
+
+    is_active = models.BooleanField(default=True, verbose_name="Активен")
 
     created_at = models.DateTimeField(default=timezone.now, verbose_name="Дата создания")
     views_count = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
@@ -72,15 +78,17 @@ class Item(models.Model):
     def get_details_list(self):
         return [d.strip() for d in self.details.split(",") if d.strip()]
 
-    def get_sizes_list(self):
-        return [s.strip() for s in self.available_sizes.split(",") if s.strip()]
-
     def update_popularity(self):
         self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7
         self.save()
 
     def get_absolute_url(self):
         return reverse("app_catalog:dress_detail", args=[self.id])
+
+    def get_first_image_url(self):
+        if self.images.exists():
+            return self.images.first().image.url
+        return "/static/img/No-Image-Placeholder.png"
 
 
 class ItemImage(models.Model):

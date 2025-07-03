@@ -3,19 +3,23 @@ import random
 
 from django.shortcuts import render
 
-from app_catalog.models import Item
+from app_catalog.models import Item, ItemCategory
 from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse
 
 
 def index_view(request):
     slider_images = SliderImage.objects.all().order_by("order")
 
-    # Получаем 6 случайных платьев
-    random_dresses = Item.objects.prefetch_related("images").order_by("?")[:6]
+    # 6 случайных платьев
+    random_dresses = Item.objects.filter(is_active=True).prefetch_related("images").order_by("?")[:6]
+
+    main_page_categories = ItemCategory.objects.filter(show_on_main_page=True, is_active=True)[:4]
+    print(main_page_categories)
 
     context = {
         "slider_images": slider_images,
         "random_dresses": random_dresses,
+        "main_page_categories": main_page_categories,
     }
     return render(request, "app_home/index.html", context=context)
 
