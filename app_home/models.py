@@ -47,6 +47,7 @@ class SocialTypes(models.Model):
     SOCIAL_TYPES = [
         ("phone", "Телефон"),
         ("address", "Адрес"),
+        ("email", "Почта"),
         ("telegram", "Telegram"),
         ("instagram", "Instagram"),
         ("youtube", "YouTube"),
