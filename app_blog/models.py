@@ -3,6 +3,8 @@ import os
 from django.db import models
 from django.urls import reverse
 
+from app_home.models import SocialTypes
+
 
 class Author(models.Model):
     name = models.CharField(max_length=255)
@@ -13,35 +15,6 @@ class Author(models.Model):
     class Meta:
         verbose_name = "Автор"
         verbose_name_plural = "Авторы"
-
-
-class SocialTypes(models.Model):
-    SOCIAL_TYPES = [
-        ("telegram", "Telegram"),
-        ("instagram", "Instagram"),
-        ("youtube", "YouTube"),
-        ("tiktok", "TikTok"),
-        ("facebook", "Facebook"),
-        ("x", "X (Twitter)"),
-        ("linkedin", "LinkedIn"),
-        ("snapchat", "Snapchat"),
-        ("pinterest", "Pinterest"),
-        ("reddit", "Reddit"),
-        ("whatsapp", "WhatsApp"),
-        ("discord", "Discord"),
-        ("twitch", "Twitch"),
-        ("vk", "VK"),
-    ]
-    name = models.CharField(
-        max_length=20, choices=SOCIAL_TYPES, verbose_name="Тип социальной сети"
-    )
-
-    def __str__(self):
-        return self.get_name_display()
-
-    class Meta:
-        verbose_name = "Тип социальной сети"
-        verbose_name_plural = "Типы социальных сетей"
 
 
 class AuthorSocial(models.Model):

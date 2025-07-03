@@ -10,8 +10,8 @@ class SliderImageAdmin(admin.ModelAdmin):
 
 
 class ContactInfoAdmin(admin.ModelAdmin):
-    def has_add_permission(self, request):
-        return not ContactInfo.objects.exists()
+    list_display = ["type", "title", "link", "is_active"]
+    list_editable = ["is_active"]
 
 admin.site.register(SliderImage, SliderImageAdmin)
 admin.site.register(ContactInfo, ContactInfoAdmin)

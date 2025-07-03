@@ -13,72 +13,32 @@
 
         <!-- Контакты -->
         <div class="contact_details">
-            <!-- Instagram -->
-            {% if contact_info.instagram %}
-                <div class="contact_detail">
-                    <img src="{% static 'img/instagram_logo.png' %}" alt="Instagram Icon"
-                         class="contact_icon">
-                    <a href="{{ contact_info.instagram }}" class="contact_link">@ANGELDRESS.RU</a>
-                    <p class="contact_description">Найдите нас в Instagram</p>
-                </div>
-            {% endif %}
+            {% for contact in contact_info %}
+                {% if contact.link %}
+                    <div class="contact_detail">
+                        <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
 
-            <!-- Электронная почта -->
-            <div class="contact_detail">
-                <img src="{% static 'img/email_logo.png' %}" alt="Mail Icon" class="contact_icon">
-                <a href="mailto:{{ contact_info.email }}"
-                   class="contact_link">{{ contact_info.email|upper }}</a>
-                <p class="contact_description">Напишите нам</p>
-            </div>
+                        {% if contact.type.name == 'email' %}
+                            <a href="mailto:{{ contact.link }}" class="contact_link">{{ contact.link|upper }}</a>
+                        {% elif contact.type.name == 'phone' %}
+                            <a href="tel:{{ contact.link }}" class="contact_link">{{ contact.link }}</a>
+                        {% elif contact.type.name in 'address' %}
+                            <p class="contact_address">{{ contact.link|upper }}</p>
+                        {% else %}
+                            <a href="{{ contact.link }}" class="contact_link" target="_blank">{{ contact.title }}</a>
+                        {% endif %}
 
-            <!-- Телефон -->
-            <div class="contact_detail">
-                <img src="{% static 'img/phone_logo.png' %}" alt="Phone Icon" class="contact_icon">
-                <a href="tel:{{ contact_info.phone }}" class="contact_link">{{ contact_info.phone }}</a>
-                <p class="contact_description">Позвоните нам</p>
-            </div>
-
-            <!-- Адрес -->
-            <div class="contact_detail">
-                <img src="{% static 'img/map_logo.png' %}" alt="Map Icon" class="contact_icon">
-                <p class="contact_address">{{ contact_info.address|upper }}</p>
-                <p class="contact_description">Примерьте платье в Шоу-рум</p>
-            </div>
-
-            <!-- vk -->
-            {% if contact_info.vk %}
-                <div class="contact_detail">
-                    <img src="{% static 'img/vk_logo_round.png' %}" alt="VK Icon" class="contact_icon">
-                    <a href="{{ contact_info.vk }}" class="contact_link">ВКонтакте</a>
-                    <p class="contact_description">Наша группа ВКонтакте</p>
-                </div>
-            {% endif %}
-
-            <!-- tiktok -->
-            {% if contact_info.tiktok %}
-                <div class="contact_detail">
-                    <img src="{% static 'img/social_icons/tiktok.png' %}" alt="TikTok Icon" class="contact_icon">
-                    <a href="{{ contact_info.tiktok }}" class="contact_link">TikTok</a>
-                    <p class="contact_description">Наш TikTok</p>
-                </div>
-            {% endif %}
-
-        <!-- youtube -->
-            {% if contact_info.youtube %}
-                <div class="contact_detail">
-                    <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube Icon" class="contact_icon">
-                    <a href="{{ contact_info.youtube }}" class="contact_link">YouTube</a>
-                    <p class="contact_description">Наш канал YouTube</p>
-                </div>
-            {% endif %}
-        <!-- telegram -->
-            {% if contact_info.telegram %}
-                <div class="contact_detail">
-                    <img src="{% static 'img/social_icons/telegram.png' %}" alt="Telegram Icon" class="contact_icon">
-                    <a href="{{ contact_info.telegram }}" class="contact_link">Telegram</a>
-                    <p class="contact_description">Наш канал Telegram</p>
-                </div>
-            {% endif %}
+                        <p class="contact_description">
+                            {% if contact.title %}
+                                {{ contact.title }}
+                            {% else %}
+                                {{ contact.type.get_name_display }}
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
