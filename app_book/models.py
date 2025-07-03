@@ -1,5 +1,5 @@
 from django.db import models
-from app_catalog.models import Dress
+from app_catalog.models import Item
 
 
 class RentalRequest(models.Model):
@@ -14,7 +14,7 @@ class RentalRequest(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя и фамилия')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     email = models.EmailField(verbose_name='Email')
-    dresses = models.ManyToManyField(Dress, verbose_name='Платья', help_text='Кликните, чтобы выбрать платья, которые интересуют клиента /')
+    items = models.ManyToManyField(Item, verbose_name='Товары', help_text='Кликните, чтобы выбрать товары, которые интересуют клиента /')
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,

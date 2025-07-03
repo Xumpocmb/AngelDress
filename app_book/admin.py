@@ -4,24 +4,23 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 
-from app_book.forms import RentalRequestForm
 from app_book.models import RentalRequest
 
 
-class DressInline(admin.TabularInline):
-    model = RentalRequest.dresses.through
+class ItemInline(admin.TabularInline):
+    model = RentalRequest.items.through
     extra = 0
     verbose_name = "Платье"
     verbose_name_plural = "Бронируемые платья"
 
-    raw_id_fields = ["dress"]
+    raw_id_fields = ["item"]
     readonly_fields = ["public_url"]
 
     def public_url(self, instance):
         """Ссылка на платье на сайте."""
-        if instance and instance.dress:
+        if instance and instance.item:
             url = reverse(
-                "app_catalog:dress_detail", kwargs={"dress_id": instance.dress.id}
+                "app_catalog:item_detail", kwargs={"item_id": instance.item.id}
             )
             return format_html(
                 '<a href="{}" target="_blank">Посмотреть на сайте</a>', url
@@ -46,9 +45,9 @@ class RentalRequestAdmin(admin.ModelAdmin):
     search_fields = ("name", "phone", "email")
     readonly_fields = ("created_at",)
     list_editable = ("status",)
-    inlines = [DressInline]
+    inlines = [ItemInline]
 
-    exclude = ("dresses",)
+    exclude = ("items",)
 
     def whatsapp_button(self, obj):
         phone_clean = "".join(filter(str.isdigit, obj.phone))
@@ -56,10 +55,10 @@ class RentalRequestAdmin(admin.ModelAdmin):
         if not phone_clean:
             return "-"
 
-        dress_names = ", ".join([str(dress) for dress in obj.dresses.all()])
+        item_names = ", ".join([str(item) for item in obj.items.all()])
         message = (
             f"Здравствуйте, {obj.name}!\n"
-            f"Спасибо за Вашу заявку! Вы записались на примерку следующих платьев: {dress_names}.\n"
+            f"Спасибо за Вашу заявку! Вы записались на примерку следующих товаров: {item_names}.\n"
             f"Мы свяжемся с вами в ближайшее время."
         )
         encoded_message = quote_plus(message)

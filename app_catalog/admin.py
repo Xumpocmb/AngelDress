@@ -2,17 +2,15 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 
 from .models import (
-    Dress,
-    DressImage,
-    DressCategory,
-    DressVideo,
-    Accessory,
-    AccessoryImage,
+    Item,
+    ItemImage,
+    ItemCategory,
+    ItemVideo,
 )
 
 
-class DressImageInline(admin.TabularInline):
-    model = DressImage
+class ItemImageInline(admin.TabularInline):
+    model = ItemImage
     extra = 1
     readonly_fields = ["image_tag"]
     fields = ("image", "image_tag", "order", "alt_text")
@@ -25,8 +23,8 @@ class DressImageInline(admin.TabularInline):
     image_tag.short_description = "Предпросмотр"
 
 
-class DressVideoInline(admin.TabularInline):
-    model = DressVideo
+class ItemVideoInline(admin.TabularInline):
+    model = ItemVideo
     extra = 1
     readonly_fields = ("video_tag",)
     fields = ("video", "video_tag", "order", "alt_text")
@@ -41,8 +39,8 @@ class DressVideoInline(admin.TabularInline):
     video_tag.short_description = "Предпросмотр"
 
 
-@admin.register(Dress)
-class DressAdmin(admin.ModelAdmin):
+@admin.register(Item)
+class Itemdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "display_categories",
@@ -58,7 +56,7 @@ class DressAdmin(admin.ModelAdmin):
         "fit",
     )
     search_fields = ("name", "description")
-    inlines = [DressImageInline, DressVideoInline]
+    inlines = [ItemImageInline, ItemVideoInline]
     filter_horizontal = ("categories",)
 
     fieldsets = (
@@ -108,28 +106,16 @@ class DressAdmin(admin.ModelAdmin):
     display_categories.short_description = "Категории"
 
 
-@admin.register(DressCategory)
-class DressCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "show_on_main_page", "dress_count")
+@admin.register(ItemCategory)
+class ItemCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "show_on_main_page", "items_count")
     search_fields = ("name",)
     ordering = ("name",)
     prepopulated_fields = {"slug": ("name",)}
     list_editable = ("show_on_main_page",)
 
-    def dress_count(self, obj):
-        return obj.dresses.count()
+    def items_count(self, obj):
+        return obj.items.count()
 
-    dress_count.short_description = "Количество"
+    items_count.short_description = "Количество"
 
-
-class AccessoryImageInline(admin.TabularInline):
-    model = AccessoryImage
-    extra = 1
-
-
-@admin.register(Accessory)
-class AccessoryAdmin(admin.ModelAdmin):
-    inlines = [AccessoryImageInline]
-    list_display = ("name",)
-    search_fields = ("name",)
-    prepopulated_fields = {"slug": ("name",)}

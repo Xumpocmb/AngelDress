@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from app_catalog.models import Dress
+from app_catalog.models import Item
 
 
 def wishlist_view(request) -> HttpResponse:
@@ -13,7 +13,7 @@ def wishlist_view(request) -> HttpResponse:
     if wishlist:
         # Проверяем, существуют ли такие Dress в БД
         wishlist_ids = [int(dress_id) for dress_id in wishlist]
-        existing_dresses = Dress.objects.filter(id__in=wishlist_ids).values_list(
+        existing_dresses = Item.objects.filter(id__in=wishlist_ids).values_list(
             "id", flat=True
         )
 
@@ -24,7 +24,7 @@ def wishlist_view(request) -> HttpResponse:
         request.session["wishlist"] = valid_wishlist
         request.session.modified = True
 
-        dresses = Dress.objects.filter(id__in=valid_wishlist).order_by("-created_at")
+        dresses = Item.objects.filter(id__in=valid_wishlist).order_by("-created_at")
 
         paginator = Paginator(dresses, 9)
         page_number = request.GET.get("page")
@@ -36,7 +36,7 @@ def wishlist_view(request) -> HttpResponse:
         except EmptyPage:
             page_obj = paginator.page(paginator.num_pages)
     else:
-        paginator = Paginator(Dress.objects.none(), 9)
+        paginator = Paginator(Item.objects.none(), 9)
         page_obj = paginator.page(1)
 
     context = {
@@ -49,7 +49,7 @@ def wishlist_view(request) -> HttpResponse:
 def toggle_wishlist(request, dress_id):
     if request.method == "POST":
         wishlist = request.session.get("wishlist", [])
-        dress = get_object_or_404(Dress, pk=dress_id)
+        dress = get_object_or_404(Item, pk=dress_id)
 
         if dress_id in wishlist:
             wishlist.remove(dress_id)

@@ -12,7 +12,7 @@ from django_ratelimit.decorators import ratelimit
 
 from app_newsletter.models import Subscriber
 from .forms import RentalRequestForm
-from .models import Dress
+from .models import Item
 
 
 @require_http_methods(["POST"])
@@ -56,7 +56,7 @@ def create_rental_request(request):
                     status=400
                 )
 
-            dresses = Dress.objects.filter(id__in=dress_ids).distinct()[:10]
+            dresses = Item.objects.filter(id__in=dress_ids).distinct()[:10]
 
             with transaction.atomic():
                 rental_request = form.save(commit=False)

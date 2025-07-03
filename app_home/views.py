@@ -1,27 +1,23 @@
+from calendar import c
+import random
+
 from django.shortcuts import render
 
-from app_catalog.models import Dress, DressCategory
-from app_home.models import RentRules, SliderImage, TermsOfUse
+from app_catalog.models import Item
+from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse
 
 
 def index_view(request):
     slider_images = SliderImage.objects.all().order_by("order")
 
-    random_dresses = Dress.objects.prefetch_related("images").order_by("?")[:6]
-
-    main_page_categories = DressCategory.objects.filter(show_on_main_page=True)[:4]
+    # Получаем 6 случайных платьев
+    random_dresses = Item.objects.prefetch_related("images").order_by("?")[:6]
 
     context = {
         "slider_images": slider_images,
         "random_dresses": random_dresses,
-        "main_page_categories": main_page_categories,
     }
     return render(request, "app_home/index.html", context=context)
-
-
-def grouper(iterable, n):
-    """Группирует элементы списка по n штук"""
-    return [iterable[i : i + n] for i in range(0, len(iterable), n)]
 
 
 def contact_view(request):
