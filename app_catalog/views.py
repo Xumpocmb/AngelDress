@@ -6,7 +6,7 @@ from app_home.models import RentRules
 
 def item_catalog_view(request):
     category_slug = request.GET.get("category")
-    dresses = Item.objects.all().prefetch_related(
+    dresses = Item.objects.filter(is_active=True).prefetch_related(
         "categories"
     )
 
@@ -34,7 +34,7 @@ def item_catalog_view(request):
 
     context = {
         "page_obj": page_obj,
-        "categories": ItemCategory.objects.all(),
+        "categories": ItemCategory.objects.filter(is_active=True),
         "current_category": category_slug,
         "current_sort": sort,
     }

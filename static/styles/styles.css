@@ -2190,7 +2190,7 @@ p {
 }
 
 .form_header {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .form_title {
@@ -2305,7 +2305,6 @@ p {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: 10px;
     font-family: 'Cormorant Infant', serif;
 }
 
@@ -2943,7 +2942,6 @@ button {
 
 .form_message {
     font-size: 14px;
-    padding-top: 0.5rem;
 }
 
 .form_message--success {
