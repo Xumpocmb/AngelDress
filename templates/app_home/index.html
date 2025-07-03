@@ -97,25 +97,24 @@
                     {% include 'includes/contact_form.html' %}
                 </div>
             </div>
-
         </section>
-        <!-- Секция предпросмотра некоторых платьев -->
-        <section class="items-preview_section">
-            <!-- Заголовок -->
-            <div class="items-preview_header">
-                <div class="items-preview_text_section">
-                    <div class="items-preview_line"></div>
-                    <p class="items-preview_subtitle">Коллекция, которая вдохновляет</p>
-                    <h2 class="items-preview_title">
-                        Платья, в которых ты — главная героиня
-                    </h2>
+        {% if random_dresses %}
+            <!-- Секция предпросмотра некоторых платьев -->
+            <section class="items-preview_section">
+                <!-- Заголовок -->
+                <div class="items-preview_header">
+                    <div class="items-preview_text_section">
+                        <div class="items-preview_line"></div>
+                        <p class="items-preview_subtitle">Коллекция, которая вдохновляет</p>
+                        <h2 class="items-preview_title">
+                            Платья, в которых ты — главная героиня
+                        </h2>
+                    </div>
+                    <a href="{% url 'app_catalog:items_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
                 </div>
-                <a href="{% url 'app_catalog:items_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
-            </div>
 
-            <!-- Карточки -->
-            <div class="product-grid">
-                {% if random_dresses %}
+                <!-- Карточки -->
+                <div class="product-grid">
                     {% for dress in random_dresses %}
                         <div class="product-card">
                             <div class="img-section">
@@ -142,10 +141,10 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+            </section>
+        {% endif %}
 
-                {% endif %}
-            </div>
-        </section>
         {% if random_accessories %}
             <!-- Секция accessories -->
             <section class="accessories_section">
