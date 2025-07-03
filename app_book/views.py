@@ -16,7 +16,7 @@ from .models import Item
 
 
 @require_http_methods(["POST"])
-@ratelimit(key='ip', rate='1/m', block=True)
+# @ratelimit(key='ip', rate='1/m', block=True)
 def create_rental_request(request):
     if not request.content_type.startswith('multipart/form-data'):
         return JsonResponse(
@@ -27,36 +27,37 @@ def create_rental_request(request):
     if len(request.POST) > 20:
         raise SuspiciousOperation("Слишком много полей в запросе")
 
+    print("POST data:", request.POST)
+    print("item_ids:", request.POST.get("item_ids"))
+
     form = RentalRequestForm(request.POST)
 
     if form.is_valid():
         try:
             try:
-                dress_ids = json.loads(request.POST.get("dress_ids", "[]"))
-                print(dress_ids)
-                dress_ids = [int(did) for did in dress_ids if str(did).isdigit() and int(did) > 0]
-                print(dress_ids)
+                item_ids = json.loads(request.POST.get("item_ids", "[]"))
+                item_ids = [int(did) for did in item_ids if str(did).isdigit() and int(did) > 0]
             except (json.JSONDecodeError, ValueError, TypeError) as e:
                 return JsonResponse(
                     {"success": False, "error": "Неверный формат списка платьев"},
                     status=400
                 )
-            if not isinstance(dress_ids, list):
-                raise ValueError("Неверный формат dress_ids")
+            if not isinstance(item_ids, list):
+                raise ValueError("Неверный формат item_ids")
 
-            if len(dress_ids) > 10:
+            if len(item_ids) > 10:
                 return JsonResponse(
                     {"success": False, "error": "Можно выбрать не более 10 платьев"},
                     status=400
                 )
 
-            if not dress_ids:
+            if not item_ids:
                 return JsonResponse(
                     {"success": False, "error": "Не выбрано ни одного платья"},
                     status=400
                 )
 
-            dresses = Item.objects.filter(id__in=dress_ids).distinct()[:10]
+            items = Item.objects.filter(id__in=item_ids).distinct()[:10]
 
             with transaction.atomic():
                 rental_request = form.save(commit=False)
@@ -65,7 +66,7 @@ def create_rental_request(request):
                 rental_request.phone = clean_phone(form.cleaned_data['phone'])
                 rental_request.email = form.cleaned_data['email'].lower().strip()
                 rental_request.save()
-                rental_request.dresses.set(dresses)
+                rental_request.items.set(items)
 
                 try:
                     Subscriber.objects.get_or_create(
@@ -79,7 +80,7 @@ def create_rental_request(request):
                 context = {
                     "user_name": rental_request.name,
                     "request_id": rental_request.id,
-                    "dresses": dresses,
+                    "items": items,
                     "phone": rental_request.phone,
                 }
 
@@ -106,16 +107,14 @@ def create_rental_request(request):
                 telegram_token = settings.TELEGRAM_BOT_TOKEN
                 telegram_chat_id = settings.TELEGRAM_CHAT_ID
 
-                dresses_list = "\n".join(
-                    [f"- {dress.name} (ID: {dress.id})" for dress in dresses]
-                )
+                items_list = "\n".join([f"- {item.name} (ID: {item.id})" for item in items])
 
                 message_text = (
                     f"🔔 Новая заявка на бронирование примерки!\n\n"
                     f"👤 Имя: {rental_request.name}\n"
                     f"📞 Телефон: {rental_request.phone}\n"
                     f"📧 Email: {rental_request.email}\n"
-                    f"👗 Выбранные платья:\n{dresses_list}\n"
+                    f"👗 Выбранные платья:\n{items_list}\n"
                     f"🔗 ID заявки: {rental_request.id}"
                 )
 

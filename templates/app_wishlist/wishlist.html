@@ -21,18 +21,18 @@
             <!-- Карточки товаров -->
             {% if page_obj.object_list %}
                 <div class="product-grid">
-                    {% for dress in page_obj %}
+                    {% for item in page_obj %}
                         <div class="product-card">
                             <div class="img-section">
-                                <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
-                                     onclick="toggleWishlist(this, {{ dress.id }})">
+                                <div class="favorite-icon {% if item.id in request.session.wishlist %}active{% endif %}"
+                                     onclick="toggleWishlist(this, {{ item.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Remove from wishlist">
                                 </div>
-                                <a href="{% url 'app_catalog:dress_detail' dress.id %}">
-                                    {% with dress.images.first as main_image %}
+                                <a href="{% url 'app_catalog:item_detail' item.id %}">
+                                    {% with item.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ dress.name }}">
+                                                 alt="{{ item.name }}">
                                         {% else %}
                                             <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
                                                  alt="Нет изображения">
@@ -42,10 +42,10 @@
                             </div>
 
                             <div class="card-product-info">
-                                <p class="product-name">Арт.: {{ dress.name }}</p>
-                                <p class="product-price">Стоимость: {{ dress.rental_price }} ₽</p>
+                                <p class="product-name">Арт.: {{ item.name }}</p>
+                                <p class="product-price">Стоимость: {{ item.rental_price }} ₽</p>
                                 <div class="button-container" style="text-align: center">
-                                    <button class="button button-primary rent-button" id="rent-button" data-id="{{ dress.id }}">Забронировать</button>
+                                    <button class="button button-primary rent-button" id="rent-button" data-id="{{ item.id }}">Забронировать</button>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                 </div>
 
                 <form class="contact_form" id="contactForm">
-                    <input type="hidden" id="dress_ids" name="dress_ids" value="">
+                    <input type="hidden" id="item_ids" name="item_ids" value="">
                     <div class="form_group">
                         <input type="text" id="name" name="name" placeholder="Имя и Фамилия" class="form_input"
                                required>
@@ -105,7 +105,7 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
+                    <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ</button>
                 </form>
             </div>
         </div>

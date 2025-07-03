@@ -46,9 +46,9 @@
                     <td style="font-size: 16px; color: #333; padding-bottom: 20px;">
                         Вы выбрали следующие платья:
                         <ul style="padding-left: 20px; margin: 10px 0 0 0; color: #555;">
-                            {% for dress in dresses %}
+                            {% for item in items %}
                                 <li style="margin-bottom: 5px;">
-                                    {{ dress.name }} (от {{ dress.price_min }} ₽ до {{ dress.price_max }} ₽)
+                                    {{ item.name }} (от {{ item.price_min }} ₽ до {{ item.price_max }} ₽)
                                 </li>
                             {% endfor %}
                         </ul>

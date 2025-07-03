@@ -83,7 +83,7 @@
                                      onclick="toggleWishlist(this, {{ dress.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
                                 </div>
-                                <a href="{% url 'app_catalog:dress_detail' dress.id %}">
+                                <a href="{% url 'app_catalog:item_detail' dress.id %}">
                                     {% with dress.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"

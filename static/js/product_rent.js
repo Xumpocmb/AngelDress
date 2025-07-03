@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const rentButton = document.getElementById('rent-button');
     if (rentButton) {
         rentButton.addEventListener('click', function () {
-            const dressId = this.dataset.id;
-            const dressIdsInput = document.getElementById('dress_ids');
-            if (dressIdsInput) {
-                dressIdsInput.value = JSON.stringify([dressId]);
+            const itemId = this.dataset.id;
+            const itemIdsInput = document.getElementById('item_ids');
+            if (itemIdsInput) {
+                itemIdsInput.value = JSON.stringify([itemId]);
             }
 
             if (typeof window.openModal === 'function') {
@@ -56,13 +56,22 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: formData
         })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.error || 'Server error');
-                    });
+            .then(async response => {
+                const contentType = response.headers.get("content-type");
+
+                let data;
+                if (contentType && contentType.includes("application/json")) {
+                    data = await response.json();
+                } else {
+                    const text = await response.text();
+                    throw new Error(`Unexpected response format: ${text}`);
                 }
-                return response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Server error');
+                }
+
+                return data;
             })
             .then(data => {
                 if (data.success) {

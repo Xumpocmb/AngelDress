@@ -14,7 +14,7 @@ class StaticViewSitemap(Sitemap):
             'app_home:about',
             'app_home:contacts',
             'app_blog:blog',
-            'app_catalog:dress_catalog',
+            'app_catalog:items_catalog',
         ]
 
     def location(self, item):
@@ -41,4 +41,4 @@ class DressSitemap(Sitemap):
         return Item.objects.all().order_by('-created_at')
 
     def location(self, item):
-        return reverse('app_catalog:dress_detail', args=[item.id])
+        return reverse('app_catalog:item_detail', args=[item.id])

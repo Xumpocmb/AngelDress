@@ -6,7 +6,7 @@
             <h3 class="footer__title">Платья в прокат</h3>
             <ul class="footer__list">
                 {% for category in main_page_categories %}
-                <li><a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}" class="footer__link">{{ category.name }}</a></li>
+                <li><a href="{% url 'app_catalog:items_catalog' %}?category={{ category.slug }}" class="footer__link">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.target.classList.contains('modal-close')) {
             rentModal.style.display = 'none';
             contactForm.reset();
-            submitButton.textContent = 'ЗАБРОНИРОВАТЬ ПРИМЕРКУ';
+            submitButton.textContent = 'ЗАБРОНИРОВАТЬ';
             submitButton.disabled = false;
         }
     }
@@ -23,23 +23,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelectorAll('.rent-button').forEach(button => {
         button.addEventListener('click', function () {
-            const dressId = this.dataset.id;
-            document.getElementById('dress_ids').value = JSON.stringify([dressId]);
+            const itemId = this.dataset.id;
+            document.getElementById('item_ids').value = JSON.stringify([itemId]);
             openModal();
         });
     });
 
     document.querySelector('.rent-all-button').addEventListener('click', function () {
-        const dressIds = Array.from(document.querySelectorAll('.rent-button')).map(button => {
+        const itemIds = Array.from(document.querySelectorAll('.rent-button')).map(button => {
             return parseInt(button.dataset.id);
         });
 
-        if (dressIds.length === 0) {
+        if (itemIds.length === 0) {
             alert('Нет платьев для бронирования');
             return;
         }
 
-        document.getElementById('dress_ids').value = JSON.stringify(dressIds);
+        document.getElementById('item_ids').value = JSON.stringify(itemIds);
         openModal();
     });
 

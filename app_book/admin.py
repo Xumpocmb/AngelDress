@@ -20,7 +20,7 @@ class ItemInline(admin.TabularInline):
         """Ссылка на платье на сайте."""
         if instance and instance.item:
             url = reverse(
-                "app_catalog:item_detail", kwargs={"item_id": instance.item.id}
+                "app_catalog:dress_detail", kwargs={"dress_id": instance.item.id}
             )
             return format_html(
                 '<a href="{}" target="_blank">Посмотреть на сайте</a>', url

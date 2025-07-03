@@ -68,7 +68,7 @@
                         <div class="choosing_dresses_content">
                             <h2>{{ category.name }} платья</h2>
                             <p>{{ category.description }}</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ
+                            <a href="{% url 'app_catalog:items_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ
                                 →</a>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         Платья, в которых ты — главная героиня
                     </h2>
                 </div>
-                <a href="{% url 'app_catalog:dress_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
+                <a href="{% url 'app_catalog:items_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
             </div>
 
             <!-- Карточки -->
@@ -123,7 +123,7 @@
                                      onclick="toggleWishlist(this, {{ dress.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
                                 </div>
-                                <a href="{% url 'app_catalog:dress_detail' dress.id %}">
+                                <a href="{% url 'app_catalog:item_detail' dress.id %}">
                                     {% with dress.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"
@@ -170,7 +170,7 @@
                     <div class="accessories_cards">
                         {% for item in random_accessories %}
                             <div class="accessories_card">
-                                <a href="{% url 'app_catalog:dress_detail' item.id %}">
+                                <a href="{% url 'app_catalog:item_detail' item.id %}">
                                     {% if item.images.exists %}
                                         <img src="{{ item.images.first.image.url }}" alt="{{ item.name }}">
                                     {% else %}
