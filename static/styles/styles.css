@@ -1077,8 +1077,8 @@ button {
 
 .contact_details {
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 
@@ -1145,7 +1145,7 @@ button {
     }
 
     .contact_details {
-        grid-template-columns: repeat(1, minmax(200px, 1fr));
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -2136,12 +2136,6 @@ p {
     margin-bottom: 30px;
     text-align: center;
     color: var(--text-color);
-}
-
-.contact_details {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: repeat(2, 1fr);
 }
 
 .contact_detail {
