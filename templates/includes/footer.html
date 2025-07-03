@@ -5,10 +5,9 @@
         <div class="footer__column">
             <h3 class="footer__title">Платья в прокат</h3>
             <ul class="footer__list">
-                <li><a href="#" class="footer__link">Вечерние</a></li>
-                <li><a href="#" class="footer__link">Короткие</a></li>
-                <li><a href="#" class="footer__link">Длинные</a></li>
-                <li><a href="#" class="footer__link">Коктейльные</a></li>
+                {% for category in main_page_categories %}
+                <li><a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}" class="footer__link">{{ category.name }}</a></li>
+                {% endfor %}
             </ul>
         </div>
 
@@ -16,9 +15,9 @@
         <div class="footer__column">
             <h3 class="footer__title">Покупателям</h3>
             <ul class="footer__list">
-                <li><a href="#" class="footer__link">Напишите нам</a></li>
-                <li><a href="#" class="footer__link">Часто задаваемые вопросы</a></li>
-                <li><a href="#" class="footer__link">Блог</a></li>
+                <li><a href="{% url 'app_home:contacts' %}" class="footer__link">Напишите нам</a></li>
+                <li><a href="{% url 'app_home:about' %}" class="footer__link">Часто задаваемые вопросы</a></li>
+                <li><a href="{% url 'app_blog:blog' %}" class="footer__link">Блог</a></li>
             </ul>
         </div>
 
@@ -26,10 +25,8 @@
         <div class="footer__column">
             <h3 class="footer__title">О нас</h3>
             <ul class="footer__list">
-                <li><a href="#" class="footer__link">Наша компания</a></li>
-                <li><a href="#" class="footer__link">Вступить в команду</a></li>
-                <li><a href="#" class="footer__link">Соглашение</a></li>
-                <li><a href="#" class="footer__link">Скидки</a></li>
+                <li><a href="{% url 'app_home:about' %}" class="footer__link">Наша компания</a></li>
+                <li><a href="{% url 'app_home:user_agreement' %}" class="footer__link">Соглашение</a></li>
             </ul>
         </div>
 

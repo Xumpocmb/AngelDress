@@ -267,6 +267,31 @@ a {
     margin: 0 auto;
 }
 
+.accessories_heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.choosing_dresses_title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.choosing_dresses_subtitle {
+    color: #D5B0A0;
+    text-transform: uppercase;
+    margin-left: 5px;
+    font-size: 1.1rem;
+}
+
+
 .choosing_dresses_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -345,9 +370,8 @@ a {
 
 .container_write_us {
     display: flex;
-    /*max-width: 1200px;*/
     margin: 0 auto;
-    gap: 60px;
+    justify-content: space-between;
     align-items: center;
     background-color: #d9cbbf;
     height: 710px;
@@ -370,8 +394,8 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
+    gap: 5px;
+    padding-right: 40px;
 }
 
 label,
@@ -444,6 +468,7 @@ button {
     .write_us_text-form-box {
         width: 80%;
         flex: 1 0 100%;
+        padding-right: 0;
     }
 }
 
@@ -474,8 +499,14 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
-    gap: 10px;
+    gap: 5px;
+}
 
+@media (max-width: 992px) {
+    .items-preview_header {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 
@@ -492,6 +523,13 @@ button {
 .items-preview_text_section {
     position: relative;
     width: 60%;
+}
+
+@media (max-width: 992px) {
+    .items-preview_text_section {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .items-preview_subtitle {
@@ -639,15 +677,6 @@ button {
     }
 }
 
-.accessories_heading {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 1rem;
-    position: relative;
-    margin-bottom: 20px;
-}
-
 .accessories_line {
     border: 1px solid #D5B0A0;
     box-sizing: border-box;
@@ -728,11 +757,11 @@ button {
     .accessories_text {
         width: 100%;
         text-align: center;
-        padding: 0 30px;
     }
 
     .accessories_subtitle {
         margin-left: 0;
+        font-size: 1.0rem;
     }
 
     .accessories_line {
@@ -860,15 +889,16 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    gap: 5px;
 }
 
 .blog_title {
-    font-size: 36px;
+    font-size: 1.2rem;
     line-height: 1.2;
 }
 
 .blog_button {
-    padding: 10px 20px;
+    padding: 10px 5px;
     font-size: 14px;
     font-weight: bold;
     color: #b37f60;
@@ -877,6 +907,13 @@ button {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .blog_button {
+        font-size: 0.6rem;
+        text-wrap: nowrap;
+    }
 }
 
 .blog_button:hover {

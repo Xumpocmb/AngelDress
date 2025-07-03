@@ -13,13 +13,9 @@ def index_view(request):
     # 6 случайных платьев
     random_dresses = Item.objects.filter(is_active=True).prefetch_related("images").order_by("?")[:6]
 
-    main_page_categories = ItemCategory.objects.filter(show_on_main_page=True, is_active=True)[:4]
-    print(main_page_categories)
-
     context = {
         "slider_images": slider_images,
         "random_dresses": random_dresses,
-        "main_page_categories": main_page_categories,
     }
     return render(request, "app_home/index.html", context=context)
 

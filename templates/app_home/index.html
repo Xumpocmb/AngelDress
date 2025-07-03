@@ -44,11 +44,17 @@
         <section class="heading">
             <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
         </section>
-        
-        
-        
+
+
         <!-- Секция выбора платьев -->
         <section class="choosing_dresses">
+            <div class="accessories_heading">
+                <div class="accessories_line"></div>
+                <p class="choosing_dresses_subtitle">Платья на любой случай</p>
+            </div>
+            <h2 class="choosing_dresses_title">
+                Твоя коллекция красоты
+            </h2>
             <div class="choosing_dresses_grid">
                 {% for category in main_page_categories %}
                     <div class="choosing_dresses_item {% cycle '' 'reversed' 'reversed' '' %}">
@@ -62,35 +68,35 @@
                         <div class="choosing_dresses_content">
                             <h2>{{ category.name }} платья</h2>
                             <p>{{ category.description }}</p>
-                            <a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ →</a>
+                            <a href="{% url 'app_catalog:dress_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ
+                                →</a>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </section>
-        
-        
-        
-        <!-- Секция accessories -->
+
+
+        <!-- Секция write_us -->
         <section class="write_us">
-                <div class="container_write_us">
-                    <!-- Левая часть -->
-                    <div class="write_us_image-box">
-                        <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
-                             alt="full-length-happy-beautiful-young-woman.png">
-                    </div>
-
-                    <!-- Правая часть -->
-                    <div class="write_us_text-form-box">
-                        <div class="write_us_text-content">
-                            <p class="write_us_label">НАПИШИТЕ НАМ</p>
-                            <h2 class="write_us_title">Супер Стиль С<br>Нашим Стилистом</h2>
-
-                        </div>
-
-                        {% include 'includes/contact_form.html' %}
-                    </div>
+            <div class="container_write_us">
+                <!-- Левая часть -->
+                <div class="write_us_image-box">
+                    <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
+                         alt="full-length-happy-beautiful-young-woman.png">
                 </div>
+
+                <!-- Правая часть -->
+                <div class="write_us_text-form-box">
+                    <div class="write_us_text-content">
+                        <p class="write_us_label">Запишитесь на подбор</p>
+                        <h2 class="write_us_title">Индивидуальный образ вместе со стилистом</h2>
+
+                    </div>
+
+                    {% include 'includes/contact_form.html' %}
+                </div>
+            </div>
 
         </section>
         <!-- Секция предпросмотра некоторых платьев -->
@@ -99,10 +105,9 @@
             <div class="items-preview_header">
                 <div class="items-preview_text_section">
                     <div class="items-preview_line"></div>
-                    <p class="items-preview_subtitle">НА ЛЮБОЙ СЛУЧАЙ</p>
+                    <p class="items-preview_subtitle">Коллекция, которая вдохновляет</p>
                     <h2 class="items-preview_title">
-                        Найдите Прекрасное Платье<br>
-                        На Любой Случай
+                        Платья, в которых ты — главная героиня
                     </h2>
                 </div>
                 <a href="{% url 'app_catalog:dress_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
@@ -111,32 +116,32 @@
             <!-- Карточки -->
             <div class="product-grid">
                 {% if random_dresses %}
-                            {% for dress in random_dresses %}
-                                <div class="product-card">
-                                    <div class="img-section">
-                                        <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
-                                             onclick="toggleWishlist(this, {{ dress.id }})">
-                                            <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
-                                        </div>
-                                        <a href="{% url 'app_catalog:dress_detail' dress.id %}">
-                                            {% with dress.images.first as main_image %}
-                                                {% if main_image %}
-                                                    <img class="product-image" src="{{ main_image.image.url }}"
-                                                         alt="{{ dress.name }}">
-                                                {% else %}
-                                                    <img class="product-image"
-                                                         src="{% static 'img/No-Image-Placeholder.png' %}"
-                                                         alt="Нет изображения">
-                                                {% endif %}
-                                            {% endwith %}
-                                        </a>
-                                    </div>
-                                    <div class="product-info">
-                                        <p class="product-name">{{ dress.name }}</p>
-                                        <p class="product-price">{{ dress.rental_price }} ₽</p>
-                                    </div>
+                    {% for dress in random_dresses %}
+                        <div class="product-card">
+                            <div class="img-section">
+                                <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
+                                     onclick="toggleWishlist(this, {{ dress.id }})">
+                                    <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
                                 </div>
-                            {% endfor %}
+                                <a href="{% url 'app_catalog:dress_detail' dress.id %}">
+                                    {% with dress.images.first as main_image %}
+                                        {% if main_image %}
+                                            <img class="product-image" src="{{ main_image.image.url }}"
+                                                 alt="{{ dress.name }}">
+                                        {% else %}
+                                            <img class="product-image"
+                                                 src="{% static 'img/No-Image-Placeholder.png' %}"
+                                                 alt="Нет изображения">
+                                        {% endif %}
+                                    {% endwith %}
+                                </a>
+                            </div>
+                            <div class="product-info">
+                                <p class="product-name">{{ dress.name }}</p>
+                                <p class="product-price">{{ dress.rental_price }} ₽</p>
+                            </div>
+                        </div>
+                    {% endfor %}
 
                 {% endif %}
             </div>
@@ -150,16 +155,13 @@
                     <div class="accessories_text">
                         <div class="accessories_heading">
                             <div class="accessories_line"></div>
-                            <p class="accessories_subtitle">ЛУЧШИЙ ВЫБОР</p>
+                            <p class="accessories_subtitle">Заверши свой образ</p>
                         </div>
                         <h2 class="accessories_title">
-                            Дополните Свой<br>
-                            Образ
+                            Твоя финальная деталь
                         </h2>
                         <p class="accessories_description">
-                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                            уровень
-                            погружения
+                            Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или текстуру — и образ заиграет по-новому.
                         </p>
                     </div>
 
@@ -233,48 +235,51 @@
                 <div class="blog_posts">
                     <!-- Пост 1 -->
                     <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
+                                                        class="blog_image"></div>
                         <div class="blog-text-area">
                             <p class="blog_author">Екатерина Шумская</p>
-                        <h3 class="blog_post_title">100 Идей На Лето</h3>
-                        <p class="blog_description">
-                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                            уровень
-                            погружения
-                        </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                            <h3 class="blog_post_title">100 Идей На Лето</h3>
+                            <p class="blog_description">
+                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                                уровень
+                                погружения
+                            </p>
+                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                         </div>
 
                     </div>
 
                     <!-- Пост 2 -->
                     <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
+                                                        class="blog_image"></div>
                         <div class="blog-text-area">
                             <p class="blog_author">Екатерина Шумская</p>
-                        <h3 class="blog_post_title">100 Идей На Лето</h3>
-                        <p class="blog_description">
-                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                            уровень
-                            погружения
-                        </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                            <h3 class="blog_post_title">100 Идей На Лето</h3>
+                            <p class="blog_description">
+                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                                уровень
+                                погружения
+                            </p>
+                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                         </div>
 
                     </div>
 
                     <!-- Пост 3 -->
                     <div class="blog_post">
-                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image" class="blog_image"></div>
+                        <div class="img-container"><img src="{% static 'img/blog1.png' %}" alt="Post Image"
+                                                        class="blog_image"></div>
                         <div class="blog-text-area">
                             <p class="blog_author">Екатерина Шумская</p>
-                        <h3 class="blog_post_title">100 Идей На Лето</h3>
-                        <p class="blog_description">
-                            В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
-                            уровень
-                            погружения
-                        </p>
-                        <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
+                            <h3 class="blog_post_title">100 Идей На Лето</h3>
+                            <p class="blog_description">
+                                В целом, конечно, глубокий уровень погружения обеспечивает. В целом, конечно, глубокий
+                                уровень
+                                погружения
+                            </p>
+                            <a href="#" class="blog_read_more">ПРОЧИТАТЬ</a>
                         </div>
 
                     </div>

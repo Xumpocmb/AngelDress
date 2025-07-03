@@ -2,7 +2,7 @@
     <div class="form_header">
         <h2 class="form_title">Оставьте Заявку</h2>
         <p class="form_subtitle">
-            Наши стилисты свяжутся с вами в ближайшее время
+            Мы поможем подобрать платье, которое подчеркнёт вашу индивидуальность. Просто оставьте контакт — и наш стилист сделает всё остальное.
         </p>
     </div>
 
@@ -67,14 +67,11 @@
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
     
-            // Сохраняем оригинальный текст кнопки
             const originalBtnText = submitBtn.textContent;
             
-            // Меняем состояние кнопки
             submitBtn.disabled = true;
             submitBtn.textContent = "Отправка заявки...";
             
-            // Очистка прошлых ошибок
             document.querySelectorAll(".form_error").forEach(el => el.textContent = "");
             messageBox.textContent = "";
             messageBox.className = "form_message";
@@ -119,7 +116,6 @@
                 messageBox.textContent = "Произошла ошибка. Попробуйте позже.";
                 messageBox.classList.add("form_message--error");
             } finally {
-                // Восстанавливаем состояние кнопки в любом случае
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
             }
