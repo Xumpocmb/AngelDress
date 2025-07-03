@@ -146,46 +146,51 @@
                 {% endif %}
             </div>
         </section>
-        <!-- Секция accessories -->
-        <section class="accessories_section">
-            <div class="accessories_container">
+        {% if random_accessories %}
+            <!-- Секция accessories -->
+            <section class="accessories_section">
+                <div class="accessories_container">
 
-                <div class="accessories_content">
-                    <!-- Текстовая часть -->
-                    <div class="accessories_text">
-                        <div class="accessories_heading">
-                            <div class="accessories_line"></div>
-                            <p class="accessories_subtitle">Заверши свой образ</p>
-                        </div>
-                        <h2 class="accessories_title">
-                            Твоя финальная деталь
-                        </h2>
-                        <p class="accessories_description">
-                            Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или текстуру
-                            — и образ заиграет по-новому.
-                        </p>
-                    </div>
-
-                    <!-- Карточки аксессуаров -->
-                    <div class="accessories_cards">
-                        {% for item in random_accessories %}
-                            <div class="accessories_card">
-                                <a href="{% url 'app_catalog:item_detail' item.id %}">
-                                    {% if item.images.exists %}
-                                        <img src="{{ item.images.first.image.url }}" alt="{{ item.name }}">
-                                    {% else %}
-                                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения">
-                                    {% endif %}
-                                </a>
-                                <p class="accessories_card_title">{{ item.name|upper }}</p>
+                    <div class="accessories_content">
+                        <!-- Текстовая часть -->
+                        <div class="accessories_text">
+                            <div class="accessories_heading">
+                                <div class="accessories_line"></div>
+                                <p class="accessories_subtitle">Заверши свой образ</p>
                             </div>
-                        {% endfor %}
+                            <h2 class="accessories_title">
+                                Твоя финальная деталь
+                            </h2>
+                            <p class="accessories_description">
+                                Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или
+                                текстуру
+                                — и образ заиграет по-новому.
+                            </p>
+                        </div>
+
+                        <!-- Карточки аксессуаров -->
+                        <div class="accessories_cards">
+                            {% for item in random_accessories %}
+                                <div class="accessories_card">
+                                    <a href="{% url 'app_catalog:item_detail' item.id %}">
+                                        {% if item.images.exists %}
+                                            <img src="{{ item.images.first.image.url }}" alt="{{ item.name }}">
+                                        {% else %}
+                                            <img src="{% static 'img/No-Image-Placeholder.png' %}"
+                                                 alt="Нет изображения">
+                                        {% endif %}
+                                    </a>
+                                    <p class="accessories_card_title">{{ item.name|upper }}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
+                    <!-- Фоновое изображение модели -->
+                    <img src="{% static 'img/model_with_accessories.png' %}" alt="Model with Accessories">
                 </div>
-                <!-- Фоновое изображение модели -->
-                <img src="{% static 'img/model_with_accessories.png' %}" alt="Model with Accessories">
-            </div>
-        </section>
+            </section>
+        {% endif %}
+
         <!-- Секция счетчика -->
         <section class="counter_section">
             <hr class="counter_section_line">
@@ -219,42 +224,45 @@
             </div>
             <hr class="counter_section_line">
         </section>
-        <!-- Секция блога -->
-        <section class="blog_section">
-            <div class="blog_container">
-                <!-- Заголовок и кнопка -->
-                <div class="blog_header">
-                    <h2 class="blog_title">Наши Специалисты<br>Говорят На Темы</h2>
-                    <a href="{% url 'app_blog:blog' %}" class="blog_button">ОТКРЫТЬ БЛОГ</a>
-                </div>
 
-                <!-- Блоки постов -->
-                <div class="blog_posts">
-                    <!-- Пост 1 -->
-                    {% for post in latest_posts %}
-                        <div class="blog_post">
-                            <div class="img-container">
-                                {% if post.image %}
-                                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog_image">
-                                {% else %}
-                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Default Image"
-                                         class="blog_image">
-                                {% endif %}
+        {% if latest_posts %}
+            <!-- Секция блога -->
+            <section class="blog_section">
+                <div class="blog_container">
+                    <!-- Заголовок и кнопка -->
+                    <div class="blog_header">
+                        <h2 class="blog_title">Наши Специалисты<br>Говорят На Темы</h2>
+                        <a href="{% url 'app_blog:blog' %}" class="blog_button">ОТКРЫТЬ БЛОГ</a>
+                    </div>
+                    <!-- Блоки постов -->
+                    <div class="blog_posts">
+                        <!-- Пост 1 -->
+                        {% for post in latest_posts %}
+                            <div class="blog_post">
+                                <div class="img-container">
+                                    {% if post.image %}
+                                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog_image">
+                                    {% else %}
+                                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Default Image"
+                                             class="blog_image">
+                                    {% endif %}
+                                </div>
+                                <div class="blog-text-area">
+                                    <p class="blog_author">{{ post.author.name }}</p>
+                                    <h3 class="blog_post_title">{{ post.title }}</h3>
+                                    <p class="blog_description">
+                                        {{ post.content|truncatewords:20 }}
+                                    </p>
+                                    <a href="{{ post.get_absolute_url }}" class="blog_read_more">ПРОЧИТАТЬ</a>
+                                </div>
                             </div>
-                            <div class="blog-text-area">
-                                <p class="blog_author">{{ post.author.name }}</p>
-                                <h3 class="blog_post_title">{{ post.title }}</h3>
-                                <p class="blog_description">
-                                    {{ post.content|truncatewords:20 }}
-                                </p>
-                                <a href="{{ post.get_absolute_url }}" class="blog_read_more">ПРОЧИТАТЬ</a>
-                            </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
 
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        {% endif %}
+
         <!-- Секция контактов -->
         <section class="contact_section">
             {% include "includes/contact_section.html" %}
