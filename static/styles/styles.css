@@ -1514,6 +1514,12 @@ p {
     overflow: hidden;
 }
 
+@media (max-width: 992px) {
+    .reviews-carousel {
+        min-height: 400px;
+    }
+}
+
 .review-item {
     opacity: 0;
     transform: translateX(100%);
