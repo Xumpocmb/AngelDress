@@ -114,6 +114,13 @@
                         </div>
                     {% endif %}
 
+                    {% if product.selling_price and product.selling_price > 0 %}
+                        <div class="property">
+                            <div class="property-name">Цена продажи:</div>
+                            <div class="property-value">{{ product.selling_price }} ₽</div>
+                        </div>
+                    {% endif %}
+
                     {% if product.photoset_price and product.photoset_price > 0 %}
                         <div class="property">
                             <div class="property-name">Стоимость фотосессии:</div>
