@@ -19,6 +19,11 @@ else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "angel-dress.ru", "0.0.0.0", "188.68.221.188"]
 
 
+CSRF_TRUSTED_ORIGINS = ['https://angel-dress.ru ', 'https://www.angel-dress.ru ']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
