@@ -92,6 +92,7 @@ class ItemAdmin(admin.ModelAdmin):
                     "rental_price",
                     "photoset_price",
                     "pledge_price",
+                    "selling_price",
                 )
             },
         ),
