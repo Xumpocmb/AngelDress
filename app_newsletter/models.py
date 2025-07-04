@@ -7,6 +7,7 @@ from django.utils.html import strip_tags
 class Subscriber(models.Model):
     email = models.EmailField(unique=True, verbose_name="Email")
     subscribed_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата подписки")
+    is_active = models.BooleanField(default=True, verbose_name="Активный")
 
     def __str__(self):
         return self.email

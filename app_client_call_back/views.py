@@ -137,7 +137,7 @@ def ajax_callback_view(request):
                 if not str(telegram_chat_id).startswith('-100'):
                     raise ValueError("Некорректный формат chat_id для Telegram")
 
-                send_url = f"https://api.telegram.org/bot {telegram_token}/sendMessage"
+                send_url = f"https://api.telegram.org/bot{telegram_token}/sendMessage"
 
                 with requests.Session() as session:
                     session.timeout = 5
