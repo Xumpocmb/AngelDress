@@ -46,7 +46,7 @@ class Item(models.Model):
     ]
     categories = models.ManyToManyField(ItemCategory, verbose_name="Категории", related_name="items")
     name = models.CharField(max_length=200, verbose_name="Название")
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание", blank=True, null=True, )
 
     color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
     length = models.CharField(blank=True, null=True, max_length=50, choices=length_choices, verbose_name="Длина")
