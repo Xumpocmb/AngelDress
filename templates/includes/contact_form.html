@@ -2,43 +2,44 @@
     <div class="form_header">
         <h2 class="form_title">Оставьте Заявку</h2>
         <p class="form_subtitle">
-            Мы поможем подобрать платье, которое подчеркнёт вашу индивидуальность. Просто оставьте контакт — и наш стилист сделает всё остальное.
+            Мы поможем подобрать платье, которое подчеркнёт вашу индивидуальность. Просто оставьте контакт — и наш
+            стилист сделает всё остальное.
         </p>
     </div>
 
     <form id="contactForm" class="contact_form" novalidate>
         <div class="form_group">
             <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Имя и Фамилия"
-                class="form_input"
-                required
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Имя и Фамилия"
+                    class="form_input"
+                    required
             >
             <div class="form_error" id="error_name"></div>
         </div>
 
         <div class="form_group">
             <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Номер телефона"
-                class="form_input"
-                required
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Номер телефона"
+                    class="form_input"
+                    required
             >
             <div class="form_error" id="error_phone"></div>
         </div>
 
         <div class="form_group">
             <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                class="form_input"
-                required
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    class="form_input"
+                    required
             >
             <div class="form_error" id="error_email"></div>
         </div>
@@ -63,28 +64,28 @@
         const form = document.getElementById("contactForm");
         const messageBox = document.getElementById("formMessage");
         const submitBtn = form.querySelector('button[type="submit"]');
-    
+
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
-    
+
             const originalBtnText = submitBtn.textContent;
-            
+
             submitBtn.disabled = true;
             submitBtn.textContent = "Отправка заявки...";
-            
+
             document.querySelectorAll(".form_error").forEach(el => el.textContent = "");
             messageBox.textContent = "";
             messageBox.className = "form_message";
-    
+
             const data = {
                 name: form.name.value.trim(),
                 phone: form.phone.value.trim(),
                 email: form.email.value.trim(),
                 agreement: form.agreement.checked
             };
-    
+
             const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
-    
+
             try {
                 const response = await fetch("/callback/ajax/", {
                     method: "POST",
@@ -94,9 +95,20 @@
                     },
                     body: JSON.stringify(data)
                 });
-    
+
+                // Проверяем, является ли ответ JSON
+                const contentType = response.headers.get("content-type");
+                if (!contentType || !contentType.includes("application/json")) {
+                    const text = await response.text();
+                    console.error("Ошибка: Сервер вернул не JSON:", text);
+
+                    messageBox.textContent = "Ошибка на сервере. Попробуйте позже.";
+                    messageBox.classList.add("form_message--error");
+                    return;
+                }
+
                 const result = await response.json();
-    
+
                 if (result.success) {
                     messageBox.textContent = "Заявка успешно отправлена!";
                     messageBox.classList.add("form_message--success");
@@ -121,4 +133,4 @@
             }
         });
     });
-    </script>
+</script>
