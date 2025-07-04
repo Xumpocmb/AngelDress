@@ -147,7 +147,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/path/to/your/logs/callback_debug.log',
+            'filename': 'debug.log',
             'formatter': 'verbose',
         },
     },
