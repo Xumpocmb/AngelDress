@@ -144,29 +144,4 @@ SESSION_COOKIE_AGE = 1209600  # 2 недели в секундах
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log',
-            'formatter': 'verbose',
-        },
-    },
-    'formatters': {
-        'verbose': {
-            'format': '{asctime} {levelname} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-    },
-    'loggers': {
-        'app_client_call_back': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
+RATELIMIT_IP_META_KEY = 'HTTP_X_FORWARDED_FOR'
