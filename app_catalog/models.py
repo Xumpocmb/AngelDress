@@ -36,8 +36,8 @@ class ItemCategory(models.Model):
 class Item(models.Model):
     length_choices = [
         ("mini", "Мини"),
-        ("midi", "Миди (до колена)"),
-        ("maxi", "Макси (до пола)"),
+        ("midi", "Миди"),
+        ("maxi", "Макси"),
     ]
     fit_choices = [
         ("tight", "Облегающий"),
