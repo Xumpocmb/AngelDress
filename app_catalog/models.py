@@ -58,6 +58,7 @@ class Item(models.Model):
     rental_period = models.PositiveIntegerField(blank=True, null=True, default=3, verbose_name="Срок аренды (дней)")
     rental_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на указанный срок", default=0)
     photoset_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на фотосессию", default=0)
+    selling_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Цена продажи", default=0)
 
     pledge_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2, verbose_name="Залог",default=0)
 
