@@ -11,7 +11,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "True"
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID=os.getenv("TELEGRAM_CHAT_ID")
-ALLOWED_HOSTS = ["*"]
+
+
+if DEBUG:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = ["angel-dress.ru", "0.0.0.0"]
 
 
 INSTALLED_APPS = [
