@@ -16,7 +16,7 @@ TELEGRAM_CHAT_ID=os.getenv("TELEGRAM_CHAT_ID")
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = ["*", "angel-dress.ru", "0.0.0.0"]
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "angel-dress.ru", "0.0.0.0", "188.68.221.188"]
 
 
 INSTALLED_APPS = [
