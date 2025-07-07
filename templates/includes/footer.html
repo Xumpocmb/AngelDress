@@ -34,21 +34,31 @@
         <div class="footer__column">
             <h3 class="footer__title">Мы в соцсетях</h3>
             <div class="footer__socials">
-                {% if contact_info.instagram %}
-                    <a href="{{ contact_info.instagram }}" class="footer__social-link" aria-label="Instagram">
-                        <img src="{% static 'img/instagram_logo_round.png' %}" alt="">
-                    </a>
+
+
+            {% for contact in contact_info %}
+                {% if contact.link %}
+                    <div class="contact_detail">
+                        {% if contact.type.name == 'email' %}
+                            <a href="mailto:{{ contact.link }}" class="footer__social-link">
+                            <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
+                            </a>
+                        {% elif contact.type.name == 'phone' %}
+                            <a href="tel:{{ contact.link }}" class="footer__social-link">
+                            <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
+                            </a>
+                        {% else %}
+                            <a href="{{ contact.link }}" class="footer__social-link" target="_blank">
+                            <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
+                            </a>
+                        {% endif %}
+
+                    </div>
                 {% endif %}
-                {% if contact_info.vk %}
-                    <a href="{{ contact_info.vk }}" class="footer__social-link" aria-label="VKontakte">
-                        <img src="{% static 'img/vk_logo_round.png' %}" alt="">
-                    </a>
-                {% endif %}
-                {% if contact_info.youtube %}
-                    <a href="{{ contact_info.youtube }}" class="footer__social-link" aria-label="YouTube">
-                        <img src="{% static 'img/yt_logo_round.png' %}" alt="">
-                    </a>
-                {% endif %}
+            {% endfor %}
             </div>
         </div>
     </div>

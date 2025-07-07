@@ -48,7 +48,7 @@
             <label class="checkbox_label">
                 <input type="checkbox" id="agreement" name="agreement" required>
                 <span class="checkmark"></span>
-                <span class="checkbox_text">Принимаю условия обработки данных</span>
+                <span class="checkbox_text"><a href="{% url 'app_home:user_agreement' %}" class="agreement_link">Принимаю условия обработки данных</a></span>
             </label>
             <div class="form_error" id="error_agreement"></div>
         </div>
