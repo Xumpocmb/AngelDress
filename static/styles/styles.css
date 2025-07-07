@@ -1721,7 +1721,7 @@ p {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    background-color: #D5B0A0;
+    /*background-color: #D5B0A0;*/
     opacity: 0.8;
 }
 
