@@ -2,201 +2,200 @@
 {% load static %}
 
 {% block title %}
-    <title>{{ title|default:"Angel Dress - О нас" }}</title>
+<title>{{ title|default:"Angel Dress - О нас" }}</title>
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+<link rel="stylesheet" href="{% static 'styles/styles.css' %}">
 {% endblock styles %}
 
 {% block content %}
-    <div class="wrapper">
-        <section class="about-section">
-            <div class="about-text_heading">
-                <div class="heading-top">
-                    <div class="heading_line"></div>
-                    <div class="text-container">О бренде и вдохновении</div>
-                </div>
-                <h2>Место, где платье — это больше, чем наряд</h2>
+<div class="wrapper">
+    <section class="about-section">
+        <div class="about-text_heading">
+            <div class="heading-top">
+                <div class="heading_line"></div>
+                <div class="text-container">О бренде и вдохновении</div>
+            </div>
+            <h2>Место, где платье — это больше, чем наряд</h2>
+        </div>
+
+        <div class="about-image">
+            <img src="{% static 'img/about_title.png' %}" alt="Founder"/>
+        </div>
+
+        <div class="about-text">
+            <p>AngelDress родился из желания помочь каждой девушке почувствовать себя особенной — вне зависимости от
+                повода или бюджета.
+                Для меня платье — это не просто одежда. Это способ рассказать свою историю без слов, подчеркнуть
+                настроение, почувствовать уверенность. Я верю, что истинная красота — в гармонии с собой и в
+                деталях, и именно это мы стараемся передать в каждом образе.
+                Мы с командой подбираем платья с любовью и вниманием к каждой клиентке, а аренда — это наш способ
+                сделать стиль доступным и этичным.
+                Спасибо, что вы с нами — я счастлива быть частью ваших ярких моментов.
+            </p>
+            <div class="founder-name">Анжела</div>
+            <div class="founder-title">ОСНОВАТЕЛЬ</div>
+        </div>
+    </section>
+    <section class="reviews-section">
+        <div class="reviews-image">
+            <img src="{% static 'img/portrait-beautiful-cute.png' %}" alt="Happy Customer"/>
+        </div>
+
+        <div class="reviews-content">
+            <div class="reviews-heading">
+                <div class="heading_line"></div>
+                <div class="text-container">Нас выбирают снова и снова</div>
             </div>
 
-            <div class="about-image">
-                <img src="{% static 'img/about_title.png' %}" alt="Founder"/>
-            </div>
+            <h2>Их эмоции — лучше всякой рекламы</h2>
 
-            <div class="about-text">
-                <p>AngelDress родился из желания помочь каждой девушке почувствовать себя особенной — вне зависимости от
-                    повода или бюджета.
-                    Для меня платье — это не просто одежда. Это способ рассказать свою историю без слов, подчеркнуть
-                    настроение, почувствовать уверенность. Я верю, что истинная красота — в гармонии с собой и в
-                    деталях, и именно это мы стараемся передать в каждом образе.
-                    Мы с командой подбираем платья с любовью и вниманием к каждой клиентке, а аренда — это наш способ
-                    сделать стиль доступным и этичным.
-                    Спасибо, что вы с нами — я счастлива быть частью ваших ярких моментов.
-                </p>
-                <div class="founder-name">Анжела Анжела</div>
-                <div class="founder-title">ОСНОВАТЕЛЬ</div>
-            </div>
-        </section>
-        <section class="reviews-section">
-            <div class="reviews-image">
-                <img src="{% static 'img/portrait-beautiful-cute.png' %}" alt="Happy Customer"/>
-            </div>
-
-            <div class="reviews-content">
-                <div class="reviews-heading">
-                    <div class="heading_line"></div>
-                    <div class="text-container">Нас выбирают снова и снова</div>
+            <div class="reviews-carousel">
+                <div class="review-item active">
+                    <blockquote class="review-text">
+                        Я арендовала платье для важной фотосессии — и это был абсолютный восторг! Всё прошло
+                        идеально: платье сидело безупречно, ткань выглядела дорого и красиво в кадре, а сервис —
+                        просто выше всех ожиданий. Отдельное спасибо стилисту за помощь с выбором!
+                    </blockquote>
+                    <div class="review-author">Екатерина Шумская</div>
                 </div>
 
-                <h2>Их эмоции — лучше всякой рекламы</h2>
-
-                <div class="reviews-carousel">
-                    <div class="review-item active">
-                        <blockquote class="review-text">
-                            Я арендовала платье для важной фотосессии — и это был абсолютный восторг! Всё прошло
-                            идеально: платье сидело безупречно, ткань выглядела дорого и красиво в кадре, а сервис —
-                            просто выше всех ожиданий. Отдельное спасибо стилисту за помощь с выбором!
-                        </blockquote>
-                        <div class="review-author">Екатерина Шумская</div>
-                    </div>
-
-                    <div class="review-item">
-                        <blockquote class="review-text">
-                            Уже не в первый раз беру платье здесь — и каждый раз впечатлена качеством, вниманием и
-                            вкусом. Особенно нравится, что не нужно тратить часы на поиск — всё подобрано с душой. Это
-                            огромная экономия времени и, честно говоря, нервов. Спасибо вам за это!
-                        </blockquote>
-                        <div class="review-author">Мария Герасименко</div>
-                    </div>
-
-                    <div class="review-item">
-                        <blockquote class="review-text">
-                            Идеальный сервис! Мне нужно было платье на свадьбу подруги, и я очень переживала, подойдёт
-                            ли по цвету и фасону. Стилист выслушала все мои пожелания, предложила несколько вариантов —
-                            и в итоге я получила образ, в котором чувствовала себя уверенно, легко и красиво.
-                        </blockquote>
-                        <div class="review-author">Дарья Ковалева</div>
-                    </div>
-
-                    <div class="review-item">
-                        <blockquote class="review-text">
-                            Хотела чего-то особенного для ужина в ресторане, но без перебора — и здесь мне действительно
-                            помогли найти «то самое» платье. Образ получился такой утончённый, а я получила море
-                            комплиментов! Обязательно вернусь за новым нарядом на следующее событие.
-                        </blockquote>
-                        <div class="review-author">Анна Лебедева</div>
-                    </div>
+                <div class="review-item">
+                    <blockquote class="review-text">
+                        Уже не в первый раз беру платье здесь — и каждый раз впечатлена качеством, вниманием и
+                        вкусом. Особенно нравится, что не нужно тратить часы на поиск — всё подобрано с душой. Это
+                        огромная экономия времени и, честно говоря, нервов. Спасибо вам за это!
+                    </blockquote>
+                    <div class="review-author">Мария Герасименко</div>
                 </div>
 
-                <div class="carousel-controls">
-                    <div class="carousel-dots">
-                        <button class="dot active" data-slide="0"></button>
-                        <button class="dot" data-slide="1"></button>
-                        <button class="dot" data-slide="2"></button>
-                        <button class="dot" data-slide="3"></button>
-                    </div>
+                <div class="review-item">
+                    <blockquote class="review-text">
+                        Идеальный сервис! Мне нужно было платье на свадьбу подруги, и я очень переживала, подойдёт
+                        ли по цвету и фасону. Стилист выслушала все мои пожелания, предложила несколько вариантов —
+                        и в итоге я получила образ, в котором чувствовала себя уверенно, легко и красиво.
+                    </blockquote>
+                    <div class="review-author">Дарья Ковалева</div>
+                </div>
+
+                <div class="review-item">
+                    <blockquote class="review-text">
+                        Хотела чего-то особенного для ужина в ресторане, но без перебора — и здесь мне действительно
+                        помогли найти «то самое» платье. Образ получился такой утончённый, а я получила море
+                        комплиментов! Обязательно вернусь за новым нарядом на следующее событие.
+                    </blockquote>
+                    <div class="review-author">Анна Лебедева</div>
                 </div>
             </div>
-        </section>
-        <section class="team-section">
-            <div class="team-text_heading">
-                <div class="heading-top">
-                    <div class="heading_line"></div>
-                    <div class="text-container">Внимание, забота, профессионализм</div>
+
+            <div class="carousel-controls">
+                <div class="carousel-dots">
+                    <button class="dot active" data-slide="0"></button>
+                    <button class="dot" data-slide="1"></button>
+                    <button class="dot" data-slide="2"></button>
+                    <button class="dot" data-slide="3"></button>
                 </div>
-                <h2>Поможем с выбором, образом и уверенностью</h2>
             </div>
+        </div>
+    </section>
+    <section class="team-section">
+        <div class="team-text_heading">
+            <div class="heading-top">
+                <div class="heading_line"></div>
+                <div class="text-container">Внимание, забота, профессионализм</div>
+            </div>
+            <h2>Поможем с выбором, образом и уверенностью</h2>
+        </div>
 
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-image">
-                        <img src="{% static 'img/stilist1.png' %}" alt="Марина Кравцова">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Марина Кравцова</h3>
-                        <p class="team-description">Марина — наш стилист с тонким вкусом и вниманием к деталям. Она
-                            точно чувствует, что подойдёт именно вам: по фигуре, настроению и событию. Каждая клиентка
-                            уходит с сияющими глазами — и это её главная награда.
-                            У Марии за плечами более 6 лет опыта и десятки успешных образов для фотосессий, свадеб и
-                            мероприятий.
-                        </p>
-                        <div class="team-social">
-                            <a href="#" class="social-link instagram" aria-label="Instagram">
-                                <img src="{% static 'img/instagram_logo_round.png' %}" alt="Instagram">
-                            </a>
-                            <a href="#" class="social-link vk" aria-label="VKontakte">
-                                <img src="{% static 'img/vk_logo_round.png' %}" alt="VK">
-                            </a>
-                            <a href="#" class="social-link youtube" aria-label="YouTube">
-                                <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube">
-                            </a>
-                        </div>
-                    </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-image">
+                    <img src="{% static 'img/stilist1.png' %}" alt="Марина Кравцова">
                 </div>
-
-                <div class="team-member">
-                    <div class="team-image">
-                        <img src="{% static 'img/stilist2.png' %}" alt="Марина Кравцова">
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Марина Кравцова</h3>
-                        <p class="team-description">Специалист по макияжу и деталям, которые создают эффект «вау». От
-                            сияющей кожи до стильных акцентов — Марина помогает чувствовать себя безупречно.
-                            Её подход — это сочетание эстетики, аккуратности и умения подчеркнуть индивидуальность без
-                            излишней вычурности.
-                        </p>
-                        <div class="team-social">
-                            <a href="#" class="social-link instagram" aria-label="Instagram">
-                                <img src="{% static 'img/instagram_logo_round.png' %}" alt="Instagram">
-                            </a>
-                            <a href="#" class="social-link vk" aria-label="VKontakte">
-                                <img src="{% static 'img/vk_logo_round.png' %}" alt="VK">
-                            </a>
-                            <a href="#" class="social-link youtube" aria-label="YouTube">
-                                <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube">
-                            </a>
-                        </div>
+                <div class="team-info">
+                    <h3 class="team-name">Екатерина Кравцова — стилист, визажист или универсальный эксперт</h3>
+                    <p class="team-description">Марина — наш стилист с тонким вкусом и вниманием к деталям. Она точно
+                        чувствует, что подойдёт именно вам: по фигуре, настроению и событию. Каждая клиентка уходит с
+                        сияющими глазами — и это её главная награда.
+                        У Екатерины за плечами десятки успешных образов для фотосессий, свадеб и мероприятий.
+                    </p>
+                    <div class="team-social">
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <img src="{% static 'img/instagram_logo_round.png' %}" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-link vk" aria-label="VKontakte">
+                            <img src="{% static 'img/vk_logo_round.png' %}" alt="VK">
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube">
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="counter_section">
-            <hr class="counter_section_line">
-            <div class="counter_container">
-                <!-- Блок 1: Платьев было выбрано -->
-                <div class="counter_item">
-                    <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">132</span>
-                        <p class="counter_label">Платьев было выбрано</p>
-                    </div>
-                </div>
 
-                <!-- Блок 2: Довольных клиентов -->
-                <div class="counter_item">
-                    <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">64</span>
-                        <p class="counter_label">Довольных клиентов</p>
-                    </div>
+            <div class="team-member">
+                <div class="team-image">
+                    <img src="{% static 'img/stilist2.png' %}" alt="Элина Лазарева">
                 </div>
-
-                <!-- Блок 3: Новых поступлений ежемесячно -->
-                <div class="counter_item">
-                    <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">10+</span>
-                        <p class="counter_label">Новых поступлений ежемесячно</p>
+                <div class="team-info">
+                    <h3 class="team-name">Элина Лазарева</h3>
+                    <p class="team-description">Элина работает с визуальной частью образа и помогает собрать целостный
+                        стиль — от платья до аксессуаров. Она всегда точно чувствует, что будет работать в кадре, на
+                        мероприятии или просто для внутреннего ощущения «я прекрасна». Благодаря её вкусу и вниманию к
+                        деталям каждая клиентка уходит с собранным, продуманным образом, а не просто с платьем.
+                    </p>
+                    <div class="team-social">
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <img src="{% static 'img/instagram_logo_round.png' %}" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-link vk" aria-label="VKontakte">
+                            <img src="{% static 'img/vk_logo_round.png' %}" alt="VK">
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <img src="{% static 'img/yt_logo_round.png' %}" alt="YouTube">
+                        </a>
                     </div>
                 </div>
             </div>
-            <hr class="counter_section_line">
-        </section>
-    </div>
+        </div>
+    </section>
+    <section class="counter_section">
+        <hr class="counter_section_line">
+        <div class="counter_container">
+            <!-- Блок 1: Платьев было выбрано -->
+            <div class="counter_item">
+                <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
+                <div class="counter_stats">
+                    <span class="counter_number">132</span>
+                    <p class="counter_label">Платьев было выбрано</p>
+                </div>
+            </div>
+
+            <!-- Блок 2: Довольных клиентов -->
+            <div class="counter_item">
+                <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
+                <div class="counter_stats">
+                    <span class="counter_number">64</span>
+                    <p class="counter_label">Довольных клиентов</p>
+                </div>
+            </div>
+
+            <!-- Блок 3: Новых поступлений ежемесячно -->
+            <div class="counter_item">
+                <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
+                <div class="counter_stats">
+                    <span class="counter_number">10+</span>
+                    <p class="counter_label">Новых поступлений ежемесячно</p>
+                </div>
+            </div>
+        </div>
+        <hr class="counter_section_line">
+    </section>
+</div>
 {% endblock %}
 
 
 {% block scripts %}
-    <script src="{% static 'js/reviews.js' %}"></script>
+<script src="{% static 'js/reviews.js' %}"></script>
 {% endblock %}
