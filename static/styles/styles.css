@@ -2504,7 +2504,7 @@ button {
 
 .product-container {
     max-width: 1200px;
-    margin: 100px auto;
+    margin: 0px auto;
     padding: 20px;
     display: flex;
     gap: 10px;
@@ -2523,6 +2523,29 @@ button {
     .button-secondary {
         font-size: 14px;
     }
+}
+
+
+.breadcrumbs {
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.breadcrumbs-link img {
+    width: 10px;
+    margin-right: 5px;
+}
+
+.breadcrumbs-link {
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs-link:hover {
+    color: var(--footer-link-hover);
 }
 
 
