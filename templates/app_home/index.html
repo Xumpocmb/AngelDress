@@ -137,7 +137,11 @@
                             </div>
                             <div class="product-info">
                                 <p class="product-name">{{ dress.name }}</p>
-                                <p class="product-price">{{ dress.rental_price }} ₽</p>
+                                {% if dress.min_price %}
+                                    <div class="product-price">от {{ dress.min_price }} ₽</div>
+                                {% else %}
+                                    <div class="product-price" style="color: #999;">Цена не указана</div>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}

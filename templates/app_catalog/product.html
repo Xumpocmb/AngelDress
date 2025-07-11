@@ -140,7 +140,7 @@
                 Залог: <span id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'' }}</span> ₽
               </div>
               <div id="selected-period-container"{% if not product.price_options.first.rental_period_days %} style="display:none;"{% endif %}>
-                Срок аренды: <span id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'' }}</span> дней
+                Срок аренды: <span id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'' }}</span> дн.
               </div>
             </div>
           </div>

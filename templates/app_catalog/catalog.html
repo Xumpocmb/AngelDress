@@ -58,8 +58,8 @@
                 <!-- Сортировка -->
                 <div class="sort-bar">
                     <label for="sort-select">Показывать сначала:</label>
-                    <div class="custom-select">
-                        <select class="sort-select" id="sort-select" onchange="location = this.value;">
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select" id="sort-select" onchange="location = this.value;">
                             <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=newest"
                                     {% if current_sort == 'newest' %}selected{% endif %}>Новые
                             </option>
@@ -73,6 +73,7 @@
                                     {% if current_sort == 'popular' %}selected{% endif %}>Популярные
                             </option>
                         </select>
+                        <div class="select-arrow"></div>
                     </div>
                 </div>
 
