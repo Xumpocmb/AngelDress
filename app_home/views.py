@@ -26,15 +26,22 @@ def index_view(request):
         "random_dresses": random_dresses,
         "latest_posts": latest_posts,
         "random_accessories": random_accessories,
+        "meta_description": "Прокат стильных платьев в Москве: вечерние, свадебные, выпускные. Широкий выбор на любой вкус и событие. Забронируйте прямо сейчас!",
     }
     return render(request, "app_home/index.html", context=context)
 
 
 def contact_view(request):
-    return render(request, "app_home/contacts.html")
+    context = {
+        "meta_description": "Контакты: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
+    }
+    return render(request, "app_home/contacts.html", context=context)
 
 
 def about_view(request):
+    context = {
+        "meta_description": "О нас: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
+    }
     return render(request, "app_home/about.html")
 
 
@@ -58,5 +65,6 @@ def user_agreement_view(request):
         "rent_rules_text": rent_rules_text,
         "terms_of_use_text": terms_of_use_text,
         "questions": questions,
+        "meta_description": "Правила аренды: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_home/user_agreement.html", context=context)

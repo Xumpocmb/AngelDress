@@ -40,6 +40,7 @@ def wishlist_view(request) -> HttpResponse:
     context = {
         "page_obj": page_obj,
         "wishlist": request.session.get("wishlist", []),
+        "meta_description": "AngelDress - Ваш список желаний",
     }
     return render(request, "app_wishlist/wishlist.html", context=context)
 
