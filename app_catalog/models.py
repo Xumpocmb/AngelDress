@@ -106,6 +106,15 @@ class Item(models.Model):
         default=0.0, verbose_name="Рейтинг популярности", blank=True, null=True
     )
 
+    min_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name="Минимальная цена",
+        help_text="Обновляется автоматически",
+    )
+
     class Meta:
         db_table = "app_catalog_item"
         verbose_name = "Товары"
@@ -126,6 +135,15 @@ class Item(models.Model):
         if self.images.exists():
             return self.images.first().image.url
         return "/static/img/No-Image-Placeholder.png"
+
+    def update_min_price(self):
+        """Обновляет min_price на основе активных PriceOption"""
+        min_option = self.price_options.filter(is_active=True).order_by("price").first()
+        if min_option:
+            self.min_price = min_option.price
+        else:
+            self.min_price = None
+        self.save(update_fields=["min_price"])
 
 
 class PriceOption(models.Model):

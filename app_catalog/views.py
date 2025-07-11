@@ -6,21 +6,18 @@ from app_home.models import RentRules
 
 def item_catalog_view(request):
     category_slug = request.GET.get("category")
-    dresses = Item.objects.filter(is_active=True).prefetch_related(
-        "categories"
-    )
+    dresses = Item.objects.filter(is_active=True).prefetch_related("categories")
 
     if category_slug:
-        dresses = dresses.filter(
-            categories__slug=category_slug
-        )
+        dresses = dresses.filter(categories__slug=category_slug)
 
     # Сортировка
     sort = request.GET.get("sort", "newest")
+
     if sort == "price-low":
-        dresses = dresses.order_by("rental_price")
+        dresses = dresses.order_by("min_price")
     elif sort == "price-high":
-        dresses = dresses.order_by("-rental_price")
+        dresses = dresses.order_by("-min_price")
     elif sort == "popular":
         dresses = dresses.order_by(
             "-popularity_score", "-views_count", "-favorites_count"
