@@ -1,47 +1,60 @@
 {% load static %}
 <header class="header">
-    <nav class="nav">
+  <nav class="nav">
+    <!-- Бургер-кнопка -->
+    <button class="burger-btn" aria-label="Меню" aria-expanded="false">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
 
+    <div class="nav-container">
+      <div class="logo">
+        <a href="{% url 'app_home:home' %}"><img src="{% static 'img/logo/logo-text.png' %}" alt="logo" /></a>
+      </div>
 
-        <!-- Бургер-кнопка -->
-        <button class="burger-btn" aria-label="Меню" aria-expanded="false">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-        </button>
+      <div class="header_social_icons">
+        {% if header_contacts %}
+            {% for contact in header_contacts %}
+              {% if contact.link %}
+                <div class="contact_detail">
+                  {% if contact.type.name == 'email' %}
+                    <a href="mailto:{{ contact.link }}" class="header__social-link"><img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}" alt="{{ contact.type.get_name_display }}" class="header_contact_icon" /></a>
+                  {% elif contact.type.name == 'phone' %}
+                    <a href="tel:{{ contact.link }}" class="header__social-link"><img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}" alt="{{ contact.type.get_name_display }}" class="header_contact_icon" /></a>
+                  {% else %}
+                    <a href="{{ contact.link }}" class="header__social-link" target="_blank"><img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}" alt="{{ contact.type.get_name_display }}" class="header_contact_icon" /></a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+        {% endif %}
+      </div>
 
-        <div class="nav-container">
-            <div class="logo">
-                <a href="{% url 'app_home:home' %}"><img src="{% static 'img/logo/logo-text.png' %}" alt="logo"></a>
-            </div>
-
-            <div class="header_social_icons">
-                {% if header_contacts %}
-                <ul>
-                    {% for contact in header_contacts %}
-                    <li>
-                        {{ contact.get_type_display }}:
-                        <a href="{{ contact.link }}" target="_blank">{{ contact.title }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-
-            <ul class="nav-menu">
-                <li><a href="{% url 'app_home:home' %}">Главная</a></li>
-                <li><a href="{% url 'app_catalog:items_catalog' %}">Подобрать платье</a></li>
-                <li><a href="{% url 'app_blog:blog' %}">Блог</a></li>
-                <li><a href="{% url 'app_home:about' %}">О нас</a></li>
-                <li><a href="{% url 'app_home:contacts' %}">Контакты</a></li>
-                <li><a href="{% url 'app_home:user_agreement' %}">Узнать больше</a></li>
-            </ul>
-            <div class="nav-icons">
-                <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link">
-                    <img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное">
-                </a>
-                <span class="wishlist-count">{{ wishlist_count|default:0 }}</span>
-            </div>
-        </div>
-    </nav>
+      <ul class="nav-menu">
+        <li>
+          <a href="{% url 'app_home:home' %}">Главная</a>
+        </li>
+        <li>
+          <a href="{% url 'app_catalog:items_catalog' %}">Подобрать платье</a>
+        </li>
+        <li>
+          <a href="{% url 'app_blog:blog' %}">Блог</a>
+        </li>
+        <li>
+          <a href="{% url 'app_home:about' %}">О нас</a>
+        </li>
+        <li>
+          <a href="{% url 'app_home:contacts' %}">Контакты</a>
+        </li>
+        <li>
+          <a href="{% url 'app_home:user_agreement' %}">Узнать больше</a>
+        </li>
+      </ul>
+      <div class="nav-icons">
+        <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link"><img class="icon" src="{% static 'img/heart.png' %}" alt="Избранное" /></a>
+        <span class="wishlist-count">{{ wishlist_count|default:0 }}</span>
+      </div>
+    </div>
+  </nav>
 </header>

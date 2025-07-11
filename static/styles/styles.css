@@ -1327,6 +1327,14 @@ button {
     flex: 1;
 }
 
+
+.page-main-title {
+    text-align: center;
+    font-weight: normal;
+    color: #3a3a6a;
+    margin-bottom: 20px;
+}
+
 .sort-bar {
     display: flex;
     justify-content: space-between;
