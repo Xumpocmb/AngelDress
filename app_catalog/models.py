@@ -10,11 +10,16 @@ from django.utils.text import slugify
 class ItemCategory(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название категории")
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
-    image = models.ImageField(upload_to="dress_category/", verbose_name="Изображение", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="dress_category/", verbose_name="Изображение", blank=True, null=True
+    )
     is_active = models.BooleanField(default=False, verbose_name="Активна")
-    show_on_main_page = models.BooleanField(default=True, verbose_name="Показывать на главной странице")
-    slug = models.SlugField(max_length=100, unique=True, verbose_name="url", null=False, blank=False)
-
+    show_on_main_page = models.BooleanField(
+        default=True, verbose_name="Показывать на главной странице"
+    )
+    slug = models.SlugField(
+        max_length=100, unique=True, verbose_name="url", null=False, blank=False
+    )
 
     class Meta:
         db_table = "app_catalog_category"
@@ -44,30 +49,99 @@ class Item(models.Model):
         ("fitted", "Приталенный"),
         ("loose", "Свободный"),
     ]
-    categories = models.ManyToManyField(ItemCategory, verbose_name="Категории", related_name="items")
+    categories = models.ManyToManyField(
+        ItemCategory, verbose_name="Категории", related_name="items"
+    )
     name = models.CharField(max_length=200, verbose_name="Название")
-    description = models.TextField(verbose_name="Описание", blank=True, null=True, )
+    description = models.TextField(
+        verbose_name="Описание",
+        blank=True,
+        null=True,
+    )
 
     color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
-    length = models.CharField(blank=True, null=True, max_length=50, choices=length_choices, verbose_name="Длина")
-    fastener_type = models.CharField(blank=True, null=True, max_length=100, verbose_name="Тип застёжки")
-    fit = models.CharField(blank=True, null=True, max_length=50, choices=fit_choices, verbose_name="Посадка", )
-    details = models.TextField(blank=True, null=True, verbose_name="Детали",help_text="Перечислите детали через запятую")
-    available_sizes = models.CharField(blank=True, null=True, max_length=200, verbose_name="Доступные размеры",help_text="Укажите размеры через дефис: XS-L")
+    length = models.CharField(
+        blank=True,
+        null=True,
+        max_length=50,
+        choices=length_choices,
+        verbose_name="Длина",
+    )
+    fastener_type = models.CharField(
+        blank=True, null=True, max_length=100, verbose_name="Тип застёжки"
+    )
+    fit = models.CharField(
+        blank=True,
+        null=True,
+        max_length=50,
+        choices=fit_choices,
+        verbose_name="Посадка",
+    )
+    details = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Детали",
+        help_text="Перечислите детали через запятую",
+    )
+    available_sizes = models.CharField(
+        blank=True,
+        null=True,
+        max_length=200,
+        verbose_name="Доступные размеры",
+        help_text="Укажите размеры через дефис: XS-L",
+    )
 
-    rental_period = models.PositiveIntegerField(blank=True, null=True, default=3, verbose_name="Срок аренды (в днях)")
-    rental_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на указанный срок", default=0)
-    photoset_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Стоимость аренды на фотосессию", default=0)
-    selling_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2,verbose_name="Цена продажи", default=0)
+    rental_period = models.PositiveIntegerField(
+        blank=True, null=True, default=3, verbose_name="Срок аренды (в днях)"
+    )
+    rental_price = models.DecimalField(
+        blank=True,
+        null=True,
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Стоимость аренды на указанный срок",
+        default=0,
+    )
+    photoset_price = models.DecimalField(
+        blank=True,
+        null=True,
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Стоимость аренды на фотосессию",
+        default=0,
+    )
+    selling_price = models.DecimalField(
+        blank=True,
+        null=True,
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Цена продажи",
+        default=0,
+    )
 
-    pledge_price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2, verbose_name="Залог",default=0)
+    pledge_price = models.DecimalField(
+        blank=True,
+        null=True,
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Залог",
+        default=0,
+    )
 
     is_active = models.BooleanField(default=True, verbose_name="Активен")
 
-    created_at = models.DateTimeField(default=timezone.now, verbose_name="Дата создания")
-    views_count = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
-    favorites_count = models.PositiveIntegerField(default=0, verbose_name="Количество избранных")
-    popularity_score = models.FloatField(default=0.0, verbose_name="Рейтинг популярности", blank=True, null=True)
+    created_at = models.DateTimeField(
+        default=timezone.now, verbose_name="Дата создания"
+    )
+    views_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество просмотров"
+    )
+    favorites_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество избранных"
+    )
+    popularity_score = models.FloatField(
+        default=0.0, verbose_name="Рейтинг популярности", blank=True, null=True
+    )
 
     class Meta:
         db_table = "app_catalog_item"
@@ -92,10 +166,14 @@ class Item(models.Model):
 
 
 class ItemImage(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="images", verbose_name="Товар")
+    item = models.ForeignKey(
+        Item, on_delete=models.CASCADE, related_name="images", verbose_name="Товар"
+    )
     image = models.ImageField(upload_to="dresses/", verbose_name="Фотография")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
-    alt_text = models.CharField(max_length=200, blank=True, verbose_name="Альтернативный текст")
+    alt_text = models.CharField(
+        max_length=200, blank=True, verbose_name="Альтернативный текст"
+    )
 
     class Meta:
         db_table = "app_catalog_item_image"
