@@ -2627,6 +2627,59 @@ button {
     color: #D5B0A0;
 }
 
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px 16px;
+    padding-right: 40px;
+    /* Отступ для стрелочки */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    color: var(--text-color);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.custom-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(179, 127, 96, 0.2);
+}
+
+.select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid var(--text-color);
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+/* При наведении на селект */
+.custom-select:hover {
+    border-color: var(--secondary-color);
+}
+
+/* Дополнительный эффект при открытии селекта (можно улучшить JS) */
+.custom-select:focus+.select-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .properties {
     text-align: left;
     margin-bottom: 25px;

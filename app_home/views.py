@@ -10,16 +10,41 @@ from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse, Que
 
 def index_view(request):
     slider_images = SliderImage.objects.all().order_by("order")
-    accessory_category = ItemCategory.objects.get(slug="aksessuary")
+
+    try:
+        accessory_category = ItemCategory.objects.get(slug="aksessuary")
+    except ItemCategory.DoesNotExist:
+        accessory_category = None
 
     # 6 случайных платьев
-    random_dresses = Item.objects.filter(is_active=True).exclude(categories=accessory_category).prefetch_related("images").order_by("?")[:6]
+    dress_filter = {"is_active": True}
+    if accessory_category:
+        dress_filter.update({"categories": accessory_category})
+        random_dresses = (
+            Item.objects.filter(**dress_filter)
+            .exclude(categories=accessory_category)
+            .prefetch_related("images")
+            .order_by("?")[:6]
+        )
+    else:
+        random_dresses = (
+            Item.objects.filter(is_active=True)
+            .prefetch_related("images")
+            .order_by("?")[:6]
+        )
 
     # 3 последних блога
     latest_posts = Post.objects.all().order_by("-created_at")[:3]
 
     # 2 случайных аксессуара
-    random_accessories = Item.objects.filter(is_active=True, categories=accessory_category).prefetch_related("images").order_by("?")[:2]
+    if accessory_category:
+        random_accessories = (
+            Item.objects.filter(is_active=True, categories=accessory_category)
+            .prefetch_related("images")
+            .order_by("?")[:2]
+        )
+    else:
+        random_accessories = []
 
     context = {
         "slider_images": slider_images,
@@ -42,7 +67,7 @@ def about_view(request):
     context = {
         "meta_description": "О нас: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
-    return render(request, "app_home/about.html")
+    return render(request, "app_home/about.html", context=context)
 
 
 def user_agreement_view(request):

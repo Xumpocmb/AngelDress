@@ -91,43 +91,6 @@ class Item(models.Model):
         help_text="Укажите размеры через дефис: XS-L",
     )
 
-    rental_period = models.PositiveIntegerField(
-        blank=True, null=True, default=3, verbose_name="Срок аренды (в днях)"
-    )
-    rental_price = models.DecimalField(
-        blank=True,
-        null=True,
-        max_digits=10,
-        decimal_places=2,
-        verbose_name="Стоимость аренды на указанный срок",
-        default=0,
-    )
-    photoset_price = models.DecimalField(
-        blank=True,
-        null=True,
-        max_digits=10,
-        decimal_places=2,
-        verbose_name="Стоимость аренды на фотосессию",
-        default=0,
-    )
-    selling_price = models.DecimalField(
-        blank=True,
-        null=True,
-        max_digits=10,
-        decimal_places=2,
-        verbose_name="Цена продажи",
-        default=0,
-    )
-
-    pledge_price = models.DecimalField(
-        blank=True,
-        null=True,
-        max_digits=10,
-        decimal_places=2,
-        verbose_name="Залог",
-        default=0,
-    )
-
     is_active = models.BooleanField(default=True, verbose_name="Активен")
 
     created_at = models.DateTimeField(
@@ -163,6 +126,44 @@ class Item(models.Model):
         if self.images.exists():
             return self.images.first().image.url
         return "/static/img/No-Image-Placeholder.png"
+
+
+class PriceOption(models.Model):
+    item = models.ForeignKey(
+        Item,
+        on_delete=models.CASCADE,
+        related_name="price_options",
+        verbose_name="Платье",
+    )
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Название опции",
+        help_text='Пример: "Мероприятие", "Фотосессия"',
+        default="Мероприятие",
+    )
+    rental_period_days = models.PositiveIntegerField(
+        default=3, verbose_name="Срок аренды (дни)", null=True, blank=True
+    )
+    price = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name="Стоимость аренды", default=0
+    )
+    pledge = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Залог",
+        null=True,
+        blank=True,
+        default=0,
+    )
+    is_active = models.BooleanField(default=True, verbose_name="Активна")
+
+    class Meta:
+        db_table = "app_catalog_price_option"
+        verbose_name = "Вариант цены"
+        verbose_name_plural = "Варианты цен"
+
+    def __str__(self):
+        return f"{self.name} - {self.price} ₽"
 
 
 class ItemImage(models.Model):

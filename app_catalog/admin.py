@@ -7,7 +7,17 @@ from .models import (
     ItemImage,
     ItemCategory,
     ItemVideo,
+    PriceOption,
 )
+
+
+class PriceOptionInline(admin.TabularInline):
+    model = PriceOption
+    extra = 0
+    fields = ("name", "rental_period_days", "price", "pledge", "is_active")
+    can_delete = True
+    verbose_name = "Вариант цены"
+    verbose_name_plural = "Варианты цен"
 
 
 class ItemImageInline(admin.TabularInline):
@@ -42,7 +52,7 @@ class ItemVideoInline(admin.TabularInline):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    inlines = [ItemImageInline, ItemVideoInline]
+    inlines = [PriceOptionInline, ItemImageInline, ItemVideoInline]
     list_display = (
         "thumbnail_preview",
         "name",
@@ -85,18 +95,6 @@ class ItemAdmin(admin.ModelAdmin):
             },
         ),
         (
-            "Прокат",
-            {
-                "fields": (
-                    "rental_period",
-                    "rental_price",
-                    "photoset_price",
-                    "pledge_price",
-                    "selling_price",
-                )
-            },
-        ),
-        (
             "Рейтинг популярности",
             {"fields": ("views_count", "favorites_count", "popularity_score")},
         ),
@@ -105,6 +103,7 @@ class ItemAdmin(admin.ModelAdmin):
 
     def display_categories(self, obj):
         return ", ".join([category.name for category in obj.categories.all()])
+
     display_categories.short_description = "Категории"
 
     def thumbnail_preview(self, obj):
@@ -121,14 +120,16 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(ItemCategory)
 class ItemCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name", "items_count", "show_on_main_page",  "is_active")
+    list_display = ("name", "items_count", "show_on_main_page", "is_active")
     search_fields = ("name",)
     ordering = ("name",)
     prepopulated_fields = {"slug": ("name",)}
-    list_editable = ("is_active", "show_on_main_page",)
+    list_editable = (
+        "is_active",
+        "show_on_main_page",
+    )
 
     def items_count(self, obj):
         return obj.items.count()
 
     items_count.short_description = "Количество"
-
