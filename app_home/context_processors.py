@@ -1,7 +1,3 @@
-import json
-
-from django.http import HttpResponse
-
 from app_catalog.models import ItemCategory
 from app_home.models import ContactInfo
 
@@ -10,7 +6,7 @@ def contact_info(request):
     try:
         contacts = ContactInfo.objects.all()
         header_contacts = ContactInfo.objects.filter(
-            type__name__in=["telegram", "instagram", "vk"], is_active=True
+            type__name__in=["telegram", "instagram", "phone"], is_active=True
         )
         return {
             "contact_info": contacts or None,
