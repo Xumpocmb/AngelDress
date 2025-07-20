@@ -314,7 +314,11 @@ class ItemImage(models.Model):
         ordering = ["order"]
 
     def __str__(self):
-        return f"Фото {self.id} для {self.item.name}"
+        if self.item:
+            return f"Фото {self.id} для {self.item.name}"
+        elif self.accessory:
+            return f"Фото {self.id} для {self.accessory.name}"
+        return f"Фото {self.id} (без связи)"
 
     def delete(self, *args, **kwargs):
         if self.image:
@@ -341,7 +345,12 @@ class ItemVideo(models.Model):
         verbose_name_plural = "Видео"
 
     def __str__(self):
-        return f"Видео для {self.item.name}"
+        if self.item:
+            return f"Видео {self.id} для {self.item.name}"
+        elif self.accessory:
+            return f"Видео {self.id} для {self.accessory.name}"
+        return f"Видео {self.id} (без связи)"
+
 
     def clean(self):
         if self.video:
