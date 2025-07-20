@@ -218,6 +218,46 @@ a {
     animation: heartPulse 0.5s;
 }
 
+
+
+/* -------------------------------------- */
+/* ticker */
+/* -------------------------------------- */
+
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.ticker {
+    display: inline-block;
+    position: relative;
+    transform: translateX(100vw);
+    animation: ticker 10s linear infinite;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(100vw);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
 /* -------------------------------------- */
 /* slider */
 /* -------------------------------------- */

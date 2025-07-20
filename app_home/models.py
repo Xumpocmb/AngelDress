@@ -5,9 +5,7 @@ from django.core.files.storage import default_storage
 
 class SliderImage(models.Model):
     image = models.ImageField(upload_to="slider/")
-    alt_text = models.CharField(
-        max_length=100, blank=True, verbose_name="Альтернативный текст"
-    )
+    alt_text = models.CharField(max_length=100, blank=True, verbose_name="Альтернативный текст")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:
@@ -64,9 +62,7 @@ class SocialTypes(models.Model):
         ("vk", "VK"),
         ("viber", "Viber"),
     ]
-    name = models.CharField(
-        max_length=20, choices=SOCIAL_TYPES, verbose_name="Тип социальной сети"
-    )
+    name = models.CharField(max_length=20, choices=SOCIAL_TYPES, verbose_name="Тип социальной сети")
 
     def __str__(self):
         return self.get_name_display()
@@ -132,3 +128,21 @@ class Questions(models.Model):
         db_table = "app_home_questions"
         verbose_name = "Частый вопрос"
         verbose_name_plural = "Частые вопросы"
+
+
+class NewsTicker(models.Model):
+    text = models.CharField(max_length=200, verbose_name="Текст бегущей строки")
+    is_active = models.BooleanField(default=True, verbose_name="Активна")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+
+    class Meta:
+        verbose_name = "Бегущая строка"
+        verbose_name_plural = "Бегущие строки"
+
+    def __str__(self):
+        return self.text
+
+    def save(self, *args, **kwargs):
+        if not self.pk and NewsTicker.objects.exists():
+            return
+        super().save(*args, **kwargs)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from app_home.forms import RentRulesForm, TermsOfUseForm
-from app_home.models import SliderImage, ContactInfo, RentRules, TermsOfUse, Questions
+from app_home.models import NewsTicker, SliderImage, ContactInfo, RentRules, TermsOfUse, Questions
 
 
 class SliderImageAdmin(admin.ModelAdmin):
@@ -37,3 +37,10 @@ class TermsOfUseAdmin(admin.ModelAdmin):
 class QuestionsAdmin(admin.ModelAdmin):
     list_display = ('question_text', 'is_active')
     list_editable = ('is_active',)
+
+
+@admin.register(NewsTicker)
+class NewsTickerAdmin(admin.ModelAdmin):
+    list_display = ("text", "is_active", "created_at")
+    list_filter = ("is_active",)
+    search_fields = ("text",)

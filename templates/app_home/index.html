@@ -15,6 +15,14 @@
 {% block content %}
     <div class="wrapper">
 
+        {% if ticker %}
+    <div class="ticker-container">
+        <div class="ticker">
+        <h2>{{ ticker.text }}</h2>
+        </div>
+    </div>
+    {% endif %}
+
         {% if slider_images %}
             <!-- Секция слайдера -->
             <section class="slider">
@@ -29,6 +37,7 @@
                             </div>
                         {% endfor %}
                     </div>
+                    
 
                     <!-- Навигация -->
                     <div class="swiper-button-prev"></div>
@@ -42,7 +51,7 @@
 
         <!-- Секция заголовка страницы -->
         <section class="heading">
-            <h1 class="heading_title">Добро пожаловать в <br> прокат платьев</h1>
+            <h1 class="heading_title">Добро пожаловать в <br> Angel Dress - <br>  Прокат и продажа платьев</h1>
         </section>
 
 

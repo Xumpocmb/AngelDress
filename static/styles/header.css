@@ -17,6 +17,9 @@
 }
 
 .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -52,6 +55,10 @@
     letter-spacing: 1px;
     font-weight: 300;
     transition: color 0.3s ease;
+}
+
+.nav-icons-header {
+    display: none;
 }
 
 @media (max-width: 1070px) {

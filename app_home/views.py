@@ -5,11 +5,12 @@ from django.shortcuts import render
 
 from app_blog.models import Post
 from app_catalog.models import Item, ItemCategory
-from app_home.models import RentRules, SliderImage, ContactInfo, TermsOfUse, Questions
+from app_home.models import NewsTicker, RentRules, SliderImage, TermsOfUse, Questions
 
 
 def index_view(request):
     slider_images = SliderImage.objects.all().order_by("order")
+    ticker = NewsTicker.objects.filter(is_active=True).first()
 
     try:
         accessory_category = ItemCategory.objects.get(slug="aksessuary")
@@ -48,6 +49,7 @@ def index_view(request):
 
     context = {
         "slider_images": slider_images,
+        'ticker': ticker,
         "random_dresses": random_dresses,
         "latest_posts": latest_posts,
         "random_accessories": random_accessories,
