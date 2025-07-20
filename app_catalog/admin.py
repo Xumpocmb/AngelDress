@@ -4,12 +4,13 @@ from django.utils.safestring import mark_safe
 
 from .models import (
     Item,
-    ItemImage,
     ItemCategory,
-    ItemVideo,
+    Accessory,
+    AccessoryCategory,
     PriceOption,
+    ItemImage,
+    ItemVideo,
 )
-
 
 class PriceOptionInline(admin.TabularInline):
     model = PriceOption
@@ -19,6 +20,12 @@ class PriceOptionInline(admin.TabularInline):
     verbose_name = "Вариант цены"
     verbose_name_plural = "Варианты цен"
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "item":
+            kwargs["queryset"] = Item.objects.all()
+        elif db_field.name == "accessory":
+            kwargs["queryset"] = Accessory.objects.all()
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
@@ -32,7 +39,6 @@ class ItemImageInline(admin.TabularInline):
         return "Нет изображения"
 
     image_tag.short_description = "Предпросмотр"
-
 
 class ItemVideoInline(admin.TabularInline):
     model = ItemVideo
@@ -48,7 +54,6 @@ class ItemVideoInline(admin.TabularInline):
         return "Нет видео"
 
     video_tag.short_description = "Предпросмотр"
-
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
@@ -101,11 +106,6 @@ class ItemAdmin(admin.ModelAdmin):
     )
     readonly_fields = ("views_count", "favorites_count", "popularity_score")
 
-    def display_categories(self, obj):
-        return ", ".join([category.name for category in obj.categories.all()])
-
-    display_categories.short_description = "Категории"
-
     def thumbnail_preview(self, obj):
         if obj.get_first_image_url():
             return format_html(
@@ -117,6 +117,61 @@ class ItemAdmin(admin.ModelAdmin):
     thumbnail_preview.short_description = "Миниатюра"
     thumbnail_preview.allow_tags = True
 
+@admin.register(Accessory)
+class AccessoryAdmin(admin.ModelAdmin):
+    inlines = [PriceOptionInline, ItemImageInline, ItemVideoInline]
+    list_display = (
+        "thumbnail_preview",
+        "name",
+        "is_active",
+        "created_at",
+    )
+    list_editable = ("is_active",)
+    list_filter = (
+        "categories",
+        "color",
+    )
+    search_fields = ("name", "description")
+    filter_horizontal = ("categories",)
+
+    fieldsets = (
+        (
+            "Основное",
+            {
+                "fields": (
+                    "categories",
+                    "name",
+                    "description",
+                    "is_active",
+                )
+            },
+        ),
+        (
+            "Детали",
+            {
+                "fields": (
+                    "color",
+                    "details",
+                )
+            },
+        ),
+        (
+            "Рейтинг популярности",
+            {"fields": ("views_count", "favorites_count", "popularity_score")},
+        ),
+    )
+    readonly_fields = ("views_count", "favorites_count", "popularity_score")
+
+    def thumbnail_preview(self, obj):
+        if obj.get_first_image_url():
+            return format_html(
+                '<img src="{}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" />',
+                obj.get_first_image_url(),
+            )
+        return ""
+
+    thumbnail_preview.short_description = "Миниатюра"
+    thumbnail_preview.allow_tags = True
 
 @admin.register(ItemCategory)
 class ItemCategoryAdmin(admin.ModelAdmin):
@@ -133,3 +188,19 @@ class ItemCategoryAdmin(admin.ModelAdmin):
         return obj.items.count()
 
     items_count.short_description = "Количество"
+
+@admin.register(AccessoryCategory)
+class AccessoryCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name", "accessories_count", "show_on_main_page", "is_active")
+    search_fields = ("name",)
+    ordering = ("name",)
+    prepopulated_fields = {"slug": ("name",)}
+    list_editable = (
+        "is_active",
+        "show_on_main_page",
+    )
+
+    def accessories_count(self, obj):
+        return obj.accessories.count()
+
+    accessories_count.short_description = "Количество"

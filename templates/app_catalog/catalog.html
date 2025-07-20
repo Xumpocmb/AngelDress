@@ -60,13 +60,17 @@
 
                 <!-- Поиск -->
                 <div class="search-bar">
-                <label for="sort-select">Поиск по цвету или размеру:</label>
+                    <label for="sort-select">Поиск по цвету или размеру:</label>
                     <form method="get" class="search-form" id="searchForm">
                         <input type="hidden" name="category" value="{{ current_category|default:'' }}">
                         <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
                         <div class="search-input-wrapper">
-                            <input type="text" name="search" value="{{ search_query|default:'' }}" placeholder="Поиск по цвету или размеру" class="search-input" id="searchInput">
-                            <img src="{% static 'img/reset.svg' %}" alt="Очистить поиск" class="clear-search-icon" id="clearSearchIcon" style="display: {% if search_query %}block{% else %}none{% endif %}">
+                            <input type="text" name="search" value="{{ search_query|default:'' }}"
+                                   placeholder="{% if model_type == 'dress' %}Поиск по цвету или размеру{% else %}Поиск по цвету или деталям{% endif %}"
+                                   class="search-input" id="searchInput">
+                            <img src="{% static 'img/clear-icon.png' %}" alt="Очистить поиск"
+                                 class="clear-search-icon" id="clearSearchIcon"
+                                 style="display: {% if search_query %}block{% else %}none{% endif %}">
                         </div>
                         <button type="submit" class="search-button">Найти</button>
                     </form>
@@ -96,18 +100,18 @@
 
                 <!-- Карточки товаров -->
                 <div class="product-grid">
-                    {% for dress in page_obj %}
+                    {% for item in page_obj %}
                         <div class="product-card">
                             <div class="img-section">
-                                <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
-                                     onclick="toggleWishlist(this, {{ dress.id }})">
+                                <div class="favorite-icon {% if item.id in request.session.wishlist %}active{% endif %}"
+                                     onclick="toggleWishlist(this, {{ item.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
                                 </div>
-                                <a href="{% url 'app_catalog:item_detail' dress.id %}">
-                                    {% with dress.images.first as main_image %}
+                                <a href="{% if model_type == 'dress' %}{% url 'app_catalog:dress_detail' item.id %}{% else %}{% url 'app_catalog:accessory_detail' item.id %}{% endif %}">
+                                    {% with item.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ dress.name }}">
+                                                 alt="{{ item.name }}">
                                         {% else %}
                                             <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
                                                  alt="Нет изображения">
@@ -117,9 +121,9 @@
                             </div>
 
                             <div class="product-info">
-                                <div class="product-name">Арт.: {{ dress.name }}</div>
-                                {% if dress.min_price %}
-                                    <div class="product-price">от {{ dress.min_price }} ₽</div>
+                                <div class="product-name">Арт.: {{ item.name }}</div>
+                                {% if item.min_price %}
+                                    <div class="product-price">от {{ item.min_price }} ₽</div>
                                 {% else %}
                                     <div class="product-price" style="color: #999;">Цена не указана</div>
                                 {% endif %}
@@ -127,7 +131,7 @@
                         </div>
                     {% empty %}
                         <div class="no-products">
-                            <p>Платьев пока нет в каталоге</p>
+                            <p>{% if model_type == 'dress' %}Платьев{% else %}Аксессуаров{% endif %} пока нет в каталоге</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -141,18 +145,18 @@
 {% block scripts %}
     <script src="{% static 'js/wishlist.js' %}"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const searchInput = document.getElementById('searchInput');
             const clearIcon = document.getElementById('clearSearchIcon');
             const searchForm = document.getElementById('searchForm');
 
             // Показать/скрыть иконку очистки в зависимости от содержимого поля
-            searchInput.addEventListener('input', function() {
+            searchInput.addEventListener('input', function () {
                 clearIcon.style.display = this.value ? 'block' : 'none';
             });
 
             // Очистка поля и отправка формы при клике на иконку
-            clearIcon.addEventListener('click', function() {
+            clearIcon.addEventListener('click', function () {
                 searchInput.value = '';
                 clearIcon.style.display = 'none';
                 searchForm.submit();

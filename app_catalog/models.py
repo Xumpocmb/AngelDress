@@ -23,8 +23,8 @@ class ItemCategory(models.Model):
 
     class Meta:
         db_table = "app_catalog_category"
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
+        verbose_name = "Категория платья"
+        verbose_name_plural = "Категории платьев"
 
     def __str__(self):
         return self.name
@@ -117,8 +117,8 @@ class Item(models.Model):
 
     class Meta:
         db_table = "app_catalog_item"
-        verbose_name = "Товары"
-        verbose_name_plural = "Товары"
+        verbose_name = "Платье"
+        verbose_name_plural = "Платья"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -146,12 +146,122 @@ class Item(models.Model):
         self.save(update_fields=["min_price"])
 
 
+class AccessoryCategory(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название категории")
+    description = models.TextField(verbose_name="Описание", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="accessory_category/", verbose_name="Изображение", blank=True, null=True
+    )
+    is_active = models.BooleanField(default=False, verbose_name="Активна")
+    show_on_main_page = models.BooleanField(
+        default=True, verbose_name="Показывать на главной странице"
+    )
+    slug = models.SlugField(
+        max_length=100, unique=True, verbose_name="url", null=False, blank=False
+    )
+
+    class Meta:
+        db_table = "app_accessory_category"
+        verbose_name = "Категория аксессуаров"
+        verbose_name_plural = "Категории аксессуаров"
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("app_catalog:accessory_catalog")
+
+
+class Accessory(models.Model):
+    categories = models.ManyToManyField(
+        AccessoryCategory, verbose_name="Категории", related_name="accessories"
+    )
+    name = models.CharField(max_length=200, verbose_name="Название")
+    description = models.TextField(
+        verbose_name="Описание",
+        blank=True,
+        null=True,
+    )
+    color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
+    details = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Детали",
+        help_text="Перечислите детали через запятую",
+    )
+    is_active = models.BooleanField(default=True, verbose_name="Активен")
+    created_at = models.DateTimeField(
+        default=timezone.now, verbose_name="Дата создания"
+    )
+    views_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество просмотров"
+    )
+    favorites_count = models.PositiveIntegerField(
+        default=0, verbose_name="Количество избранных"
+    )
+    popularity_score = models.FloatField(
+        default=0.0, verbose_name="Рейтинг популярности", blank=True, null=True
+    )
+    min_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name="Минимальная цена",
+        help_text="Обновляется автоматически",
+    )
+
+    class Meta:
+        db_table = "app_catalog_accessory"
+        verbose_name = "Аксессуар"
+        verbose_name_plural = "Аксессуары"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.name
+
+    def update_popularity(self):
+        self.popularity_score = self.views_count * 0.3 + self.favorites_count * 0.7
+        self.save()
+
+    def get_absolute_url(self):
+        return reverse("app_catalog:accessory_detail", args=[self.id])
+
+    def get_first_image_url(self):
+        if self.images.exists():
+            return self.images.first().image.url
+        return "/static/img/No-Image-Placeholder.png"
+
+    def update_min_price(self):
+        min_option = self.price_options.filter(is_active=True).order_by("price").first()
+        if min_option:
+            self.min_price = min_option.price
+        else:
+            self.min_price = None
+        self.save(update_fields=["min_price"])
+
+
 class PriceOption(models.Model):
     item = models.ForeignKey(
         Item,
         on_delete=models.CASCADE,
         related_name="price_options",
         verbose_name="Платье",
+        null=True,
+        blank=True,
+    )
+    accessory = models.ForeignKey(
+        Accessory,
+        on_delete=models.CASCADE,
+        related_name="price_options",
+        verbose_name="Аксессуар",
+        null=True,
+        blank=True,
     )
     name = models.CharField(
         max_length=100,
@@ -186,7 +296,10 @@ class PriceOption(models.Model):
 
 class ItemImage(models.Model):
     item = models.ForeignKey(
-        Item, on_delete=models.CASCADE, related_name="images", verbose_name="Товар"
+        Item, on_delete=models.CASCADE, related_name="images", verbose_name="Платье", null=True, blank=True
+    )
+    accessory = models.ForeignKey(
+        Accessory, on_delete=models.CASCADE, related_name="images", verbose_name="Аксессуар", null=True, blank=True
     )
     image = models.ImageField(upload_to="dresses/", verbose_name="Фотография")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
@@ -211,7 +324,12 @@ class ItemImage(models.Model):
 
 
 class ItemVideo(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="videos")
+    item = models.ForeignKey(
+        Item, on_delete=models.CASCADE, related_name="videos", verbose_name="Платье", null=True, blank=True
+    )
+    accessory = models.ForeignKey(
+        Accessory, on_delete=models.CASCADE, related_name="videos", verbose_name="Аксессуар", null=True, blank=True
+    )
     video = models.FileField(upload_to="dresses/videos/", verbose_name="Видео")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
     alt_text = models.CharField(max_length=200, blank=True, verbose_name="Описание")

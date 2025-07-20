@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load wishlist_tags %}
+
+
 {% block title %}
     <title>{{ title|default:"Angel Dress - Избранное" }}</title>
 {% endblock %}
@@ -17,6 +20,11 @@
 {% block content %}
     <!-- Главный контейнер -->
     <div class="wrapper">
+    <div class="breadcrumbs">
+      <a href="{% if model_type == 'dress' %}{% url 'app_catalog:dress_catalog' %}{% else %}{% url 'app_catalog:accessory_catalog' %}{% endif %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}" class="breadcrumbs-link">
+        <img src="{% static 'img/icon-left.png' %}" alt="Назад"> Назад в {% if model_type == 'dress' %}Каталог платьев{% else %}Каталог аксессуаров{% endif %}
+      </a>
+    </div>
         <div class="wishlist-container">
             <!-- Карточки товаров -->
             {% if page_obj.object_list %}
@@ -28,7 +36,7 @@
                                      onclick="toggleWishlist(this, {{ item.id }})">
                                     <img src="{% static 'img/heart.png' %}" alt="Remove from wishlist">
                                 </div>
-                                <a href="{% url 'app_catalog:item_detail' item.id %}">
+                                <a href="{% get_item_url item %}">
                                     {% with item.images.first as main_image %}
                                         {% if main_image %}
                                             <img class="product-image" src="{{ main_image.image.url }}"
@@ -43,7 +51,6 @@
 
                             <div class="card-product-info">
                                 <p class="product-name">Арт.: {{ item.name }}</p>
-                                <p class="product-price">Стоимость: {{ item.rental_price }} ₽</p>
                                 <div class="button-container" style="text-align: center">
                                     <button class="button button-primary rent-button" id="rent-button" data-id="{{ item.id }}">Забронировать</button>
                                 </div>
@@ -61,17 +68,14 @@
                     <p>В вашем избранном пока ничего нет.</p>
                 </div>
             {% endif %}
-
-
         </div>
-
     </div>
 
     <!-- Модальное окно -->
     <div class="modal" id="rentModal" style="display: none">
         <div class="modal-overlay" onclick="closeModal(event)"></div>
         <div class="modal-content">
-            <span class="modal-close" onclick="closeModal(event)">&times;</span>
+            <span class="modal-close" onclick="closeModal(event)">×</span>
 
             <div class="form_container">
                 <div class="form_header">

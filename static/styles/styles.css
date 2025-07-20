@@ -2533,7 +2533,7 @@ button {
 
 .product-container {
     max-width: 1200px;
-    margin: 0px auto;
+    margin: 0 auto;
     padding: 20px;
     display: flex;
     gap: 10px;
@@ -3034,7 +3034,7 @@ button {
 
 .wishlist-container {
     max-width: 1200px;
-    margin: 100px auto;
+    margin: 30px auto;
     padding: 20px;
 }
 
