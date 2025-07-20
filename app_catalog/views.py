@@ -52,6 +52,7 @@ def item_catalog_view(request):
         "current_category": category_slug,
         "current_sort": sort,
         "search_query": search_query,
+        "model_type": "dress",
         "meta_description": "Прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/catalog.html", context)
@@ -83,6 +84,7 @@ def item_detail_view(request, dress_id):
         "rent_rules_text": rent_rules_text,
         "media_files": media_files,
         'catalog_params': catalog_params,
+        "model_type": "dress",
         "meta_description": f"{dress.name}: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/product.html", context)
