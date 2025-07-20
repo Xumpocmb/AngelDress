@@ -1,62 +1,77 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-  <title>{{ title|default:'Angel Dress - Каталог' }}</title>
+  <title>{{ product.name }} | Angel Dress</title>
 {% endblock %}
 
 {% block meta %}
   {{ block.super }}
   <meta name="csrf-token" content="{{ csrf_token }}" />
+  <meta name="description" content="{{ meta_description }}" />
 {% endblock %}
 
 {% block styles %}
   <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
   <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
+  <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}" />
 {% endblock %}
 
 {% block content %}
   <div class="wrapper">
     <div class="breadcrumbs">
       <a href="{% url 'app_catalog:items_catalog' %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}" class="breadcrumbs-link">
-        <img src="{% static 'img/icon-left.png' %}" alt="icon-left.png">Назад в Каталог</a>
+        <img src="{% static 'img/icon-left.png' %}" alt="Назад"> Назад в Каталог
+      </a>
     </div>
     <div class="product-container">
-      <!-- Левая колонка - изображения товара -->
+      <!-- Левая колонка - галерея -->
       <div class="product-gallery">
-        <div class="main-media-container">
-          {% if media_files %}
+        <!-- Главный слайдер -->
+        <div class="swiper main-gallery">
+          <div class="swiper-wrapper">
             {% for media in media_files %}
-              {% if forloop.first %}
+              <div class="swiper-slide">
                 {% if media.video %}
-                  <video id="mainMedia" controls class="main-media" style="width: 100%">
-                    <source src="{{ media.video.url }}" type="video/mp4" />Ваш браузер не поддерживает видео.
-                  </video>
-                {% else %}
-                  <img id="mainMedia" src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media" />
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media" />
-          {% endif %}
-        </div>
-
-        <div class="thumbnails">
-          {% if media_files %}
-            {% for media in media_files %}
-              <div class="thumbnail {% if forloop.first %}active{% endif %}" onclick="changeMedia({{ forloop.counter0 }})">
-                {% if media.video %}
-                  <video class="thumb-video" muted loop>
+                  <video controls class="main-media" data-is-video="true">
                     <source src="{{ media.video.url }}" type="video/mp4" />
+                    Ваш браузер не поддерживает видео.
                   </video>
                 {% else %}
-                  <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumbnail {% if forloop.first %}active{% endif %}" />
+                  <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media" data-is-video="false" />
                 {% endif %}
               </div>
             {% endfor %}
-          {% else %}
-            <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumbnail active" />
-          {% endif %}
+            {% if not media_files %}
+              <div class="swiper-slide">
+                <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media" data-is-video="false" />
+              </div>
+            {% endif %}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Слайдер миниатюр -->
+        <div class="swiper thumbnail-gallery">
+          <div class="swiper-wrapper">
+            {% for media in media_files %}
+              <div class="swiper-slide">
+                {% if media.video %}
+                  <video class="thumb-media" muted>
+                    <source src="{{ media.video.url }}" type="video/mp4" />
+                  </video>
+                {% else %}
+                  <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumb-media" />
+                {% endif %}
+              </div>
+            {% endfor %}
+            {% if not media_files %}
+              <div class="swiper-slide">
+                <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumb-media" />
+              </div>
+            {% endif %}
+          </div>
         </div>
       </div>
 
@@ -65,8 +80,8 @@
         <h1 class="product-name">{{ product.name }}</h1>
 
         <!-- Цена -->
-        {% if product.rental_price %}
-          <div class="price">{{ product.rental_price }} ₽</div>
+        {% if product.min_price %}
+          <div class="price">от {{ product.min_price }} ₽</div>
         {% endif %}
 
         <!-- Характеристики -->
@@ -113,7 +128,7 @@
             </div>
           {% endif %}
 
-          <!-- Цена -->
+          <!-- Выбор цены -->
           <div class="price-selection">
             <label for="price-option">Выберите вариант аренды:</label>
             <div class="custom-select-wrapper">
@@ -124,7 +139,10 @@
                             data-price="{{ option.price }}"
                             data-pledge="{{ option.pledge|default_if_none:'' }}"
                             data-period="{{ option.rental_period_days|default_if_none:'' }}"
-                            {% if forloop.first %}selected{% endif %}>{{ option.name }}</option>
+                            {% if forloop.first %}selected{% endif %}>
+                      {{ option.name }} — {{ option.price }} ₽
+                      {% if option.rental_period_days %} ({{ option.rental_period_days }} дней){% endif %}
+                    </option>
                   {% endif %}
                 {% endfor %}
               </select>
@@ -132,12 +150,12 @@
             </div>
 
             <div class="price-details">
-              <div>Стоимость: <span id="selected-price">{{ product.price_options.first.price }}</span> ₽</div>
+              <div>Стоимость: <span id="selected-price">{{ product.price_options.first.price|default:'0' }}</span> ₽</div>
               <div id="selected-pledge-container"{% if not product.price_options.first.pledge or product.price_options.first.pledge == 0 %} style="display:none;"{% endif %}>
-                Залог: <span id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'' }}</span> ₽
+                Залог: <span id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'0' }}</span> ₽
               </div>
               <div id="selected-period-container"{% if not product.price_options.first.rental_period_days %} style="display:none;"{% endif %}>
-                Срок аренды: <span id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'' }}</span> дн.
+                Срок аренды: <span id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'0' }}</span> дн.
               </div>
             </div>
           </div>
@@ -183,32 +201,27 @@
     </div>
   </div>
 
-  <!-- Модальное окно -->
+  <!-- Модальное окно для бронирования -->
   <div class="modal" id="rentModal" style="display: none">
     <div class="modal-overlay" onclick="closeModal(event)"></div>
     <div class="modal-content">
-      <span class="modal-close" onclick="closeModal(event)">&times;</span>
-
+      <span class="modal-close" onclick="closeModal(event)">×</span>
       <div class="form_container">
         <div class="form_header">
           <h2 class="form_title">Оставьте заявку</h2>
           <p class="form_subtitle">Наши менеджеры свяжутся с Вами в ближайшее время для подтверждения заявки</p>
         </div>
-
         <form class="contact_form" id="contactForm">
           <input type="hidden" id="item_ids" name="item_ids" value="" />
           <div class="form_group">
             <input type="text" id="name" name="name" placeholder="Имя и Фамилия" class="form_input" required />
           </div>
-
           <div class="form_group">
             <input type="tel" id="phone" name="phone" placeholder="Номер телефона" class="form_input" required />
           </div>
-
           <div class="form_group">
             <input type="email" id="email" name="email" placeholder="Email" class="form_input" required />
           </div>
-
           <div class="form_group checkbox_group">
             <label class="checkbox_label">
               <input type="checkbox" id="agreement" name="agreement" required />
@@ -216,9 +229,35 @@
               <span class="checkbox_text">Принимаю условия обработки данных</span>
             </label>
           </div>
-
           <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Лайтбокс для увеличенного просмотра изображений -->
+  <div class="lightbox" id="lightbox" style="display: none;">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <div class="swiper lightbox-gallery">
+        <div class="swiper-wrapper">
+          {% for media in media_files %}
+            {% if not media.video %}
+              <div class="swiper-slide">
+                <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="lightbox-image" />
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% if not images %}
+            <div class="swiper-slide">
+              <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="lightbox-image" />
+            </div>
+          {% endif %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </div>
@@ -228,83 +267,80 @@
   <script src="{% static 'js/dress_tabs.js' %}"></script>
   <script src="{% static 'js/product_rent.js' %}"></script>
   <script src="{% static 'js/wishlist.js' %}"></script>
+  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'js/swiper-bundle.min.js.map' %}"></script>
   <script>
-        window.mediaList = [
-            {% for media in media_files %}
-                {
-                    is_video: {% if media.video %}true{% else %}false{% endif %},
-                    image_url: "{% if media.image %}{{ media.image.url }}{% endif %}",
-                    video_url: "{% if media.video %}{{ media.video.url }}{% endif %}",
-                    alt: "{{ media.alt_text|escapejs }}"
-                }{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        ];
+    // Инициализация главного слайдера
+    const mainGallery = new Swiper('.main-gallery', {
+      loop: {% if media_files|length > 1 %}true{% else %}false{% endif %},
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      thumbs: {
+        swiper: {
+          el: '.thumbnail-gallery',
+          slidesPerView: 4,
+          spaceBetween: 10,
+          freeMode: true,
+          watchSlidesProgress: true,
+        },
+      },
+    });
 
-        let currentMediaIndex = 0;
+    // Инициализация лайтбокса
+    const lightboxGallery = new Swiper('.lightbox-gallery', {
+      loop: {% if images|length > 1 %}true{% else %}false{% endif %},
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
 
-        function changeMedia(index) {
-            currentMediaIndex = index;
-            const media = window.mediaList[index];
-            const mainMediaContainer = document.querySelector('.main-media-container');
-
-            const oldMedia = mainMediaContainer.querySelector('.main-media');
-            if (oldMedia) oldMedia.remove();
-
-            let newMedia;
-            if (media.is_video) {
-                newMedia = document.createElement('video');
-                newMedia.setAttribute('controls', true);
-                newMedia.classList.add('main-media');
-                newMedia.style.width = '100%';
-                newMedia.muted = true;
-                newMedia.autoplay = true;
-                newMedia.playsinline = true;
-                const source = document.createElement('source');
-                source.src = media.video_url;
-                source.type = 'video/mp4';
-                newMedia.appendChild(source);
-                newMedia.innerHTML += 'Ваш браузер не поддерживает видео.';
-            } else {
-                newMedia = document.createElement('img');
-                newMedia.src = media.image_url;
-                newMedia.alt = media.alt || '';
-                newMedia.classList.add('main-media');
-            }
-
-            newMedia.id = 'mainMedia';
-            mainMediaContainer.prepend(newMedia);
-
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index);
-            });
-        }
-    </script>
-    <script>
-      document.getElementById('price-option').addEventListener('change', function () {
-        const selectedOption = this.options[this.selectedIndex];
-        const price = selectedOption.getAttribute('data-price');
-        const pledge = selectedOption.getAttribute('data-pledge');
-        const period = selectedOption.getAttribute('data-period');
-    
-        document.getElementById('selected-price').textContent = price;
-    
-        const pledgeContainer = document.getElementById('selected-pledge-container');
-        const pledgeSpan = document.getElementById('selected-pledge');
-        if (pledge && parseFloat(pledge) > 0) {
-          pledgeSpan.textContent = pledge;
-          pledgeContainer.style.display = 'block';
-        } else {
-          pledgeContainer.style.display = 'none';
-        }
-    
-        const periodContainer = document.getElementById('selected-period-container');
-        const periodSpan = document.getElementById('selected-period');
-        if (period && parseInt(period) > 0) {
-          periodSpan.textContent = period;
-          periodContainer.style.display = 'block';
-        } else {
-          periodContainer.style.display = 'none';
-        }
+    // Открытие лайтбокса при клике на изображение
+    document.querySelectorAll('.main-gallery .main-media[data-is-video="false"]').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox').style.display = 'flex';
+        lightboxGallery.slideToLoop(index);
       });
-    </script>
+    });
+
+    // Закрытие лайтбокса
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Обработка выбора варианта аренды
+    document.getElementById('price-option').addEventListener('change', function () {
+      const selectedOption = this.options[this.selectedIndex];
+      const price = selectedOption.getAttribute('data-price');
+      const pledge = selectedOption.getAttribute('data-pledge');
+      const period = selectedOption.getAttribute('data-period');
+      document.getElementById('selected-price').textContent = price;
+      const pledgeContainer = document.getElementById('selected-pledge-container');
+      const pledgeSpan = document.getElementById('selected-pledge');
+      if (pledge && parseFloat(pledge) > 0) {
+        pledgeSpan.textContent = pledge;
+        pledgeContainer.style.display = 'block';
+      } else {
+        pledgeContainer.style.display = 'none';
+      }
+      const periodContainer = document.getElementById('selected-period-container');
+      const periodSpan = document.getElementById('selected-period');
+      if (period && parseInt(period) > 0) {
+        periodSpan.textContent = period;
+        periodContainer.style.display = 'block';
+      } else {
+        periodContainer.style.display = 'none';
+      }
+    });
+  </script>
 {% endblock %}

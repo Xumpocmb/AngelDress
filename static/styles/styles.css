@@ -2578,59 +2578,137 @@ button {
 }
 
 
-/* Колонка с изображением */
+/* Стили для галереи */
 .product-gallery {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    flex: 1;
+    max-width: 600px;
+    margin-right: var(--grid-gap);
 }
 
-.product-gallery img {
-    max-width: 100%;
-    object-fit: cover;
+.main-gallery {
+    margin-bottom: var(--grid-gap);
+    border-radius: var(--border-radius);
     overflow: hidden;
-}
-
-.main-media-container {
-    width: 100%;
-    height: 500px;
-    background-color: #eee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    color: #999;
-    font-size: 18px;
 }
 
 .main-media {
     width: 100%;
-    height: 100%;
+    height: 400px;
     object-fit: cover;
+    display: block;
+    cursor: pointer; /* Для изображений, чтобы указать кликабельность */
 }
 
-.thumbnails {
-    display: flex;
-    gap: 10px;
+.main-gallery .swiper-button-prev,
+.main-gallery .swiper-button-next {
+    color: var(--secondary-color);
+    background: var(--background-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
-.thumbnail {
-    width: 70px;
-    height: 70px;
-    background-color: #eee;
+.main-gallery .swiper-button-prev:after,
+.main-gallery .swiper-button-next:after {
+    font-size: 20px;
+}
+
+.main-gallery .swiper-pagination-bullet {
+    background: var(--primary-color);
+}
+
+.main-gallery .swiper-pagination-bullet-active {
+    background: var(--secondary-color);
+}
+
+.thumbnail-gallery {
+    margin-top: 10px;
+}
+
+.thumb-media {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail-gallery .swiper-slide-thumb-active .thumb-media {
+    opacity: 1;
+    border: 2px solid var(--secondary-color);
+}
+
+/* Лайтбокс */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    color: #999;
+    z-index: 1000;
 }
 
-.thumb-video {
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    width: 800px;
+    height: 600px;
+}
+
+.lightbox-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    font-size: 30px;
+    color: var(--background-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--secondary-color);
+}
+
+.lightbox-gallery .swiper-button-prev,
+.lightbox-gallery .swiper-button-next {
+    color: var(--background-color);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.lightbox-gallery .swiper-button-prev:after,
+.lightbox-gallery .swiper-button-next:after {
+    font-size: 20px;
+}
+
+.lightbox-gallery .swiper-pagination-bullet {
+    background: var(--primary-color);
+}
+
+.lightbox-gallery .swiper-pagination-bullet-active {
+    background: var(--secondary-color);
 }
 
 /* Колонка с информацией */
