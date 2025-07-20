@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from app_catalog.models import Item, ItemCategory
@@ -6,10 +7,26 @@ from app_home.models import RentRules
 
 def item_catalog_view(request):
     category_slug = request.GET.get("category")
+    search_query = request.GET.get("search", "")
     dresses = Item.objects.filter(is_active=True).prefetch_related("categories")
+    sort = request.GET.get("sort", "newest")
+    page = request.GET.get("page", "1")
+
+    request.session['catalog_params'] = {
+        'category': category_slug,
+        'search': search_query,
+        'sort': sort,
+        'page': page
+    }
 
     if category_slug:
         dresses = dresses.filter(categories__slug=category_slug)
+
+    if search_query:
+        dresses = dresses.filter(
+            Q(color__icontains=search_query.strip()) |
+            Q(available_sizes__icontains=search_query.strip())
+        )
 
     # Сортировка
     sort = request.GET.get("sort", "newest")
@@ -34,6 +51,7 @@ def item_catalog_view(request):
         "categories": ItemCategory.objects.filter(is_active=True),
         "current_category": category_slug,
         "current_sort": sort,
+        "search_query": search_query,
         "meta_description": "Прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/catalog.html", context)
@@ -51,6 +69,8 @@ def item_detail_view(request, dress_id):
     videos = list(dress.videos.all())
     media_files = sorted(images + videos, key=lambda x: x.order)
 
+    catalog_params = request.session.get('catalog_params', {})
+
     rent_rules = RentRules.objects.first()
     if rent_rules:
         rent_rules_text = rent_rules.text
@@ -62,6 +82,7 @@ def item_detail_view(request, dress_id):
         "images": images,
         "rent_rules_text": rent_rules_text,
         "media_files": media_files,
+        'catalog_params': catalog_params,
         "meta_description": f"{dress.name}: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/product.html", context)

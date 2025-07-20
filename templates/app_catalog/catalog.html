@@ -21,6 +21,8 @@
         <div class="catalog-container">
             <!-- Боковое меню -->
             <aside class="sidebar">
+
+
                 <!-- Заголовок -->
                 <h2 class="filter-title">Категории</h2>
 
@@ -55,6 +57,21 @@
 
             <!-- Основное содержимое -->
             <main class="content">
+
+                <!-- Поиск -->
+                <div class="search-bar">
+                <label for="sort-select">Поиск по цвету или размеру:</label>
+                    <form method="get" class="search-form" id="searchForm">
+                        <input type="hidden" name="category" value="{{ current_category|default:'' }}">
+                        <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
+                        <div class="search-input-wrapper">
+                            <input type="text" name="search" value="{{ search_query|default:'' }}" placeholder="Поиск по цвету или размеру" class="search-input" id="searchInput">
+                            <img src="{% static 'img/reset.svg' %}" alt="Очистить поиск" class="clear-search-icon" id="clearSearchIcon" style="display: {% if search_query %}block{% else %}none{% endif %}">
+                        </div>
+                        <button type="submit" class="search-button">Найти</button>
+                    </form>
+                </div>
+
                 <!-- Сортировка -->
                 <div class="sort-bar">
                     <label for="sort-select">Показывать сначала:</label>
@@ -123,4 +140,23 @@
 
 {% block scripts %}
     <script src="{% static 'js/wishlist.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const clearIcon = document.getElementById('clearSearchIcon');
+            const searchForm = document.getElementById('searchForm');
+
+            // Показать/скрыть иконку очистки в зависимости от содержимого поля
+            searchInput.addEventListener('input', function() {
+                clearIcon.style.display = this.value ? 'block' : 'none';
+            });
+
+            // Очистка поля и отправка формы при клике на иконку
+            clearIcon.addEventListener('click', function() {
+                searchInput.value = '';
+                clearIcon.style.display = 'none';
+                searchForm.submit();
+            });
+        });
+    </script>
 {% endblock %}

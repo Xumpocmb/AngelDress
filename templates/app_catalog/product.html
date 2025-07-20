@@ -17,7 +17,7 @@
 {% block content %}
   <div class="wrapper">
     <div class="breadcrumbs">
-      <a href="{% url 'app_catalog:items_catalog' %}" class="breadcrumbs-link">
+      <a href="{% url 'app_catalog:items_catalog' %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}" class="breadcrumbs-link">
         <img src="{% static 'img/icon-left.png' %}" alt="icon-left.png">Назад в Каталог</a>
     </div>
     <div class="product-container">
@@ -124,10 +124,7 @@
                             data-price="{{ option.price }}"
                             data-pledge="{{ option.pledge|default_if_none:'' }}"
                             data-period="{{ option.rental_period_days|default_if_none:'' }}"
-                            {% if forloop.first %}selected{% endif %}>
-                      {{ option.name }} — {{ option.price }} ₽
-                      {% if option.rental_period_days %} ({{ option.rental_period_days }} дней){% endif %}
-                    </option>
+                            {% if forloop.first %}selected{% endif %}>{{ option.name }}</option>
                   {% endif %}
                 {% endfor %}
               </select>
