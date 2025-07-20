@@ -2666,7 +2666,7 @@ button {
     max-width: 90%;
     max-height: 90%;
     width: 800px;
-    height: 600px;
+    /*height: 600px;*/
 }
 
 .lightbox-image {
