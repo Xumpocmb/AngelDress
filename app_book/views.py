@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 from django.views.decorators.http import require_http_methods
 from django_ratelimit.decorators import ratelimit
 
+from app_catalog.models import Accessory
 from app_newsletter.models import Subscriber
 from .forms import RentalRequestForm
 from .models import Item
@@ -39,7 +40,7 @@ def create_rental_request(request):
                 item_ids = [int(did) for did in item_ids if str(did).isdigit() and int(did) > 0]
             except (json.JSONDecodeError, ValueError, TypeError) as e:
                 return JsonResponse(
-                    {"success": False, "error": "Неверный формат списка платьев"},
+                    {"success": False, "error": "Неверный формат списка товаров"},
                     status=400
                 )
             if not isinstance(item_ids, list):
@@ -47,26 +48,40 @@ def create_rental_request(request):
 
             if len(item_ids) > 10:
                 return JsonResponse(
-                    {"success": False, "error": "Можно выбрать не более 10 платьев"},
+                    {"success": False, "error": "Можно выбрать не более 10 товаров"},
                     status=400
                 )
 
             if not item_ids:
                 return JsonResponse(
-                    {"success": False, "error": "Не выбрано ни одного платья"},
+                    {"success": False, "error": "Не выбрано ни одного товара"},
                     status=400
                 )
 
-            items = Item.objects.filter(id__in=item_ids).distinct()[:10]
+            # Fetch Items and Accessories
+            items = Item.objects.filter(id__in=item_ids).distinct()
+            accessories = Accessory.objects.filter(id__in=item_ids).distinct()
+            all_items = list(items) + list(accessories)
+
+            if len(all_items) > 10:
+                all_items = all_items[:10]
+
+            if not all_items:
+                return JsonResponse(
+                    {"success": False, "error": "Не найдено ни одного товара"},
+                    status=400
+                )
 
             with transaction.atomic():
                 rental_request = form.save(commit=False)
-
                 rental_request.name = clean_string(form.cleaned_data['name'])
                 rental_request.phone = clean_phone(form.cleaned_data['phone'])
                 rental_request.email = form.cleaned_data['email'].lower().strip()
                 rental_request.save()
-                rental_request.items.set(items)
+
+                # Set Items and Accessories
+                rental_request.items.set([item for item in all_items if isinstance(item, Item)])
+                rental_request.accessories.set([item for item in all_items if isinstance(item, Accessory)])
 
                 try:
                     Subscriber.objects.get_or_create(
@@ -80,7 +95,7 @@ def create_rental_request(request):
                 context = {
                     "user_name": rental_request.name,
                     "request_id": rental_request.id,
-                    "items": items,
+                    "items": all_items,  # Combined list for email
                     "phone": rental_request.phone,
                 }
 
@@ -107,14 +122,14 @@ def create_rental_request(request):
                 telegram_token = settings.TELEGRAM_BOT_TOKEN
                 telegram_chat_id = settings.TELEGRAM_CHAT_ID
 
-                items_list = "\n".join([f"- {item.name} (ID: {item.id})" for item in items])
+                items_list = "\n".join([f"- {item.name} (ID: {item.id})" for item in all_items])
 
                 message_text = (
                     f"🔔 Новая заявка на бронирование примерки!\n\n"
                     f"👤 Имя: {rental_request.name}\n"
                     f"📞 Телефон: {rental_request.phone}\n"
                     f"📧 Email: {rental_request.email}\n"
-                    f"👗 Выбранные платья:\n{items_list}\n"
+                    f"🛍️ Выбранные товары:\n{items_list}\n"
                     f"🔗 ID заявки: {rental_request.id}"
                 )
 
