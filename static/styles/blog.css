@@ -261,6 +261,20 @@
     opacity: 1;
 }
 
+.back-to-blog {
+    display: inline-block;
+    margin-top: 40px;
+    color: #d4a574;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-to-blog:hover {
+    color: #b38a5a;
+    text-decoration: underline;
+}
+
 /* Адаптив */
 @media (max-width: 768px) {
     .post-container {
