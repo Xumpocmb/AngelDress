@@ -1,18 +1,18 @@
-@font-face {
-    font-family: "Dihjauti S";
-    src: url('/static/fonts/DihjautiS-Regular.otf');
-    font-stretch: normal;
-    font-style: normal;
-    font-display: swap;
-}
+/*@font-face {*/
+/*    font-family: "Dihjauti S";*/
+/*    src: url('/static/fonts/DihjautiS-Regular.otf');*/
+/*    font-stretch: normal;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
 
-@font-face {
-    font-family: "TT Chocolates";
-    src: url('/static/fonts/ChocolateClassicalSans-Regular.ttf');
-    font-stretch: normal;
-    font-style: normal;
-    font-display: swap;
-}
+/*@font-face {*/
+/*    font-family: "TT Chocolates";*/
+/*    src: url('/static/fonts/ChocolateClassicalSans-Regular.ttf');*/
+/*    font-stretch: normal;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
 
 /* --- Основные переменные --- */
 
@@ -31,8 +31,17 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "Open Sans";
+    font-stretch: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
 body {
-    font-family: "TT Chocolates";
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #fff;
@@ -53,13 +62,15 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Dihjauti S";
+    /*font-family: "Dihjauti S";*/
+    font-family: "Open Sans", sans-serif;
     font-weight: normal;
 }
 
 p,
 button {
-    font-family: "TT Chocolates";
+    /*font-family: "TT Chocolates";*/
+    font-family: "Open Sans", sans-serif;
 }
 
 h1 {
@@ -2595,7 +2606,7 @@ button {
     height: 400px;
     object-fit: cover;
     display: block;
-    cursor: pointer; /* Для изображений, чтобы указать кликабельность */
+    cursor: pointer;
 }
 
 .main-gallery .swiper-button-prev,
@@ -2805,7 +2816,7 @@ button {
     border-color: var(--secondary-color);
 }
 
-/* Дополнительный эффект при открытии селекта (можно улучшить JS) */
+/* Дополнительный эффект при открытии селекта*/
 .custom-select:focus+.select-arrow {
     transform: translateY(-50%) rotate(180deg);
 }

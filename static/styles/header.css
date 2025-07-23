@@ -1,5 +1,12 @@
+/*@font-face {*/
+/*    font-family: "TT Chocolates";*/
+/*    font-stretch: normal;*/
+/*    font-style: normal;*/
+/*    font-display: swap;*/
+/*}*/
+
 @font-face {
-    font-family: "TT Chocolates";
+    font-family: "Open Sans";
     font-stretch: normal;
     font-style: normal;
     font-display: swap;
@@ -33,7 +40,7 @@
 }
 
 .logo img {
-    width: 100%px;
+    width: 100%;
     height: 40px;
     /* overflow: hidden; */
 }
@@ -45,7 +52,7 @@
 }
 
 .nav-menu a {
-    font-family: "TT Chocolates";
+    font-family: "Open Sans", sans-serif;
     text-decoration: none;
     color: #333;
     font-style: normal;
@@ -113,4 +120,39 @@
 .header_contact_icon {
     width: 20px;
     height: 20px;
+}
+
+
+/* Стили для мобильного логотипа */
+.mobile-logo {
+    display: none; /* По умолчанию скрыт */
+    height: 30px;
+    margin-left: 15px;
+}
+
+.mobile-logo img {
+    height: 100%;
+    width: auto;
+}
+
+/* Медиа-запрос для мобильной версии */
+@media (max-width: 768px) {
+    .mobile-logo {
+        display: block; /* Показываем на мобильных */
+    }
+
+    .logo {
+        display: none; /* Скрываем основное лого на мобильных */
+    }
+
+    .nav-icons-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Дополнительные стили для адаптации других элементов */
+    .nav {
+        padding: 10px 15px;
+    }
 }
