@@ -26,11 +26,12 @@
 
                                 <div class="post-meta">
                                     {% if post.tags.all %}
-                                    <div class="tags">
-                                        {% for tag in post.tags.all %}
-                                            <span class="tag">{{ tag.name }}</span>
-                                        {% endfor %}
-                                    </div>
+                                        <div class="tags">
+                                            {% for tag in post.tags.all %}
+                                                <a href="{% url 'app_blog:posts_by_tag' tag.slug %}"
+                                                   class="tag">{{ tag.name }}</a>
+                                            {% endfor %}
+                                        </div>
                                     {% endif %}
                                 </div>
 
@@ -47,7 +48,8 @@
                                 </div>
                             {% else %}
                                 <div class="blog-image">
-                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Изображение отсутствует">
+                                    <img src="{% static 'img/No-Image-Placeholder.png' %}"
+                                         alt="Изображение отсутствует">
                                 </div>
                             {% endif %}
                         </div>

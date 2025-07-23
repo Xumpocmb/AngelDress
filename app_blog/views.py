@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.html import strip_tags
 from django.utils.text import Truncator
 
-from app_blog.models import Post
+from app_blog.models import Post, Tag
 
 
 def blog_view(request):
@@ -38,3 +38,14 @@ def post_view(request, post_id):
         'title': post.title
     }
     return render(request, 'app_blog/post.html', context)
+
+
+def posts_by_tag(request, tag_slug):
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    posts = Post.objects.filter(tags=tag)
+    context = {
+        'tag': tag,
+        'posts': posts,
+        'meta_description': "Актуальные новости и статьи о моде, свадьбах и событиях от Angel Dress",
+    }
+    return render(request, 'app_blog/posts_by_tag.html', context)

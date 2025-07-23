@@ -7,6 +7,7 @@ from app_blog.models import Post, Author, Tag, AuthorSocial, SocialTypes
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class AuthorSocialInline(admin.TabularInline):
@@ -28,11 +29,12 @@ class SocialTypesAdmin(admin.ModelAdmin):
     verbose_name_plural = 'Типы социальных сетей'
 
 @admin.register(Post)
-class BlogAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     form = PostForm
     filter_horizontal = ('tags',)
     list_display = ('title', 'author', 'created_at', 'updated_at')
     list_filter = ('author', 'created_at', 'updated_at')
     search_fields = ('title', 'content')
+
 
 

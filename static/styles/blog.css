@@ -18,12 +18,13 @@
 /* Стили карточки поста */
 .blog-card {
     display: flex;
-    gap: 30px;
+    gap: 0; /* Убираем промежуток между текстом и изображением */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: white;
+    align-items: stretch; /* Важно: растягиваем дочерние элементы */
 }
 
 .blog-card:hover {
@@ -51,15 +52,6 @@
     gap: 8px;
     margin-bottom: 15px;
     flex-wrap: wrap;
-}
-
-.tag {
-    background-color: #f8f8f8;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    color: #d4a574;
-    border: 1px solid #eee;
 }
 
 .blog-description {
@@ -91,21 +83,26 @@
 }
 
 /* Изображение */
+/* Контейнер изображения */
 .blog-image {
-    flex: 0 0 400px;
-    height: 300px;
-    overflow: hidden;
+    flex: 0 0 40%; /* Ширина изображения (можно регулировать) */
+    min-height: 100%; /* Минимальная высота - вся карточка */
+    display: flex; /* Для правильного позиционирования img */
+    align-items: stretch; /* Растягиваем содержимое */
 }
 
+/* Само изображение */
 .blog-image img {
     width: 100%;
-    height: 100%;
+    height: 100%; /* Занимаем всю высоту родителя */
     object-fit: cover;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 
 .blog-card:hover .blog-image img {
     transform: scale(1.05);
+    opacity: 0.9;
 }
 
 /* Сообщение об отсутствии постов */
@@ -117,15 +114,15 @@
 }
 
 /* Адаптив */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
     .blog-card {
-        flex-direction: column;
-        gap: 0;
+        flex-direction: column-reverse;
     }
 
     .blog-image {
-        flex: 0 0 300px;
+        flex: 0 0 300px; /* Фиксированная высота для мобильных */
         width: 100%;
+        min-height: auto; /* Отменяем растягивание */
     }
 
     .blog-text-content {
@@ -273,6 +270,26 @@
 .back-to-blog:hover {
     color: #b38a5a;
     text-decoration: underline;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #f8f8f8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #d4a574;
+    border: 1px solid #eee;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tag:hover {
+    background-color: #d4a574;
+    color: white;
+    border-color: #d4a574;
 }
 
 /* Адаптив */

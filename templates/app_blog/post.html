@@ -25,9 +25,9 @@
                     </div>
 
                     {% if post.image %}
-                    <div class="post-image-wrapper">
-                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
-                    </div>
+                        <div class="post-image-wrapper">
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+                        </div>
                     {% endif %}
 
                     <div class="post-text-block">
@@ -38,9 +38,12 @@
                         <div class="post-meta">
                             <span class="post-date">Опубликовано: {{ post.created_at|date:"d.m.Y" }}</span>
                             {% if post.tags.all %}
-                            <div class="post-tags">
-                                Теги: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-                            </div>
+                                <div class="tags">
+                                    {% for tag in post.tags.all %}
+                                        <a href="{% url 'app_blog:posts_by_tag' tag.slug %}"
+                                           class="tag">{{ tag.name }}</a>
+                                    {% endfor %}
+                                </div>
                             {% endif %}
                         </div>
                     </div>
