@@ -1,0 +1,40 @@
+{% load static %}
+
+<!-- _product_card.html -->
+<div class="product-card">
+    <div class="img-section">
+        <div class="favorite-icon {% if item.id in request.session.wishlist %}active{% endif %}"
+             onclick="toggleWishlist(this, {{ item.id }})">
+            <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
+        </div>
+        <a href="{% if detail_url %}{{ detail_url }}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}">
+            {% with item.images.first as main_image %}
+                {% if main_image %}
+                    <img class="product-image" src="{{ main_image.image.url }}" alt="{{ item.name }}">
+                {% else %}
+                    <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения">
+                {% endif %}
+            {% endwith %}
+        </a>
+    </div>
+
+    <div class="product-info">
+        <div class="info">
+            <p class="product-name">{{ item.name }}</p>
+            {% if item.min_price %}
+                <div class="product-price">от {{ item.min_price }} ₽</div>
+            {% else %}
+                <div class="product-price" style="color: #999;">Цена не указана</div>
+            {% endif %}
+        </div>
+
+        <!-- Блок "Подробнее" (можно включать/отключать) -->
+        {% if show_details_link %}
+            <div class="product_link">
+                <a href="{% if detail_url %}{{ detail_url }}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}">
+                    Подробнее →
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>

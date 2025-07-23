@@ -101,37 +101,11 @@
                 <!-- Карточки товаров -->
                 <div class="product-grid">
                     {% for item in page_obj %}
-                        <div class="product-card">
-                            <div class="img-section">
-                                <div class="favorite-icon {% if item.id in request.session.wishlist %}active{% endif %}"
-                                     onclick="toggleWishlist(this, {{ item.id }})">
-                                    <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
-                                </div>
-                                <a href="{% if model_type == 'dress' %}{% url 'app_catalog:item_detail' item.id %}{% else %}{% url 'app_catalog:accessory_detail' item.id %}{% endif %}">
-                                    {% with item.images.first as main_image %}
-                                        {% if main_image %}
-                                            <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ item.name }}">
-                                        {% else %}
-                                            <img class="product-image" src="{% static 'img/No-Image-Placeholder.png' %}"
-                                                 alt="Нет изображения">
-                                        {% endif %}
-                                    {% endwith %}
-                                </a>
-                            </div>
-
-                            <div class="product-info">
-                                <div class="product-name">Арт.: {{ item.name }}</div>
-                                {% if item.min_price %}
-                                    <div class="product-price">от {{ item.min_price }} ₽</div>
-                                {% else %}
-                                    <div class="product-price" style="color: #999;">Цена не указана</div>
-                                {% endif %}
-                            </div>
-                        </div>
+                        {% include "includes/product_card.html" with item=item show_details_link=True detail_url=item.get_absolute_url %}
                     {% empty %}
                         <div class="no-products">
-                            <p>{% if model_type == 'dress' %}Платьев{% else %}Аксессуаров{% endif %} пока нет в каталоге</p>
+                            <p>{% if model_type == 'dress' %}Платьев{% else %}Аксессуаров{% endif %} пока нет в
+                                каталоге</p>
                         </div>
                     {% endfor %}
                 </div>

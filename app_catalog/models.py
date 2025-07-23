@@ -129,7 +129,8 @@ class Item(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse("app_catalog:dress_detail", args=[self.id])
+        return reverse('app_catalog:item_detail', args=[self.id])
+
 
     def get_first_image_url(self):
         if self.images.exists():
@@ -175,6 +176,7 @@ class AccessoryCategory(models.Model):
 
     def get_absolute_url(self):
         return reverse("app_catalog:accessory_catalog")
+
 
 
 class Accessory(models.Model):
@@ -230,7 +232,7 @@ class Accessory(models.Model):
         self.save()
 
     def get_absolute_url(self):
-        return reverse("app_catalog:accessory_detail", args=[self.id])
+        return reverse('app_catalog:accessory_detail', args=[self.id])
 
     def get_first_image_url(self):
         if self.images.exists():

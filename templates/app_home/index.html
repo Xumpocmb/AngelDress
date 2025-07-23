@@ -108,34 +108,7 @@
                 <!-- Карточки -->
                 <div class="product-grid">
                     {% for dress in random_dresses %}
-                        <div class="product-card">
-                            <div class="img-section">
-                                <div class="favorite-icon {% if dress.id in request.session.wishlist %}active{% endif %}"
-                                     onclick="toggleWishlist(this, {{ dress.id }})">
-                                    <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
-                                </div>
-                                <a href="{% url 'app_catalog:item_detail' dress.id %}">
-                                    {% with dress.images.first as main_image %}
-                                        {% if main_image %}
-                                            <img class="product-image" src="{{ main_image.image.url }}"
-                                                 alt="{{ dress.name }}">
-                                        {% else %}
-                                            <img class="product-image"
-                                                 src="{% static 'img/No-Image-Placeholder.png' %}"
-                                                 alt="Нет изображения">
-                                        {% endif %}
-                                    {% endwith %}
-                                </a>
-                            </div>
-                            <div class="product-info">
-                                <p class="product-name">{{ dress.name }}</p>
-                                {% if dress.min_price %}
-                                    <div class="product-price">от {{ dress.min_price }} ₽</div>
-                                {% else %}
-                                    <div class="product-price" style="color: #999;">Цена не указана</div>
-                                {% endif %}
-                            </div>
-                        </div>
+                        {% include "includes/product_card.html" with item=dress show_details_link=True %}
                     {% endfor %}
                 </div>
             </section>

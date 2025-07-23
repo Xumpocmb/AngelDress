@@ -16,26 +16,28 @@
             {% for contact in contact_info %}
                 {% if contact.link %}
                     <div class="contact_detail">
-                        <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
-                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
+
 
                         {% if contact.type.name == 'email' %}
-                            <a href="mailto:{{ contact.link }}" class="contact_link">{{ contact.link|upper }}</a>
+                            <a href="mailto:{{ contact.link }}" class="contact_link">
+                                <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon"></a>
+                            {{ contact.link }}
                         {% elif contact.type.name == 'phone' %}
-                            <a href="tel:{{ contact.link }}" class="contact_link">{{ contact.link }}</a>
+                            <a href="tel:{{ contact.link }}" class="contact_link">
+                                <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon"></a>
+                            {{ contact.link }}
                         {% elif contact.type.name in 'address' %}
-                            <p class="contact_address">{{ contact.link|upper }}</p>
+                            <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon">
+                             {{ contact.link }}
                         {% else %}
-                            <a href="{{ contact.link }}" class="contact_link" target="_blank">{{ contact.title }}</a>
+                            <a href="{{ contact.link }}" class="contact_link" target="_blank">
+                                <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
+                             alt="{{ contact.type.get_name_display }}" class="contact_icon"></a>
+                            {{ contact.title }}
                         {% endif %}
-
-                        <p class="contact_description">
-                            {% if contact.title %}
-                                {{ contact.title }}
-                            {% else %}
-                                {{ contact.type.get_name_display }}
-                            {% endif %}
-                        </p>
                     </div>
                 {% endif %}
             {% endfor %}
