@@ -1,0 +1,208 @@
+/* Стили для списка акций */
+.promotions-container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.promotions-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.promotion-card {
+    display: flex;
+    gap: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promotion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.promotion-image {
+    flex: 0 0 350px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.promotion-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.promotion-card:hover .promotion-image img {
+    transform: scale(1.05);
+}
+
+.promotion-text-content {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.promotion-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.promotion-dates {
+    color: #d4a574;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.promotion-description {
+    flex-grow: 1;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.promotion-button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.promotion-button:hover {
+    background-color: #d4a574;
+    color: white;
+    border-color: #d4a574;
+}
+
+.no-promotions {
+    text-align: center;
+    padding: 50px;
+    color: #777;
+}
+
+/* Адаптив для списка акций */
+@media (max-width: 900px) {
+    .promotion-card {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .promotion-image {
+        flex: 0 0 250px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .promotions-container {
+        margin: 80px auto;
+        padding: 15px;
+    }
+
+    .promotion-image {
+        height: 200px;
+    }
+}
+
+/* Стили для детальной страницы акции */
+.promotion-detail-container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.promotion-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.promotion-detail-image {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.promotion-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promotion-header {
+    margin-bottom: 30px;
+}
+
+.promotion-detail-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.promotion-detail-dates {
+    color: #d4a574;
+    font-size: 1rem;
+}
+
+.promotion-detail-description {
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.back-to-promotions {
+    display: inline-block;
+    margin-top: 40px;
+    color: #d4a574;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-to-promotions:hover {
+    color: #b38a5a;
+    text-decoration: underline;
+}
+
+/* Адаптив для детальной страницы */
+@media (max-width: 768px) {
+    .promotion-detail-container {
+        margin: 80px auto;
+        padding: 15px;
+    }
+
+    .promotion-detail-image {
+        height: 300px;
+    }
+
+    .promotion-detail-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .promotion-detail-image {
+        height: 200px;
+    }
+
+    .promotion-detail-title {
+        font-size: 1.5rem;
+    }
+
+    .promotion-detail-description {
+        font-size: 1rem;
+    }
+}

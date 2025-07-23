@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from app_blog.forms import PostForm
 from app_blog.models import Post, Author, Tag, AuthorSocial, SocialTypes
 
 
@@ -28,8 +29,10 @@ class SocialTypesAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class BlogAdmin(admin.ModelAdmin):
+    form = PostForm
     filter_horizontal = ('tags',)
     list_display = ('title', 'author', 'created_at', 'updated_at')
     list_filter = ('author', 'created_at', 'updated_at')
     search_fields = ('title', 'content')
+
 

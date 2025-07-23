@@ -1,0 +1,31 @@
+{% load static %}
+{% if promotions %}
+<section class="promo-slider">
+    <div class="swiper promo-swiper">
+        <div class="swiper-wrapper">
+            {% for promo in promotions %}
+            <div class="swiper-slide promo-slide">
+                <div class="promo-image-container">
+                    <img src="{{ promo.image.url }}" alt="{{ promo.title }}" class="promo-image">
+                </div>
+                <div class="promo-content">
+                    <h3 class="promo-title">{{ promo.title }}</h3>
+                    <p class="promo-description">{{ promo.short_description }}</p>
+                    <div class="promo-footer">
+                        {% if promo.get_date_range_display %}
+                        <div class="promo-dates">
+                            {{ promo.get_date_range_display }}
+                        </div>
+                        {% endif %}
+                        <a href="{% url 'app_promotion:promotion_detail' promo.id %}" class="promo-details-link">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-prev promo-button-prev"></div>
+        <div class="swiper-button-next promo-button-next"></div>
+        <div class="swiper-pagination promo-pagination"></div>
+    </div>
+</section>
+{% endif %}

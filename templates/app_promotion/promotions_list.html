@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+    <title>{{ title|default:"Angel Dress - Акции" }}</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/promotions.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="promotions-container">
+            <main class="promotions-content">
+                <h1 class="page-main-title">Акции</h1>
+
+                {% if page_obj %}
+                    {% for promo in page_obj %}
+                        <div class="promotion-card">
+                            {% if promo.image %}
+                                <div class="promotion-image">
+                                    <img src="{{ promo.image.url }}" alt="{{ promo.title }}">
+                                </div>
+                            {% else %}
+                                <div class="promotion-image">
+                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="No Image">
+                                </div>
+                            {% endif %}
+
+                            <div class="promotion-text-content">
+                                <h2 class="promotion-title">{{ promo.title }}</h2>
+
+                                {% if promo.get_date_range_display %}
+                                <div class="promotion-dates">
+                                    {{ promo.get_date_range_display }}
+                                </div>
+                                {% endif %}
+
+                                <p class="promotion-description">
+                                    {{ promo.description|truncatewords:30 }}
+                                </p>
+
+                                <a class="promotion-button" href="{% url 'app_promotion:promotion_detail' promo.id %}">Подробнее</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="no-promotions">
+                        <p>Акций пока нет, но они скоро появятся</p>
+                    </div>
+                {% endif %}
+            </main>
+        </div>
+
+        {% include 'includes/pagination.html' %}
+    </div>
+{% endblock %}

@@ -6,6 +6,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/promotion_slider.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
@@ -48,9 +49,9 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev promo-button-prev"></div>
+                    <div class="swiper-button-next promo-button-next"></div>
+                    <div class="swiper-pagination promo-pagination"></div>
                 </div>
             </section>
         {% endif %}
@@ -60,6 +61,9 @@
             <h1 class="heading_title">Добро пожаловать в <br> Angel Dress<br><span class="heading_title_span">Прокат и продажа платьев</span>
             </h1>
         </section>
+
+        <!-- Акции -->
+        {% include "app_promotion/promotion_slider.html" %}
 
 
         <!-- Секция выбора платьев -->

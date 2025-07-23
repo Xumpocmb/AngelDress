@@ -1,0 +1,298 @@
+
+
+/* Основные стили */
+
+/* Основные стили контейнера */
+.blog-container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.blog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Стили карточки поста */
+.blog-card {
+    display: flex;
+    gap: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Текстовая часть */
+.blog-text-content {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #f8f8f8;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #d4a574;
+    border: 1px solid #eee;
+}
+
+.blog-description {
+    flex-grow: 1;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.open-button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.open-button:hover {
+    background-color: #d4a574;
+    color: white;
+    border-color: #d4a574;
+}
+
+/* Изображение */
+.blog-image {
+    flex: 0 0 400px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+/* Сообщение об отсутствии постов */
+.no-products {
+    text-align: center;
+    padding: 50px;
+    color: #777;
+    font-size: 1.1rem;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .blog-card {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .blog-image {
+        flex: 0 0 300px;
+        width: 100%;
+    }
+
+    .blog-text-content {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .blog-container {
+        margin: 80px auto;
+        padding: 15px;
+    }
+
+    .blog-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-image {
+        height: 250px;
+    }
+}
+
+.post-container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.post-header {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 80px;
+}
+
+.post-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    background-color: #d4a574;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.post-date .day {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.post-date .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+
+.post-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Изображение */
+.post-image-wrapper {
+    margin: 20px 0;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 4px;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+/* Текст поста */
+.post-text-block {
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.post-text-block p {
+    margin-bottom: 1.5rem;
+}
+
+/* Футер поста */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.post-meta {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.post-socials {
+    display: flex;
+    gap: 10px;
+}
+
+.post-socials img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.post-socials img:hover {
+    opacity: 1;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .post-container {
+        margin: 80px auto;
+        padding: 15px;
+    }
+
+    .post-content {
+        padding: 25px;
+    }
+
+    .post-header {
+        padding-left: 0;
+        padding-top: 70px;
+    }
+
+    .post-date {
+        top: 0;
+        left: 0;
+    }
+
+    .post-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .post-title {
+        font-size: 1.5rem;
+    }
+
+    .post-text-block {
+        font-size: 1rem;
+    }
+}

@@ -26,6 +26,7 @@ urlpatterns = [
     path("book/", include("app_book.urls")),
     path("callback/", include("app_client_call_back.urls")),
     path("newsletter/", include("app_newsletter.urls")),
+    path("promo/", include("app_promotion.urls")),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap",),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 

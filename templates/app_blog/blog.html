@@ -1,62 +1,65 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
-{% block title %}
-    <title>{{ title|default:"Angel Dress - Блог" }}</title>
-{% endblock %}
 
+{{% block title %}
+    <title>{{ title|default:"Блог | Angel Dress" }}</title>
+    <meta name="description" content="{{ meta_description }}">
+{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/blog.css' %}">
-{% endblock styles %}
-
+{% endblock %}
 
 {% block content %}
-    <!-- Главный контейнер -->
     <div class="wrapper">
         <div class="blog-container">
-            <!-- Основное содержимое -->
             <main class="blog-content">
                 <h1 class="page-main-title">Блог</h1>
-                {% if posts %}
-                    <!-- Карточки новостей -->
-                    {% for post in posts %}
+
+                {% if page_obj %}
+                    {% for post in page_obj %}
                         <div class="blog-card">
                             <div class="blog-text-content">
                                 <h2 class="blog-title">{{ post.title }}</h2>
 
-                                <div class="tags">
-                                    {% for tag in post.tags.all %}
-                                        <span class="tag">{{ tag.name }}</span>
-                                    {% endfor %}
+                                <div class="post-meta">
+                                    {% if post.tags.all %}
+                                    <div class="tags">
+                                        {% for tag in post.tags.all %}
+                                            <span class="tag">{{ tag.name }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
                                 </div>
 
                                 <p class="blog-description">
-                                    {{ post.content|truncatewords:30 }}
+                                    {{ post.content|striptags|truncatewords:30 }}
                                 </p>
 
-                                <a class="open-button" href="{% url 'app_blog:post' post.id %}">Открыть</a>
+                                <a class="open-button" href="{% url 'app_blog:post' post.id %}">Читать</a>
                             </div>
+
                             {% if post.image %}
                                 <div class="blog-image">
-                                    <img src="{{ post.image.url }}" alt="Model Image">
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
                                 </div>
                             {% else %}
                                 <div class="blog-image">
-                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Model Image">
+                                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Изображение отсутствует">
                                 </div>
                             {% endif %}
                         </div>
                     {% endfor %}
                 {% else %}
-                    <div class="no-products">
-                        <p>Новостей пока нет, но мы их обязательно добавим</p>
+                    <div class="no-posts">
+                        <p>Статей пока нет, но они скоро появятся</p>
                     </div>
                 {% endif %}
-
             </main>
         </div>
+
         {% include 'includes/pagination.html' %}
     </div>
 {% endblock %}

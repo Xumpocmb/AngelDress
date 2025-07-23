@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ promotion.title }} | Angel Dress</title>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/promotions.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="promotion-detail-container">
+            <main class="promotion-detail-content">
+                <article class="promotion-article">
+                    {% if promotion.image %}
+                    <div class="promotion-detail-image">
+                        <img src="{{ promotion.image.url }}" alt="{{ promotion.title }}">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="promotion-header">
+                        <h1 class="promotion-detail-title">{{ promotion.title }}</h1>
+                        
+                        {% if promotion.get_date_range_display %}
+                        <div class="promotion-detail-dates">
+                            {{ promotion.get_date_range_display }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="promotion-detail-description">
+                        {{ promotion.description|linebreaks }}
+                    </div>
+                    
+                    <a href="{% url 'app_promotion:promotions_list' %}" class="back-to-promotions">
+                        ← Вернуться к списку акций
+                    </a>
+                </article>
+            </main>
+        </div>
+    </div>
+{% endblock %}

@@ -1,21 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    new Swiper('.swiper', {
+    const promoSlider = new Swiper('.promo-swiper', {
         loop: true,
-        centeredSlides: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
         autoplay: {
             delay: 5000,
             disableOnInteraction: false,
         },
-        roundLengths: true, // Точные расчёты ширины
-        pagination: {
-            el: '.promo-pagination',
-            clickable: true,
-        },
         navigation: {
             nextEl: '.promo-button-next',
             prevEl: '.promo-button-prev',
+        },
+        pagination: {
+            el: '.promo-pagination',
+            clickable: true,
         },
     });
 });

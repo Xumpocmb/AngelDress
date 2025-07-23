@@ -1,77 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-    <title>{{ title|default:"Angel Dress - Блог" }}</title>
-{% endblock %}
 
+{% block title %}
+    <title>{{ post.title }} | Блог Angel Dress</title>
+    <meta name="description" content="{{ meta_description }}">
+{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
-{% endblock styles %}
-
+    <link rel="stylesheet" href="{% static 'styles/blog.css' %}">
+{% endblock %}
 
 {% block content %}
-    <!-- Главный контейнер -->
     <div class="wrapper">
         <div class="post-container">
-            <!-- Основное содержимое -->
             <main class="post-content">
-                <!-- Заголовок и дата -->
-                <div class="post-header">
-                    <div class="post-date">
-                        <span class="day">{{ post.created_at|date:"d" }}</span>
-                        <span class="month">{{ post.created_at|date:"M"|upper }}</span>
-                    </div>
-                    <h1 class="post-title">{{ post.title }}</h1>
-                </div>
-
-                <!-- Изображение -->
-                <div class="post-image-wrapper">
-                    {% if post.image %}
-                        <img src="{{ post.image.url }}" alt="Изображение {{ post.title }}" class="post-image"/>
-                    {% else %}
-                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Изображение отсутствует"
-                             class="post-image"/>
-                    {% endif %}
-                </div>
-
-                <!-- Контент поста -->
-                <div class="post-text-block">
-                    <p>{{ post.content|linebreaksbr }}</p>
-                </div>
-
-                <div class="post-footer">
-                    <div class="post-meta">
-                        <p>
-                            <strong>ТЕГИ:</strong>
-                            {% for tag in post.tags.all %}
-                                {{ tag.name }}{% if not forloop.last %},{% endif %}
-                            {% endfor %}
-                        </p>
-                        <p>
-                            <strong>АВТОР:</strong>
-                            {% if post.author %}
-                                {{ post.author.name }}
-                            {% else %}
-                                Не указан
-                            {% endif %}
-                        </p>
-                    </div>
-
-                    {% if post.author %}
-                        <div class="author-socials">
-                            {% for social in post.author.authorsocial_set.all %}
-                                {% if social.link %}
-                                    <a href="{{ social.link }}" target="_blank" class="social-link">
-                                        <img src="{% static 'img/social_icons/'|add:social.type.name|add:'.png' %}"
-                                             alt="{{ social.type.get_name_display }}"></a>
-                                {% endif %}
-                            {% endfor %}
+                <article class="post-article">
+                    <div class="post-header">
+                        <div class="post-date">
+                            <span class="day">{{ post.created_at|date:"d" }}</span>
+                            <span class="month">{{ post.created_at|date:"M" }}</span>
                         </div>
-                    {% endif %}
-                </div>
-            </main>
+                        <h1 class="post-title">{{ post.title }}</h1>
+                    </div>
 
+                    {% if post.image %}
+                    <div class="post-image-wrapper">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+                    </div>
+                    {% endif %}
+
+                    <div class="post-text-block">
+                        {{ post.content|safe }}
+                    </div>
+
+                    <div class="post-footer">
+                        <div class="post-meta">
+                            <span class="post-date">Опубликовано: {{ post.created_at|date:"d.m.Y" }}</span>
+                            {% if post.tags.all %}
+                            <div class="post-tags">
+                                Теги: {% for tag in post.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <a href="{% url 'app_blog:blog' %}" class="back-to-blog">
+                        ← Все статьи
+                    </a>
+                </article>
+            </main>
         </div>
     </div>
 {% endblock %}

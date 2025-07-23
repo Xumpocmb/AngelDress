@@ -51,22 +51,41 @@
     }
 }
 
-/* Стили навигации */
-.swiper-button-next,
-.swiper-button-prev {
-    color: #ffffff;
-    z-index: 10;
+/* Навигация */
+.promo-button-prev,
+.promo-button-next {
+    color: white !important;
+    /*background: rgba(0, 0, 0, 0.3);*/
+    width: 40px;
+    height: 40px;
+    /*border-radius: 50%;*/
+    transition: all 0.3s ease;
 }
 
-.swiper-pagination {
-    bottom: 20px;
-    z-index: 10;
+.promo-button-prev:hover,
+.promo-button-next:hover {
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.swiper-pagination-bullet {
-    background-color: #000000;
+.promo-button-prev::after,
+.promo-button-next::after {
+    font-size: 1.2rem !important;
 }
 
-.swiper-pagination-bullet-active {
-    background-color: #ffffff;
+.promo-pagination {
+    bottom: 20px !important;
+}
+
+.promo-pagination .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.6;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px !important;
+}
+
+.promo-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
 }

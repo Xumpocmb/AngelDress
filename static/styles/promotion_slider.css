@@ -1,0 +1,177 @@
+/* Основные стили слайдера */
+.promo-slider {
+    max-width: 1200px;
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+}
+
+.promo-swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.promo-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.promo-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+}
+
+.promo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Стили текстового контента */
+.promo-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    z-index: 2;
+}
+
+.promo-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.promo-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    max-width: 80%;
+    line-height: 1.5;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.promo-description p {
+    color: white;
+}
+
+.promo-dates {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.promo-date-separator {
+    margin: 0 8px;
+}
+
+/* Навигация */
+.promo-button-prev,
+.promo-button-next {
+    color: white !important;
+    /*background: rgba(0, 0, 0, 0.3);*/
+    width: 40px;
+    height: 40px;
+    /*border-radius: 50%;*/
+    transition: all 0.3s ease;
+}
+
+.promo-button-prev:hover,
+.promo-button-next:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.promo-button-prev::after,
+.promo-button-next::after {
+    font-size: 1.2rem !important;
+}
+
+.promo-pagination {
+    bottom: 20px !important;
+}
+
+.promo-pagination .swiper-pagination-bullet {
+    background: white;
+    opacity: 0.6;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px !important;
+}
+
+.promo-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .promo-image-container {
+        aspect-ratio: 1/1;
+    }
+
+    .promo-content {
+        padding: 20px;
+    }
+
+    .promo-title {
+        font-size: 1.5rem;
+    }
+
+    .promo-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+}
+
+
+/* Добавляем в конец файла */
+
+.promo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.promo-details-link {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.promo-details-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    text-decoration: underline;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .promo-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .promo-details-link {
+        align-self: flex-end;
+    }
+}
