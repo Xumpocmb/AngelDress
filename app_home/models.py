@@ -4,7 +4,14 @@ from django.core.files.storage import default_storage
 
 
 class SliderImage(models.Model):
-    image = models.ImageField(upload_to="slider/")
+    desktop_image = models.ImageField(upload_to="slider/desktop/", verbose_name="Изображение для десктопа (16:9)")
+    mobile_image = models.ImageField(
+        upload_to="slider/mobile/",
+        verbose_name="Изображение для мобильных (1:1)",
+        blank=True,
+        null=True,
+        help_text="Если не указано, будет использоваться центральная часть десктопного изображения",
+    )
     alt_text = models.CharField(max_length=100, blank=True, verbose_name="Альтернативный текст")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
@@ -16,28 +23,38 @@ class SliderImage(models.Model):
     def __str__(self):
         return f"Слайд {self.id}"
 
-    def image_tag(self):
-        if self.image:
-            return mark_safe(f'<img src="{self.image.url}" width="150" />')
+    def desktop_image_tag(self):
+        if self.desktop_image:
+            return mark_safe(f'<img src="{self.desktop_image.url}" width="150" />')
         return "Нет изображения"
+    desktop_image_tag.short_description = "Предпросмотр (десктоп)"
 
-    image_tag.short_description = "Предпросмотр"
+    def mobile_image_tag(self):
+        if self.mobile_image:
+            return mark_safe(f'<img src="{self.mobile_image.url}" width="100" height="100" />')
+        return "Нет изображения"
+    mobile_image_tag.short_description = "Предпросмотр (мобильное)"
 
     def save(self, *args, **kwargs):
-        # Удаляем старое изображение при обновлении
-        if self.pk:  # Если объект уже существует в БД
+        # Удаляем старые изображения при обновлении
+        if self.pk:
             old_instance = SliderImage.objects.get(pk=self.pk)
-            if old_instance.image and old_instance.image != self.image:
-                if default_storage.exists(old_instance.image.name):
-                    default_storage.delete(old_instance.image.name)
-
+            if old_instance.desktop_image and old_instance.desktop_image != self.desktop_image:
+                if default_storage.exists(old_instance.desktop_image.name):
+                    default_storage.delete(old_instance.desktop_image.name)
+            if old_instance.mobile_image and old_instance.mobile_image != self.mobile_image:
+                if default_storage.exists(old_instance.mobile_image.name):
+                    default_storage.delete(old_instance.mobile_image.name)
         super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        # Удаляем файл изображения при удалении записи
-        if self.image:
-            if default_storage.exists(self.image.name):
-                default_storage.delete(self.image.name)
+        # Удаляем файлы изображений при удалении записи
+        if self.desktop_image:
+            if default_storage.exists(self.desktop_image.name):
+                default_storage.delete(self.desktop_image.name)
+        if self.mobile_image:
+            if default_storage.exists(self.mobile_image.name):
+                default_storage.delete(self.mobile_image.name)
         super().delete(*args, **kwargs)
 
 

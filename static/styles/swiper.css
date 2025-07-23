@@ -1,60 +1,72 @@
 .slider {
-            max-width: 1200px;
-            width: 100%;
-            margin: 50px auto 40px;
-        }
+    max-width: 1200px;
+    width: 100%;
+    margin: 50px auto 40px;
+    overflow: hidden; /* Обрезаем все, что выходит за пределы */
+}
 
-        .swiper {
-            width: 100%;
-            height: 400px;
-            overflow: hidden; /* 🔥 Скрываем всё, что выходит за границы */
-            position: relative;
-        }
+.swiper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 
-        .swiper-wrapper {
-            display: flex;
-        }
+/* Десктопная версия (16:9) */
+.swiper {
+    aspect-ratio: 16/9;
+}
 
-        .swiper-slide {
-            width: 100%; /* ❌ БЫЛО 110% — исправлено */
-            height: 100%;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.swiper-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
 
-        .slide-inner {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+}
 
-        .slide-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+.slide-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 
-        /* Цвет стрелок */
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: #ffffff;
-        }
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет контейнер с обрезкой излишков */
+    display: block;
+}
 
-        /* Пагинация внизу */
-        .swiper-pagination {
-            bottom: 20px;
-        }
+/* Мобильная версия (1:1) */
+@media (max-width: 768px) {
+    .swiper {
+        aspect-ratio: 1/1;
+    }
+}
 
-        .swiper-pagination-bullet {
-            background-color: #000000 !important;
-        }
+/* Стили навигации */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #ffffff;
+    z-index: 10;
+}
 
-        .swiper-pagination-bullet-active {
-            background-color: #ffffff !important;
-        }
+.swiper-pagination {
+    bottom: 20px;
+    z-index: 10;
+}
+
+.swiper-pagination-bullet {
+    background-color: #000000;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffffff;
+}

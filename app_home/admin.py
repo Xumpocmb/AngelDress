@@ -3,17 +3,22 @@ from app_home.forms import RentRulesForm, TermsOfUseForm
 from app_home.models import NewsTicker, SliderImage, ContactInfo, RentRules, TermsOfUse, Questions, Counter
 
 
+@admin.register(SliderImage)
 class SliderImageAdmin(admin.ModelAdmin):
-    list_display = ('image_tag', 'alt_text', 'order')
+    list_display = ('id', 'desktop_image_tag', 'mobile_image_tag', 'alt_text', 'order')
     list_editable = ('order',)
-    readonly_fields = ('image_tag',)
+    fieldsets = (
+        (None, {
+            'fields': ('desktop_image', 'desktop_image_tag', 'mobile_image', 'mobile_image_tag', 'alt_text', 'order')
+        }),
+    )
+    readonly_fields = ('desktop_image_tag', 'mobile_image_tag')
 
 
 class ContactInfoAdmin(admin.ModelAdmin):
     list_display = ["type", "title", "link", "is_active"]
     list_editable = ["is_active"]
 
-admin.site.register(SliderImage, SliderImageAdmin)
 admin.site.register(ContactInfo, ContactInfoAdmin)
 
 

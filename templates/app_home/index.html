@@ -24,26 +24,32 @@
         {% endif %}
 
         {% if slider_images %}
-            <!-- Секция слайдера -->
             <section class="slider">
                 <div class="swiper">
-                    <!-- Обертка слайдов -->
                     <div class="swiper-wrapper">
                         {% for slide in slider_images %}
                             <div class="swiper-slide">
                                 <div class="slide-inner">
-                                    <img src="{{ slide.image.url }}" alt="{{ slide.alt_text }}">
+                                    <picture>
+                                        <!-- Мобильное изображение -->
+                                        <source
+                                                srcset="{{ slide.mobile_image.url|default:slide.desktop_image.url }}"
+                                                media="(max-width: 768px)"
+                                        >
+                                        <!-- Десктопное изображение -->
+                                        <img
+                                                src="{{ slide.desktop_image.url }}"
+                                                alt="{{ slide.alt_text }}"
+                                                class="slide-image"
+                                                loading="lazy"
+                                        >
+                                    </picture>
                                 </div>
                             </div>
                         {% endfor %}
                     </div>
-
-
-                    <!-- Навигация -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
-
-                    <!-- Пагинация -->
                     <div class="swiper-pagination"></div>
                 </div>
             </section>
@@ -207,37 +213,37 @@
 
         <!-- Секция счетчика -->
         <section class="counter_section">
-    <hr class="counter_section_line">
-    <div class="counter_container">
-        <!-- Блок 1: Платьев было выбрано -->
-        <div class="counter_item">
-            <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
-            <div class="counter_stats">
-                <span class="counter_number">{{ counters.dresses.value }}</span>
-                <p class="counter_label">{{ counters.dresses.label }}</p>
-            </div>
-        </div>
+            <hr class="counter_section_line">
+            <div class="counter_container">
+                <!-- Блок 1: Платьев было выбрано -->
+                <div class="counter_item">
+                    <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">{{ counters.dresses.value }}</span>
+                        <p class="counter_label">{{ counters.dresses.label }}</p>
+                    </div>
+                </div>
 
-        <!-- Блок 2: Довольных клиентов -->
-        <div class="counter_item">
-            <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
-            <div class="counter_stats">
-                <span class="counter_number">{{ counters.clients.value }}</span>
-                <p class="counter_label">{{ counters.clients.label }}</p>
-            </div>
-        </div>
+                <!-- Блок 2: Довольных клиентов -->
+                <div class="counter_item">
+                    <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">{{ counters.clients.value }}</span>
+                        <p class="counter_label">{{ counters.clients.label }}</p>
+                    </div>
+                </div>
 
-        <!-- Блок 3: Новых поступлений ежемесячно -->
-        <div class="counter_item">
-            <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
-            <div class="counter_stats">
-                <span class="counter_number">{{ counters.new_items.value }}</span>
-                <p class="counter_label">{{ counters.new_items.label }}</p>
+                <!-- Блок 3: Новых поступлений ежемесячно -->
+                <div class="counter_item">
+                    <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
+                    <div class="counter_stats">
+                        <span class="counter_number">{{ counters.new_items.value }}</span>
+                        <p class="counter_label">{{ counters.new_items.label }}</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <hr class="counter_section_line">
-</section>
+            <hr class="counter_section_line">
+        </section>
 
         {% if latest_posts %}
             <!-- Секция блога -->
