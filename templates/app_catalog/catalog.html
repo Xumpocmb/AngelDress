@@ -66,7 +66,7 @@
                         <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
                         <div class="search-input-wrapper">
                             <input type="text" name="search" value="{{ search_query|default:'' }}"
-                                   placeholder="{% if model_type == 'dress' %}Поиск по цвету или размеру{% else %}Поиск по цвету или деталям{% endif %}"
+                                   placeholder="{% if model_type == 'dress' %}Поиск по цвету или размеру{% else %}Поиск по цвету или размеру{% endif %}"
                                    class="search-input" id="searchInput">
                             <img src="{% static 'img/clear-icon.png' %}" alt="Очистить поиск"
                                  class="clear-search-icon" id="clearSearchIcon"

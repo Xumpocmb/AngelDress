@@ -244,7 +244,7 @@ a {
     display: inline-block;
     position: relative;
     transform: translateX(100vw);
-    animation: ticker 10s linear infinite;
+    animation: ticker 20s linear infinite;
     font-size: 18px;
     line-height: 40px;
 }

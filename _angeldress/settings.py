@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "ckeditor",
     'django.contrib.humanize',
     'django.contrib.sitemaps',
+    "app_promotion.apps.AppPromotionConfig"
 
 ]
 
