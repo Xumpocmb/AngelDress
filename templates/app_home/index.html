@@ -16,12 +16,12 @@
     <div class="wrapper">
 
         {% if ticker %}
-    <div class="ticker-container">
-        <div class="ticker">
-        <h2>{{ ticker.text }}</h2>
-        </div>
-    </div>
-    {% endif %}
+            <div class="ticker-container">
+                <div class="ticker">
+                    <h2>{{ ticker.text }}</h2>
+                </div>
+            </div>
+        {% endif %}
 
         {% if slider_images %}
             <!-- Секция слайдера -->
@@ -37,7 +37,7 @@
                             </div>
                         {% endfor %}
                     </div>
-                    
+
 
                     <!-- Навигация -->
                     <div class="swiper-button-prev"></div>
@@ -51,7 +51,8 @@
 
         <!-- Секция заголовка страницы -->
         <section class="heading">
-            <h1 class="heading_title">Добро пожаловать в <br> Angel Dress<br><span class="heading_title_span">Прокат и продажа платьев</span></h1>
+            <h1 class="heading_title">Добро пожаловать в <br> Angel Dress<br><span class="heading_title_span">Прокат и продажа платьев</span>
+            </h1>
         </section>
 
 
@@ -107,6 +108,7 @@
                 </div>
             </div>
         </section>
+
         {% if random_dresses %}
             <!-- Секция предпросмотра некоторых платьев -->
             <section class="items-preview_section">
@@ -205,37 +207,37 @@
 
         <!-- Секция счетчика -->
         <section class="counter_section">
-            <hr class="counter_section_line">
-            <div class="counter_container">
-                <!-- Блок 1: Платьев было выбрано -->
-                <div class="counter_item">
-                    <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">132</span>
-                        <p class="counter_label">Платьев было выбрано</p>
-                    </div>
-                </div>
-
-                <!-- Блок 2: Довольных клиентов -->
-                <div class="counter_item">
-                    <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">64</span>
-                        <p class="counter_label">Довольных клиентов</p>
-                    </div>
-                </div>
-
-                <!-- Блок 3: Новых поступлений ежемесячно -->
-                <div class="counter_item">
-                    <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
-                    <div class="counter_stats">
-                        <span class="counter_number">10+</span>
-                        <p class="counter_label">Новых поступлений ежемесячно</p>
-                    </div>
-                </div>
+    <hr class="counter_section_line">
+    <div class="counter_container">
+        <!-- Блок 1: Платьев было выбрано -->
+        <div class="counter_item">
+            <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
+            <div class="counter_stats">
+                <span class="counter_number">{{ counters.dresses.value }}</span>
+                <p class="counter_label">{{ counters.dresses.label }}</p>
             </div>
-            <hr class="counter_section_line">
-        </section>
+        </div>
+
+        <!-- Блок 2: Довольных клиентов -->
+        <div class="counter_item">
+            <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
+            <div class="counter_stats">
+                <span class="counter_number">{{ counters.clients.value }}</span>
+                <p class="counter_label">{{ counters.clients.label }}</p>
+            </div>
+        </div>
+
+        <!-- Блок 3: Новых поступлений ежемесячно -->
+        <div class="counter_item">
+            <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
+            <div class="counter_stats">
+                <span class="counter_number">{{ counters.new_items.value }}</span>
+                <p class="counter_label">{{ counters.new_items.label }}</p>
+            </div>
+        </div>
+    </div>
+    <hr class="counter_section_line">
+</section>
 
         {% if latest_posts %}
             <!-- Секция блога -->

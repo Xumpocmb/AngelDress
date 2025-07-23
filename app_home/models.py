@@ -146,3 +146,17 @@ class NewsTicker(models.Model):
         if not self.pk and NewsTicker.objects.exists():
             return
         super().save(*args, **kwargs)
+
+
+
+class Counter(models.Model):
+    name = models.CharField('Название счетчика', max_length=100, unique=True)
+    value = models.CharField('Значение', max_length=20)
+    label = models.CharField('Подпись', max_length=100)
+
+    class Meta:
+        verbose_name = 'Счетчик'
+        verbose_name_plural = 'Счетчики'
+
+    def __str__(self):
+        return self.name

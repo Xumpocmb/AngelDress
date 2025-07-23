@@ -1,5 +1,5 @@
 from app_catalog.models import ItemCategory
-from app_home.models import ContactInfo
+from app_home.models import ContactInfo, Counter
 
 
 def contact_info(request):
@@ -26,3 +26,13 @@ def get_main_page_categories(request):
         show_on_main_page=True, is_active=True
     )[:4]
     return {"main_page_categories": main_page_categories}
+
+
+def counters(request):
+    return {
+        'counters': {
+            'dresses': Counter.objects.get(name='Платья выбрано'),
+            'clients': Counter.objects.get(name='Довольные клиенты'),
+            'new_items': Counter.objects.get(name='Новые поступления'),
+        }
+    }

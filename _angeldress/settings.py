@@ -70,6 +70,7 @@ TEMPLATES = [
                 "app_home.context_processors.contact_info",
                 "app_home.context_processors.get_wishlist_count",
                 "app_home.context_processors.get_main_page_categories",
+                "app_home.context_processors.counters",
             ],
         },
     },
