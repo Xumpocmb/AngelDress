@@ -7,6 +7,7 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/promotion_slider.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/contact_section.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
@@ -16,6 +17,8 @@
 {% block content %}
     <div class="wrapper">
 
+
+        <!-- Бегущая строка -->
         {% if ticker %}
             <div class="ticker-container">
                 <div class="ticker">
@@ -24,46 +27,14 @@
             </div>
         {% endif %}
 
-        {% if slider_images %}
-            <section class="slider">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        {% for slide in slider_images %}
-                            <div class="swiper-slide">
-                                <div class="slide-inner">
-                                    <picture>
-                                        <!-- Мобильное изображение -->
-                                        <source
-                                                srcset="{{ slide.mobile_image.url|default:slide.desktop_image.url }}"
-                                                media="(max-width: 768px)"
-                                        >
-                                        <!-- Десктопное изображение -->
-                                        <img
-                                                src="{{ slide.desktop_image.url }}"
-                                                alt="{{ slide.alt_text }}"
-                                                class="slide-image"
-                                                loading="lazy"
-                                        >
-                                    </picture>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="swiper-button-prev promo-button-prev"></div>
-                    <div class="swiper-button-next promo-button-next"></div>
-                    <div class="swiper-pagination promo-pagination"></div>
-                </div>
-            </section>
-        {% endif %}
+        <!-- Акции -->
+        {% include "app_promotion/promotion_slider.html" %}
 
         <!-- Секция заголовка страницы -->
         <section class="heading">
             <h1 class="heading_title">Добро пожаловать в <br> Angel Dress<br><span class="heading_title_span">Прокат и продажа платьев</span>
             </h1>
         </section>
-
-        <!-- Акции -->
-        {% include "app_promotion/promotion_slider.html" %}
 
 
         <!-- Секция выбора платьев -->
@@ -119,8 +90,8 @@
             </div>
         </section>
 
+        <!-- Случайные платья -->
         {% if random_dresses %}
-            <!-- Секция предпросмотра некоторых платьев -->
             <section class="items-preview_section">
                 <!-- Заголовок -->
                 <div class="items-preview_header">
@@ -170,6 +141,7 @@
             </section>
         {% endif %}
 
+        <!-- Случайные accessories -->
         {% if random_accessories %}
             <!-- Секция accessories -->
             <section class="accessories_section">
@@ -249,8 +221,9 @@
             <hr class="counter_section_line">
         </section>
 
+        <!-- Новости -->
         {% if latest_posts %}
-            <!-- Секция блога -->
+            <!-- Секция новостей -->
             <section class="blog_section">
                 <div class="blog_container">
                     <!-- Заголовок и кнопка -->

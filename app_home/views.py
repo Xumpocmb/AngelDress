@@ -9,7 +9,6 @@ from app_home.models import NewsTicker, RentRules, SliderImage, TermsOfUse, Ques
 
 
 def index_view(request):
-    slider_images = SliderImage.objects.all().order_by("order")
     ticker = NewsTicker.objects.filter(is_active=True).first()
 
     try:
@@ -48,7 +47,6 @@ def index_view(request):
         random_accessories = []
 
     context = {
-        "slider_images": slider_images,
         'ticker': ticker,
         "random_dresses": random_dresses,
         "latest_posts": latest_posts,

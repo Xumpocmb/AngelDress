@@ -1,7 +1,7 @@
 from django.utils import timezone
 
 from app_catalog.models import ItemCategory
-from app_home.models import ContactInfo, Counter
+from app_home.models import ContactInfo, Counter, SliderImage
 from app_promotion.models import Promotion
 
 
@@ -41,9 +41,19 @@ def counters(request):
     }
 
 def active_promotions(request):
+    context = {}
+
+    slider_images = SliderImage.objects.all().order_by("order")
+
     promotions = Promotion.objects.filter(
         is_active=True,
         start_date__lte=timezone.now().date(),
         end_date__gte=timezone.now().date()
     ).order_by('order')
-    return {'promotions': promotions}
+
+    if promotions.exists():
+        context['slider_content'] = {'type': 'promotions', 'items': promotions}
+    elif slider_images.exists():
+        context['slider_content'] = {'type': 'images', 'items': slider_images}
+
+    return context

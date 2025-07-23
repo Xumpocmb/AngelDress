@@ -1,31 +1,56 @@
 {% load static %}
-{% if promotions %}
-<section class="promo-slider">
-    <div class="swiper promo-swiper">
-        <div class="swiper-wrapper">
-            {% for promo in promotions %}
-            <div class="swiper-slide promo-slide">
-                <div class="promo-image-container">
-                    <img src="{{ promo.image.url }}" alt="{{ promo.title }}" class="promo-image">
-                </div>
-                <div class="promo-content">
-                    <h3 class="promo-title">{{ promo.title }}</h3>
-                    <p class="promo-description">{{ promo.short_description }}</p>
-                    <div class="promo-footer">
-                        {% if promo.get_date_range_display %}
-                        <div class="promo-dates">
-                            {{ promo.get_date_range_display }}
+{% if slider_content %}
+    <section class="slider">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                {% if slider_content.type == 'promotions' %}
+                    {% for promo in slider_content.items %}
+                        <div class="swiper-slide">
+                            <div class="promo-slide">
+                                <div class="promo-image-container">
+                                    <img src="{{ promo.image.url }}" alt="{{ promo.title }}" class="promo-image">
+                                </div>
+                                <div class="promo-content">
+                                    <h3 class="promo-title">{{ promo.title }}</h3>
+                                    <p class="promo-description">{{ promo.short_description }}</p>
+                                    <div class="promo-footer">
+                                        {% if promo.get_date_range_display %}
+                                        <div class="promo-dates">
+                                            {{ promo.get_date_range_display }}
+                                        </div>
+                                        {% endif %}
+                                        <a href="{% url 'app_promotion:promotion_detail' promo.id %}" class="promo-details-link">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        {% endif %}
-                        <a href="{% url 'app_promotion:promotion_detail' promo.id %}" class="promo-details-link">Подробнее</a>
-                    </div>
-                </div>
+                    {% endfor %}
+                {% else %}
+                    {% for slide in slider_content.items %}
+                        <div class="swiper-slide">
+                            <div class="slide-inner">
+                                <picture>
+                                    <!-- Мобильное изображение -->
+                                    <source
+                                            srcset="{{ slide.mobile_image.url|default:slide.desktop_image.url }}"
+                                            media="(max-width: 768px)"
+                                    >
+                                    <!-- Десктопное изображение -->
+                                    <img
+                                            src="{{ slide.desktop_image.url }}"
+                                            alt="{{ slide.alt_text }}"
+                                            class="slide-image"
+                                            loading="lazy"
+                                    >
+                                </picture>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
-            {% endfor %}
+            <div class="swiper-button-prev promo-button-prev"></div>
+            <div class="swiper-button-next promo-button-next"></div>
+            <div class="swiper-pagination promo-pagination"></div>
         </div>
-        <div class="swiper-button-prev promo-button-prev"></div>
-        <div class="swiper-button-next promo-button-next"></div>
-        <div class="swiper-pagination promo-pagination"></div>
-    </div>
-</section>
+    </section>
 {% endif %}
