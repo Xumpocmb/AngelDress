@@ -88,6 +88,11 @@
     font-size: 12px;
 }
 
+
+.footer__contact_detail img {
+    width: 30px;
+}
+
 /* Адаптивность */
 @media (max-width: 992px) {
     .footer__inner {

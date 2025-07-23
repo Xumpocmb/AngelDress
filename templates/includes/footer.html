@@ -36,7 +36,7 @@
             <div class="footer__socials">
             {% for contact in contact_info %}
                 {% if contact.link %}
-                    <div class="contact_detail">
+                    <div class="footer__contact_detail">
                         {% if contact.type.name == 'email' %}
                             <a href="mailto:{{ contact.link }}" class="footer__social-link">
                             <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"

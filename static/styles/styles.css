@@ -1235,6 +1235,7 @@ button {
     font-weight: normal;
     color: #3a3a6a;
     margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .sort-bar, .search-bar {
