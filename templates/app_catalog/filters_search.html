@@ -214,21 +214,78 @@
                 onclick="window.location.href='?category={{ current_category|default:'' }}'">
             Сбросить
         </button>
-
-        <!-- Сортировка -->
-        <div class="sort-container">
-            <select name="sort" class="sort-select" onchange="this.form.submit()">
-                <option value="newest" {% if current_sort == 'newest' %}selected{% endif %}>Новые</option>
-                <option value="price-low" {% if current_sort == 'price-low' %}selected{% endif %}>По возрастанию
-                    цены
-                </option>
-                <option value="price-high" {% if current_sort == 'price-high' %}selected{% endif %}>По убыванию
-                    цены
-                </option>
-                <option value="popular" {% if current_sort == 'popular' %}selected{% endif %}>Популярные</option>
-            </select>
-        </div>
     </form>
 
 
+    <!-- Сортировка -->
+    <div class="sort-container">
+        <form method="get" id="sortForm">
+            <!-- Основные параметры -->
+            <input type="hidden" name="search" value="{{ search_query|default:'' }}">
+            <input type="hidden" name="category" value="{{ current_category|default:'' }}">
+
+            <!-- Цвета -->
+            {% for color in selected_colors %}
+                <input type="hidden" name="color" value="{{ color }}">
+            {% endfor %}
+
+            <!-- Размеры -->
+            {% for size in selected_sizes %}
+                <input type="hidden" name="size" value="{{ size }}">
+            {% endfor %}
+
+            <!-- Материалы -->
+            {% for material in selected_materials %}
+                <input type="hidden" name="material" value="{{ material }}">
+            {% endfor %}
+
+            <!-- Бренды -->
+            {% for brand in selected_brands %}
+                <input type="hidden" name="brand" value="{{ brand }}">
+            {% endfor %}
+
+            <!-- Ценовые диапазоны -->
+            {% for price_range in selected_price_ranges %}
+                <input type="hidden" name="price_range" value="{{ price_range }}">
+            {% endfor %}
+
+            <!-- Длины -->
+            {% for length in selected_lengths %}
+                <input type="hidden" name="length" value="{{ length }}">
+            {% endfor %}
+
+            <!-- Фасоны -->
+            {% for fit in selected_fits %}
+                <input type="hidden" name="fit" value="{{ fit }}">
+            {% endfor %}
+
+            <!-- Рукава -->
+            {% for sleeve in selected_sleeves %}
+                <input type="hidden" name="sleeve" value="{{ sleeve }}">
+            {% endfor %}
+
+            <!-- Шлейфы -->
+            {% for train in selected_trains %}
+                <input type="hidden" name="train" value="{{ train }}">
+            {% endfor %}
+
+            <!-- Сортировка -->
+            <select name="sort" class="sort-select" onchange="this.form.submit()">
+                <option value="newest" {% if current_sort == 'newest' %}selected{% endif %}>Новые</option>
+                <option value="price-low" {% if current_sort == 'price-low' %}selected{% endif %}>По возрастанию цены</option>
+                <option value="price-high" {% if current_sort == 'price-high' %}selected{% endif %}>По убыванию цены</option>
+                <option value="popular" {% if current_sort == 'popular' %}selected{% endif %}>Популярные</option>
+            </select>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortSelect = document.querySelector('#sortForm select[name="sort"]');
+            sortSelect.addEventListener('change', function() {
+                console.log('Sort changed to:', this.value);
+                this.form.submit();
+            });
+        });
+    </script>
 </div>
