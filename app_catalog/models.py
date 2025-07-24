@@ -38,19 +38,145 @@ class ItemCategory(models.Model):
         return reverse("app_catalog:dress_catalog")
 
 
+class Color(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название цвета")
+    hex_code = models.CharField(max_length=7, blank=True, null=True, verbose_name="HEX-код")
+
+    def __str__(self):
+        return self.name
+
+
+class Size(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Размер")
+    order = models.PositiveSmallIntegerField(default=0, verbose_name="Порядок сортировки")
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.name
+
+
+class Material(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название материала")
+
+    def __str__(self):
+        return self.name
+
+
+class Brand(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название бренда")
+
+    def __str__(self):
+        return self.name
+
+
+class ItemCharacteristic(models.Model):
+    TRAIN_CHOICES = [
+        ('without', 'Без шлейфа'),
+        ('short', 'Короткий шлейф'),
+        ('long', 'Длинный шлейф'),
+    ]
+
+    SLEEVE_CHOICES = [
+        ('none', 'Без рукава'),
+        ('short', 'Короткий рукав'),
+        ('3_4', '3/4 рукава'),
+        ('long', 'Длинный рукав'),
+        ('one', 'Один рукав'),
+        ('off_shoulder', 'Спущенные рукава (открытые плечи)'),
+        ('removable', 'Съемный рукав'),
+    ]
+
+    FIT_CHOICES = [
+        ('asymmetrical', 'Ассиметрия'),
+        ('straight', 'Прямое'),
+        ('fluffy', 'Пышное'),
+        ('mermaid', 'Рыбка'),
+    ]
+
+    LENGTH_CHOICES = [
+        ('mini', 'Мини'),
+        ('midi', 'Миди'),
+        ('maxi', 'Макси (в пол)'),
+    ]
+
+    PRICE_RANGE_CHOICES = [
+        ('0-5000', 'до 5000'),
+        ('5000-10000', '5000 - 10000'),
+        ('6000-10000', '6000 - 10000'),
+        ('10000-15000', '10000 - 15000'),
+        ('15000-20000', '15000 - 20000'),
+    ]
+
+    item = models.OneToOneField(
+        'Item',
+        on_delete=models.CASCADE,
+        related_name='characteristics',
+        verbose_name="Товар"
+    )
+
+    train = models.CharField(
+        max_length=20,
+        choices=TRAIN_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Шлейф"
+    )
+
+    sleeve = models.CharField(
+        max_length=20,
+        choices=SLEEVE_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Рукав"
+    )
+
+    fit = models.CharField(
+        max_length=20,
+        choices=FIT_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Фасон"
+    )
+
+    length = models.CharField(
+        max_length=20,
+        choices=LENGTH_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Длина"
+    )
+
+    price_range = models.CharField(
+        max_length=20,
+        choices=PRICE_RANGE_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Цена на мероприятие"
+    )
+
+    has_3d_embroidery = models.BooleanField(default=False, verbose_name="3D вышивка")
+    has_feathers = models.BooleanField(default=False, verbose_name="С перьями")
+    has_stones = models.BooleanField(default=False, verbose_name="Платье в стразах")
+    has_beads = models.BooleanField(default=False, verbose_name="Расшито бисером")
+    has_pearls = models.BooleanField(default=False, verbose_name="Расшито жемчугом")
+    is_transparent = models.BooleanField(default=False, verbose_name="Прозрачный")
+    has_pleats = models.BooleanField(default=False, verbose_name="Плиссе")
+
+
 class Item(models.Model):
-    length_choices = [
-        ("mini", "Мини"),
-        ("midi", "Миди"),
-        ("maxi", "Макси"),
-    ]
-    fit_choices = [
-        ("tight", "Облегающий"),
-        ("fitted", "Приталенный"),
-        ("loose", "Свободный"),
-    ]
     categories = models.ManyToManyField(
-        ItemCategory, verbose_name="Категории", related_name="items"
+        ItemCategory,
+        verbose_name="Категории",
+        related_name="items"
+    )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Бренд"
     )
     name = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(
@@ -59,36 +185,36 @@ class Item(models.Model):
         null=True,
     )
 
-    color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
-    length = models.CharField(
-        blank=True,
-        null=True,
-        max_length=50,
-        choices=length_choices,
-        verbose_name="Длина",
+    colors = models.ManyToManyField(
+        Color,
+        verbose_name="Цвета",
+        blank=True
     )
+
+    materials = models.ManyToManyField(
+        Material,
+        verbose_name="Материалы",
+        blank=True
+    )
+
+    available_sizes = models.ManyToManyField(
+        Size,
+        verbose_name="Доступные размеры",
+        blank=True
+    )
+
     fastener_type = models.CharField(
-        blank=True, null=True, max_length=100, verbose_name="Тип застёжки"
-    )
-    fit = models.CharField(
         blank=True,
         null=True,
-        max_length=50,
-        choices=fit_choices,
-        verbose_name="Посадка",
+        max_length=100,
+        verbose_name="Тип застёжки"
     )
+
     details = models.TextField(
         blank=True,
         null=True,
         verbose_name="Детали",
         help_text="Перечислите детали через запятую",
-    )
-    available_sizes = models.CharField(
-        blank=True,
-        null=True,
-        max_length=200,
-        verbose_name="Доступные размеры",
-        help_text="Укажите размеры через дефис: XS-L",
     )
 
     is_active = models.BooleanField(default=True, verbose_name="Активен")
@@ -130,7 +256,6 @@ class Item(models.Model):
 
     def get_absolute_url(self):
         return reverse('app_catalog:item_detail', args=[self.id])
-
 
     def get_first_image_url(self):
         if self.images.exists():
@@ -176,7 +301,6 @@ class AccessoryCategory(models.Model):
 
     def get_absolute_url(self):
         return reverse("app_catalog:accessory_catalog")
-
 
 
 class Accessory(models.Model):
@@ -352,7 +476,6 @@ class ItemVideo(models.Model):
         elif self.accessory:
             return f"Видео {self.id} для {self.accessory.name}"
         return f"Видео {self.id} (без связи)"
-
 
     def clean(self):
         if self.video:

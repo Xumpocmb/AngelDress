@@ -1,6 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.contrib import admin
+from django.utils.html import format_html
+from django.db.models import Count
 
 from .models import (
     Item,
@@ -9,8 +12,97 @@ from .models import (
     AccessoryCategory,
     PriceOption,
     ItemImage,
-    ItemVideo,
+    ItemVideo, Color, Size, Material, Brand, ItemCharacteristic,
 )
+
+
+@admin.register(Color)
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color_preview')
+    search_fields = ('name',)
+
+    def color_preview(self, obj):
+        if obj.hex_code:
+            return format_html(
+                '<div style="width: 20px; height: 20px; background-color: {}; border: 1px solid #ddd;"></div>',
+                obj.hex_code
+            )
+        return "-"
+
+    color_preview.short_description = "Цвет"
+
+
+@admin.register(Size)
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'order', 'items_count')
+    list_editable = ('order',)
+    ordering = ('order',)
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            items_count=Count('item')
+        )
+
+    def items_count(self, obj):
+        return obj.items_count
+
+    items_count.admin_order_field = 'items_count'
+
+
+@admin.register(Material)
+class MaterialAdmin(admin.ModelAdmin):
+    list_display = ('name', 'items_count')
+    search_fields = ('name',)
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            items_count=Count('item')
+        )
+
+    def items_count(self, obj):
+        return obj.items_count
+
+    items_count.admin_order_field = 'items_count'
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name', 'items_count')
+    search_fields = ('name',)
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            items_count=Count('item')
+        )
+
+    def items_count(self, obj):
+        return obj.items_count
+
+    items_count.admin_order_field = 'items_count'
+
+
+class ItemCharacteristicInline(admin.StackedInline):
+    model = ItemCharacteristic
+    fieldsets = (
+        (None, {
+            'fields': (
+                ('train', 'sleeve'),
+                ('fit', 'length'),
+                'price_range',
+            )
+        }),
+        ('Дополнительные характеристики', {
+            'classes': ('collapse',),
+            'fields': (
+                ('has_3d_embroidery', 'has_feathers'),
+                ('has_stones', 'has_beads'),
+                ('has_pearls', 'is_transparent'),
+                'has_pleats',
+            )
+        }),
+    )
+    extra = 0
+
 
 class PriceOptionInline(admin.TabularInline):
     model = PriceOption
@@ -55,56 +147,108 @@ class ItemVideoInline(admin.TabularInline):
 
     video_tag.short_description = "Предпросмотр"
 
+
+class ItemSizeInline(admin.TabularInline):
+    model = Item.available_sizes.through
+    extra = 1
+    verbose_name = "Доступный размер"
+    verbose_name_plural = "Доступные размеры"
+
+
+class ItemColorInline(admin.TabularInline):
+    model = Item.colors.through
+    extra = 1
+    verbose_name = "Цвет"
+    verbose_name_plural = "Цвета"
+
+
+class ItemMaterialInline(admin.TabularInline):
+    model = Item.materials.through
+    extra = 1
+    verbose_name = "Материал"
+    verbose_name_plural = "Материалы"
+
+
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    inlines = [PriceOptionInline, ItemImageInline, ItemVideoInline]
     list_display = (
         "thumbnail_preview",
-        "name",
-        "is_active",
-        "created_at",
+        'name',
+        'brand',
+        'min_price',
+        'is_active',
+        'created_at',
+        'views_count',
+        'colors_list',
+        'sizes_list'
     )
-    list_editable = ("is_active",)
     list_filter = (
-        "categories",
-        "color",
-        "length",
-        "fit",
+        'is_active',
+        'brand',
+        'categories',
+        'created_at',
     )
-    search_fields = ("name", "description")
-    filter_horizontal = ("categories",)
-
+    search_fields = (
+        'name',
+        'description',
+        'brand__name',
+    )
+    filter_horizontal = ('categories',)
+    readonly_fields = (
+        'views_count',
+        'favorites_count',
+        'popularity_score',
+        'created_at',
+    )
     fieldsets = (
-        (
-            "Основное",
-            {
-                "fields": (
-                    "categories",
-                    "name",
-                    "description",
-                    "is_active",
-                )
-            },
-        ),
-        (
-            "Детали",
-            {
-                "fields": (
-                    "color",
-                    "length",
-                    "fastener_type",
-                    "fit",
-                    "details",
-                    "available_sizes",
-                )
-            },
-        ),
-        (
-            "Рейтинг популярности",
-            {"fields": ("views_count", "favorites_count", "popularity_score")},
-        ),
+        (None, {
+            'fields': (
+                'is_active',
+                ('name', 'brand'),
+                'categories',
+                'description',
+                'details',
+                'fastener_type',
+                'min_price',
+            )
+        }),
+        ('Статистика', {
+            'classes': ('collapse',),
+            'fields': (
+                ('views_count', 'favorites_count'),
+                'popularity_score',
+                'created_at',
+            )
+        }),
     )
-    readonly_fields = ("views_count", "favorites_count", "popularity_score")
+    inlines = [
+        ItemCharacteristicInline,
+        ItemSizeInline,
+        ItemColorInline,
+        ItemMaterialInline,
+        PriceOptionInline,
+        ItemImageInline,
+        ItemVideoInline,
+    ]
+
+    list_per_page = 50
+
+
+    def colors_list(self, obj):
+        return ", ".join([color.name for color in obj.colors.all()])
+
+    colors_list.short_description = "Цвета"
+
+    def sizes_list(self, obj):
+        return ", ".join([size.name for size in obj.available_sizes.all()])
+
+    sizes_list.short_description = "Размеры"
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related(
+            'colors',
+            'available_sizes'
+        ).select_related('brand')
 
     def thumbnail_preview(self, obj):
         if obj.get_first_image_url():

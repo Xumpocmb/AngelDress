@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
     <title>{{ title|default:"Angel Dress - Каталог" }}</title>
 {% endblock %}
@@ -11,130 +12,36 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/filters_search.css' %}">
 {% endblock styles %}
 
 
 {% block content %}
-    <!-- Главный контейнер -->
     <div class="wrapper">
         <h1 class="page-main-title">Каталог платьев</h1>
-        <div class="catalog-container">
-            <!-- Боковое меню -->
-            <aside class="sidebar">
 
+        <!-- Фильтры и поиск -->
+        {% include 'app_catalog/filters_search.html' %}
 
-                <!-- Заголовок -->
-                <h2 class="filter-title">Категории</h2>
-
-                <!-- Фильтры (десктоп) -->
-                <ul class="filters" id="desktopFilters">
-                    <li><a href="?category=" class="filter {% if not current_category %}active{% endif %}">Все
-                        категории</a></li>
-                    {% for category in categories %}
-                        <li>
-                            <a href="?category={{ category.slug }}"
-                               class="filter {% if current_category == category.slug %}active{% endif %}">
-                                {{ category.name }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <!-- Горизонтальное меню (мобильные) -->
-                <div class="mobile-category-menu" id="mobileCategoryMenu">
-                    <div class="mobile-category-menu-items">
-                        <a href="?category="
-                           class="mobile-category {% if not current_category %}active{% endif %}">Все</a>
-                        {% for category in categories %}
-                            <a href="?category={{ category.slug }}"
-                               class="mobile-category {% if current_category == category.slug %}active{% endif %}">
-                                {{ category.name }}
-                            </a>
-                        {% endfor %}
-                    </div>
+        <!-- Карточки товаров -->
+        <div class="product-grid">
+            {% for item in page_obj %}
+                {% include "includes/product_card.html" with item=item %}
+            {% empty %}
+                <div class="no-results">
+                    <p>По вашему запросу ничего не найдено</p>
+                    <a href="?category={{ current_category|default:'' }}" class="reset-link">Сбросить фильтры</a>
                 </div>
-            </aside>
-
-            <!-- Основное содержимое -->
-            <main class="content">
-
-                <!-- Поиск -->
-                <div class="search-bar">
-                    <label for="sort-select">Поиск по цвету или размеру:</label>
-                    <form method="get" class="search-form" id="searchForm">
-                        <input type="hidden" name="category" value="{{ current_category|default:'' }}">
-                        <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
-                        <div class="search-input-wrapper">
-                            <input type="text" name="search" value="{{ search_query|default:'' }}"
-                                   placeholder="{% if model_type == 'dress' %}Поиск по цвету или размеру{% else %}Поиск по цвету или размеру{% endif %}"
-                                   class="search-input" id="searchInput">
-                            <img src="{% static 'img/clear-icon.png' %}" alt="Очистить поиск"
-                                 class="clear-search-icon" id="clearSearchIcon"
-                                 style="display: {% if search_query %}block{% else %}none{% endif %}">
-                        </div>
-                        <button type="submit" class="search-button">Найти</button>
-                    </form>
-                </div>
-
-                <!-- Сортировка -->
-                <div class="sort-bar">
-                    <label for="sort-select">Показывать сначала:</label>
-                    <div class="custom-select-wrapper">
-                        <select class="custom-select" id="sort-select" onchange="location = this.value;">
-                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=newest"
-                                    {% if current_sort == 'newest' %}selected{% endif %}>Новые
-                            </option>
-                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=price-low"
-                                    {% if current_sort == 'price-low' %}selected{% endif %}>По возрастанию цены
-                            </option>
-                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=price-high"
-                                    {% if current_sort == 'price-high' %}selected{% endif %}>По убыванию цены
-                            </option>
-                            <option value="?{% if current_category %}category={{ current_category }}&{% endif %}sort=popular"
-                                    {% if current_sort == 'popular' %}selected{% endif %}>Популярные
-                            </option>
-                        </select>
-                        <div class="select-arrow"></div>
-                    </div>
-                </div>
-
-                <!-- Карточки товаров -->
-                <div class="product-grid">
-                    {% for item in page_obj %}
-                        {% include "includes/product_card.html" with item=item show_details_link=True detail_url=item.get_absolute_url %}
-                    {% empty %}
-                        <div class="no-products">
-                            <p>{% if model_type == 'dress' %}Платьев{% else %}Аксессуаров{% endif %} пока нет в
-                                каталоге</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            </main>
+            {% endfor %}
         </div>
+
         {% include 'includes/pagination.html' %}
     </div>
 {% endblock %}
 
-
 {% block scripts %}
     <script src="{% static 'js/wishlist.js' %}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const searchInput = document.getElementById('searchInput');
-            const clearIcon = document.getElementById('clearSearchIcon');
-            const searchForm = document.getElementById('searchForm');
+    <script src="{% static 'js/filters.js' %}"></script>
+    <script src="{% static 'js/search_reset.js' %}"></script>
 
-            // Показать/скрыть иконку очистки в зависимости от содержимого поля
-            searchInput.addEventListener('input', function () {
-                clearIcon.style.display = this.value ? 'block' : 'none';
-            });
-
-            // Очистка поля и отправка формы при клике на иконку
-            clearIcon.addEventListener('click', function () {
-                searchInput.value = '';
-                clearIcon.style.display = 'none';
-                searchForm.submit();
-            });
-        });
-    </script>
 {% endblock %}
