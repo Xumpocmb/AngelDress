@@ -79,6 +79,10 @@
     width: 100%;
 }
 
+.filters-container {
+    flex-direction: column;
+}
+
 /* Выпадающие фильтры */
 .filter-dropdown {
     position: relative;
@@ -168,6 +172,7 @@
     border-radius: 4px;
     background: white;
     cursor: pointer;
+    font-size: 14px;
 }
 
 /* Нет результатов */

@@ -19,21 +19,61 @@
 {% block content %}
     <div class="wrapper">
         <h1 class="page-main-title">Каталог платьев</h1>
+        <div class="catalog-container">
+            <aside class="sidebar">
 
-        <!-- Фильтры и поиск -->
-        {% include 'app_catalog/filters_search.html' %}
 
-        <!-- Карточки товаров -->
-        <div class="product-grid">
-            {% for item in page_obj %}
-                {% include "includes/product_card.html" with item=item %}
-            {% empty %}
-                <div class="no-results">
-                    <p>По вашему запросу ничего не найдено</p>
-                    <a href="?category={{ current_category|default:'' }}" class="reset-link">Сбросить фильтры</a>
+                <!-- Заголовок -->
+                <h2 class="filter-title">Категории</h2>
+
+                <!-- Фильтры (десктоп) -->
+                <ul class="filters" id="desktopFilters">
+                    <li><a href="?category=" class="filter {% if not current_category %}active{% endif %}">Все
+                        категории</a></li>
+                    {% for category in categories %}
+                        <li>
+                            <a href="?category={{ category.slug }}"
+                               class="filter {% if current_category == category.slug %}active{% endif %}">
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- Горизонтальное меню (мобильные) -->
+                <div class="mobile-category-menu" id="mobileCategoryMenu">
+                    <div class="mobile-category-menu-items">
+                        <a href="?category="
+                           class="mobile-category {% if not current_category %}active{% endif %}">Все</a>
+                        {% for category in categories %}
+                            <a href="?category={{ category.slug }}"
+                               class="mobile-category {% if current_category == category.slug %}active{% endif %}">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
-            {% endfor %}
+            </aside>
+
+            <main class="content">
+                <!-- Фильтры и поиск -->
+                {% include 'app_catalog/filters_search.html' %}
+
+                <!-- Карточки товаров -->
+                <div class="product-grid">
+                    {% for item in page_obj %}
+                        {% include "includes/product_card.html" with item=item %}
+                    {% empty %}
+                        <div class="no-results">
+                            <p>По вашему запросу ничего не найдено</p>
+                            <a href="?category={{ current_category|default:'' }}" class="reset-link">Сбросить
+                                фильтры</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </main>
         </div>
+
 
         {% include 'includes/pagination.html' %}
     </div>

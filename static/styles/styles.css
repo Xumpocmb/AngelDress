@@ -1183,11 +1183,6 @@ button {
     pointer-events: none;
 }
 
-.sort-select {
-    font-family: "TT Chocolates", serif;
-    font-size: 14px;
-}
-
 @media (max-width: 992px) {
     .sidebar {
         width: 100%;
