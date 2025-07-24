@@ -19,11 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Отправка формы при изменении сортировки
-    document.querySelector('.sort-select').addEventListener('change', function () {
-        document.getElementById('filterForm').submit();
-    });
-
     // Очистка поиска
     const clearSearch = document.querySelector('.clear-search');
     if (clearSearch) {

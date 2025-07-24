@@ -83,6 +83,11 @@
     flex-direction: column;
 }
 
+
+.filter-params {
+    width: 100%;
+}
+
 /* Выпадающие фильтры */
 .filter-dropdown {
     position: relative;
