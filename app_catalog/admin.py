@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
+from .forms import ItemForm, AccessoryForm
 from .models import (
     Item,
     ItemCategory,
@@ -171,6 +172,7 @@ class ItemMaterialInline(admin.TabularInline):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
+    form = ItemForm
     list_display = (
         "thumbnail_preview",
         'name',
@@ -263,6 +265,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 @admin.register(Accessory)
 class AccessoryAdmin(admin.ModelAdmin):
+    form = AccessoryForm
     inlines = [PriceOptionInline, ItemImageInline, ItemVideoInline]
     list_display = (
         "thumbnail_preview",
