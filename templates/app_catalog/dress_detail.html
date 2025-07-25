@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>{{ product.name }} | Angel Dress</title>
+{% endblock %}
+
+{% block meta %}
+    {{ block.super }}
+    <meta name="csrf-token" content="{{ csrf_token }}"/>
+    <meta name="description" content="{{ meta_description|default:product.description|truncatewords:20 }}"/>
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/modal.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/product_page.css' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="breadcrumbs">
+            <a href="
+                    {% if model_type == 'accessory' %}{% url 'app_catalog:accessory_catalog' %}{% else %}{% url 'app_catalog:items_catalog' %}{% endif %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}"
+               class="breadcrumbs-link">
+                <img src="{% static 'img/icon-left.png' %}" alt="Назад">
+                {% if model_type == 'accessory' %}Каталог аксессуаров{% else %}Каталог платьев{% endif %}
+            </a>
+        </div>
+        <div class="product-container">
+            <!-- Левая колонка - галерея -->
+            {% include "app_catalog/includes/product_gallery.html" %}
+
+            <!-- Правая колонка - информация о товаре -->
+            <div class="card-product-info">
+                <h1 class="product-name">{{ product.name }}</h1>
+
+
+                <!-- Характеристики -->
+                <div class="properties">
+
+                    <!-- Выбор цены -->
+                    <!-- Выбор цены (Радио-кнопки) -->
+                    <div class="price-selection">
+                        <label>Выберите вариант аренды:</label>
+                        <div class="radio-group" id="price-option-group">
+                            {% for option in product.price_options.all %}
+                                {% if option.is_active %}
+                                    <div class="radio-option">
+                                        <input type="radio"
+                                               id="price-option-{{ option.id }}"
+                                               name="price-option"
+                                               value="{{ option.id }}"
+                                               data-price="{{ option.price }}"
+                                               data-pledge="{{ option.pledge|default_if_none:'' }}"
+                                               data-period="{{ option.rental_period_days|default_if_none:'' }}"
+                                               {% if forloop.first %}checked{% endif %}>
+                                        <span class="price-checkmark"></span>
+                                        <label for="price-option-{{ option.id }}">{{ option.name }}</label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        <!-- Блок с деталями выбранной цены -->
+                        <div class="price-details">
+                            <!-- Основная цена теперь обновляется скриптом -->
+                            <div class="price">от <span id="selected-main-price">{{ product.min_price }}</span> ₽</div>
+
+                            <div id="selected-pledge-container"
+                                    {% if not product.price_options.first.pledge or product.price_options.first.pledge == 0 %}
+                                 style="display:none;"{% endif %}>
+                                Залог: <span
+                                    id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'0' }}</span>
+                                ₽
+                            </div>
+                            <div id="selected-period-container"
+                                    {% if not product.price_options.first.rental_period_days %}
+                                 style="display:none;"{% endif %}>
+                                Срок аренды: <span
+                                    id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'0' }}</span>
+                                дн.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Бренд -->
+                    {% if product.brand %}
+                        <div class="property">
+                            <div class="property-name">Бренд:</div>
+                            <div class="property-value">{{ product.brand.name }}</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Цвета -->
+                    {% if product.colors.exists %}
+                        <div class="property">
+                            <div class="property-name">Цвет:</div>
+                            <div class="property-value">
+                                {% for color in product.colors.all %}
+                                    {{ color.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Категории -->
+                    {% if product.categories.exists %}
+                        <div class="property">
+                            <div class="property-name">Категории:</div>
+                            <div class="property-value">
+                                {% for category in product.categories.all %}
+                                    {{ category.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Размеры -->
+                    {% if product.available_sizes.exists %}
+                        <div class="property">
+                            <div class="property-name">Размеры:</div>
+                            <div class="property-value">
+                                {% for size in product.available_sizes.all %}
+                                    {{ size.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Материалы -->
+                    {% if product.materials.exists %}
+                        <div class="property">
+                            <div class="property-name">Материал:</div>
+                            <div class="property-value">
+                                {% for material in product.materials.all %}
+                                    {{ material.name }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Тип застёжки -->
+                    {% if product.fastener_type %}
+                        <div class="property">
+                            <div class="property-name">Тип застёжки:</div>
+                            <div class="property-value">{{ product.fastener_type }}</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Детали -->
+                    {% if product.details %}
+                        <div class="property">
+                            <div class="property-name">Детали:</div>
+                            <div class="property-value">{{ product.details }}</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Характеристики платья (из ItemCharacteristic) -->
+                    {% if product.characteristics %}
+                        {% with chars=product.characteristics %}
+                            <!-- Длина -->
+                            {% if chars.length %}
+                                <div class="property">
+                                    <div class="property-name">Длина:</div>
+                                    <div class="property-value">{{ chars.get_length_display }}</div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Фасон -->
+                            {% if chars.fit %}
+                                <div class="property">
+                                    <div class="property-name">Фасон:</div>
+                                    <div class="property-value">{{ chars.get_fit_display }}</div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Рукав -->
+                            {% if chars.sleeve %}
+                                <div class="property">
+                                    <div class="property-name">Рукав:</div>
+                                    <div class="property-value">{{ chars.get_sleeve_display }}</div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Шлейф -->
+                            {% if chars.train %}
+                                <div class="property">
+                                    <div class="property-name">Шлейф:</div>
+                                    <div class="property-value">{{ chars.get_train_display }}</div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Цена на мероприятие -->
+                            {% if chars.price_range %}
+                                <div class="property">
+                                    <div class="property-name">Цена на мероприятие:</div>
+                                    <div class="property-value">{{ chars.get_price_range_display }}</div>
+                                </div>
+                            {% endif %}
+
+                            <!-- Дополнительные характеристики -->
+                            {% if chars.has_3d_embroidery %}
+                                <div class="property">
+                                    <div class="property-name">3D вышивка:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.has_feathers %}
+                                <div class="property">
+                                    <div class="property-name">С перьями:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.has_stones %}
+                                <div class="property">
+                                    <div class="property-name">Платье в стразах:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.has_beads %}
+                                <div class="property">
+                                    <div class="property-name">Расшито бисером:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.has_pearls %}
+                                <div class="property">
+                                    <div class="property-name">Расшито жемчугом:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.is_transparent %}
+                                <div class="property">
+                                    <div class="property-name">Прозрачный:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+
+                            {% if chars.has_pleats %}
+                                <div class="property">
+                                    <div class="property-name">Плиссе:</div>
+                                    <div class="property-value">Да</div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    {% endif %}
+                </div>
+
+                <!-- Кнопки -->
+                <div class="buttons">
+                    <input type="hidden" name="product_id" value="{{ product.id }}"/>
+                    <div class="button button-primary" id="rent-button" data-id="{{ product.id }}">ЗАБРОНИРОВАТЬ</div>
+
+                    <div class="product-wishlist-icon {% if product.id in request.session.wishlist %}product-wishlist-active{% endif %}"
+                         id="wishlist-icon-{{ product.id }}"
+                         onclick="toggleProductWishlist(this, {{ product.id }}, 'dress')">
+                        <img src="{% static 'img/heart.png' %}" alt="Добавить в избранное">
+                    </div>
+                </div>
+
+                <!-- Табы -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="description">ОПИСАНИЕ</div>
+                    <div class="tab" data-tab="additional-info">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="description">
+                        {% if product.description %}
+                            {{ product.description|linebreaks }}
+                        {% else %}
+                            Описание отсутствует.
+                        {% endif %}
+                    </div>
+
+                    <div class="tab-pane" id="additional-info">
+                        {% if rent_rules_text %}
+                            {{ rent_rules_text|safe }}
+                        {% else %}
+                            Правила аренды не заданы.
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для бронирования -->
+    {% include 'app_catalog/includes/booking.html' %}
+
+    <!-- Лайтбокс для увеличенного просмотра изображений -->
+    {% include 'app_catalog/includes/lightbox.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/dress_tabs.js' %}"></script>
+    <script src="{% static 'js/product_rent.js' %}"></script>
+    <script src="{% static 'js/wishlist.js' %}"></script>
+    <script src="{% static 'js/price_change.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/swiper-bundle.min.js.map' %}"></script>
+    {% include 'app_catalog/includes/product_slider_script.html' %}
+{% endblock %}

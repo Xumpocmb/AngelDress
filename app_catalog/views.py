@@ -164,7 +164,7 @@ def item_detail_view(request, dress_id):
         "model_type": "dress",
         "meta_description": f"{dress.name}: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
-    return render(request, "app_catalog/product.html", context)
+    return render(request, "app_catalog/dress_detail.html", context)
 
 
 def accessory_catalog_view(request):
@@ -181,17 +181,29 @@ def accessory_catalog_view(request):
         'model_type': 'accessory'
     }
 
-    accessories = Accessory.objects.filter(is_active=True).prefetch_related("categories")
+    accessories = Accessory.objects.filter(is_active=True).prefetch_related("categories", "colors", "brand")
 
     if category_slug:
         accessories = accessories.filter(categories__slug=category_slug)
 
     if search_query:
         accessories = accessories.filter(
-            Q(color__icontains=search_query.strip()) |
+            Q(name__icontains=search_query.strip()) |
+            Q(colors__name__icontains=search_query.strip()) |
             Q(details__icontains=search_query.strip())
-        )
+        ).distinct()
 
+    # Фильтрация по цветам
+    color_ids = request.GET.getlist("color")
+    if color_ids:
+        accessories = accessories.filter(colors__id__in=color_ids).distinct()
+
+    # Фильтрация по брендам
+    brand_ids = request.GET.getlist("brand")
+    if brand_ids:
+        accessories = accessories.filter(brand__id__in=brand_ids).distinct()
+
+    # Сортировка
     if sort == "price-low":
         accessories = accessories.order_by("min_price")
     elif sort == "price-high":
@@ -204,6 +216,14 @@ def accessory_catalog_view(request):
     paginator = Paginator(accessories, 9)
     page_obj = paginator.get_page(page)
 
+    # Получаем все доступные варианты для фильтров
+    colors = Color.objects.annotate(num_items=Count('accessory')).filter(num_items__gt=0).order_by('name')
+    brands = Brand.objects.annotate(num_items=Count('accessory')).filter(num_items__gt=0).order_by('name')
+
+    # Получаем уникальные значения для диапазонов цен (если нужно)
+    # Для аксессуаров можно использовать те же диапазоны, что и для платьев
+    price_range_choices = dict(ItemCharacteristic.PRICE_RANGE_CHOICES)
+
     context = {
         "page_obj": page_obj,
         "categories": AccessoryCategory.objects.filter(is_active=True),
@@ -213,8 +233,16 @@ def accessory_catalog_view(request):
         "model_type": "accessory",
         "title": "Каталог аксессуаров",
         "meta_description": "Прокат аксессуаров в Москве: украшения, сумки и многое другое. Забронируйте прямо сейчас!",
+        # Параметры фильтрации
+        "colors": colors,
+        "brands": brands,
+        "price_range_choices": price_range_choices,
+        # Текущие выбранные фильтры
+        "selected_colors": color_ids,
+        "selected_brands": brand_ids,
+        "selected_price_ranges": request.GET.getlist("price_range"),
     }
-    return render(request, "app_catalog/catalog.html", context)
+    return render(request, "app_catalog/accessory_catalog.html", context)
 
 
 def accessory_detail_view(request, accessory_id):
@@ -241,4 +269,4 @@ def accessory_detail_view(request, accessory_id):
         "model_type": "accessory",
         "meta_description": f"{accessory.name}: прокат аксессуаров в Москве. Забронируйте прямо сейчас!",
     }
-    return render(request, "app_catalog/product.html", context)
+    return render(request, "app_catalog/dress_detail.html", context)

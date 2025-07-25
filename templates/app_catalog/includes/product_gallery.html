@@ -1,0 +1,53 @@
+{% load static %}
+
+<div class="product-gallery">
+    <!-- Главный слайдер -->
+    <div class="swiper main-gallery">
+        <div class="swiper-wrapper">
+            {% for media in media_files %}
+                <div class="swiper-slide">
+                    {% if media.video %}
+                        <video controls class="main-media" data-is-video="true">
+                            <source src="{{ media.video.url }}" type="video/mp4"/>
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    {% else %}
+                        <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media"
+                             data-is-video="false"/>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if not media_files %}
+                <div class="swiper-slide">
+                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media"
+                         data-is-video="false"/>
+                </div>
+            {% endif %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Слайдер миниатюр -->
+    <div class="swiper thumbnail-gallery">
+        <div class="swiper-wrapper">
+            {% for media in media_files %}
+                <div class="swiper-slide">
+                    {% if media.video %}
+                        <video class="thumb-media" muted>
+                            <source src="{{ media.video.url }}" type="video/mp4"/>
+                        </video>
+                    {% else %}
+                        <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumb-media"/>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if not media_files %}
+                <div class="swiper-slide">
+                    <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumb-media"/>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

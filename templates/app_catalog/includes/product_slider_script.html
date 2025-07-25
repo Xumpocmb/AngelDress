@@ -1,0 +1,49 @@
+<script>
+    // Инициализация главного слайдера
+    const mainGallery = new Swiper('.main-gallery', {
+      loop: {% if media_files|length > 1 %}true{% else %}false{% endif %},
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      thumbs: {
+        swiper: {
+          el: '.thumbnail-gallery',
+          slidesPerView: 4,
+          spaceBetween: 10,
+          freeMode: true,
+          watchSlidesProgress: true,
+        },
+      },
+    });
+
+    // Инициализация лайтбокса
+    const lightboxGallery = new Swiper('.lightbox-gallery', {
+      loop: {% if images|length > 1 %}true{% else %}false{% endif %},
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    // Открытие лайтбокса при клике на изображение
+    document.querySelectorAll('.main-gallery .main-media[data-is-video="false"]').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        document.getElementById('lightbox').style.display = 'flex';
+        lightboxGallery.slideToLoop(index);
+      });
+    });
+
+    // Закрытие лайтбокса
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>

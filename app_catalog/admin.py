@@ -1,9 +1,7 @@
 from django.contrib import admin
+from django.db.models import Count
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.contrib import admin
-from django.utils.html import format_html
-from django.db.models import Count
 
 from .models import (
     Item,
@@ -119,6 +117,7 @@ class PriceOptionInline(admin.TabularInline):
             kwargs["queryset"] = Accessory.objects.all()
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
+
 class ItemImageInline(admin.TabularInline):
     model = ItemImage
     extra = 1
@@ -131,6 +130,7 @@ class ItemImageInline(admin.TabularInline):
         return "Нет изображения"
 
     image_tag.short_description = "Предпросмотр"
+
 
 class ItemVideoInline(admin.TabularInline):
     model = ItemVideo
@@ -233,7 +233,6 @@ class ItemAdmin(admin.ModelAdmin):
 
     list_per_page = 50
 
-
     def colors_list(self, obj):
         return ", ".join([color.name for color in obj.colors.all()])
 
@@ -261,19 +260,21 @@ class ItemAdmin(admin.ModelAdmin):
     thumbnail_preview.short_description = "Миниатюра"
     thumbnail_preview.allow_tags = True
 
+
 @admin.register(Accessory)
 class AccessoryAdmin(admin.ModelAdmin):
     inlines = [PriceOptionInline, ItemImageInline, ItemVideoInline]
     list_display = (
         "thumbnail_preview",
         "name",
+        "brand",
         "is_active",
         "created_at",
     )
     list_editable = ("is_active",)
     list_filter = (
         "categories",
-        "color",
+        "colors",
     )
     search_fields = ("name", "description")
     filter_horizontal = ("categories",)
@@ -284,7 +285,7 @@ class AccessoryAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "categories",
-                    "name",
+                    ("name", "brand"),
                     "description",
                     "is_active",
                 )
@@ -294,7 +295,7 @@ class AccessoryAdmin(admin.ModelAdmin):
             "Детали",
             {
                 "fields": (
-                    "color",
+                    "colors",
                     "details",
                 )
             },
@@ -317,6 +318,7 @@ class AccessoryAdmin(admin.ModelAdmin):
     thumbnail_preview.short_description = "Миниатюра"
     thumbnail_preview.allow_tags = True
 
+
 @admin.register(ItemCategory)
 class ItemCategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "items_count", "show_on_main_page", "is_active")
@@ -332,6 +334,7 @@ class ItemCategoryAdmin(admin.ModelAdmin):
         return obj.items.count()
 
     items_count.short_description = "Количество"
+
 
 @admin.register(AccessoryCategory)
 class AccessoryCategoryAdmin(admin.ModelAdmin):

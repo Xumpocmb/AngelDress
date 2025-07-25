@@ -307,13 +307,22 @@ class Accessory(models.Model):
     categories = models.ManyToManyField(
         AccessoryCategory, verbose_name="Категории", related_name="accessories"
     )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Бренд"
+    )
     name = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(
         verbose_name="Описание",
         blank=True,
         null=True,
     )
-    color = models.CharField(blank=True, null=True, max_length=100, verbose_name="Цвет")
+    colors = models.ManyToManyField(
+        Color, verbose_name="Цвета", blank=True
+    )
     details = models.TextField(
         blank=True,
         null=True,

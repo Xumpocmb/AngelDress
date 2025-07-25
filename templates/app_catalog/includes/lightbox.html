@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="lightbox" id="lightbox" style="display: none;">
+    <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+    <div class="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox()">×</span>
+      <div class="swiper lightbox-gallery">
+        <div class="swiper-wrapper">
+          {% for media in media_files %}
+            {% if not media.video %}
+              <div class="swiper-slide">
+                <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="lightbox-image" />
+              </div>
+            {% endif %}
+          {% endfor %}
+          {% if not images %}
+            <div class="swiper-slide">
+              <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="lightbox-image" />
+            </div>
+          {% endif %}
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>

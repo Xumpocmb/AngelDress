@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/promotion_slider.css' %}">
     <link rel="stylesheet" href="{% static 'styles/contact_section.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product_card.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper-bundle.min.css' %}">
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
@@ -108,7 +109,7 @@
                 <!-- Карточки -->
                 <div class="product-grid">
                     {% for dress in random_dresses %}
-                        {% include "includes/product_card.html" with item=dress show_details_link=True %}
+                        {% include "includes/../app_catalog/includes/product_card.html" with item=dress show_details_link=True %}
                     {% endfor %}
                 </div>
             </section>

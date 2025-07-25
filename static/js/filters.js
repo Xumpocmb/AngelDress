@@ -28,3 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+document.querySelectorAll('.filter-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+        const options = button.nextElementSibling;
+        options.classList.toggle('active');
+    });
+});

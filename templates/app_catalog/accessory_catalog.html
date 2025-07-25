@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block title %}
-    <title>{{ title|default:"Angel Dress - Каталог" }}</title>
+    <title>Каталог аксессуаров - Angel Dress</title>
 {% endblock %}
 
 {% block meta %}
     {{ block.super }}
     <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="description" content="{{ meta_description|default:'Прокат аксессуаров в Москве: украшения, сумки и многое другое. Забронируйте прямо сейчас!' }}">
 {% endblock %}
 
 {% block styles %}
@@ -16,21 +17,17 @@
     <link rel="stylesheet" href="{% static 'styles/product_card.css' %}">
 {% endblock styles %}
 
-
 {% block content %}
     <div class="wrapper">
-        <h1 class="page-main-title">Каталог платьев</h1>
+        <h1 class="page-main-title">Каталог аксессуаров</h1>
         <div class="catalog-container">
             <aside class="sidebar">
-
-
                 <!-- Заголовок -->
                 <h2 class="filter-title">Категории</h2>
 
                 <!-- Фильтры (десктоп) -->
                 <ul class="filters" id="desktopFilters">
-                    <li><a href="?category=" class="filter {% if not current_category %}active{% endif %}">Все
-                        категории</a></li>
+                    <li><a href="?category=" class="filter {% if not current_category %}active{% endif %}">Все категории</a></li>
                     {% for category in categories %}
                         <li>
                             <a href="?category={{ category.slug }}"
@@ -42,7 +39,7 @@
                 </ul>
 
                 <!-- Фильтры и поиск -->
-                {% include 'app_catalog/includes/filters_search.html' %}
+                {% include 'app_catalog/includes/accessory_filters_search.html' %}
 
                 <!-- Горизонтальное меню (мобильные) -->
                 <div class="mobile-category-menu" id="mobileCategoryMenu">
@@ -63,21 +60,18 @@
                 <!-- Карточки товаров -->
                 {% if page_obj %}
                     <div class="product-grid">
-                        {% for item in page_obj %}
-                            {% include "app_catalog/includes/product_card.html" with item=item %}
+                        {% for accessory in page_obj %}
+                            {% include "app_catalog/includes/product_card.html" with item=accessory %}
                         {% endfor %}
                     </div>
                 {% else %}
                     <div class="no-results">
                         <p>По вашему запросу ничего не найдено</p>
-                        <a href="?category={{ current_category|default:'' }}" class="reset-link">Сбросить
-                            фильтры</a>
+                        <a href="?category={{ current_category|default:'' }}" class="reset-link">Сбросить фильтры</a>
                     </div>
                 {% endif %}
-
             </main>
         </div>
-
 
         {% include 'includes/pagination.html' %}
     </div>
@@ -87,4 +81,12 @@
     <script src="{% static 'js/wishlist.js' %}"></script>
     <script src="{% static 'js/filters.js' %}"></script>
     <script src="{% static 'js/search_reset.js' %}"></script>
+    <script>
+        document.querySelectorAll('.filter-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const options = button.nextElementSibling;
+                options.classList.toggle('active');
+            });
+        });
+    </script>
 {% endblock %}

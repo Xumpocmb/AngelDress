@@ -82,6 +82,7 @@
     color: #333;
     transition: background-color 0.3s ease;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .filters a:hover,

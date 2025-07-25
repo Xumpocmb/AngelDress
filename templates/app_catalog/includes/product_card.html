@@ -7,7 +7,7 @@
              onclick="toggleWishlist(this, {{ item.id }})">
             <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
         </div>
-        <a href="{% if detail_url %}{{ detail_url }}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}">
+        <a href="{% if detail_url %}{{ detail_url }}{% else %}{% if model_type == 'accessory' %}{% url 'app_catalog:accessory_detail' item.id %}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}{% endif %}">
             {% with item.images.first as main_image %}
                 {% if main_image %}
                     <img class="product-image" src="{{ main_image.image.url }}" alt="{{ item.name }}">
@@ -28,13 +28,10 @@
             {% endif %}
         </div>
 
-        <!-- Блок "Подробнее" (можно включать/отключать) -->
-        {% if show_details_link %}
-            <div class="product_link">
-                <a href="{% if detail_url %}{{ detail_url }}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}">
-                    Подробнее →
-                </a>
-            </div>
-        {% endif %}
+        <div class="product_link">
+            <a href="{% if detail_url %}{{ detail_url }}{% else %}{% if model_type == 'accessory' %}{% url 'app_catalog:accessory_detail' item.id %}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}{% endif %}">
+                Подробнее →
+            </a>
+        </div>
     </div>
 </div>
