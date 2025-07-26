@@ -118,6 +118,69 @@ a {
     text-transform: uppercase;
 }
 
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    color: #000;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cookie-consent-content p,
+.cookie-consent-content a {
+    font-size: 14px;
+}
+
+@media (max-width: 992px) {
+
+    .cookie-consent-content p,
+    .cookie-consent-content a {
+        font-size: 12px;
+    }
+}
+
+.cookie-consent-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cookie-consent-button {
+    background: #b17453;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.cookie-consent-button:hover {
+    background: #8d5d43;
+}
+
+.cookie-consent a {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+    .cookie-consent-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+
 
 /* --------------------------------------------  */
 /* --- breadcrumbs --- */
@@ -1773,7 +1836,6 @@ p {
     font-weight: bold;
     color: var(--text-color);
     margin-bottom: 15px;
-    font-family: 'Cormorant Infant', serif;
 }
 
 .form_subtitle {
@@ -1804,7 +1866,6 @@ p {
     color: var(--text-color);
     outline: none;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Cormorant Infant', serif;
 }
 
 .form_input:focus {
@@ -1846,12 +1907,12 @@ p {
     transition: all 0.3s ease;
 }
 
-.checkbox_label input[type="checkbox"]:checked + .checkmark {
+.checkbox_label input[type="checkbox"]:checked+.checkmark {
     background-color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
 
-.checkbox_label input[type="checkbox"]:checked + .checkmark::after {
+.checkbox_label input[type="checkbox"]:checked+.checkmark::after {
     content: "✓";
     position: absolute;
     top: 50%;
@@ -2098,11 +2159,11 @@ button {
     margin-bottom: 20px;
 }
 
-.agreement-description > p {
+.agreement-description>p {
     margin-left: 10px;
 }
 
-.agreement-description > ul {
+.agreement-description>ul {
     margin-left: 30px;
 }
 

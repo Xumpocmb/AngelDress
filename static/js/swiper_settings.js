@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             delay: 5000,
             disableOnInteraction: false,
         },
-        roundLengths: true, // Точные расчёты ширины
+        roundLengths: true,
         pagination: {
             el: '.promo-pagination',
             clickable: true,

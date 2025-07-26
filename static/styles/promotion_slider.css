@@ -36,14 +36,21 @@
 
 /* Стили текстового контента */
 .promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 30px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    /*background: rgba(0, 0, 0, 0.5);*/
     color: white;
     z-index: 2;
+    text-align: center; /* Выравнивание текста внутри элементов по центру */
 }
 
 .promo-title {
@@ -60,6 +67,7 @@
     line-height: 1.5;
     color: white;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 .promo-description p {
@@ -133,7 +141,7 @@
 
     .promo-description {
         font-size: 0.9rem;
-        max-width: 100%;
+        max-width: 70%;
     }
 }
 
@@ -142,7 +150,8 @@
 
 .promo-footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
     margin-top: 15px;
 }
@@ -167,11 +176,6 @@
 @media (max-width: 768px) {
     .promo-footer {
         flex-direction: column;
-        align-items: flex-start;
         gap: 10px;
-    }
-
-    .promo-details-link {
-        align-self: flex-end;
     }
 }

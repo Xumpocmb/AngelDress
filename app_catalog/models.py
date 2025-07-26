@@ -45,6 +45,14 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
+    def is_valid_hex(self):
+        """Проверяет, является ли hex_code допустимым HEX цветом."""
+        import re
+        if not self.hex_code:
+            return False
+        # Проверка формата #XXX или #XXXXXX
+        return bool(re.match(r'^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', self.hex_code))
+
 
 class Size(models.Model):
     name = models.CharField(max_length=50, verbose_name="Размер")
