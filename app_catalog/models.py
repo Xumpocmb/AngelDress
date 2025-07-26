@@ -71,6 +71,42 @@ class Brand(models.Model):
         return self.name
 
 
+class SuitableFor(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Для кого подходит")
+    slug = models.SlugField(max_length=100, unique=True, verbose_name="URL", blank=True)
+
+    class Meta:
+        db_table = "app_catalog_suitable_for"
+        verbose_name = "Для кого подходит"
+        verbose_name_plural = "Для кого подходит"
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+
+class FastenerType(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Тип застёжки")
+    slug = models.SlugField(max_length=100, unique=True, verbose_name="URL", blank=True)
+
+    class Meta:
+        db_table = "app_catalog_fastener_type"
+        verbose_name = "Тип застёжки"
+        verbose_name_plural = "Типы застёжек"
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+
 class ItemCharacteristic(models.Model):
     TRAIN_CHOICES = [
         ('without', 'Без шлейфа'),
@@ -203,10 +239,11 @@ class Item(models.Model):
         blank=True
     )
 
-    fastener_type = models.CharField(
-        blank=True,
+    fastener_type = models.ForeignKey(
+        FastenerType,
+        on_delete=models.SET_NULL,
         null=True,
-        max_length=100,
+        blank=True,
         verbose_name="Тип застёжки"
     )
 
@@ -215,6 +252,18 @@ class Item(models.Model):
         null=True,
         verbose_name="Детали",
         help_text="Перечислите детали через запятую",
+    )
+    suitable_for = models.ManyToManyField(
+        SuitableFor,
+        verbose_name="Для кого подходит",
+        blank=True,
+        related_name="items"
+    )
+
+    is_first_rental_promo = models.BooleanField(
+        default=False,
+        verbose_name="Акция 'Первый прокат'",
+        help_text="Если отмечено, на карточке товара будет отображаться значок акции 'первый прокат'."
     )
 
     is_active = models.BooleanField(default=True, verbose_name="Активен")

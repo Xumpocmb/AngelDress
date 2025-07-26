@@ -2,7 +2,7 @@ from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from app_catalog.models import Item, ItemCategory, Accessory, AccessoryCategory, ItemCharacteristic, Color, Size, \
-    Material, Brand
+    Material, Brand, SuitableFor, FastenerType
 from app_home.models import RentRules
 
 
@@ -23,6 +23,8 @@ def item_catalog_view(request):
     fits = request.GET.getlist("fit")
     sleeves = request.GET.getlist("sleeve")
     trains = request.GET.getlist("train")
+    suitable_for_slugs = request.GET.getlist("suitable_for")
+    fastener_type_slugs = request.GET.getlist("fastener_type")
 
     # Базовый запрос
     items = Item.objects.filter(is_active=True).prefetch_related(
@@ -60,6 +62,13 @@ def item_catalog_view(request):
     if brand_ids:
         items = items.filter(brand__id__in=brand_ids).distinct()
 
+    # Фильтрация по "Для кого подходит"
+    if suitable_for_slugs:
+        items = items.filter(suitable_for__slug__in=suitable_for_slugs).distinct()
+
+    if fastener_type_slugs:
+        items = items.filter(fastener_type__slug__in=fastener_type_slugs).distinct()
+
     # Фильтрация по характеристикам
     characteristics_filters = {}
     if price_ranges:
@@ -75,6 +84,13 @@ def item_catalog_view(request):
 
     if characteristics_filters:
         items = items.filter(characteristics__in=ItemCharacteristic.objects.filter(**characteristics_filters)).distinct()
+
+    suitable_for_options = SuitableFor.objects.annotate(
+        num_items=Count('items', filter=Q(items__is_active=True))
+    ).filter(num_items__gt=0).order_by('name')
+    fastener_type_options = FastenerType.objects.annotate(
+        num_items=Count('item', filter=Q(item__is_active=True))
+    ).filter(num_items__gt=0).order_by('name')
 
     # Сортировка
     if sort == "price-low":
@@ -120,6 +136,8 @@ def item_catalog_view(request):
         "fit_choices": fit_choices,
         "sleeve_choices": sleeve_choices,
         "train_choices": train_choices,
+        "suitable_for_options": suitable_for_options,
+        "fastener_type_options": fastener_type_options,
         # Текущие выбранные фильтры
         "selected_colors": color_ids,
         "selected_sizes": size_ids,
@@ -130,6 +148,8 @@ def item_catalog_view(request):
         "selected_fits": fits,
         "selected_sleeves": sleeves,
         "selected_trains": trains,
+        "selected_suitable_for": suitable_for_slugs,
+        "selected_fastener_types": fastener_type_slugs,
     }
 
     return render(request, "app_catalog/catalog.html", context)
@@ -270,3 +290,4 @@ def accessory_detail_view(request, accessory_id):
         "meta_description": f"{accessory.name}: прокат аксессуаров в Москве. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/dress_detail.html", context)
+

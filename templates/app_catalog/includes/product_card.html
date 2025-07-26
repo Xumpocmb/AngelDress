@@ -3,8 +3,13 @@
 <!-- _product_card.html -->
 <div class="product-card">
     <div class="img-section">
+        <!-- Иконка акции для платьев, если включена -->
+        {% if model_type != 'accessory' and item.is_first_rental_promo %}
+        <div class="promo-badge">первый прокат</div>
+        {% endif %}
+
         <div class="favorite-icon {% if item.id in request.session.wishlist %}active{% endif %}"
-             onclick="toggleWishlist(this, {{ item.id }})">
+             onclick="toggleWishlist(this, {{ item.id }}, '{{ model_type|default:"dress" }}')">
             <img src="{% static 'img/heart.png' %}" alt="Add to wishlist">
         </div>
         <a href="{% if detail_url %}{{ detail_url }}{% else %}{% if model_type == 'accessory' %}{% url 'app_catalog:accessory_detail' item.id %}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}{% endif %}">

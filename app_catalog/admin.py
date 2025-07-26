@@ -11,7 +11,7 @@ from .models import (
     AccessoryCategory,
     PriceOption,
     ItemImage,
-    ItemVideo, Color, Size, Material, Brand, ItemCharacteristic,
+    ItemVideo, Color, Size, Material, Brand, ItemCharacteristic, SuitableFor, FastenerType,
 )
 
 
@@ -170,6 +170,18 @@ class ItemMaterialInline(admin.TabularInline):
     verbose_name_plural = "Материалы"
 
 
+@admin.register(SuitableFor)
+class SuitableForAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {"slug": ("name",)}
+
+
+@admin.register(FastenerType)
+class FastenerTypeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
+    prepopulated_fields = {"slug": ("name",)}
+
+
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     form = ItemForm
@@ -195,7 +207,12 @@ class ItemAdmin(admin.ModelAdmin):
         'description',
         'brand__name',
     )
-    filter_horizontal = ('categories',)
+    filter_horizontal = (
+        'categories',
+        "colors",
+        "materials",
+        "available_sizes",
+        "suitable_for", )
     readonly_fields = (
         'views_count',
         'favorites_count',
@@ -203,11 +220,13 @@ class ItemAdmin(admin.ModelAdmin):
         'created_at',
     )
     fieldsets = (
-        (None, {
+        ('Основное', {
             'fields': (
                 'is_active',
                 ('name', 'brand'),
+                "is_first_rental_promo",
                 'categories',
+                "suitable_for",
                 'description',
                 'details',
                 'fastener_type',

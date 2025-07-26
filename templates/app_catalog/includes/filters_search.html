@@ -26,185 +26,250 @@
     <form method="get" id="filterForm" class="filters-container">
         <input type="hidden" name="search" value="{{ search_query|default:'' }}">
         <input type="hidden" name="category" value="{{ current_category|default:'' }}">
+        <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
 
         <div class="filter-params">
             <!-- Фильтр по цветам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">Цвет <span class="filter-count">{% if selected_colors %}({{ selected_colors|length }}){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for color in colors %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="color" value="{{ color.id }}"
-                                   {% if color.id|stringformat:"s" in selected_colors %}checked{% endif %}>
-                            {{ color.name }}
-                        </label>
-                    {% endfor %}
+            {% if colors %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">Цвет <span class="filter-count">{% if selected_colors %}
+                        (
+                        {{ selected_colors|length }}){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for color in colors %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="color" value="{{ color.id }}"
+                                       {% if color.id|stringformat:"s" in selected_colors %}checked{% endif %}>
+                                {{ color.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по размерам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Размер <span class="filter-count">{% if selected_sizes %}({{ selected_sizes|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for size in sizes %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="size" value="{{ size.id }}"
-                                   {% if size.id|stringformat:"s" in selected_sizes %}checked{% endif %}>
-                            {{ size.name }}
-                        </label>
-                    {% endfor %}
+            {% if sizes %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Размер <span class="filter-count">{% if selected_sizes %}({{ selected_sizes|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for size in sizes %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="size" value="{{ size.id }}"
+                                       {% if size.id|stringformat:"s" in selected_sizes %}checked{% endif %}>
+                                {{ size.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по материалам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Материал <span class="filter-count">{% if selected_materials %}({{ selected_materials|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for material in materials %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="material" value="{{ material.id }}"
-                                   {% if material.id|stringformat:"s" in selected_materials %}checked{% endif %}>
-                            {{ material.name }}
-                        </label>
-                    {% endfor %}
+            {% if materials %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Материал <span class="filter-count">{% if selected_materials %}({{ selected_materials|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for material in materials %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="material" value="{{ material.id }}"
+                                       {% if material.id|stringformat:"s" in selected_materials %}checked{% endif %}>
+                                {{ material.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по брендам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Бренд <span class="filter-count">{% if selected_brands %}({{ selected_brands|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for brand in brands %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="brand" value="{{ brand.id }}"
-                                   {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
-                            {{ brand.name }}
-                        </label>
-                    {% endfor %}
+            {% if brands %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Бренд <span class="filter-count">{% if selected_brands %}({{ selected_brands|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for brand in brands %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="brand" value="{{ brand.id }}"
+                                       {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
+                                {{ brand.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+
+            <!-- Фильтр "Тип застёжки" -->
+            {% if fastener_type_options %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Тип застёжки <span class="filter-count">{% if selected_fastener_types %}(
+                        {{ selected_fastener_types|length }}){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for option in fastener_type_options %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="fastener_type" value="{{ option.slug }}"
+                                       {% if option.slug in selected_fastener_types %}checked{% endif %}>
+                                {{ option.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
 
             <!-- Фильтр по цене -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Цена <span class="filter-count">{% if selected_price_ranges %}(
-                    {{ selected_price_ranges|length }}){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in price_range_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="price_range" value="{{ value }}"
-                                   {% if value in selected_price_ranges %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
+            {% if price_range_choices %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Цена <span class="filter-count">{% if selected_price_ranges %}(
+                        {{ selected_price_ranges|length }}){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for value, name in price_range_choices.items %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="price_range" value="{{ value }}"
+                                       {% if value in selected_price_ranges %}checked{% endif %}>
+                                {{ name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по длине -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Длина <span class="filter-count">{% if selected_lengths %}({{ selected_lengths|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in length_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="length" value="{{ value }}"
-                                   {% if value in selected_lengths %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
+            {% if length_choices %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Длина <span class="filter-count">{% if selected_lengths %}({{ selected_lengths|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for value, name in length_choices.items %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="length" value="{{ value }}"
+                                       {% if value in selected_lengths %}checked{% endif %}>
+                                {{ name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по фасону -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Фасон <span class="filter-count">{% if selected_fits %}({{ selected_fits|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in fit_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="fit" value="{{ value }}"
-                                   {% if value in selected_fits %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
+            {% if fit_choices %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Фасон <span class="filter-count">{% if selected_fits %}({{ selected_fits|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for value, name in fit_choices.items %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="fit" value="{{ value }}"
+                                       {% if value in selected_fits %}checked{% endif %}>
+                                {{ name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по рукавам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Рукав <span class="filter-count">{% if selected_sleeves %}({{ selected_sleeves|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in sleeve_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="sleeve" value="{{ value }}"
-                                   {% if value in selected_sleeves %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
+            {% if sleeve_choices %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Рукав <span class="filter-count">{% if selected_sleeves %}({{ selected_sleeves|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for value, name in sleeve_choices.items %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="sleeve" value="{{ value }}"
+                                       {% if value in selected_sleeves %}checked{% endif %}>
+                                {{ name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
 
             <!-- Фильтр по шлейфу -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Шлейф <span class="filter-count">{% if selected_trains %}({{ selected_trains|length }}
-                    ){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in train_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="train" value="{{ value }}"
-                                   {% if value in selected_trains %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
+            {% if train_choices %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Шлейф <span class="filter-count">{% if selected_trains %}({{ selected_trains|length }}
+                        ){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for value, name in train_choices.items %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="train" value="{{ value }}"
+                                       {% if value in selected_trains %}checked{% endif %}>
+                                {{ name }}
+                            </label>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+
+            <!-- Фильтр "Для кого подходит" -->
+            {% if suitable_for_options %}
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-toggle">
+                        Для кого <span class="filter-count">{% if selected_suitable_for %}(
+                        {{ selected_suitable_for|length }}){% endif %}</span>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    <div class="filter-options">
+                        {% for option in suitable_for_options %}
+                            <label class="filter-option">
+                                <input type="checkbox" name="suitable_for" value="{{ option.slug }}"
+                                       {% if option.slug in selected_suitable_for %}checked{% endif %}>
+                                {{ option.name }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
 
             <!-- Сортировка -->
             <div class="sort-container">
