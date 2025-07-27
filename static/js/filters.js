@@ -35,3 +35,15 @@ document.querySelectorAll('.filter-toggle').forEach(button => {
         options.classList.toggle('active');
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const sortSelect = document.getElementById('standalone-sort');
+    const sortForm = document.getElementById('sortForm');
+
+    if (sortSelect && sortForm) {
+        sortSelect.addEventListener('change', function () {
+            sortForm.submit();
+        });
+    }
+});

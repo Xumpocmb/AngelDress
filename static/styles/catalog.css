@@ -555,3 +555,87 @@
         /* transition: max-height 0.5s ease-out; */ /* Можно увеличить время анимации на мобильных */
     }
 }
+
+
+/* --- Отдельная форма сортировки --- */
+
+.standalone-sort-container {
+    margin-bottom: 15px; /* Отступ снизу */
+    padding: 10px 0; /* Внутренний отступ сверху и снизу */
+    border-bottom: 1px solid #eee; /* Тонкая линия снизу для визуального отделения */
+}
+
+.standalone-sort-container .sort-label {
+    font-size: 14px;
+    margin-bottom: 5px; /* Отступ между меткой и селектом */
+    display: block; /* Чтобы отступ margin-bottom работал */
+    font-weight: bold;
+    color: #555;
+}
+
+.sort-form {
+    /* Форма не должна добавлять лишнего отступа */
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.sort-form .sort-select {
+    width: 100%;
+    padding: 8px 30px 8px 10px; /* Правый padding для кастомной стрелки */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    /* Убираем стандартную стрелочку браузера */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+    /* Кастомная стрелочка через background-image или ::after, как показано ниже */
+}
+
+.sort-form .sort-select:focus {
+    border-color: #9b6b50;
+    outline: none;
+    /* box-shadow: 0 0 0 2px rgba(155, 107, 80, 0.2); */
+}
+
+/* Создаем кастомную стрелочку для селекта в отдельной форме */
+.standalone-sort-container {
+    position: relative; /* Для позиционирования стрелочки */
+}
+
+.standalone-sort-container::after {
+    content: "";
+    position: absolute;
+    top: calc(50% + 12px); /* Стрелочка ниже метки */
+    right: 10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #666;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sort-form .sort-select:hover {
+    border-color: #999;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .standalone-sort-container {
+        padding: 8px 0;
+    }
+    .standalone-sort-container .sort-label {
+        font-size: 13px;
+    }
+    .sort-form .sort-select {
+        padding: 6px 25px 6px 8px;
+        font-size: 13px;
+    }
+}

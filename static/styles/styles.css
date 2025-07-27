@@ -114,8 +114,9 @@ a {
     text-align: center;
     font-weight: normal;
     color: #3a3a6a;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     text-transform: uppercase;
+    line-height: 50px;
 }
 
 .cookie-consent {
@@ -1941,7 +1942,6 @@ p {
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: 'Cormorant Infant', serif;
 }
 
 .submit_btn:hover {
@@ -2038,7 +2038,7 @@ button {
 
 
 /* Стили для кнопок бронирования */
-/* .rent-button {
+.rent-button {
     width: 100%;
     padding: 10px;
     background-color: #D5B0A0;
@@ -2052,7 +2052,7 @@ button {
 
 .rent-button:hover {
     background-color: #9a6b50;
-} */
+}
 
 .rent-all-container {
     margin-top: 30px;

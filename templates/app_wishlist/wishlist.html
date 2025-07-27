@@ -15,16 +15,12 @@
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/product_card.css' %}">
 {% endblock styles %}
 
 {% block content %}
     <!-- Главный контейнер -->
     <div class="wrapper">
-    <div class="breadcrumbs">
-      <a href="{% if model_type == 'dress' %}{% url 'app_catalog:dress_catalog' %}{% else %}{% url 'app_catalog:accessory_catalog' %}{% endif %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}" class="breadcrumbs-link">
-        <img src="{% static 'img/icon-left.png' %}" alt="Назад"> Назад в {% if model_type == 'dress' %}Каталог платьев{% else %}Каталог аксессуаров{% endif %}
-      </a>
-    </div>
         <div class="wishlist-container">
             <!-- Карточки товаров -->
             {% if page_obj.object_list %}
