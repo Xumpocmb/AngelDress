@@ -7,8 +7,8 @@
     display: flex;
     gap: 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    margin: 0 auto 20px;
+    padding: 0 10px 0;
 }
 
 @media (max-width: 992px) {
@@ -93,6 +93,12 @@
 
 .search-container {
     margin-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+    .search-container {
+    margin-bottom: 5px;
+}
 }
 
 .search-form {
@@ -279,7 +285,7 @@
     .mobile-category-menu {
         display: block;
         overflow-x: auto;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 
     .mobile-category-menu-items {
@@ -348,7 +354,7 @@
     .sidebar {
         width: 100%;
         position: static;
-        padding: 10px 0;
+        padding: 5px 0;
         box-shadow: none;
     }
 
@@ -480,6 +486,12 @@
     overflow: hidden; /* Скрываем содержимое, когда оно скрыто */
 }
 
+@media (max-width: 992px) {
+    .filters-dropdown-container {
+    margin-bottom: 5px;
+}
+}
+
 .filters-toggle-button {
     width: 100%;
     padding: 12px 16px;
@@ -527,6 +539,7 @@
     max-height: 1000px; /* Достаточно большое значение, чтобы вместить содержимое */
     /* padding: 15px; */ /* Добавляем padding при открытии */
     /* Можно также добавить transition-delay для плавности появления содержимого */
+    overflow-y: auto;
 }
 
 /* Чтобы padding тоже плавно появлялся */
@@ -560,8 +573,7 @@
 /* --- Отдельная форма сортировки --- */
 
 .standalone-sort-container {
-    margin-bottom: 15px; /* Отступ снизу */
-    padding: 10px 0; /* Внутренний отступ сверху и снизу */
+    margin-bottom: 5px; /* Отступ снизу */
     border-bottom: 1px solid #eee; /* Тонкая линия снизу для визуального отделения */
 }
 
@@ -638,4 +650,31 @@
         padding: 6px 25px 6px 8px;
         font-size: 13px;
     }
+}
+
+
+/*скролл фильтров*/
+
+.filters-dropdown-content::-webkit-scrollbar {
+    width: 8px; /* Ширина вертикального скроллбара */
+}
+
+.filters-dropdown-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Цвет трека */
+    border-radius: 4px;
+}
+
+.filters-dropdown-content::-webkit-scrollbar-thumb {
+    background: #b37f60; /* Цвет "бегунка" */
+    border-radius: 4px;
+}
+
+.filters-dropdown-content::-webkit-scrollbar-thumb:hover {
+    background: #9b6b50; /* Цвет "бегунка" при наведении */
+}
+
+/* Для Firefox */
+.filters-dropdown-content {
+    scrollbar-width: thin;
+    scrollbar-color: #b37f60 #f1f1f1;
 }

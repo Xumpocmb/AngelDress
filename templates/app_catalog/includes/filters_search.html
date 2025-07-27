@@ -3,6 +3,27 @@
 <div class="filters-bar">
 
 
+    <!-- Поиск (оставляем как есть) -->
+    <div class="search-container">
+        <form method="get" class="search-form" id="searchForm">
+            <div class="search-input-wrapper">
+                <input type="text" name="search" value="{{ search_query|default:'' }}"
+                       placeholder="Поиск по названию" class="search-input">
+                <img src="{% static 'img/reset.svg' %}" alt="Очистить поиск"
+                     class="clear-search-icon" id="clearSearchIcon"
+                     style="display: {% if search_query %}block{% else %}none{% endif %}">
+            </div>
+            <button type="submit" class="search-button">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z"
+                          fill="#1D1D1B"/>
+                </svg>
+                Найти
+            </button>
+        </form>
+    </div>
+
+    <!-- сортировка -->
     <div class="standalone-sort-container">
         <label for="standalone-sort" class="sort-label">Сортировка:</label>
         <!-- НОВАЯ форма только для сортировки -->
@@ -82,25 +103,6 @@
                 </option>
                 <option value="popular" {% if current_sort == "popular" %}selected{% endif %}>Популярные</option>
             </select>
-        </form>
-    </div>
-    <!-- Поиск (оставляем как есть) -->
-    <div class="search-container">
-        <form method="get" class="search-form" id="searchForm">
-            <div class="search-input-wrapper">
-                <input type="text" name="search" value="{{ search_query|default:'' }}"
-                       placeholder="Поиск по названию" class="search-input">
-                <img src="{% static 'img/reset.svg' %}" alt="Очистить поиск"
-                     class="clear-search-icon" id="clearSearchIcon"
-                     style="display: {% if search_query %}block{% else %}none{% endif %}">
-            </div>
-            <button type="submit" class="search-button">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z"
-                          fill="#1D1D1B"/>
-                </svg>
-                Найти
-            </button>
         </form>
     </div>
 
