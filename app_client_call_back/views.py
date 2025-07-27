@@ -18,7 +18,7 @@ from django_ratelimit.decorators import ratelimit
 
 
 @require_http_methods(["POST"])
-@ratelimit(key='ip', rate='1/m', block=True)
+# @ratelimit(key='ip', rate='1/m', block=True)
 def ajax_callback_view(request):
     logger.info("ajax_callback_view вызвана")
 
