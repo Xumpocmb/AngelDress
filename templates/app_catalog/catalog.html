@@ -64,7 +64,7 @@
                 {% if page_obj %}
                     <div class="product-grid">
                         {% for item in page_obj %}
-                            {% include "app_catalog/includes/product_card.html" with item=item %}
+                            {% include "app_catalog/includes/product_card_without_word.html" with item=item %}
                         {% endfor %}
                     </div>
                 {% else %}

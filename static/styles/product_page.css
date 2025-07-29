@@ -505,6 +505,8 @@
 /* Стили для радио-кнопок */
 .radio-group {
     display: flex;
+    flex-direction: row;
+    text-align: center;
     flex-wrap: wrap;
     gap: 12px;
     margin: 5px 0 5px 0;
@@ -520,10 +522,11 @@
     border-radius: var(--border-radius);
     transition: all 0.3s ease;
     background-color: #fff;
-    width: fit-content;
-    min-width: 150px;
+    /*width: fit-content;*/
+    /*min-width: 150px;*/
     text-align: center;
     position: relative;
+    justify-content: center;
 }
 
 /* Стили для НЕВЫБРАННЫХ кнопок */
@@ -557,23 +560,12 @@
     cursor: pointer;
     font-weight: 500;
     color: var(--text-color);
-    flex: 1;
+    /*flex: 1;*/
     margin: 0;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 /* Стили для активного состояния */
 .radio-option:active {
     transform: scale(0.98);
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .radio-group {
-        flex-direction: column;
-    }
-
-    .radio-option {
-        min-width: 100%;
-    }
 }
