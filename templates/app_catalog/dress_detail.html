@@ -63,7 +63,7 @@
                         <!-- Блок с деталями выбранной цены -->
                         <div class="price-details">
                             <!-- Основная цена теперь обновляется скриптом -->
-                            <div class="price">от <span id="selected-main-price">{{ product.min_price }}</span> ₽</div>
+                            <div class="price"><span id="selected-main-price">{{ product.min_price }}</span> ₽</div>
 
                             <div id="selected-pledge-container"
                                     {% if not product.price_options.first.pledge or product.price_options.first.pledge == 0 %}
@@ -271,7 +271,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="description">
                         {% if product.description %}
-                            {{ product.description|linebreaks }}
+                            {{ product.description|linebreaks|safe }}
                         {% else %}
                             Описание отсутствует.
                         {% endif %}
