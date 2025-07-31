@@ -4,7 +4,8 @@ from django.core.files.storage import default_storage
 
 
 class SliderImage(models.Model):
-    desktop_image = models.ImageField(upload_to="slider/desktop/", verbose_name="Изображение для десктопа (16:9)")
+    desktop_image = models.ImageField(upload_to="slider/desktop/", verbose_name="Изображение для десктопа (16:9)", blank=True,
+        null=True)
     mobile_image = models.ImageField(
         upload_to="slider/mobile/",
         verbose_name="Изображение для мобильных (1:1)",
