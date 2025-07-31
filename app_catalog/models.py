@@ -215,13 +215,13 @@ class Item(models.Model):
         verbose_name="Категории",
         related_name="items"
     )
-    # brand = models.ForeignKey(
-    #     Brand,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     verbose_name="Бренд"
-    # )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Бренд"
+    )
     name = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(
         verbose_name="Описание",
@@ -229,44 +229,44 @@ class Item(models.Model):
         null=True,
     )
 
-    # colors = models.ManyToManyField(
-    #     Color,
-    #     verbose_name="Цвета",
-    #     blank=True
-    # )
+    colors = models.ManyToManyField(
+        Color,
+        verbose_name="Цвета",
+        blank=True
+    )
 
-    # materials = models.ManyToManyField(
-    #     Material,
-    #     verbose_name="Материалы",
-    #     blank=True
-    # )
+    materials = models.ManyToManyField(
+        Material,
+        verbose_name="Материалы",
+        blank=True
+    )
 
-    # available_sizes = models.ManyToManyField(
-    #     Size,
-    #     verbose_name="Доступные размеры",
-    #     blank=True
-    # )
+    available_sizes = models.ManyToManyField(
+        Size,
+        verbose_name="Доступные размеры",
+        blank=True,
+    )
 
-    # fastener_type = models.ForeignKey(
-    #     FastenerType,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     verbose_name="Тип застёжки"
-    # )
+    fastener_type = models.ForeignKey(
+        FastenerType,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Тип застёжки"
+    )
 
-    # details = models.TextField(
-    #     blank=True,
-    #     null=True,
-    #     verbose_name="Детали",
-    #     help_text="Перечислите детали через запятую",
-    # )
-    # suitable_for = models.ManyToManyField(
-    #     SuitableFor,
-    #     verbose_name="Для кого подходит",
-    #     blank=True,
-    #     related_name="items"
-    # )
+    details = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="Детали",
+        help_text="Перечислите детали через запятую",
+    )
+    suitable_for = models.ManyToManyField(
+        SuitableFor,
+        verbose_name="Для кого подходит",
+        blank=True,
+        related_name="items",
+    )
 
     is_first_rental_promo = models.BooleanField(
         default=False,
