@@ -53,6 +53,11 @@ class Color(models.Model):
         # Проверка формата #XXX или #XXXXXX
         return bool(re.match(r'^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', self.hex_code))
 
+    class Meta:
+        db_table = "app_catalog_color"
+        verbose_name = "Цвет"
+        verbose_name_plural = "Цвета"
+
 
 class Size(models.Model):
     name = models.CharField(max_length=50, verbose_name="Размер")
@@ -60,6 +65,9 @@ class Size(models.Model):
 
     class Meta:
         ordering = ['order']
+        db_table = "app_catalog_size"
+        verbose_name = "Размер"
+        verbose_name_plural = "Размеры"
 
     def __str__(self):
         return self.name
@@ -71,6 +79,11 @@ class Material(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = "app_catalog_material"
+        verbose_name = "Материал"
+        verbose_name_plural = "Материалы"
+
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название бренда")
@@ -78,6 +91,10 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = "app_catalog_brand"
+        verbose_name = "Бренд"
+        verbose_name_plural = "Бренды"
 
 class SuitableFor(models.Model):
     name = models.CharField(max_length=100, verbose_name="Для кого подходит")
