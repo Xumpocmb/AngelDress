@@ -28,11 +28,12 @@
 
 .contact_title {
     font-size: 36px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1.2;
     margin-bottom: 30px;
     text-align: center;
     color: var(--text-color);
+    text-transform: uppercase;
 }
 
 .contact_detail {
@@ -80,9 +81,11 @@
 }
 
 .contact_details {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 5px;
-    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
 }
 
 .contact_link,

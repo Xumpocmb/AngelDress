@@ -81,12 +81,6 @@
     <script src="{% static 'js/wishlist.js' %}"></script>
     <script src="{% static 'js/filters.js' %}"></script>
     <script src="{% static 'js/search_reset.js' %}"></script>
-    <script>
-        document.querySelectorAll('.filter-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const options = button.nextElementSibling;
-                options.classList.toggle('active');
-            });
-        });
-    </script>
+    <script src="{% static 'js/filters_dropdown.js' %}"></script>
+
 {% endblock %}

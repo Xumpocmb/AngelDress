@@ -118,11 +118,12 @@ a {
 
 .page-main-title {
     text-align: center;
-    font-weight: normal;
+    font-weight: bold;
     color: #000;
     margin-bottom: 25px;
     text-transform: uppercase;
     line-height: 50px;
+    letter-spacing: 5px;
 }
 
 @media (max-width: 992px) {
@@ -385,16 +386,56 @@ a {
 /* -------------------------------------- */
 
 .heading {
-    text-align: center;
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 40px 0;
 }
+
+@media (max-width: 992px) {
+    .heading {
+        flex-direction: column;
+    }
+}
+
+.heading-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-text h2 {
+    font-weight: 600;
+    text-align: center;
+}
+
+.heading-text p {
+    text-align: center;
+}
+
+.heading-head {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-head p {
+    font-size: 1.2rem;
+}
+
+
 
 .heading_title {
     font-size: 4rem;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.2;
     margin: 0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 @media (max-width: 992px) {
@@ -429,6 +470,8 @@ a {
     line-height: 1.2;
     margin-bottom: 20px;
     color: #000;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .choosing_dresses_subtitle {
@@ -480,6 +523,12 @@ a {
     align-items: center;
     text-align: center;
     padding: 20px;
+    text-transform: uppercase;
+}
+
+.choosing_dresses_content h2 {
+    font-weight: 600;
+    font-size: 2.1rem;
 }
 
 .choosing_dresses_content a {
@@ -555,6 +604,7 @@ button {
     font-size: 14px;
     color: #b37f60;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .write_us_title {
@@ -690,6 +740,8 @@ button {
 .items-preview_title {
     font-size: 36px;
     line-height: 1.2;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 @media (max-width: 992px) {
@@ -707,6 +759,7 @@ button {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    border-radius: var(--border-radius);
 }
 
 @media (max-width: 992px) {
@@ -975,6 +1028,12 @@ button {
     text-align: left;
 }
 
+@media (max-width: 992px) {
+    .counter_stats {
+        width: 20%;
+    }
+}
+
 .counter_number {
     font-size: 41px;
     font-weight: bold;
@@ -1052,6 +1111,7 @@ button {
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    border-radius: var(--border-radius);
 }
 
 @media (max-width: 992px) {
@@ -1183,6 +1243,11 @@ button {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.about-text_heading h2 {
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .about-text_heading .heading-top {
@@ -1318,6 +1383,12 @@ p {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    text-align: center;
+}
+
+.reviews-content h2 {
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .reviews-heading {
@@ -1459,7 +1530,12 @@ p {
     gap: 1.5rem;
     text-align: left;
     margin-bottom: 4rem;
-    max-width: 440px;
+    max-width: 50%;
+}
+
+.team-text_heading h2 {
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .team-text_heading .heading-top {
@@ -1583,87 +1659,6 @@ p {
     }
 }
 
-/* -------------------------------------- */
-/* --- Основные стили для секции счетчика --- */
-/* -------------------------------------- */
-
-.counter_section {
-    margin: 0 auto 40px;
-    padding: 20px;
-}
-
-.counter_section_line {
-    width: 100%;
-    height: 3px;
-    background-color: #b37f60;
-}
-
-.counter_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* --- Каждый блок счетчика --- */
-
-.counter_item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    text-wrap: wrap;
-}
-
-.counter_icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-.counter_stats {
-    width: 70%;
-    text-align: left;
-}
-
-.counter_number {
-    font-size: 41px;
-    font-weight: bold;
-    color: #b37f60;
-}
-
-.counter_label {
-    font-size: 14px;
-    color: #b37f60;
-    /* Цвет текста */
-    text-transform: uppercase;
-}
-
-/* --- Адаптивность --- */
-
-@media (max-width: 992px) {
-    .counter_container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .counter_item {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .counter_number {
-        font-size: 20px;
-    }
-
-    .counter_label {
-        font-size: 12px;
-    }
-}
 
 
 @media (max-width: 768px) {
@@ -1844,9 +1839,10 @@ p {
 
 .form_title {
     font-size: 36px;
-    font-weight: bold;
+    font-weight: 600;
     color: var(--text-color);
     margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
 .form_subtitle {

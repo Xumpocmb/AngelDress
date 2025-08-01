@@ -15,91 +15,148 @@
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M12.5 11H11.71L11.43 10.73C12.41 9.59 13 8.11 13 6.5C13 2.91 10.09 0 6.5 0C2.91 0 0 2.91 0 6.5C0 10.09 2.91 13 6.5 13C8.11 13 9.59 12.41 10.73 11.43L11 11.71V12.5L16 17.49L17.49 16L12.5 11ZM6.5 11C4.01 11 2 8.99 2 6.5C2 4.01 4.01 2 6.5 2C8.99 2 11 4.01 11 6.5C11 8.99 8.99 11 6.5 11Z"
                           fill="#1D1D1B"/>
-                </svg> Найти
+                </svg>
+                Найти
             </button>
         </form>
     </div>
-    <!-- Фильтры -->
-    <form method="get" id="filterForm" class="filters-container">
-        <input type="hidden" name="search" value="{{ search_query|default:'' }}">
-        <input type="hidden" name="category" value="{{ current_category|default:'' }}">
-        <div class="filter-params">
-            <!-- Фильтр по цветам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Цвет <span class="filter-count">{% if selected_colors %}({{ selected_colors|length }}){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for color in colors %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="color" value="{{ color.id }}"
-                                   {% if color.id|stringformat:"s" in selected_colors %}checked{% endif %}>
-                            {{ color.name }}
-                        </label>
-                    {% endfor %}
-                </div>
-            </div>
 
-            <!-- Фильтр по брендам -->
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Бренд <span class="filter-count">{% if selected_brands %}({{ selected_brands|length }}){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for brand in brands %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="brand" value="{{ brand.id }}"
-                                   {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
-                            {{ brand.name }}
-                        </label>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <!-- Фильтр по цене -->
-            {% if price_range_choices %}
-            <div class="filter-dropdown">
-                <button type="button" class="filter-toggle">
-                    Цена <span class="filter-count">{% if selected_price_ranges %}({{ selected_price_ranges|length }}){% endif %}</span>
-                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
-                        <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <div class="filter-options">
-                    {% for value, name in price_range_choices.items %}
-                        <label class="filter-option">
-                            <input type="checkbox" name="price_range" value="{{ value }}"
-                                   {% if value in selected_price_ranges %}checked{% endif %}>
-                            {{ name }}
-                        </label>
-                    {% endfor %}
-                </div>
-            </div>
+    <!-- сортировка -->
+    <div class="standalone-sort-container">
+        <label for="standalone-sort" class="sort-label">Сортировка:</label>
+        <!-- НОВАЯ форма только для сортировки -->
+        <form method="get" id="sortForm" class="sort-form">
+            <!-- Скрытое поле для текущего поискового запроса -->
+            {% if search_query %}
+                <input type="hidden" name="search" value="{{ search_query }}">
             {% endif %}
 
-            <!-- Сортировка -->
-            <div class="sort-container">
-                <select name="sort" class="sort-select">
-                    <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Новые</option>
-                    <option value="price-low" {% if current_sort == "price-low" %}selected{% endif %}>По возрастанию цены</option>
-                    <option value="price-high" {% if current_sort == "price-high" %}selected{% endif %}>По убыванию цены</option>
-                    <option value="popular" {% if current_sort == "popular" %}selected{% endif %}>Популярные</option>
-                </select>
-            </div>
+            <!-- Скрытое поле для текущей категории -->
+            {% if current_category %}
+                <input type="hidden" name="category" value="{{ current_category }}">
+            {% endif %}
+
+            <!-- Скрытые поля для всех активных фильтров -->
+            <!-- Цвета -->
+            {% for color_id in selected_colors %}
+                <input type="hidden" name="color" value="{{ color_id }}">
+            {% endfor %}
+
+            <!-- Бренды -->
+            {% for brand_id in selected_brands %}
+                <input type="hidden" name="brand" value="{{ brand_id }}">
+            {% endfor %}
+
+            <!-- Диапазоны цен -->
+            {% for price_range in selected_price_ranges %}
+                <input type="hidden" name="price_range" value="{{ price_range }}">
+            {% endfor %}
+
+            <!-- Сам селект сортировки -->
+            <select name="sort" class="sort-select" id="standalone-sort">
+                <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Новые</option>
+                <option value="price-low" {% if current_sort == "price-low" %}selected{% endif %}>По возрастанию цены</option>
+                <option value="price-high" {% if current_sort == "price-high" %}selected{% endif %}>По убыванию цены</option>
+                <option value="popular" {% if current_sort == "popular" %}selected{% endif %}>Популярные</option>
+            </select>
+        </form>
+    </div>
+
+    <!-- Дропдаун для фильтров -->
+    <div class="filters-dropdown-container">
+        <button type="button" class="filters-toggle-button">
+            Фильтры <span class="filters-count">
+                {% with count=selected_colors|length|add:selected_brands|length|add:selected_price_ranges|length %}
+                    {% if count > 0 %}({{ count }}){% endif %}
+                {% endwith %}
+            </span>
+            <svg class="filters-toggle-icon" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <div class="filters-dropdown-content">
+            <!-- Фильтры -->
+            <form method="get" id="filterForm" class="filters-container">
+                <input type="hidden" name="search" value="{{ search_query|default:'' }}">
+                <input type="hidden" name="category" value="{{ current_category|default:'' }}">
+                <input type="hidden" name="sort" value="{{ current_sort|default:'newest' }}">
+
+                <div class="filter-params">
+                    <!-- Фильтр по цветам -->
+                    {% if colors %}
+                        <div class="filter-dropdown">
+                            <button type="button" class="filter-toggle">
+                                Цвет <span class="filter-count">{% if selected_colors %}({{ selected_colors|length }}){% endif %}</span>
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                    <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <div class="filter-options">
+                                {% for color in colors %}
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="color" value="{{ color.id }}"
+                                               {% if color.id|stringformat:"s" in selected_colors %}checked{% endif %}>
+                                        <span class="color-preview"
+                                              {% if color.hex_code %}style="background-color: {{ color.hex_code }};"{% endif %}></span>
+                                        {{ color.name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Фильтр по брендам -->
+                    {% if brands %}
+                        <div class="filter-dropdown">
+                            <button type="button" class="filter-toggle">
+                                Бренд <span class="filter-count">{% if selected_brands %}({{ selected_brands|length }}){% endif %}</span>
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                    <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <div class="filter-options">
+                                {% for brand in brands %}
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="brand" value="{{ brand.id }}"
+                                               {% if brand.id|stringformat:"s" in selected_brands %}checked{% endif %}>
+                                        {{ brand.name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Фильтр по цене -->
+                    {% if price_range_choices %}
+                        <div class="filter-dropdown">
+                            <button type="button" class="filter-toggle">
+                                Цена <span class="filter-count">{% if selected_price_ranges %}({{ selected_price_ranges|length }}){% endif %}</span>
+                                <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                                    <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <div class="filter-options">
+                                {% for value, name in price_range_choices.items %}
+                                    <label class="filter-option">
+                                        <input type="checkbox" name="price_range" value="{{ value }}"
+                                               {% if value in selected_price_ranges %}checked{% endif %}>
+                                        {{ name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="filter-buttons">
+                    <!-- Кнопка применения -->
+                    <button type="submit" class="apply-filters-btn">Применить</button>
+                    <button type="button" class="apply-filters-btn reset"
+                            onclick="window.location.href='?category={{ current_category|default:'' }}'">
+                        Сбросить
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="filter-buttons">
-            <!-- Кнопка применения -->
-            <button type="submit" class="apply-filters-btn">Применить</button>
-            <button type="button" class="apply-filters-btn reset"
-                    onclick="window.location.href='?category={{ current_category|default:'' }}'">
-                Сбросить
-            </button>
-        </div>
-    </form>
+    </div>
 </div>

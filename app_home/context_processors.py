@@ -8,11 +8,18 @@ from app_promotion.models import Promotion
 def contact_info(request):
     try:
         contacts = ContactInfo.objects.all()
+
+        contact_section = ContactInfo.objects.filter(
+            type__name__in=["phone", "address", "email"],
+            is_active=True
+        )
+
         header_contacts = ContactInfo.objects.filter(
             type__name__in=["telegram", "instagram", "phone"], is_active=True
         )
         return {
             "contact_info": contacts or None,
+            'contact_section': contact_section,
             "header_contacts": header_contacts or None,
         }
     except Exception:

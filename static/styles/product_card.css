@@ -31,6 +31,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
 }
 
 .product-card:hover {
@@ -75,12 +77,19 @@
     margin-bottom: 20px;
 }
 
+.product_link {
+    text-align: right;
+}
+
 .product_link a {
     font-size: 13px;
-    color: #D5B0A0;
+    color: white;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase !important;
+    background: #D5B0A0;
+    padding: 5px;
+    border-radius: var(--border-radius);
 }
 
 .product-price {
