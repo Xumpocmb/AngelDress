@@ -32,17 +32,11 @@ def get_main_page_categories(request):
 
 
 def counters(request):
-    def get_counter_value(name, default=0):
-        try:
-            return Counter.objects.get(name=name).value
-        except Counter.DoesNotExist:
-            return default
-
     return {
         'counters': {
-            'dresses': get_counter_value('Платья выбрано'),
-            'clients': get_counter_value('Довольные клиенты'),
-            'new_items': get_counter_value('Новые поступления'),
+            'dresses': Counter.objects.get(name='Платья выбрано'),
+            'clients': Counter.objects.get(name='Довольные клиенты'),
+            'new_items': Counter.objects.get(name='Новые поступления'),
         }
     }
 
