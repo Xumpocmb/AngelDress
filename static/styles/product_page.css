@@ -72,8 +72,8 @@
 }
 
 .thumb-media {
-    width: 100%;
-    height: 80px;
+    width: 120px;
+    height: 215px;
     object-fit: cover;
     border-radius: var(--border-radius);
     cursor: pointer;

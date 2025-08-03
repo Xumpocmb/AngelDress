@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-    <title>{{ title|default:"Angel Dress - Главная" }}</title>
-{% endblock %}
-
+{% block title %}<title>{{ title|default:"Angel Dress - Главная" }}</title>{% endblock %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
     <link rel="stylesheet" href="{% static 'styles/promotion_slider.css' %}">
@@ -14,11 +11,8 @@
     <script src="{% static 'js/swiper_settings.js' %}" defer></script>
     <link rel="stylesheet" href="{% static 'styles/swiper.css' %}">
 {% endblock styles %}
-
 {% block content %}
     <div class="wrapper">
-
-
         <!-- Бегущая строка -->
         {% if ticker %}
             <div class="ticker-container">
@@ -27,14 +21,14 @@
                 </div>
             </div>
         {% endif %}
-
         <!-- Акции -->
         {% include "app_promotion/promotion_slider.html" %}
-
         <!-- Секция заголовка страницы -->
         <section class="heading">
-            <div class="heading-text"><h2>КОРОТКО ПРО ANGELS DRESS</h2>
-                <p>Благодарим вас за доверие и интерес к Angel Dress!
+            <div class="heading-text">
+                <h2>КОРОТКО ПРО ANGELS DRESS</h2>
+                <p>
+                    Благодарим вас за доверие и интерес к Angel Dress!
                     Уже более трех лет мы создаем волшебство для наших клиенток в Москве. За это время мы помогли сотням
                     женщин почувствовать себя особенными в самый важный день — будь то свадьба или особый вечер. Наши
                     изысканные свадебные и вечерние платья — это результат любви к красоте, внимания к деталям и
@@ -49,17 +43,13 @@
                 <h1 class="heading_title">Сияйте в каждом мгновении!</h1>
             </div>
         </section>
-
-
         <!-- Секция выбора платьев -->
         <section class="choosing_dresses">
             <div class="accessories_heading">
                 <div class="accessories_line"></div>
                 <p class="choosing_dresses_subtitle">Платья на любой случай</p>
             </div>
-            <h2 class="choosing_dresses_title">
-                Твоя коллекция красоты
-            </h2>
+            <h2 class="choosing_dresses_title">Твоя коллекция красоты</h2>
             <div class="choosing_dresses_grid">
                 {% for category in main_page_categories %}
                     <div class="choosing_dresses_item {% cycle '' 'reversed' 'reversed' '' %}">
@@ -67,21 +57,20 @@
                             {% if category.image %}
                                 <img src="{{ category.image.url }}" alt="{{ category.name }}">
                             {% else %}
-                                <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="{{ category.name }}">
+                                <img src="{% static 'img/No-Image-Placeholder.png' %}"
+                                     alt="{{ category.name }}">
                             {% endif %}
                         </div>
                         <div class="choosing_dresses_content">
                             <h2>{{ category.name }} платья</h2>
                             <p>{{ category.description }}</p>
                             <a href="{% url 'app_catalog:items_catalog' %}?category={{ category.slug }}">ПОДБРАТЬ ПЛАТЬЕ
-                                →</a>
+                            →</a>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </section>
-
-
         <!-- Секция write_us -->
         <section class="write_us">
             <div class="container_write_us">
@@ -90,18 +79,15 @@
                     <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
                          alt="full-length-happy-beautiful-young-woman.png">
                 </div>
-
                 <!-- Правая часть -->
                 <div class="write_us_text-form-box">
                     <div class="write_us_text-content">
                         <p class="write_us_label">Обратная связь</p>
                     </div>
-
                     {% include 'includes/contact_form.html' %}
                 </div>
             </div>
         </section>
-
         <!-- Случайные платья -->
         {% if random_dresses %}
             <section class="items-preview_section">
@@ -110,13 +96,11 @@
                     <div class="items-preview_text_section">
                         <div class="items-preview_line"></div>
                         <p class="items-preview_subtitle">Коллекция, которая вдохновляет</p>
-                        <h2 class="items-preview_title">
-                            Платья, в которых ты — главная героиня
-                        </h2>
+                        <h2 class="items-preview_title">Платья, в которых ты — главная героиня</h2>
                     </div>
-                    <a href="{% url 'app_catalog:items_catalog' %}" class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
+                    <a href="{% url 'app_catalog:items_catalog' %}"
+                       class="items-preview_button">ПРОСМОТРЕТЬ ВСЕ</a>
                 </div>
-
                 <!-- Карточки -->
                 <div class="product-grid">
                     {% for dress in random_dresses %}
@@ -125,13 +109,11 @@
                 </div>
             </section>
         {% endif %}
-
         <!-- Случайные accessories -->
         {% if random_accessories %}
             <!-- Секция accessories -->
             <section class="accessories_section">
                 <div class="accessories_container">
-
                     <div class="accessories_content">
                         <!-- Текстовая часть -->
                         <div class="accessories_text">
@@ -139,16 +121,13 @@
                                 <div class="accessories_line"></div>
                                 <p class="accessories_subtitle">Заверши свой образ</p>
                             </div>
-                            <h2 class="accessories_title">
-                                Твоя финальная деталь
-                            </h2>
+                            <h2 class="accessories_title">Твоя финальная деталь</h2>
                             <p class="accessories_description">
                                 Каждое платье заслуживает особого акцента. Добавьте перламутровую нотку, блеск или
                                 текстуру
                                 — и образ заиграет по-новому.
                             </p>
                         </div>
-
                         <!-- Карточки аксессуаров -->
                         <div class="accessories_cards">
                             {% for item in random_accessories %}
@@ -167,36 +146,40 @@
                         </div>
                     </div>
                     <!-- Фоновое изображение модели -->
-                    <img src="{% static 'img/model_with_accessories.png' %}" alt="Model with Accessories">
+                    <img src="{% static 'img/model_with_accessories.png' %}"
+                         alt="Model with Accessories">
                 </div>
             </section>
         {% endif %}
-
         <!-- Секция счетчика -->
         <section class="counter_section">
             <hr class="counter_section_line">
             <div class="counter_container">
                 <!-- Блок 1: Платьев было выбрано -->
                 <div class="counter_item">
-                    <img src="{% static 'img/dress_icon.png' %}" alt="Dress Icon" class="counter_icon">
+                    <img src="{% static 'img/dress_icon.png' %}"
+                         alt="Dress Icon"
+                         class="counter_icon">
                     <div class="counter_stats">
                         <span class="counter_number">{{ counters.dresses.value }}</span>
                         <p class="counter_label">{{ counters.dresses.label }}</p>
                     </div>
                 </div>
-
                 <!-- Блок 2: Довольных клиентов -->
                 <div class="counter_item">
-                    <img src="{% static 'img/double_heart_icon.png' %}" alt="Heart Icon" class="counter_icon">
+                    <img src="{% static 'img/double_heart_icon.png' %}"
+                         alt="Heart Icon"
+                         class="counter_icon">
                     <div class="counter_stats">
                         <span class="counter_number">{{ counters.clients.value }}</span>
                         <p class="counter_label">{{ counters.clients.label }}</p>
                     </div>
                 </div>
-
                 <!-- Блок 3: Новых поступлений ежемесячно -->
                 <div class="counter_item">
-                    <img src="{% static 'img/gift_icon.png' %}" alt="Gift Icon" class="counter_icon">
+                    <img src="{% static 'img/gift_icon.png' %}"
+                         alt="Gift Icon"
+                         class="counter_icon">
                     <div class="counter_stats">
                         <span class="counter_number">{{ counters.new_items.value }}</span>
                         <p class="counter_label">{{ counters.new_items.label }}</p>
@@ -205,7 +188,6 @@
             </div>
             <hr class="counter_section_line">
         </section>
-
         <!-- Новости -->
         {% if latest_posts %}
             <!-- Секция новостей -->
@@ -213,7 +195,11 @@
                 <div class="blog_container">
                     <!-- Заголовок и кнопка -->
                     <div class="blog_header">
-                        <h2 class="blog_title">Наши Специалисты<br>Говорят На Темы</h2>
+                        <h2 class="blog_title">
+                            Наши Специалисты
+                            <br>
+                            Говорят На Темы
+                        </h2>
                         <a href="{% url 'app_blog:blog' %}" class="blog_button">ОТКРЫТЬ БЛОГ</a>
                     </div>
                     <!-- Блоки постов -->
@@ -225,33 +211,29 @@
                                     {% if post.image %}
                                         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="blog_image">
                                     {% else %}
-                                        <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Default Image"
+                                        <img src="{% static 'img/No-Image-Placeholder.png' %}"
+                                             alt="Default Image"
                                              class="blog_image">
                                     {% endif %}
                                 </div>
                                 <div class="blog-text-area">
                                     <p class="blog_author">{{ post.author.name }}</p>
                                     <h3 class="blog_post_title">{{ post.title }}</h3>
-                                    <p class="blog_description">
-                                        {{ post.content|truncatewords:20 }}
-                                    </p>
+                                    <p class="blog_description">{{ post.content|truncatewords:20 }}</p>
                                     <a href="{{ post.get_absolute_url }}" class="blog_read_more">ПРОЧИТАТЬ</a>
                                 </div>
                             </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </section>
         {% endif %}
-
         <!-- Секция контактов -->
         <section class="contact_section">
             {% include "includes/contact_section.html" %}
         </section>
     </div>
 {% endblock %}
-
 {% block scripts %}
     <script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock %}
