@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://angel-dress.ru/sitemap.xml
+Yandex-Market: https://angel-dress.ru/catalog/yml-feed/

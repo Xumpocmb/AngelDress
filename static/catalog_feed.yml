@@ -1,0 +1,2339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2025-08-09 09:24">
+  <shop>
+    <name>Angel Dress</name>
+    <company>Angel Dress</company>
+    <url>https://angel-dress.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Вечерние</category>
+      <category id="2">Коктейльные</category>
+      <category id="3">Свадебные</category>
+      <category id="4">Роскошные</category>
+    </categories>
+    <offers>
+      <offer id="89" available="true">
+        <url>https://angel-dress.ru/catalog/item/89/</url>
+        <price>4000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_002_20250728_133220.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_000_20250728_133220.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_001_20250728_133220.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Вечернее платье Charlotte</name>
+        <description>&lt;p&gt;&lt;strong&gt;Изумрудная феерия: ассиметричное вечернее платье с перьями.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Смелый ассиметричный крой: одна нога открыта благодаря короткой юбке, вторая закрыта до пола. Спущенные открытые плечи, украшенные пышными перьями - главный акцент платья.&lt;/p&gt;
+
+&lt;p&gt;Идеальное сочетание с:&lt;/p&gt;
+
+&lt;p&gt;- высокими босоножками-платформами или острыми лодочками&lt;/p&gt;
+
+&lt;p&gt;- минималистичными украшениями ( тонкие колье, серьги-люстры)&lt;/p&gt;
+
+&lt;p&gt;- гладкой высокой прической для акцента на перья.&lt;/p&gt;
+
+&lt;p&gt;Это платье для тех, кто хочет блистать, шокировать и оставлять след из восхищенных взглядов!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Зеленый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="88" available="true">
+        <url>https://angel-dress.ru/catalog/item/88/</url>
+        <price>21300.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Kolett_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Kolett_2.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Kolett_4.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Kolett_2_CQbz9lM.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Kolett_2_1.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Kolet</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Свадебное платье Kolet с корсетом и шлейфом.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Платье в пол с небольшим шлейфом, добавляющим легкую торжественность. Приталенный крой, мягко облегающий фигуру, с расклешением от бедра для изящного силуэта. Корстетный лиф, с отворотом на груди, создает эффект роскошного декольте. Минималистичный декор - акцент на безупречный крой и благородную фактуру ткани. &lt;/p&gt;
+
+&lt;p&gt;Идеально для свадьбы в классическом стиле или ретро-стиле, гармонично смотрится с фатой-вуалью, жемчужными украшениями и изящной прической.&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Белый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="87" available="true">
+        <url>https://angel-dress.ru/catalog/item/87/</url>
+        <price>32900.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Demetra_2_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Demetra_5_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Demetra_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Demetra_3.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Demetra</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Свадебное платье Demetra -  корсетное со шлейфом и роскошной вышивкой.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Платье в пол с удлиненным шлейфом, создает королевский образ. Лиф со шнуровкой на спине для идеальной посадки и точеной талии. Полупрозрачная сетка с длинными рукавами, украшенная изящной вышивкой и бусинами. Декоративный бант на спине - элегантный акцент, подчеркивающий романтичность.&lt;/p&gt;
+
+&lt;p&gt;Это платье превратит ваш свадебный образ в сказку!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46, 48</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="86" available="true">
+        <url>https://angel-dress.ru/catalog/item/86/</url>
+        <price>4500.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_3_tWGgSVB.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_1_oLN1rOl.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_2_dowuVFH.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Candy</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Вечернее платье Candy в пол со спущенными плечами и шнуровкой!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Длина макси, спущенные плечи, подчеркивающие линию декольте. Длинный рукав, элегантная шнуровка, приталенный силуэт. Эластичная ткань с добавлением люрекса мягко облегает фигуру.&lt;/p&gt;
+
+&lt;p&gt;Идеально для романтического свидания, свадьбы, коктейльной вечеринки или торжественного выхода.&lt;/p&gt;
+
+&lt;p&gt;Сочетается с лодочками на каблуке, клатчем и нежными украшениями.&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Пыльно-розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="85" available="true">
+        <url>https://angel-dress.ru/catalog/item/85/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/4252_tADr93P.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/4253_uIqoREL.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/425.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Coral</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Платье миди на бретельках с пышной юбкой и шнуровкой.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Длина миди. Топ на тонких бретелях, юбка пышная, многослойная , созданная из отрезного фатина для легкого объема. Шнуровка на спине придает образу романтичности и элегантности. Идеальное сочетание цвета: переход айвори  в пудрово-розовый и далее дымчато-серый.&lt;/p&gt;
+
+&lt;p&gt;Идеально для вечеринок, свиданий и торжественных событий. Отлично сочетается с туфлями-лодочками и нежными клатчами.&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Айвори, Пудровый, Серый</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="84" available="true">
+        <url>https://angel-dress.ru/catalog/item/84/</url>
+        <price>32600.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Alina_5.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Alina_4.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Alina_3.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Alina_2.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Alina_6.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Alina_1.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Alina</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное свадебное платье Alina со шлейфом и открытой спиной.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это элегантное свадебное платье - воплощение женственности и шика. Модель с открытыми плечами и глубоким вырезом на спине подчеркивает изящность силуэта, а стойка-воротник и декорированная спина добавляют королевского блеска. &lt;/p&gt;
+
+&lt;p&gt;Почему это платье - идеальный выбор?&lt;/p&gt;
+
+&lt;p&gt;- подчеркивает фигуру&lt;/p&gt;
+
+&lt;p&gt;- роскошный декор - мерцание пайеток и бусин придает образу гламур&lt;/p&gt;
+
+&lt;p&gt;- удобная посадка - атлас мягко облегает тело, не стесняя движений&lt;/p&gt;
+
+&lt;p&gt;- фотоэффектность - в этом платье вы будете выглядеть безупречно на каждом снимке.&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="83" available="true">
+        <url>https://angel-dress.ru/catalog/item/83/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8945.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006411_y.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006414_y.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006419_y.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006422_y.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Sherry</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Пудрово-розовое платье Sherry — воздушная нежность для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;br /&gt;
+Это пудрово-розовое платье — настоящее воплощение женственности, романтики и элегантности. Открытые плечи и спущенные рукава подчеркивают изящность и добавляют нотки нежности, а парящая миди юбка струится при каждом движении, создавая эффект легкости и грации. Вдохновленное весенним бризом и лепестками пионов, оно идеально подойдет для особого торжества или важного семейного праздника.&lt;/p&gt;
+
+&lt;p&gt;Это платье — словно сказка, в которой каждая мама невесты или подружка почувствует себя героиней. Создайте незабываемый образ с нашим платьем и подчеркните свою уникальность!&lt;/p&gt;
+
+&lt;p&gt;Доступно в Москве, по доступным ценам. Забронируйте прямо сейчас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Розовый</param>
+        <param name="Материалы">Органза</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="82" available="true">
+        <url>https://angel-dress.ru/catalog/item/82/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8946.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006409_y_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006413_y.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5210707212190742533_y.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8947.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/photo_5211130318009006416_y.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Bler</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Белое корсетное платье Bler с цветочными бутонами — нежность и романтика для невесты и подружек в Москве!&lt;/strong&gt;&lt;br /&gt;
+Это изысканное белое платье — воплощение элегантности, женственности и романтики. Утонченный корсетный верх подчеркивает талию, создавая стройный силуэт, а пышная юбка до колена, собранная в мягкие "жеванные" складки, придает образу легкость и воздушность. Украшенное нежными цветочными бутонами, оно идеально подходит для свадебных образов, романтических свиданий или особых мероприятий.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ с этим платьем — оно подчеркнет вашу уникальность и добавит нотки волшебства в любой торжественный момент.&lt;/p&gt;
+
+&lt;p&gt;Доступно в Москве — забронируйте прямо сейчас и почувствуйте себя героиней своей сказки!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Белый</param>
+        <param name="Длина">Мини</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="81" available="true">
+        <url>https://angel-dress.ru/catalog/item/81/</url>
+        <price>28000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2629.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2606.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2603.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2666.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2649.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2637.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Tiara</name>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное свадебное платье с глубоким V-образным вырезом на спине — идеальный выбор для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное свадебное платье подчеркнет вашу утонченную женственность и романтичный шик. Глубокий V-образный вырез на спине добавляет образу нотки соблазнительности, а длинные полупрозрачные рукава создают ощущение легкости и воздушности. Струящийся и легкий шлейф гармонично дополняет силуэт, придавая образу изящества и грации, не утяжеляя его.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый свадебный образ, в котором вы будете чувствовать себя королевой этого особенного дня. Забронируйте прямо сейчас и окунитесь в атмосферу романтики и элегантности!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="80" available="true">
+        <url>https://angel-dress.ru/catalog/item/80/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2792.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2735.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2738.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_27833.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_26913.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2745.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kelly</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Мятное вечернее платье Kelly в пол — утонченная элегантность для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное мятное платье подчеркнет вашу женственность и грациозность. Облегающий силуэт идеально подчеркивает фигуру, а мягкое расклешение юбки от бедра добавляет образу легкости и воздушности. Ассиметричный крой — одно плечо с изящной сборкой, второе украшено телесной сеткой — создает уникальный и современный дизайн, который обязательно привлечет внимание. Роскошный пояс, расшитый камнями, придает образу особый шик и завершенность.&lt;/p&gt;
+
+&lt;p&gt;Почему стоит выбрать это платье?&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Подчеркивает фигуру&lt;/li&gt;
+	&lt;li&gt;Уникальный дизайн&lt;/li&gt;
+	&lt;li&gt;Комфорт и легкость&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Создайте незабываемый образ на важном событии — забронируйте платье сейчас и почувствуйте себя особенной!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46</param>
+        <param name="Цвета">Мятный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="79" available="true">
+        <url>https://angel-dress.ru/catalog/item/79/</url>
+        <price>27500.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2484.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2517.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2488.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2423.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2497.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_2434.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Iren</name>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное свадебное платье Iren со шлейфом цвета айвори — роскошь и нежность для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное свадебное платье — воплощение классической красоты, утонченности и романтики. Верх, расшитый нитями с изящными узорами, подчеркивает женственность и изысканность образа, а низ из легкой струящейся органзы придает воздушность и грацию. Шлейф добавляет торжественности и величия, создавая незабываемый эффект при движении. Спущенные плечи подчеркивают силуэт и добавляют романтичности, а рукав 3/4 — изящный акцент завершает гармоничный образ.&lt;/p&gt;
+
+&lt;p&gt;Создайте свой идеальный свадебный образ с этим платьем — символом нежности, роскоши и элегантности. Забронируйте сейчас и почувствуйте себя королевой этого особенного дня!&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="78" available="true">
+        <url>https://angel-dress.ru/catalog/item/78/</url>
+        <price>3000.00</price>
+        <oldprice>2000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8930.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8929.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8928.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Susan</name>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное белое платье Susan до колена — стильный выбор для невесты, мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное белое платье сочетает в себе сдержанную классику и современный шик. Фигурный V-образный вырез подчеркивает линию груди и добавляет образу элегантности, а расклешенные рукава создают эффект крыльев, придавая образу драматичный объем и особую выразительность. Особую изюминку образу придает серебряное украшение вокруг шеи — роскошный акцент, который подчеркнет ваш стиль и индивидуальность.&lt;/p&gt;
+
+&lt;p&gt;Почему выбрать это платье?&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Гармоничный баланс классики и современности&lt;/li&gt;
+	&lt;li&gt;Подчеркивает фигуру и элегантность&lt;/li&gt;
+	&lt;li&gt;Уникальный дизайн с эффектными рукавами&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний или коктейльный образ — забронируйте платье сейчас и почувствуйте себя особенной на любом торжестве!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46</param>
+        <param name="Цвета">Белый</param>
+        <param name="Длина">Мини</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="77" available="true">
+        <url>https://angel-dress.ru/catalog/item/77/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8931.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8932.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8933.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Amelia</name>
+        <description>&lt;p&gt;&lt;strong&gt;Изысканное винтажное свадебное платье Amelia цвета айвори — романтичный и воздушный образ для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это великолепное винтажное платье создано для тех, кто мечтает о сказочном и нежном образе. Легкие струящиеся ткани и кружевные детали подчеркивают женственность и изящность, создавая ощущение легкости и романтики. Идеальный выбор для невесты, ценящей классическую элегантность с нотками винтажного шарма.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый свадебный образ — почувствуйте себя героиней сказки в этом изысканном платье. Забронируйте сейчас и воплотите свою мечту!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="76" available="true">
+        <url>https://angel-dress.ru/catalog/item/76/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8910.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8915.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8919.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8918.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Silk</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Изумрудное атласное платье Silk с V-образным вырезом на спине — элегантный выбор для мамы и подружек невесты больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это роскошное изумрудное платье из атласа подчеркнет ваши женственные изгибы и создаст эффектный вечерний образ. V-образный вырез на спине добавляет нотку соблазнительности, а декоративный пояс аккуратно обозначает линию талии, визуально стройнит и придает изящность. Свободные рукава 3/4 обеспечивают комфорт и свободу движений, позволяя вам чувствовать себя уверенно и элегантно в любой ситуации.&lt;/p&gt;
+
+&lt;p&gt;Почему выбрать это платье?&lt;/p&gt;
+
+&lt;ul&gt;
+	&lt;li&gt;Подчеркивает женственность и фигуру&lt;/li&gt;
+	&lt;li&gt;Удобство и комфорт для больших размеров&lt;/li&gt;
+	&lt;li&gt;Элегантный дизайн с ярким акцентом&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">50, 52</param>
+        <param name="Цвета">Изумруд</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="75" available="true">
+        <url>https://angel-dress.ru/catalog/item/75/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8916.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8911.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8914.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8921.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8917.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Cherry</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное шифоновое платье Cherry в пол — романтичный и утонченный образ для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное шифоновое платье создает женственный и грациозный силуэт, идеально подходящий для особых торжеств. Легкий и воздушный материал подчеркивает романтичность образа, а застежка на пуговицах по спинке добавляет нарядности и удобства при надевании. Свободный крой обеспечивает комфорт для разных фигур, позволяя чувствовать себя уверенно и элегантно в любой ситуации.  &lt;/p&gt;
+
+&lt;p&gt;Почему выбрать это платье?  &lt;br /&gt;
+- Создает женственный и грациозный силуэт  &lt;br /&gt;
+- Удобство и комфорт для разных фигур  &lt;br /&gt;
+- Изысканный дизайн с романтичными деталями  &lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя особенной! &lt;/p&gt;</description>
+        <param name="Размеры">48, 50</param>
+        <param name="Цвета">Бордовый</param>
+        <param name="Материалы">Шифон</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Короткий рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="74" available="true">
+        <url>https://angel-dress.ru/catalog/item/74/</url>
+        <price>39500.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8870.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8818.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8605_gpCmoN1.PNG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8872.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Naomi</name>
+        <vendor>PAPILIO</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное свадебное платье Naomi — элегантность и дерзкий шарм для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное свадебное платье сочетает в себе классическую элегантность и яркий, дерзкий стиль. Облегающий корсет на шнуровке, украшенный изысканным кружевом и мерцающим бисером, подчеркивает линию талии и создает романтичный образ. Атласная пышная юбка со скрытым высоким разрезом акцентирует стройные ноги и добавляет нотки соблазнительности. Открытые плечи и широкие бретели, мягко спадающие на руки, создают нежный и романтичный силуэт. Пушистый объем юбки и длинный шлейф придают образу торжественность и величие, делая ваш день незабываемым.&lt;/p&gt;
+
+&lt;p&gt;Создайте свой идеальный свадебный образ — почувствуйте себя королевой этого особенного дня! Забронируйте примерку сейчас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Молочный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="52" available="true">
+        <url>https://angel-dress.ru/catalog/item/52/</url>
+        <price>4500.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8548.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8549.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8855.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8853.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8856.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Sofia</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное васильковое платье Sofia — стильный выбор для подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное васильковое платье идеально подойдет для вечеринки, свидания или торжественного мероприятия. Короткая длина делает образ ярким и свежим, а тонкие бретели подчеркивают линию плеч и добавляют утонченности. Воланы по низу создают объем и эффект лепестков цветка, придавая движению динамичность и женственность. Легкий и элегантный дизайн подчеркнет вашу индивидуальность и сделает вас центром внимания на любом событии.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Синий</param>
+        <param name="Длина">Мини</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="51" available="true">
+        <url>https://angel-dress.ru/catalog/item/51/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_6_dGFuFXJ.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_4_uTBA2WN.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_5_iBSe19z.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Laura</name>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное фиолетовое платье — элегантный и романтичный образ для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье насыщенного фиолетового оттенка привлечет все взгляды. Спущенные плечи добавляют образу романтичности и нежности, подчеркивая линию декольте и создавая женственный силуэт. Тонкий пояс в тон аккуратно обозначает талию, делая образ гармоничным и элегантным без перегрузки деталей. Идеально подходит для особых случаев — свадьбы, юбилея, свидания или фотосессии — чтобы подчеркнуть вашу индивидуальность и стиль.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;</description>
+        <param name="Размеры">46, 48</param>
+        <param name="Цвета">Фиолетовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="50" available="true">
+        <url>https://angel-dress.ru/catalog/item/50/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_2_725rjvO.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_7697.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Brianna</name>
+        <description>&lt;p&gt;&lt;strong&gt;Смелое черное мини-платье Brianna с ярким бантом цвета фуксии — стильный и эффектный образ для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это классическое черное мини-платье идеально подойдет для любого особого события. Короткий крой подчеркнет стройные ноги, а тонкие бретельки добавляют легкости и женственности. Главный акцент — яркий бант цвета фуксии, расположенный сбоку, привлекает внимание и создает запоминающийся образ. Такой наряд отлично сочетается с босоножками на высоком каблуке или грубыми ботинками для контраста, а минималистичные украшения позволят сосредоточиться на ярком акценте. Для завершения образа — яркая помада в тон банту или эффектный смоки-айс.&lt;/p&gt;
+
+&lt;p&gt;Создайте эффектный вечерний образ — закажите сейчас и будьте в центре внимания!&lt;/p&gt;</description>
+        <param name="Размеры">46</param>
+        <param name="Цвета">Розовый, Черный</param>
+        <param name="Длина">Мини</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="49" available="true">
+        <url>https://angel-dress.ru/catalog/item/49/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_3_GNB9Qln.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Mia</name>
+        <description>&lt;p&gt;&lt;strong&gt;Утонченное облегающее платье Mia длины миди с V-образным вырезом — элегантный и эффектный образ для мамы и подружек невесты больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет женственные изгибы и создаст неповторимый вечерний образ. Верх из полупрозрачной сетки, расшитой черными пайетками, придает мерцающий эффект и добавляет нотки таинственности. Плотный бежевый нижний слой обеспечивает комфорт и аккуратно подчеркивает фигуру. Дополнительная съемная юбка из черной органзы создает объем и придает образу особую торжественность. Идеально подходит для романтического ужина, вечернего коктейля или любого особого случая, где хочется выглядеть эффектно, женственно и уверенно.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя великолепно!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">46, 48</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="48" available="true">
+        <url>https://angel-dress.ru/catalog/item/48/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0424_1.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/505.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Viola</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежное пудровое платье Viola в пол с пышной юбкой из фатина — романтичный и волшебный образ для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье наполнено легкостью и женственностью, создавая эффект воздушности в каждом движении. Пудровый оттенок подчеркивает нежность и утонченность, а полупрозрачная ткань верха добавляет нотки чувственности. Пышная юбка из фатина придает образу сказочную грацию и особую торжественность. Идеально подходит для свадьбы, торжественного ужина, фотосессии или выпускного — чтобы почувствовать себя особенной и волшебной.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый вечерний образ — подарите себе ощущение сказки! Рекомендуем дополнить образ туфлями-лодочками или изящными босоножками на каблуке, тонкими цепочками, серьгами или диадемой. Завершите образ нежным макияжем с румянами и розовыми губами для гармонии и завершенности.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу волшебства!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">46</param>
+        <param name="Цвета">Пыльный розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="47" available="true">
+        <url>https://angel-dress.ru/catalog/item/47/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0429_1.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0430_1.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Margaret</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное голубое платье Margaret длины миди — свежий и универсальный образ для мамы и подружек невесты больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и создаст утонченный вечерний образ. Нежный голубой оттенок придает свежесть и подходит для любого сезона. Длина миди — практичный и элегантный вариант, а рукав три четверти добавляет изящности и комфорт в прохладную погоду. V-образный вырез на груди и спине подчеркивает изящные линии фигуры, делая образ более стройным и привлекательным.&lt;/p&gt;
+
+&lt;p&gt;Рекомендуем дополнить образ балетками, лодочками на каблуке или элегантными босоножками. Для завершения — тонкая золотая цепочка, часы или жемчужные серьги. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;</description>
+        <param name="Размеры">46</param>
+        <param name="Цвета">Голубой</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="46" available="true">
+        <url>https://angel-dress.ru/catalog/item/46/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_122335.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_121400_1.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Facetune_07-07-2025-12-19-50_1.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kerry</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Насыщенное васильковое платье в пол — королевский стиль для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это роскошное платье с струящимся силуэтом подчеркнет вашу элегантность и создаст незабываемый вечерний образ. Глубокий васильковый оттенок — символ богатства и утонченности, а длина в пол придает образу особую торжественность. Скрытый глубокий вырез по ноге добавляет интриги и изящности, делая вас центром внимания на любом мероприятии.&lt;/p&gt;
+
+&lt;p&gt;Рекомендуем дополнить образ балетками, лодочками на каблуке или элегантными босоножками в тон или серебряного цвета. Для завершения — тонкая серебряная цепочка, тонкая подвеска или жемчужные серьги. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;
+
+&lt;p&gt;Создайте эффектный образ для особых случаев — будь то свадьба, торжественный вечер или важное событие. Закажите сейчас и почувствуйте себя королевой вечера!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Синий</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="45" available="true">
+        <url>https://angel-dress.ru/catalog/item/45/</url>
+        <price>8000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/309.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/309_2.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Elena</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Утонченная романтика: пудрово-бежевое платье Elena для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу естественную элегантность и создаст нежный, романтичный образ. Нежный пудрово-бежевый оттенок — теплый и универсальный, идеально подходит для любого сезона. Кружевной верх с полупрозрачными рукавами и нежными вставками добавляет образу особую деликатность и женственность.&lt;/p&gt;
+
+&lt;p&gt;Идеально для подружек невесты, романтических ужинов, фотосессий и важных событий — чтобы выглядеть элегантно и чувственно. Для дневного образа сочетайте с лодочками на низком каблуке, а для вечернего — босоножками на тонком ремешке. Дополните образ жемчужными серьгами и клатчем в тон с вышивкой. Завершите макияж нюдовыми губами и легкими румянами.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя особенной!&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Пыльный розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="44" available="true">
+        <url>https://angel-dress.ru/catalog/item/44/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0428.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/4162.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Agata</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Смелая роскошь и королевский шик: насыщенное красное платье Agata для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — воплощение страсти, элегантности и уверенности. Насыщенный красный оттенок подчеркнет вашу яркость и индивидуальность, а роскошная длина в пол создает струящийся силуэт для особых случаев. V-образный вырез на груди и спине подчеркивает женственность и изящество, делая образ незабываемым.&lt;/p&gt;
+
+&lt;p&gt;Идеально подходит для мероприятий, где вы хотите быть в центре внимания — будь то торжественный вечер, свадьба или важное событие. Для завершения образа выбирайте босоножки на шпильке или элегантные лодочки. Минималистичные украшения, клатч в тон или с контрастным акцентом (черный, золотой) добавят изящества. Завершите макияж яркими губами и классическими стрелками или смоки-айс для эффектного взгляда.&lt;/p&gt;
+
+&lt;p&gt;Создайте свой неповторимый образ — закажите сейчас и почувствуйте себя королевой вечера!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Красный</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="43" available="true">
+        <url>https://angel-dress.ru/catalog/item/43/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0048.JPEG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0050.JPEG</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_1_knWrZtQ.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_yoHwh18.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Olivia</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Темно-синее платье Olivia с атласной юбкой и роскошной вышивкой — элегантный выбор для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и утонченность. Глубокий V-образный вырез добавляет образу особую привлекательность, а атласная юбка с роскошной вышивкой создает эффектный и элегантный силуэт. Темно-синий оттенок — классика, которая подойдет для любого сезона и события.&lt;/p&gt;
+
+&lt;p&gt;Идеально для торжественных мероприятий, свадебных ужинов или важных событий, где вы хотите выглядеть безупречно. Завершите образ изящными украшениями и элегантной обувью на каблуке. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя королевой вечера!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Синий</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="42" available="true">
+        <url>https://angel-dress.ru/catalog/item/42/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0427.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0426.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Wendy</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Черное вечернее платье Wendy с полупрозрачным бисерным верхом — элегантность и магия для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье словно ночное небо, мерцающее звездами. Полупрозрачный бисерный верх придает образу особую утонченность и загадочность, а классический черный цвет — универсальный и всегда актуальный. По всей длине спинки расположены изящные пуговицы, добавляющие нотки романтики и изящества.&lt;/p&gt;
+
+&lt;p&gt;Идеально подходит для торжественных мероприятий, свадебных ужинов или важных событий, где вы хотите выглядеть эффектно и запоминающеся. Завершите образ элегантными аксессуарами и классическими туфлями на каблуке. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя звездой вечера!&lt;/p&gt;</description>
+        <param name="Размеры">44, 42, 46</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="41" available="true">
+        <url>https://angel-dress.ru/catalog/item/41/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/401.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Emma</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежно-розовое платье Emma в стиле "романтический ретро" — очарование 50-х в современном исполнении для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и романтичность. Воздушная юбка мягко колышется при каждом шаге, создавая легкий и элегантный образ. V-образная спинка добавляет нотки пикантности и изящества, гармонично сочетаясь с скромным силуэтом.&lt;/p&gt;
+
+&lt;p&gt;Идеально подходит для торжественных мероприятий, свадебных ужинов или особых случаев, когда хочется выглядеть утонченно и романтично. Завершите образ нежными аксессуарами и элегантной обувью на каблуке. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя королевой романтики!&lt;/p&gt;</description>
+        <param name="Размеры">42</param>
+        <param name="Цвета">Розовый</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="40" available="true">
+        <url>https://angel-dress.ru/catalog/item/40/</url>
+        <price>4000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_135721_gzKkomm.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_134907_H1seS3h.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Facetune_11-07-2025-17-12-14_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0417_1.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8922.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Belle</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Ассиметричное васильковое платье — идеальный баланс романтики и дерзости для мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и элегантность. Открытые плечи создают нежный и соблазнительный образ, а шнуровка на спине добавляет нотки пикантности и позволяет регулировать посадку для идеальной посадки. Игра длин — укороченный перед и удлиненная спина — создает динамичный, летящий силуэт, придавая образу особую легкость и изящество.&lt;/p&gt;
+
+&lt;p&gt;Идеально подходит для торжественных мероприятий, свадебных ужинов или важных событий, где хочется выглядеть эффектно и современно. Завершите образ элегантными аксессуарами и обувью на каблуке. Создайте незабываемый вечерний образ — закажите сейчас и почувствуйте себя яркой звездой вечера!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Синий</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="39" available="true">
+        <url>https://angel-dress.ru/catalog/item/39/</url>
+        <price>35000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Amina_3.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Amina_6.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Amina_4.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Amina_1.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Amina_2.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Аmina</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное и нежное свадебное платье Аmina — идеальный выбор для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье сочетает в себе утонченность и страсть. Полупрозрачный корсет на шнуровке подчеркивает изгибы тела, создавая эффект контраста скромности и дерзости. Легкая, струящаяся юбка с ненавязчивым объемом словно облако, подхваченное ветром, придает образу легкость и романтичность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подчеркивает фигуру, не сковывая движений — комфорт и элегантность в каждом шаге;&lt;br /&gt;
+- Идеально подходит для свадьбы в стиле "богемный шик" или "романтический гламур";&lt;br /&gt;
+- Заставляет гостей затаить дыхание, когда вы идете к алтарю.&lt;/p&gt;
+
+&lt;p&gt;Совет: дополните образ тонкой фатой или миниатюрной тиарой — и вы станете настоящей королевой этого особенного дня!&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя великолепной невестой!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Материалы">Органза</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Съемный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="38" available="true">
+        <url>https://angel-dress.ru/catalog/item/38/</url>
+        <price>30000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_163803_6QpWkix.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_163916_cfJFDYG.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_164013_OpgWQ2G.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Tina</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Воздушное свадебное платье Tina — идеальный выбор для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — воплощение чистоты и соблазнительной элегантности в самый важный день. Открытые плечи подчеркивают хрупкость и женственность, создавая нежный и романтичный образ. Изысканная шнуровка на спине добавляет нотки романтичного винтажа, делая образ еще более уникальным.&lt;/p&gt;
+
+&lt;p&gt;Игра скрытых деталей: глубокий вырез по ноге, прикрытый легкими волнами органзы, придает образу изящества и загадочности.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подчеркивает хрупкость и женственность — идеально для романтической свадьбы;&lt;br /&gt;
+- Создает эффект легкости и воздушности, словно вы парите в этот особенный день;&lt;br /&gt;
+- Впечатляет гостей своей утонченностью и изысканностью.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя самой красивой невестой!&lt;/p&gt;</description>
+        <param name="Размеры">46, 48, 50</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Материалы">Органза</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="37" available="true">
+        <url>https://angel-dress.ru/catalog/item/37/</url>
+        <price>35000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_164830_EjHSvEA.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8888.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_164320_1PiYuQg.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_164553.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Aurora</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежное свадебное платье Aurora — идеальный силуэт для романтичной невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Погрузитесь в волшебство кружева и создайте образ, наполненный утонченностью и нежностью. Ажурное кружево, словно сотканное из утреннего тумана, мягко обволакивает фигуру, формируя воздушный и романтичный силуэт. Деликатные вырезы и полупрозрачные вставки подчеркнут вашу женственность и добавят образу легкости.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффект нежности и романтики — идеально для свадеб в стиле "классика" или "богемный шик";&lt;br /&gt;
+- Подчеркивает женственность и грацию каждой невесты;&lt;br /&gt;
+- Впечатляет своей изысканностью и утонченностью.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя самой красивой и нежной невестой!&lt;/p&gt;</description>
+        <param name="Размеры">46, 48</param>
+        <param name="Цвета">Бежевый</param>
+        <param name="Материалы">Гипюр / Сетка</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="36" available="true">
+        <url>https://angel-dress.ru/catalog/item/36/</url>
+        <price>35000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_20250702_173405_qU8cxF2.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_20250704_150834.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_20250704_144558_KakJ8XX.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_20250704_144856_mXLnJhL.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебный комбинезон Angela</name>
+        <vendor>PAPILIO</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантный свадебный комбинезон Angela — стильный выбор для невесты, мамы и подружек невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это сочетание дерзкого шика и комфорта, которое подчеркнет вашу индивидуальность. Верх с ослепительной вышивкой — мелкие пайетки и ажурные нити создают эффект россыпи звезд, придавая образу особую магию. Прямые брюки — неожиданный, практичный и очень стильный элемент, идеально подходящий для торжественных мероприятий и важных выходов.&lt;/p&gt;
+
+&lt;p&gt;Совет: дополните образ объемными серьгами, гладким хвостом или легкими волнами, а также босоножками на каблуке или классическими туфлями-лодочками — так вы будете выглядеть безупречно.&lt;/p&gt;
+
+&lt;p&gt;Хотите выделиться? Этот комбинезон — ваш идеальный вариант! Он подойдет для подружек невесты, для важных мероприятий или выхода на красную дорожку.&lt;/p&gt;
+
+&lt;p&gt;Позвоните нам — и мы поможем создать образ вашей мечты!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Короткий рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="35" available="true">
+        <url>https://angel-dress.ru/catalog/item/35/</url>
+        <price>38000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8774.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8586.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Zelda</name>
+        <description>&lt;p&gt;&lt;strong&gt;Необычное вечернее платье Zelda — дерзкая роскошь для смелых и элегантных женщин в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — идеальный выбор для тех, кто хочет восхищать и оставаться невероятно женственной. Игра на контрастах: скромная длина "макси" сочетается с откровенным "мини" внутри, создавая эффектный и смелый образ. Каждая бусина вручную пришита, что делает платье эксклюзивным и уникальным. Корсет фиксирует фигуру, а легкая сетка обеспечивает комфорт и свободу движений — шагайте уверенно и грациозно.&lt;/p&gt;
+
+&lt;p&gt;Совет: дополните образ босоножками на каблуке с тонкими ремешками, длинной вуалью или мини-тиарой, а также подчеркните макияж — акцент на губах или смоки-айс.&lt;/p&gt;
+
+&lt;p&gt;Хотите, чтобы гости ахнули? Это платье — ваше секретное оружие! Идеально подойдет для особых мероприятий, свадебных торжеств или выхода на красную дорожку.&lt;/p&gt;
+
+&lt;p&gt;Позвоните нам — и мы поможем создать образ вашей мечты!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="34" available="true">
+        <url>https://angel-dress.ru/catalog/item/34/</url>
+        <price>42000.00</price>
+        <oldprice>10000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_9371.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_134114_HIX1gof.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_134013_HMngo8C.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_9367.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Свадебное платье Camilla</name>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное свадебное платье Camilla с приталенным корсетом и пышной юбкой — идеальный выбор для невесты в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу фигуру и создаст незабываемый образ. Приталенный корсет идеально подчеркивает талию, а пышная юбка с эффектным боковым бантом добавляет романтики и элегантности. Роскошный объемный бант, украшенный бусинами и пайетками, создает эффект "тающего" силуэта, придавая образу особую легкость и изящество. Прозрачная вставка дополняет дизайн, делая его еще более утонченным и современным.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подчеркивает женственность и грацию — идеально для свадеб в классическом или романтическом стиле;&lt;br /&gt;
+- Создает эффектный силуэт, привлекающий внимание гостей;&lt;br /&gt;
+- Воплощение роскоши и утонченности в один образ.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя самой красивой невестой!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">3 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="33" available="true">
+        <url>https://angel-dress.ru/catalog/item/33/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/709_1_Hsqnfq4.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/709_2_0sFbKOv.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/709_3_C7RynCZ.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Jane</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Пудрово-розовое платье Jane — нежность с характером для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это элегантное платье сочетает в себе мягкую нежность и выразительный стиль. Приталенный верх с рукавом 3/4 и квадратным вырезом подчеркнет вашу фигуру и добавит изящества. Пышная юбка из полупрозрачной сетки создает эффект "пушистого" облака, придавая образу романтичность и легкость. Идеальный выбор для торжественных мероприятий, свадебных вечеров или особых случаев.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подчеркивает женственность и грацию — идеально для женщин любого размера;&lt;br /&gt;
+- Создает эффектный силуэт, при этом обеспечивая комфорт и свободу движений;&lt;br /&gt;
+- Воплощение нежности с характером, которое привлечет восхищенные взгляды.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя уверенно и красиво!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46, 48</param>
+        <param name="Цвета">Пыльный розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="32" available="true">
+        <url>https://angel-dress.ru/catalog/item/32/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_114830_VjdQWTu.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_114421_4K8QfMq.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Debra</name>
+        <description>&lt;p&gt;&lt;strong&gt;Черное платье Debra — загадочность и роскошь для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье воплощает элегантность и дерзость в каждом движении. Глубокий полупрозрачный верх с ажурными черными цветами создает эффект загадочности и женственности. Открытая спина — яркий и дерзкий акцент, подчеркивающий индивидуальность. Юбка с тройным слоем: черный подъюбник, бежевая сетка для мягкости и верхний слой сетки с игрой текстур — создают эффектное движение и изысканный стиль. Шлейф добавляет королевского шарма и завершает образ.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Идеально подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный силуэт с нотками загадочности и роскоши;&lt;br /&gt;
+- Для тех, кто знает: настоящая магия — в умении выделяться.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя настоящей королевой вечера!&lt;/p&gt;</description>
+        <param name="Размеры">46, 48, 50</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">3/4 рукава</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="31" available="true">
+        <url>https://angel-dress.ru/catalog/item/31/</url>
+        <price>8000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_122947_2iljogW.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_123742_85c0UBI.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_123152_vvO72ll.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_9082.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Maryam</name>
+        <description>&lt;p&gt;&lt;strong&gt;Платье Maryam глубокого изумрудного цвет — благородство и завораживающая красота для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — воплощение элегантности и магии. Полупрозрачная сетка на плечах, груди и спине, расшитая изумрудным бисером, играет на свету, словно драгоценные камни, создавая эффект роскошного сияния. Универсальный пояс позволяет создавать образ по настроению: нежный бант или строгий узел — подчеркните свою индивидуальность.&lt;/p&gt;
+
+&lt;p&gt;Как дополнить образ?&lt;/p&gt;
+
+&lt;p&gt;- Туфли-лодочки золотого или черного цвета;&lt;br /&gt;
+- Клатч в тон платья или обуви;&lt;br /&gt;
+- Элегантные серьги-подвески с изумрудными вставками.&lt;/p&gt;
+
+&lt;p&gt;Почему именно это платье?&lt;/p&gt;
+
+&lt;p&gt;- Идеально подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный и благородный образ, привлекающий восхищенные взгляды;&lt;br /&gt;
+-  Как магия изумрудного города — оно сделает вас центром всеобщего восхищения!&lt;/p&gt;
+
+&lt;p&gt;Позвони сейчас и почувствуйте себя настоящей звездой вечера!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">46, 48</param>
+        <param name="Цвета">Зеленый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="30" available="true">
+        <url>https://angel-dress.ru/catalog/item/30/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_114131_ZbKI3uB.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_113518_qWNBwIE.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_113910_y8o3ZzS.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Dakota</name>
+        <description>&lt;p&gt;&lt;strong&gt;Платье-миди Dakota в глубоком черном цвете — элегантность и загадочность для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и стиль. Открытые плечи с эффектной драпированной бретелью создают романтичный и соблазнительный образ. Полупрозрачный черный корсет и пояс с черными бусинами акцентируют талию, добавляя нотку загадочности и утонченности.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Идеально подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный силуэт с изящными деталями;&lt;br /&gt;
+- Для тех, кто ценит элегантность с легкой ноткой таинственности.&lt;/p&gt;
+
+&lt;p&gt;Создайте незабываемый образ — закажите сейчас и почувствуйте себя уверенно и шикарно на любом торжестве!&lt;/p&gt;</description>
+        <param name="Размеры">46, 48</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="29" available="true">
+        <url>https://angel-dress.ru/catalog/item/29/</url>
+        <price>4000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_6.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_7.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Cecil</name>
+        <param name="Размеры">46</param>
+        <param name="Цвета">Мятный</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="28" available="true">
+        <url>https://angel-dress.ru/catalog/item/28/</url>
+        <price>8000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/603-7__%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F_soI95U6.webp</picture>
+        <picture>https://angel-dress.ru/media/dresses/603_UpdqE45.webp</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_1_uqzDUJw.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Vivien</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Черное вечернее платье Vivien с пайетками и перьями — элегантность и магия для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — воплощение грации и изящества. Шнуровка на спине добавляет нотку соблазнительности и индивидуальности. Взмах перьев создает эффект динамичного ритма, а мерцающие пайетки сияют, как звезды в ночном небе. Образ словно черный лебедь в лунном свете — изысканный, загадочный и неповторимый.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Идеально подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный, запоминающийся образ с игрой текстур и света;&lt;br /&gt;
+- Для тех, кто хочет выделиться и почувствовать себя королевой вечера.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу волшебства — ваш незабываемый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46, 48</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="27" available="true">
+        <url>https://angel-dress.ru/catalog/item/27/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_120134_hqiYhxA.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_120253_Y0vK6Im.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Rose</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежно-розовое платье Rose с цветочной вышивкой — волшебный образ для мамы невесты, подружек, беременных и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и особый статус. Облегающий верх с изящной цветочной вышивкой и глубоким V-образным вырезом на груди и спине создает романтичный и соблазнительный силуэт. Низ — воздушная юбка из объемного фатина добавляет легкости и волшебства образу. Цвет лепестков пиона придает нежность и утонченность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Идеально подходит для женщин любого размера и беременности, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный, романтичный образ для свадьбы, выпускного или романтического вечера;&lt;br /&gt;
+- Волшебство в деталях — нежность, элегантность и особый шарм.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу сказки — ваш незабываемый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 46</param>
+        <param name="Цвета">Пыльный розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="26" available="true">
+        <url>https://angel-dress.ru/catalog/item/26/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0058_EoNddPG.JPEG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0056.JPEG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0052.JPEG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Daisy</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Комплект прозрачная юбка и корсет на шнуровке Daisy — элегантность и загадочность для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Этот изысканный комплект словно черный сад под лунным светом: строгий силуэт корсета с шнуровкой создает утонченную грацию, а "живая" вышивка, оживающая при движении, добавляет образу динамичности и магии. Прозрачная юбка дополняет ансамбль, создавая эффект легкости и загадочности.&lt;/p&gt;
+
+&lt;p&gt;Почему именно он?&lt;br /&gt;
+- Идеально подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный контраст между строгим силуэтом и живой вышивкой;&lt;br /&gt;
+- Для тех, кто хочет выделиться и подчеркнуть свою индивидуальность на особом мероприятии.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу волшебства — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 42, 46</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="25" available="true">
+        <url>https://angel-dress.ru/catalog/item/25/</url>
+        <price>4000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_134741_AnnVViv.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680709_134907_1_4Voa6Up.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Gretta</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Изумрудное вечернее платье Gretta — элегантность и женственность для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу природную красоту и стиль. Богатый изумрудный оттенок создает благородный и завораживающий образ, а разрез по ноге подчеркивает стройность силуэта и добавляет легкости движению. Идеально подходит для романтического свидания, торжественного выхода или фотосессии, делая вас центром внимания.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный и запоминающийся образ с нотками роскоши;&lt;br /&gt;
+- Идеально для особых случаев, когда хочется выглядеть безупречно.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя королевой вечера — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 42, 46</param>
+        <param name="Цвета">Изумруд</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="24" available="true">
+        <url>https://angel-dress.ru/catalog/item/24/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/818_3_spfnFRM.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kerry</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Корсетное платье Kerry со шнуровкой на спине и потайным разрезом — элегантность и комфорт для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и утонченность. Корсет с шнуровкой создает стройный силуэт, а глубокий разрез по ноге, раскрывающийся только при движении, добавляет образу загадочности и динамичности. Глубокие карманы обеспечивают дополнительный комфорт, делая этот наряд не только красивым, но и практичным.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный образ с акцентом на фигуре и движении;&lt;br /&gt;
+- Идеально для торжественных мероприятий, фотосессий или особых вечеров.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя уверенно и элегантно — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 42, 46</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="23" available="true">
+        <url>https://angel-dress.ru/catalog/item/23/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/818_1_hKPkwv0.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/818_2_1.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kerry с болеро</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Черное корсетное платье Kerry с шикарным съемным болеро — элегантность и многогранность для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и стиль. Корсет с шнуровкой на спине создает стройный силуэт, а потайной разрез по ноге, раскрывающийся только при движении, добавляет образу динамичности и загадочности. Шикарное съемное болеро с длинными рукавами, расшитое стразами, придает образу роскошь и торжественность. Платье — настоящий манифест женской многогранности, позволяющий выглядеть ярко и уверенно на любом мероприятии.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+✔ Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+✔ Создает эффектный образ с игрой текстур и деталей;&lt;br /&gt;
+✔ Идеально для свадеб, выпускных, торжественных вечеров или фотосессий.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя великолепно — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="22" available="true">
+        <url>https://angel-dress.ru/catalog/item/22/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_130749_BD4MMQt.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_130240_ucfwFI7.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_130342_qGA6Yc8.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8974.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8970.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Susan</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное пышное платье Susan в пол с V-образным вырезом и открытой спиной — изысканность и волшебство для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это великолепное платье подчеркнет вашу женственность и особый статус. Вырез на груди создает утонченную линию декольте, а открытая спина добавляет образу загадочности. Полупрозрачные крылышки из мерцающей органзы на плечах придают легкость и волшебное сияние, создавая эффект сказочного образа. Верх выполнен из воздушной органзы с нежным блеском, а пышная юбка благодаря плотному подъюбнику сохраняет форму и добавляет драматичности. Идеально подходит для свадебных банкетов, романтических вечеров, выпускных или торжественных мероприятий.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+✔ Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+✔ Создает эффектный силуэт с игрой текстур и сияния;&lt;br /&gt;
+✔ Идеально для особых случаев, когда хочется выглядеть неповторимо и элегантно.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя королевой вечера — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Пудровый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="21" available="true">
+        <url>https://angel-dress.ru/catalog/item/21/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_172524.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_171717_vI0D9VU.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_172919_wWppxLm.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/808_3_rIdqYHK.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_172642.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Naomi</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежно-голубое воздушное платье с съемными рукавами — элегантность и романтика для мамы невесты, подружек и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье сочетает в себе чистоту и соблазнительную элегантность. Открытые плечи подчеркивают хрупкость и женственность, а съемные рукава позволяют менять образ в зависимости от настроения или мероприятия. Изысканная шнуровка на спине добавляет романтичности и акцента на фигуре, создавая эффектный силуэт. Легкий воздушный материал создает ощущение легкости и свободы, делая вас центром внимания на любом торжестве.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает гармоничный образ с нотками нежности и соблазна;&lt;br /&gt;
+- Идеально для свадебных банкетов, вечеринок, выпускных или романтических встреч.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя особенной — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Голубой</param>
+        <param name="Материалы">Органза</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Съемный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="20" available="true">
+        <url>https://angel-dress.ru/catalog/item/20/</url>
+        <price>5000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_183507.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_183623.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_7377.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/811_2_GyJXdz7.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Monika</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Алое атласное платье Monika с облегающим корсетом и глубоким разрезом — элегантность и страсть для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и неповторимый стиль. Облегающий корсет с плотной шнуровкой на спине создает эффектный силуэт, а спущенные плечи с объемной буффастой сборкой добавляют образу романтики и грации. Глубокий разрез по ноге делает ваш образ незабываемым, придавая ему нотки соблазна и уверенности. Атласная ткань придает наряду роскошный блеск и изысканность, идеально подходящую для торжественных случаев.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный силуэт с акцентом на фигуре и движении;&lt;br /&gt;
+- Идеально для свадебных банкетов, вечеринок или особых мероприятий.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и станьте звездой вечера — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44, 46</param>
+        <param name="Цвета">Красный</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="19" available="true">
+        <url>https://angel-dress.ru/catalog/item/19/</url>
+        <price>5000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/PHOTO-2025-04-22-15-19-00.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Martina</name>
+        <vendor>TERANI COUTURE</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Платье Martina в пол с роскошной бисерной отделкой — элегантность и чувственность для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье подчеркнет вашу женственность и утонченность. Приталенный силуэт идеально подчеркивает талию, создавая эффектный и стройный образ. Спущенные плечи добавляют образу чувственности и романтики, делая вас центром внимания на любом торжестве. Роскошная бисерная отделка придает наряду особую изысканность и блеск, создавая неповторимый вечерний образ.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Подходит для женщин любого размера, подчеркивая достоинства;&lt;br /&gt;
+- Создает эффектный силуэт с нотками романтики и шика;&lt;br /&gt;
+- Идеально для свадебных банкетов, торжественных мероприятий или особых случаев.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя королевой вечера — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Зеленый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Рыбка</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="18" available="true">
+        <url>https://angel-dress.ru/catalog/item/18/</url>
+        <price>8000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_175856_bkIRm9V.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_175744_g6NdE3o.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_175436_PEORx2L.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Isabella</name>
+        <vendor>JOVANI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное вечернее платье Isabella с пышным силуэтом, шлейфом и бисерной отделкой — для мамы невесты и подружек, желающих быть в центре внимания в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Роскошный вечер требует особого наряда! Это платье с пышным силуэтом и длинным шлейфом создает эффект королевского образа. Верх, усыпанный бисером, ловит каждый луч света, придавая вам сияние и изысканность. Уникальный секрет — карманы! Практичные и стильные, они позволяют держать важные мелочи под рукой. Идеально подходит для премий, гала-ужинов, закрытых вечеринок и премьер — будьте неотразимы и запоминающимися!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный образ для женщин любого размера;&lt;br /&gt;
+- Подчеркивает женственность и статус;&lt;br /&gt;
+- Идеально для особых случаев, когда хочется выделиться и произвести впечатление.&lt;/p&gt;
+
+&lt;p&gt;Забронируй сейчас и станьте звездой вечера — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Бордовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="17" available="true">
+        <url>https://angel-dress.ru/catalog/item/17/</url>
+        <price>5000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_180003_F7UmPdG.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_180652_EXf2Ghp.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_181313_qfrZOnU.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_181223_i1NN5Mg.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_180608.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Teresa</name>
+        <vendor>O'BLANC</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Романтичное миди-платье Teresa с цветочным принтом и ручной вышивкой — изысканный выбор для мамы невесты и подружек в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье словно страница из романтического романа: изящное, трогательное и наполненное особым очарованием. Цветочный принт создает нежную атмосферу, а искусно расшитый верх с ручной вышивкой цветов и бусинами придает образу роскошное кружево и уникальность. Идеально подходит для торжественных мероприятий, свадебных банкетов или особых случаев, когда хочется подчеркнуть свою женственность и элегантность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и трогательный образ для женщин любого размера;&lt;br /&gt;
+- Вдохновляет на комплименты благодаря изысканной отделке;&lt;br /&gt;
+- Идеально для тех, кто ценит детали и хочет выглядеть неповторимо.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу романтики — ваш волшебный образ уже ждет вас!&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Бежевый, Розовый</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="16" available="true">
+        <url>https://angel-dress.ru/catalog/item/16/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8865.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8867.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8869.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Merlin</name>
+        <vendor>TARIK EDIZ</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Черное облегающее платье Merlin в пол с роскошным шлейфом — для мамы невесты и подружек, желающих сиять на особых мероприятиях в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье создано для тех, кто хочет не просто выйти в свет, а освещать его собой. Утонченный приталенный силуэт идеально повторяет изгибы тела, подчеркивая женственность и элегантность. Роскошный шлейф добавляет образу величия и драматизма, а каждый камень улавливает свет, превращая вас в центр внимания. Идеально подходит для торжественных вечеров, гала-ужинов, премий и особых случаев — будьте неповторимы и сияйте ярче всех!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и запоминающийся образ любой фигуры;&lt;br /&gt;
+- Подчеркивает статус и изысканность;&lt;br /&gt;
+- Для тех, кто хочет не просто блистать — а зажечь весь зал своим присутствием.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и станьте звездой вечера — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42, 44</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Короткий шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="15" available="true">
+        <url>https://angel-dress.ru/catalog/item/15/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_g5EuvHy.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kim</name>
+        <description>&lt;p&gt;&lt;strong&gt;Черное платье Kim с эффектом "жеваной" ткани и съемными рукавами — для мамы невесты, подружек, беременных и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это уникальное платье сочетает грубый шик и утонченное бунтарство, создавая неповторимый образ для тех, кто хочет выделиться. Текстура ткани с эффектом "жеваной" придает модели особую выразительность и стильность. Свободный крой и съемные рукава позволяют адаптировать платье под любой случай и фигуру, скрывая недостатки и подчеркивая достоинства. Идеально подходит для торжественных мероприятий, вечеринок или особых случаев — будьте уверены в своем стиле и привлекательности!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный образ для женщин любого размера;&lt;br /&gt;
+- Удобное и универсальное — подходит для беременных;&lt;br /&gt;
+- Подчеркивает индивидуальность и смелость в стиле.&lt;/p&gt;
+
+&lt;p&gt;Забронируй сейчас и подчеркните свою уникальность — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 42</param>
+        <param name="Цвета">Черный</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Съемный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Без застёжки</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="14" available="true">
+        <url>https://angel-dress.ru/catalog/item/14/</url>
+        <price>3000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_6550.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Ada</name>
+        <description>&lt;p&gt;&lt;strong&gt;Розовое облегающее платье-миди с открытыми плечами и галстучным воротником — для мамы невесты, подружек, беременных и женщин больших размеров в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это яркое и женственное платье подчеркнет вашу индивидуальность и стиль. Облегающий силуэт идеально сидит на любой фигуре, а открытые плечи добавляют образу легкости и романтики. Галстучный воротник придает игривую нотку и изысканность, делая вас центром внимания на любом торжестве. Идеально подходит для особых случаев, вечеринок или свадебных мероприятий — будьте уверены в своем стиле и привлекательности!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный образ для женщин любого размера;&lt;br /&gt;
+- Удобное и универсальное — подходит для беременных;&lt;br /&gt;
+- Подчеркивает женственность и игривость в стиле.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и сияйте на любом мероприятии — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44</param>
+        <param name="Цвета">Розовый</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="13" available="true">
+        <url>https://angel-dress.ru/catalog/item/13/</url>
+        <price>5000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8876.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_4.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8875.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Leila</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежно-голубое корсетное платье Leila с цветочной вышивкой — для мамы невесты и подружек, желающих подчеркнуть свою элегантность и нежность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье словно соткано из утреннего неба и первых весенних цветов, наполняя образ легкостью и романтикой. Корсетный силуэт идеально подчеркивает талию, а изящная цветочная вышивка рассказывает историю нежности и красоты. Идеально подходит для торжественных мероприятий, свадебных банкетов или особых случаев — будьте в центре внимания, излучая утонченность и женственность!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и трогательный образ для женщин любого размера;&lt;br /&gt;
+- Подчеркивает грацию и нежность;&lt;br /&gt;
+- Идеально для тех, кто ценит детали и хочет выглядеть неповторимо.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу весенней красоты — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Голубой</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="12" available="true">
+        <url>https://angel-dress.ru/catalog/item/12/</url>
+        <price>4000.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_2_UrGPuHT.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/Ivon_4_bl0HQZR.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Ivon</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Молочное корсетное платье Ivon со шнуровкой — для невесты, мамы невесты и подружек, желающих подчеркнуть свою элегантность и женственность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это благородное и универсальное платье идеально подчеркнет вашу природную красоту. Корсет с шнуровкой позволяет регулировать степень облегания, создавая идеальную посадку и комфорт. Ничего лишнего — только изящные линии вашего тела, подчеркивающие женственность и утонченность. Идеально подходит для свадебных церемоний, торжественных мероприятий или особых случаев — будьте в центре внимания, излучая элегантность и стиль!&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и гармоничный образ любой фигуры;&lt;br /&gt;
+- Регулируемая шнуровка обеспечивает комфорт и индивидуальный силуэт;&lt;br /&gt;
+- Для тех, кто ценит минимализм с акцентом на женственность.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и подчеркните свою уникальность — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Мини</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="11" available="true">
+        <url>https://angel-dress.ru/catalog/item/11/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_183820_OpTjrP7.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_184302_GUpebhG.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_184409_YLT36op.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_184055.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Lucy с рукавами</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Молочное платье Lucy миди с шнуровкой на спине — для невесты, мамы невесты и подружек, желающих подчеркнуть утонченную чувственность и загадочность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье сочетает в себе элегантность и легкую воздушность. Шнуровка на спине — изящный акцент, добавляющий образу загадочности и позволяющий идеально подогнать силуэт. Молочный цвет — не значит простое; в каждой детали скрыта ваша тайна. Полупрозрачные рукава создают эффект легкой воздушности и романтики, делая образ по-настоящему особенным.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и женственный силуэт любой фигуры;&lt;br /&gt;
+- Регулируемая шнуровка подчеркивает индивидуальность и комфорт;&lt;br /&gt;
+- Идеально подходит для свадебных церемоний, торжественных мероприятий и особых случаев — будьте неповторимы!&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и раскройте свою внутреннюю тайну — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">44, 40, 42</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="10" available="true">
+        <url>https://angel-dress.ru/catalog/item/10/</url>
+        <price>5000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>3</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_165834_Dpv0ySZ.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_170012_t8zbVWd.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_170136_HaQyGIj.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_165749.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Lucy</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Молочное платье миди Lucy с шнуровкой на спине — для невесты, мамы невесты и подружек, желающих подчеркнуть утонченную чувственность и загадочность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье воплощает элегантность и женственность. Шнуровка на спине — изящный акцент, добавляющий образу загадочности и позволяющий идеально подогнать силуэт. Молочный цвет — не значит простое; в каждой детали скрыта ваша тайна. Полупрозрачные рукава создают эффект легкой воздушности и романтики, делая образ по-настоящему особенным.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и утонченный силуэт любой фигуры;&lt;br /&gt;
+- Регулируемая шнуровка обеспечивает комфорт и индивидуальность;&lt;br /&gt;
+- Идеально подходит для свадебных церемоний, торжественных мероприятий или особых случаев — будьте неповторимы!&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и раскройте свою внутреннюю тайну — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42, 44</param>
+        <param name="Цвета">Айвори</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Шнуровка</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="9" available="true">
+        <url>https://angel-dress.ru/catalog/item/9/</url>
+        <price>3500.00</price>
+        <oldprice>3000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8885.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0391.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_5.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8884.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8882.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8881.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8880.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Twigi</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Алое мини-платье Twigi с полупрозрачными рукавами — для мамы невесты и подружек, желающих подчеркнуть женственность и загадочность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это яркое и эффектное платье приковывает взгляды своим насыщенным красным цветом, символом страсти и уверенности. Воздушные полупрозрачные рукава создают эффект невесомости, добавляя образу легкости и романтики. Идеально подходит для тех, кто хочет быть заметной, сохраняя при этом загадочность и элегантность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает яркий и запоминающийся образ;&lt;br /&gt;
+- Полупрозрачные рукава добавляют изящества и воздушности;&lt;br /&gt;
+- Для женщин, которые ценят женственность, стиль и уверенность в себе.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и станьте центром внимания на любом торжестве — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Красный</param>
+        <param name="Длина">Мини</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="8" available="true">
+        <url>https://angel-dress.ru/catalog/item/8/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_2_H0Y7hrO.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8887.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8888.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0394.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8886.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kitana</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Нежно-розовое воздушное платье Kitana с романтичными деталями — для невесты, мамы невесты и подружек, желающих подчеркнуть свою женственность и утонченность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье наполнено нежностью и романтикой. Свободный летящий фасон с акцентом на талию создает эффект легкости и грации, а невесомые полупрозрачные рукава добавляют образу воздушности. Линия талии украшена нежным поясом, подчеркивающим женственные формы. Очаровательные круглые пуговицы по всей спинке придают образу особую нежность и романтичность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает элегантный и романтичный силуэт;&lt;br /&gt;
+- Идеально подходит для особых случаев, свадеб или торжественных мероприятий;&lt;br /&gt;
+- Для женщин, ценящих женственность, утонченность и изящные детали.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу нежности — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">42</param>
+        <param name="Цвета">Розовый</param>
+        <param name="Материалы">Органза</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Пуговицы</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="7" available="true">
+        <url>https://angel-dress.ru/catalog/item/7/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8894.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0393.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender_3.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8891.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8892.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kitana</name>
+        <vendor>MERRI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Голубое воздушное платье Kitana с романтичными деталями — для невесты, мамы невесты и подружек, желающих подчеркнуть женственность и изящество в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это нежное голубое платье наполнено романтикой и легкостью. Свободный летящий фасон с акцентом на талию создает эффект грациозности и свободы движений, а невесомые полупрозрачные рукава добавляют образу воздушности. Линия талии украшена нежным поясом, подчеркивающим женственные формы. Очаровательные круглые пуговицы по всей спинке придают образу особую нежность и романтичность.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает элегантный и романтичный силуэт;&lt;br /&gt;
+- Идеально подходит для свадеб, торжественных мероприятий или особых случаев;&lt;br /&gt;
+- Для женщин, ценящих женственность, утонченность и изящные детали.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и окунитесь в атмосферу нежности — ваш волшебный образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40</param>
+        <param name="Цвета">Голубой</param>
+        <param name="Материалы">Органза, Полиэстер</param>
+        <param name="Длина">Миди</param>
+        <param name="Рукав">Длинный рукав</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Пуговицы</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="6" available="true">
+        <url>https://angel-dress.ru/catalog/item/6/</url>
+        <price>4000.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/PHOTO-2025-04-22-15-19-03.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Carmela</name>
+        <vendor>JOVANI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Телесное платье Carmela, расшитое белыми пайетками на тонких бретелях — для невесты, мамы невесты и подружек, желающих подчеркнуть свою естественную красоту и изысканный блеск в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это элегантное платье создано для тех, кто ценит утонченность и блеск. Облегающий крой подчеркивает естественные линии тела, а тонкие бретели добавляют изящества. Расшитое белыми пайетками, оно придает образу нотку роскоши и сияния, идеально подчеркивая вашу внутреннюю красоту.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и женственный силуэт;&lt;br /&gt;
+- Идеально подходит для свадебных церемоний, торжественных мероприятий или особых случаев;&lt;br /&gt;
+- Для женщин, которые хотят выглядеть ярко и элегантно с ноткой блеска.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и засияйте на любом празднике — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Белый, Бежевый</param>
+        <param name="Длина">Миди</param>
+        <param name="Фасон">Прямое</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="5" available="true">
+        <url>https://angel-dress.ru/catalog/item/5/</url>
+        <price>6000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_170434_qGvBRty.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_170322_GjgLU1L.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_170236_LeSMQe7.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Margo</name>
+        <vendor>JOVANI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Телесное платье Margo, расшитое белыми пайетками на тонких бретелях — для невесты, мамы невесты и подружек, желающих подчеркнуть свою естественную красоту и изысканный блеск в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это элегантное платье создано для тех, кто ценит утонченность и блеск. Облегающий крой подчеркивает естественные линии тела, а тонкие бретели добавляют изящества. Расшитое белыми пайетками, оно придает образу нотку роскоши и сияния, идеально подчеркивая вашу внутреннюю красоту.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и женственный силуэт;&lt;br /&gt;
+- Идеально подходит для свадебных церемоний, торжественных мероприятий или особых случаев;&lt;br /&gt;
+- Для женщин, которые хотят выглядеть ярко и элегантно с ноткой блеска.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и засияйте на любом празднике — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Золотой, Розовый</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="4" available="true">
+        <url>https://angel-dress.ru/catalog/item/4/</url>
+        <price>4500.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8899.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8902.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8901.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/PHOTO-2025-04-22-15-19-03_1.jpg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Kira</name>
+        <vendor>SHERRI HILL</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Малиновое платье Kira с корсетным верхом и пышной юбкой — для мамы невесты и подружек, желающих подчеркнуть свою элегантность и роскошь в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье воплощает роскошь в каждом движении. Яркий малиновый оттенок привлекает взгляды, а соблазнительный корсетный верх идеально садится по фигуре, создавая эффект женственной грации. Пышная юбка добавляет образу романтики и изящества. Неожиданным и практичным элементом являются глубокие карманы, отделанные камнями — стильное решение для удобства. Благодаря корсетному основанию достигается идеальная посадка, подчеркивающая достоинства фигуры.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и женственный силуэт;&lt;br /&gt;
+- Идеально подходит для особых мероприятий, свадеб или торжественных случаев;&lt;br /&gt;
+- Для женщин, ценящих комфорт без потери стиля и роскоши.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и почувствуйте себя королевой любого праздника — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Красный</param>
+        <param name="Материалы">Атлас</param>
+        <param name="Длина">Мини</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="3" available="true">
+        <url>https://angel-dress.ru/catalog/item/3/</url>
+        <price>4500.00</price>
+        <oldprice>4000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_7154.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0399.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8907.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Simona</name>
+        <vendor>TERANI COUTURE</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Платье Simona с бархатной текстурой, спущенными плечами и цветочными мотивами — для подружек невесты, желающих подчеркнуть свою элегантность и романтичность в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это изысканное платье наполнено нежностью и утонченностью. Бархат придает образу богатство и глубину, а спущенные плечи создают чувственный и женственный силуэт. Романтичные цветочные мотивы добавляют образу легкости и романтики, делая его идеальным для особых случаев.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает элегантный и романтичный образ;&lt;br /&gt;
+- Идеально подходит для свадебных торжеств и праздничных мероприятий;&lt;br /&gt;
+- Для женщин, ценящих изящество, чувственность и стиль.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и станьте воплощением нежности — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Золотой, Черный</param>
+        <param name="Материалы">Бархат</param>
+        <param name="Длина">Мини</param>
+        <param name="Рукав">Спущенные рукава (открытые плечи)</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="2" available="true">
+        <url>https://angel-dress.ru/catalog/item/2/</url>
+        <price>5000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>2</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8905.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_0397.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/FullSizeRender.jpg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8904.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8903.jpeg</picture>
+        <picture>https://angel-dress.ru/media/dresses/IMG_8906.jpeg</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье  Naomi</name>
+        <vendor>TARIK EDIZ</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Элегантное черное платье Naomi на тонких бретелях с глубоким вырезом и открытой спиной — для подружек невесты, желающих выглядеть эффектно и по-королевски в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это роскошное платье сочетает в себе элегантность и дерзость. Глубокий вырез и открытая спина подчеркивают женственность и сексуальность, а пышная юбка с изысканной отделкой придает образу величие и торжественность. Тонкие бретели добавляют легкости и утонченности, делая это платье идеальным выбором для особых случаев.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и запоминающийся силуэт;&lt;br /&gt;
+- Идеально подходит для свадебных торжеств, вечеринок и праздничных мероприятий;&lt;br /&gt;
+- Для женщин, ценящих сочетание элегантности, дерзости и стиля.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и станьте королевой любого праздника — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Бежевый, Черный</param>
+        <param name="Длина">Мини</param>
+        <param name="Фасон">Ассиметрия</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Без шлейфа</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+      <offer id="1" available="true">
+        <url>https://angel-dress.ru/catalog/item/1/</url>
+        <price>8000.00</price>
+        <oldprice>5000.00</oldprice>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <categoryId>4</categoryId>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_173538_vvDgrq0.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_173341_ZQmofnJ.JPG</picture>
+        <picture>https://angel-dress.ru/media/dresses/Photoroom_25680707_174346_uor8epe.JPG</picture>
+        <store>true</store>
+        <pickup>true</pickup>
+        <delivery>true</delivery>
+        <name>Платье Ilona</name>
+        <vendor>JOVANI</vendor>
+        <description>&lt;p&gt;&lt;strong&gt;Роскошное вечернее платье Ilona в пол с пайетками — для мамы невесты и подружек, желающих сиять и подчеркнуть свою грацию в Москве!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Это платье — настоящее воплощение сияния и элегантности. Каждая пайетка играет в свете, создавая магическое мерцание, которое превращает вас в настоящую королеву бала. Грациозный крой и длина в пол подчеркивают статус и изящество, а открытая спина добавляет женственности и соблазнительности. Это не просто платье — это заявление о стиле и уверенности, когда каждая деталь важна.&lt;/p&gt;
+
+&lt;p&gt;Почему именно оно?&lt;br /&gt;
+- Создает эффектный и запоминающийся образ;&lt;br /&gt;
+- Идеально подходит для торжественных мероприятий, свадеб и особых случаев;&lt;br /&gt;
+- Для женщин, ценящих роскошь, изящество и выразительность.&lt;/p&gt;
+
+&lt;p&gt;Закажите сейчас и засияйте на любом празднике — ваш неповторимый образ уже ждет вас!&lt;/p&gt;</description>
+        <param name="Размеры">40, 42</param>
+        <param name="Цвета">Золотой, Черный</param>
+        <param name="Длина">Макси (в пол)</param>
+        <param name="Фасон">Пышное</param>
+        <param name="Рукав">Без рукава</param>
+        <param name="Шлейф">Длинный шлейф</param>
+        <param name="Тип застежки">Молния</param>
+        <param name="Срок аренды">1 дней</param>
+        <param name="Тип предложения">Аренда</param>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

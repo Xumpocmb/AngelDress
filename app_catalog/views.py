@@ -1,9 +1,24 @@
 from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.http import FileResponse, Http404
+import os
+from django.conf import settings
 from app_catalog.models import Item, ItemCategory, Accessory, AccessoryCategory, ItemCharacteristic, Color, Size, \
     Material, Brand, SuitableFor, FastenerType
 from app_home.models import RentRules
+
+
+def yml_feed_view(request):
+    """Отдает YML-фид каталога для поисковых систем"""
+    feed_path = os.path.join(settings.BASE_DIR, 'static', 'catalog_feed.yml')
+    
+    if not os.path.exists(feed_path):
+        # Если файл не существует, возвращаем 404
+        raise Http404("YML-фид не найден. Пожалуйста, сгенерируйте его с помощью команды 'python manage.py generate_yml_feed'")
+    
+    # Отдаем файл с правильным MIME-типом
+    return FileResponse(open(feed_path, 'rb'), content_type='application/xml')
 
 
 def item_catalog_view(request):
