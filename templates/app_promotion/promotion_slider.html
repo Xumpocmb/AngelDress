@@ -29,6 +29,9 @@
                     {% for slide in slider_content.items %}
                         <div class="swiper-slide">
                             <div class="slide-inner">
+                                {% if slide.link %}
+                                <a href="{{ slide.link }}">
+                                {% endif %}
                                 <picture>
                                     <!-- Мобильное изображение -->
                                     <source
@@ -43,6 +46,9 @@
                                             loading="lazy"
                                     >
                                 </picture>
+                                {% if slide.link %}
+                                </a>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}

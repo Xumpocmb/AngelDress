@@ -14,6 +14,7 @@ class SliderImage(models.Model):
         help_text="Если не указано, будет использоваться центральная часть десктопного изображения",
     )
     alt_text = models.CharField(max_length=100, blank=True, verbose_name="Альтернативный текст")
+    link = models.URLField(max_length=255, blank=True, null=True, verbose_name="Ссылка", help_text="URL, куда будет вести изображение при клике")
     order = models.PositiveIntegerField(default=0, verbose_name="Порядок")
 
     class Meta:

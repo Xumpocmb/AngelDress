@@ -5,11 +5,11 @@ from app_home.models import NewsTicker, SliderImage, ContactInfo, RentRules, Ter
 
 @admin.register(SliderImage)
 class SliderImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'desktop_image_tag', 'mobile_image_tag', 'alt_text', 'order')
+    list_display = ('id', 'desktop_image_tag', 'mobile_image_tag', 'alt_text', 'link', 'order')
     list_editable = ('order',)
     fieldsets = (
         (None, {
-            'fields': ('desktop_image', 'desktop_image_tag', 'mobile_image', 'mobile_image_tag', 'alt_text', 'order')
+            'fields': ('desktop_image', 'desktop_image_tag', 'mobile_image', 'mobile_image_tag', 'alt_text', 'link', 'order')
         }),
     )
     readonly_fields = ('desktop_image_tag', 'mobile_image_tag')
