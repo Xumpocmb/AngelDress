@@ -140,6 +140,7 @@ CKEDITOR_CONFIGS = {
         "toolbar": "full",
         "height": 400,
         "width": "100%",
+        "font_names": "Arial;Open Sans;Courier New;Times New Roman;Verdana",
     },
 }
 

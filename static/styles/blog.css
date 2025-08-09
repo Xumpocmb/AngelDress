@@ -1,5 +1,3 @@
-
-
 /* Основные стили */
 
 /* Основные стили контейнера */
@@ -18,12 +16,15 @@
 /* Стили карточки поста */
 .blog-card {
     display: flex;
-    gap: 0; /* Убираем промежуток между текстом и изображением */
+    gap: 0;
+    /* Убираем промежуток между текстом и изображением */
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: white;
-    align-items: stretch; /* Важно: растягиваем дочерние элементы */
+    align-items: stretch;
+    /* Важно: растягиваем дочерние элементы */
+    border-radius: var(--border-radius);
 }
 
 .blog-card:hover {
@@ -72,6 +73,7 @@
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border-radius: var(--border-radius)
 }
 
 .open-button:hover {
@@ -83,17 +85,22 @@
 /* Изображение */
 /* Контейнер изображения */
 .blog-image {
-    flex: 0 0 40%; /* Ширина изображения (можно регулировать) */
-    min-height: 100%; /* Минимальная высота - вся карточка */
-    display: flex; /* Для правильного позиционирования img */
-    align-items: stretch; /* Растягиваем содержимое */
+    flex: 0 0 40%;
+    /* Ширина изображения (можно регулировать) */
+    min-height: 100%;
+    /* Минимальная высота - вся карточка */
+    display: flex;
+    /* Для правильного позиционирования img */
+    align-items: stretch;
+    /* Растягиваем содержимое */
 }
 
 /* Само изображение */
 .blog-image img {
     width: 100%;
-    height: 100%; /* Занимаем всю высоту родителя */
-    object-fit: cover;
+    height: 100%;
+    /* Занимаем всю высоту родителя */
+    object-fit: contain;
     object-position: center;
     transition: transform 0.5s ease;
 }
@@ -118,9 +125,11 @@
     }
 
     .blog-image {
-        flex: 0 0 300px; /* Фиксированная высота для мобильных */
+        flex: 0 0 300px;
+        /* Фиксированная высота для мобильных */
         width: 100%;
-        min-height: auto; /* Отменяем растягивание */
+        min-height: auto;
+        /* Отменяем растягивание */
     }
 
     .blog-text-content {

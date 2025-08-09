@@ -71,23 +71,6 @@
                 {% endfor %}
             </div>
         </section>
-        <!-- Секция write_us -->
-        <section class="write_us">
-            <div class="container_write_us">
-                <!-- Левая часть -->
-                <div class="write_us_image-box">
-                    <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
-                         alt="full-length-happy-beautiful-young-woman.png">
-                </div>
-                <!-- Правая часть -->
-                <div class="write_us_text-form-box">
-                    <div class="write_us_text-content">
-                        <p class="write_us_label">Обратная связь</p>
-                    </div>
-                    {% include 'includes/contact_form.html' %}
-                </div>
-            </div>
-        </section>
         <!-- Случайные платья -->
         {% if random_dresses %}
             <section class="items-preview_section">
@@ -195,7 +178,7 @@
                 <div class="blog_container">
                     <!-- Заголовок и кнопка -->
                     <div class="blog_header">
-                        <h2 class="blog_title">Новости</h2>
+                        <h2 class="choosing_dresses_title">Новости</h2>
                         <a href="{% url 'app_blog:blog' %}" class="blog_button">ОТКРЫТЬ БЛОГ</a>
                     </div>
                     <!-- Блоки постов -->
@@ -227,6 +210,23 @@
         <!-- Секция контактов -->
         <section class="contact_section">
             {% include "includes/contact_section.html" %}
+        </section>
+        <!-- Секция write_us -->
+        <section class="write_us">
+            <div class="container_write_us">
+                <!-- Левая часть -->
+                <div class="write_us_image-box">
+                    <img src="{% static 'img/full-length-happy-beautiful-young-woman.png' %}"
+                        alt="full-length-happy-beautiful-young-woman.png">
+                </div>
+                <!-- Правая часть -->
+                <div class="write_us_text-form-box">
+                    <div class="write_us_text-content">
+                        <p class="write_us_label">Обратная связь</p>
+                    </div>
+                    {% include 'includes/contact_form.html' %}
+                </div>
+            </div>
         </section>
     </div>
 {% endblock %}

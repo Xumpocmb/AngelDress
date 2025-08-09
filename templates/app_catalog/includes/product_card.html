@@ -35,7 +35,7 @@
 
         <div class="product_link">
             <a href="{% if detail_url %}{{ detail_url }}{% else %}{% if model_type == 'accessory' %}{% url 'app_catalog:accessory_detail' item.id %}{% else %}{% url 'app_catalog:item_detail' item.id %}{% endif %}{% endif %}">
-                Подробнее →
+                Подробнее
             </a>
         </div>
     </div>

@@ -48,13 +48,13 @@ body {
 
 .wrapper {
     max-width: 1200px;
-    margin: 100px auto 40px;
+    margin: 70px auto 40px;
 }
 
 @media (max-width: 992px) {
     .wrapper {
-    margin: 60px auto 40px;
-}
+        margin: 60px auto 40px;
+    }
 }
 
 /* --------------------------------------------  */
@@ -128,7 +128,9 @@ a {
 }
 
 @media (max-width: 992px) {
-    margin-bottom: 5px;
+    .page-main-title {
+        margin-bottom: 5px;
+    }
 }
 
 .cookie-consent {
@@ -1141,7 +1143,7 @@ button {
 
 .blog_post {
     text-align: center;
-
+    border-radius: var(--border-radius);
 }
 
 .blog_image {

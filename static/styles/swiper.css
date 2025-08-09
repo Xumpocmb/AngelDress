@@ -1,7 +1,7 @@
 .slider {
     max-width: 1200px;
     width: 100%;
-    margin: 50px auto 40px;
+    margin: 10px auto 40px;
     overflow: hidden; /* Обрезаем все, что выходит за пределы */
 }
 

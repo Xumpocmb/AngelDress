@@ -82,13 +82,13 @@
 }
 
 .product_link a {
-    font-size: 13px;
+    font-size: 1rem;
     color: white;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase !important;
     background: #D5B0A0;
-    padding: 5px;
+    padding: 10px;
     border-radius: var(--border-radius);
 }
 
