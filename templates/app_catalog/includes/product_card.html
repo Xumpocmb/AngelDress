@@ -31,6 +31,14 @@
             {% else %}
                 <div class="product-price" style="color: #999;">Цена не указана</div>
             {% endif %}
+            {% if item.available_sizes.all %}
+                <div class="product-sizes">
+                    <span>Размеры: </span>
+                    {% for size in item.available_sizes.all %}
+                        <span class="size-badge">{{ size.name }}</span>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
 
         <div class="product_link">
