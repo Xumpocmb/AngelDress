@@ -14,6 +14,15 @@
         </div>
 
         <div class="nav-icons-header">
+            {% if header_contacts %}
+                {% for contact in header_contacts %}
+                    {% if contact.type.name == 'phone' and contact.link %}
+                        <a href="tel:{{ contact.link }}" class="header__social-link mobile-phone-link"><img
+                                src="{% static 'img/social_icons/phone.png' %}"
+                                alt="Телефон" class="header_contact_icon"/></a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
             <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link"><img class="icon"
                                                                                    src="{% static 'img/heart.png' %}"
                                                                                    alt="Избранное"/></a>

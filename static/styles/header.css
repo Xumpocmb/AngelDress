@@ -152,6 +152,12 @@
         align-items: center;
         gap: 10px;
     }
+    
+    .mobile-phone-link {
+        display: flex;
+        align-items: center;
+        margin-right: 5px;
+    }
 
     /* Дополнительные стили для адаптации других элементов */
     .nav {
