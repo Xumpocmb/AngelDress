@@ -24,7 +24,7 @@
                             <a href="tel:{{ contact.link }}" class="contact_link">
                                 <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
                              alt="{{ contact.type.get_name_display }}" class="contact_icon"></a>
-                            {{ contact.link }}
+                            <a href="tel:{{ contact.link }}" class="contact_link">{{ contact.link }}</a>
                         {% elif contact.type.name in 'address' %}
                             <img src="{% static 'img/social_icons/'|add:contact.type.name|add:'.png' %}"
                              alt="{{ contact.type.get_name_display }}" class="contact_icon">
