@@ -154,6 +154,8 @@ class ItemCharacteristic(models.Model):
         ('straight', 'Прямое'),
         ('fluffy', 'Пышное'),
         ('mermaid', 'Рыбка'),
+        ('a', 'А-силуэт'),
+        
     ]
 
     LENGTH_CHOICES = [
