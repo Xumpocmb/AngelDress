@@ -191,6 +191,10 @@
     text-align: center;
 }
 
+.post-footer-date {
+    margin-bottom: 10px;
+}
+
 .post-date .day {
     font-size: 1.5rem;
     font-weight: bold;
