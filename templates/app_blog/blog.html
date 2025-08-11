@@ -36,7 +36,7 @@
                                 </div>
 
                                 <p class="blog-description">
-                                    {{ post.content|striptags|truncatewords:30 }}
+                                    {{ post.content|safe|striptags|truncatewords:30 }}
                                 </p>
 
                                 <a class="open-button" href="{% url 'app_blog:post' post.id %}">Читать</a>
