@@ -132,39 +132,39 @@ class Command(BaseCommand):
                 f.write('        <pickup>true</pickup>\n')
                 f.write('        <delivery>true</delivery>\n')
                 item_name = replace_entities(item.name)
-                f.write(f'        <name>{item_name}</name>\n')
+                f.write(f'        <name><![CDATA[{item_name}]]></name>\n')
                 
                 # Бренд (если есть)
                 if item.brand:
                     brand_name = replace_entities(item.brand.name)
-                    f.write(f'        <vendor>{brand_name}</vendor>\n')
+                    f.write(f'        <vendor><![CDATA[{brand_name}]]></vendor>\n')
                 
                 # Описание
                 if item.description:
-                    # Очищаем описание от HTML-тегов и ограничиваем длину
-                    description = item.description.replace('<', '&lt;').replace('>', '&gt;')
+                    # При использовании CDATA не нужно заменять HTML-теги
+                    description = item.description
                     # Заменяем неподдерживаемые HTML-сущности
                     description = replace_entities(description)
                     if len(description) > 3000:
                         description = description[:3000] + '...'
-                    f.write(f'        <description>{description}</description>\n')
+                    f.write(f'        <description><![CDATA[{description}]]></description>\n')
                 
                 
                 # Параметры товара
                 # Размеры
                 if item.available_sizes.exists():
                     sizes = ', '.join([replace_entities(size.name) for size in item.available_sizes.all()])
-                    f.write(f'        <param name="Размеры">{sizes}</param>\n')
+                    f.write(f'        <param name="Размеры"><![CDATA[{sizes}]]></param>\n')
                 
                 # Цвета
                 if item.colors.exists():
                     colors = ', '.join([replace_entities(color.name) for color in item.colors.all()])
-                    f.write(f'        <param name="Цвета">{colors}</param>\n')
+                    f.write(f'        <param name="Цвета"><![CDATA[{colors}]]></param>\n')
                 
                 # Материалы
                 if item.materials.exists():
                     materials = ', '.join([replace_entities(material.name) for material in item.materials.all()])
-                    f.write(f'        <param name="Материалы">{materials}</param>\n')
+                    f.write(f'        <param name="Материалы"><![CDATA[{materials}]]></param>\n')
                 
                 # Характеристики платья
                 if hasattr(item, 'characteristics'):
@@ -172,37 +172,37 @@ class Command(BaseCommand):
                     
                     if chars.length:
                         length_display = replace_entities(chars.get_length_display())
-                        f.write(f'        <param name="Длина">{length_display}</param>\n')
+                        f.write(f'        <param name="Длина"><![CDATA[{length_display}]]></param>\n')
                     
                     if chars.fit:
                         fit_display = replace_entities(chars.get_fit_display())
-                        f.write(f'        <param name="Фасон">{fit_display}</param>\n')
+                        f.write(f'        <param name="Фасон"><![CDATA[{fit_display}]]></param>\n')
                     
                     if chars.sleeve:
                         sleeve_display = replace_entities(chars.get_sleeve_display())
-                        f.write(f'        <param name="Рукав">{sleeve_display}</param>\n')
+                        f.write(f'        <param name="Рукав"><![CDATA[{sleeve_display}]]></param>\n')
                     
                     if chars.train:
                         train_display = replace_entities(chars.get_train_display())
-                        f.write(f'        <param name="Шлейф">{train_display}</param>\n')
+                        f.write(f'        <param name="Шлейф"><![CDATA[{train_display}]]></param>\n')
                 
                 # Тип застежки
                 if item.fastener_type:
                     fastener_type = replace_entities(item.fastener_type.name)
-                    f.write(f'        <param name="Тип застежки">{fastener_type}</param>\n')
+                    f.write(f'        <param name="Тип застежки"><![CDATA[{fastener_type}]]></param>\n')
                 
                 # Детали
                 if item.details:
                     details = replace_entities(item.details)
-                    f.write(f'        <param name="Детали">{details}</param>\n')
+                    f.write(f'        <param name="Детали"><![CDATA[{details}]]></param>\n')
                 
                 # Срок аренды
                 if min_price_option.rental_period_days:
                     rental_period = replace_entities(f"{min_price_option.rental_period_days} дней")
-                    f.write(f'        <param name="Срок аренды">{rental_period}</param>\n')
+                    f.write(f'        <param name="Срок аренды"><![CDATA[{rental_period}]]></param>\n')
                 
                 # Тип предложения - аренда
-                f.write('        <param name="Тип предложения">Аренда</param>\n')
+                f.write('        <param name="Тип предложения"><![CDATA[Аренда]]></param>\n')
                 
                 f.write('      </offer>\n')
             
