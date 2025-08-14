@@ -22,8 +22,58 @@
 }
 
 
+.work-stages-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.work-stages-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
 
 
+
+.work-stages {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+
+.work-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.work-stage img {
+    width: 100px;
+    height: 100px;
+}
+
+
+.work-stage p {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .work-stages-container,
+    .work-stages {
+        flex-direction: column;
+    }
+}
 
 /* Стили для галереи */
 .product-gallery {
@@ -113,9 +163,12 @@
     max-width: 90%;
     max-height: 90vh;
     width: auto;
-    display: flex; /* Центрируем содержимое */
-    justify-content: center; /* Горизонтальное центрирование */
-    align-items: center; /* Вертикальное центрирование */
+    display: flex;
+    /* Центрируем содержимое */
+    justify-content: center;
+    /* Горизонтальное центрирование */
+    align-items: center;
+    /* Вертикальное центрирование */
 }
 
 .lightbox-image {
@@ -164,13 +217,15 @@
 }
 
 .lightbox-gallery .swiper-slide {
-    text-align: center; /* Центрируем изображение в слайде */
+    text-align: center;
+    /* Центрируем изображение в слайде */
 }
 
 /* Для мобильных устройств (экраны меньше 768px) */
 @media (max-width: 767px) {
     .lightbox-image {
-        max-height: 70vh; /* Меньшая высота для мобильных */
+        max-height: 70vh;
+        /* Меньшая высота для мобильных */
     }
 }
 
@@ -245,7 +300,7 @@
 }
 
 /* Дополнительный эффект при открытии селекта*/
-.custom-select:focus + .select-arrow {
+.custom-select:focus+.select-arrow {
     transform: translateY(-50%) rotate(180deg);
 }
 
@@ -354,7 +409,8 @@
 .product-wishlist-icon {
     width: 40px;
     height: 40px;
-    background: var(--background-color); /* Используем фирменный цвет фона */
+    background: var(--background-color);
+    /* Используем фирменный цвет фона */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -372,7 +428,8 @@
 }
 
 .product-wishlist-icon.product-wishlist-active {
-    background: #ff6b6b; /* Фирменный цвет */
+    background: #ff6b6b;
+    /* Фирменный цвет */
     border-color: #ff6b6b;
 }
 
@@ -391,9 +448,11 @@
     0% {
         box-shadow: 0 0 0 0 rgba(255, 107, 100, 0.7);
     }
+
     50% {
         box-shadow: 0 0 0 10px rgba(255, 107, 100, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(255, 107, 100, 0);
     }
