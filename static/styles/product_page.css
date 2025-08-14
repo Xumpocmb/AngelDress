@@ -66,12 +66,18 @@
 .work-stage p {
     font-size: 14px;
     font-weight: bold;
+    text-align: center;
 }
 
 @media (max-width: 992px) {
     .work-stages-container,
     .work-stages {
         flex-direction: column;
+    }
+
+    .work-stage {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
