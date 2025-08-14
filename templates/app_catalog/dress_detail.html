@@ -219,6 +219,7 @@
                                 </div>
                             {% endif %}
 
+
                             {% if chars.has_beads %}
                                 <div class="property">
                                     <div class="property-name">Расшито бисером:</div>
@@ -270,11 +271,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="description">
-                        {% if product.description %}
-                            {{ product.description|safe }}
-                        {% else %}
-                            Описание отсутствует.
-                        {% endif %}
+                        <img src="{% static 'img/work_stages.jpg' %}" style='max-width: 100%; height: auto;'>
                     </div>
 
                     <div class="tab-pane" id="additional-info">
