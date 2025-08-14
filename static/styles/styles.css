@@ -209,15 +209,18 @@ a {
 }
 
 .breadcrumbs-link img {
-    width: 10px;
+    width: 20px;
     margin-right: 5px;
 }
 
 .breadcrumbs-link {
-    color: #666;
+    color: #000;
     text-decoration: none;
     margin-bottom: 10px;
     transition: color 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 32px;
 }
 
 .breadcrumbs-link:hover {

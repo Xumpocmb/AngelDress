@@ -22,9 +22,7 @@
         <div class="breadcrumbs">
             <a href="{% if model_type == 'accessory' %}{% url 'app_catalog:accessory_catalog' %}{% else %}{% url 'app_catalog:items_catalog' %}{% endif %}?{% if catalog_params.category %}category={{ catalog_params.category }}&{% endif %}{% if catalog_params.search %}search={{ catalog_params.search }}&{% endif %}{% if catalog_params.sort %}sort={{ catalog_params.sort }}&{% endif %}{% if catalog_params.page %}page={{ catalog_params.page }}{% endif %}"
                class="breadcrumbs-link">
-                <img src="{% static 'img/icon-left.png' %}" alt="Назад">
-                {% if model_type == 'accessory' %}Каталог аксессуаров{% else %}Каталог платьев{% endif %}
-            </a>
+                <img src="{% static 'img/icon-left.png' %}" alt="Назад">НАЗАД</a>
         </div>
         <div class="product-container">
             <!-- Левая колонка - галерея -->
