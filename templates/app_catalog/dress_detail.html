@@ -271,15 +271,15 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="description">
-                        <img src="{% static 'img/work_stages.jpg' %}" style='max-width: 100%; height: auto;'>
+                        {% if product.description %}
+                            {{ product.description|safe }}
+                        {% else %}
+                            Описание отсутствует.
+                        {% endif %}
                     </div>
 
                     <div class="tab-pane" id="additional-info">
-                        {% if rent_rules_text %}
-                            {{ rent_rules_text|safe }}
-                        {% else %}
-                            Правила аренды не заданы.
-                        {% endif %}
+                        <img src="{% static 'img/work_stages.jpg' %}" style='max-width: 100%; height: auto;'>
                     </div>
                 </div>
             </div>
