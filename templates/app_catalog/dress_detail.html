@@ -261,26 +261,14 @@
                     </div>
                 </div>
 
-                <!-- Табы -->
-                <div class="tabs">
-                    <div class="tab active" data-tab="description">ОПИСАНИЕ</div>
-                    <div class="tab" data-tab="additional-info">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
-                </div>
 
                 <div class="tab-content">
+                    <h4 class="item-description-title">ОПИСАНИЕ</h4>
                     <div class="tab-pane active" id="description">
                         {% if product.description %}
                             {{ product.description|safe }}
                         {% else %}
                             Описание отсутствует.
-                        {% endif %}
-                    </div>
-
-                    <div class="tab-pane" id="additional-info">
-                        {% if rent_rules_text %}
-                        {{ rent_rules_text|safe }}
-                        {% else %}
-                        Правила аренды не заданы.
                         {% endif %}
                     </div>
                 </div>

@@ -28,6 +28,15 @@ def item_catalog_view(request):
     sort = request.GET.get("sort", "newest")
     page = request.GET.get("page", "1")
 
+    # Сохраняем параметры каталога в сессии для навигации "Назад"
+    request.session['catalog_params'] = {
+        'category': category_slug,
+        'search': search_query,
+        'sort': sort,
+        'page': page,
+        'model_type': 'dress'
+    }
+
     # Получаем параметры фильтрации из GET
     color_ids = request.GET.getlist("color")
     size_ids = request.GET.getlist("size")
