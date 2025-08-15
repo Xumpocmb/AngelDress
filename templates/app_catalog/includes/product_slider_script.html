@@ -4,21 +4,37 @@
       loop: {% if media_files|length > 1 %}true{% else %}false{% endif %},
       navigation: {
         nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        prevEl: '.swiper-button-prev'
       },
       pagination: {
         el: '.swiper-pagination',
-        clickable: true,
+        clickable: true
       },
       thumbs: {
-        swiper: {
-          el: '.thumbnail-gallery',
+        swiper: new Swiper('.thumbnail-gallery', {
           slidesPerView: 4,
           spaceBetween: 10,
           freeMode: true,
           watchSlidesProgress: true,
-        },
-      },
+          breakpoints: {
+            // Когда ширина экрана <= 992px
+            992: {
+              slidesPerView: 4,
+              spaceBetween: 10
+            },
+            // Когда ширина экрана <= 768px
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 8
+            },
+            // Когда ширина экрана <= 576px
+            576: {
+              slidesPerView: 3,
+              spaceBetween: 5
+            }
+          }
+        })
+      }
     });
 
     // Инициализация лайтбокса

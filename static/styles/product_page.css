@@ -137,6 +137,20 @@
     transition: opacity 0.3s ease;
 }
 
+@media (max-width: 992px) {
+    .thumb-media {
+        width: 80px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 576px) {
+    .thumb-media {
+        width: 60px;
+        height: 100px;
+    }
+}
+
 .thumbnail-gallery .swiper-slide-thumb-active .thumb-media {
     opacity: 1;
     border: 2px solid var(--secondary-color);
@@ -329,6 +343,10 @@
     color: #333;
     margin-left: 10px;
     font-weight: 600;
+    -webkit-touch-callout: none; /* Предотвращает появление меню на iOS при долгом нажатии */
+    -webkit-user-select: none; /* Предотвращает выделение текста на iOS */
+    user-select: none; /* Предотвращает выделение текста на всех устройствах */
+    pointer-events: none; /* Отключает события указателя, предотвращая обработку как ссылки */
 }
 
 #selected-pledge {
