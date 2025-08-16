@@ -220,7 +220,7 @@ a {
     transition: color 0.3s ease;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .breadcrumbs-link:hover {
