@@ -25,7 +25,12 @@
 
     <!-- сортировка -->
     <div class="standalone-sort-container">
-        <label for="standalone-sort" class="sort-label">Сортировка:</label>
+        <button type="button" class="sort-label sort-button-style">
+            Сортировка
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="sort-icon-hidden">
+                <path d="M1 1L5 5L9 1" stroke="#1D1D1B" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+        </button>
         <!-- НОВАЯ форма только для сортировки -->
         <form method="get" id="sortForm" class="sort-form">
             <!-- Скрытое поле для текущего поискового запроса -->

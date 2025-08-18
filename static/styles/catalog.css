@@ -574,15 +574,34 @@
 
 .standalone-sort-container {
     margin-bottom: 5px; /* Отступ снизу */
-    border-bottom: 1px solid #eee; /* Тонкая линия снизу для визуального отделения */
+    position: relative; /* Для позиционирования стрелочки */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    padding: 12px 16px;
 }
 
 .standalone-sort-container .sort-label {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 5px; /* Отступ между меткой и селектом */
-    display: block; /* Чтобы отступ margin-bottom работал */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     font-weight: bold;
-    color: #555;
+    color: #333;
+}
+
+.sort-button-style {
+    background: none; 
+    border: none; 
+    padding: 0; 
+    text-align: left; 
+    cursor: default;
+}
+
+.sort-icon-hidden {
+    display: none;
 }
 
 .sort-form {
@@ -605,13 +624,12 @@
     appearance: none;
     background-color: #fff;
     cursor: pointer;
-    /* Кастомная стрелочка через background-image или ::after, как показано ниже */
 }
 
 .sort-form .sort-select:focus {
     border-color: #9b6b50;
     outline: none;
-    /* box-shadow: 0 0 0 2px rgba(155, 107, 80, 0.2); */
+    box-shadow: 0 0 0 2px rgba(155, 107, 80, 0.2);
 }
 
 /* Создаем кастомную стрелочку для селекта в отдельной форме */
@@ -622,8 +640,8 @@
 .standalone-sort-container::after {
     content: "";
     position: absolute;
-    top: calc(50% + 12px); /* Стрелочка ниже метки */
-    right: 10px;
+    top: 65%; /* Позиционируем по центру контейнера */
+    right: 25px;
     transform: translateY(-50%);
     width: 0;
     height: 0;
@@ -641,10 +659,11 @@
 /* Адаптивность */
 @media (max-width: 768px) {
     .standalone-sort-container {
-        padding: 8px 0;
+        padding: 8px 12px;
+        margin-bottom: 5px;
     }
     .standalone-sort-container .sort-label {
-        font-size: 13px;
+        font-size: 14px;
     }
     .sort-form .sort-select {
         padding: 6px 25px 6px 8px;
