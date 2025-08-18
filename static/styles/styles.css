@@ -209,7 +209,7 @@ a {
 }
 
 .breadcrumbs-link img {
-    width: 14px;
+    width: 10px;
     margin-right: 5px;
 }
 
@@ -220,7 +220,7 @@ a {
     transition: color 0.3s ease;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 0.8rem;
 }
 
 .breadcrumbs-link:hover {
