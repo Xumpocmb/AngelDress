@@ -1147,6 +1147,7 @@ button {
 .blog_post {
     text-align: center;
     border-radius: var(--border-radius);
+    border: 1px solid #ddd;
 }
 
 .blog_image {
