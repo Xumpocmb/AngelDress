@@ -150,6 +150,7 @@ def item_catalog_view(request):
         "current_sort": sort,
         "search_query": search_query,
         "model_type": "dress",
+        "meta_description": "Каталог платьев Angel Dress. Широкий выбор платьев для любого случая. Фильтрация по цвету, размеру, материалу и другим параметрам.",
         # Параметры фильтрации
         "colors": colors,
         "sizes": sizes,

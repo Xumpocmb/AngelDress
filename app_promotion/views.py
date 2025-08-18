@@ -34,6 +34,7 @@ def promotion_detail(request, promotion_id):
 
     context = {
         'promotion': promotion,
-        'title': promotion.title
+        'title': promotion.title,
+        'meta_description': f'Акция {promotion.title} от Angel Dress. {promotion.short_description}'
     }
     return render(request, 'app_promotion/promotion_detail.html', context)
