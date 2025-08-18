@@ -622,7 +622,7 @@
 
 .radio-option {
     display: flex;
-    flex: 1;
+    /* flex: 1; */
     align-items: center;
     cursor: pointer;
     padding: 5px 5px;
