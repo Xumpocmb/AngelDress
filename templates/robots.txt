@@ -1,5 +1,4 @@
 User-agent: Yandex
 Allow: /
 Sitemap: https://angel-dress.ru/sitemap.xml
-Yandex-Market: https://angel-dress.ru/catalog/yml-feed/
-Clean-param: utm_source&utm_medium&utm_campaign
+Clean-param: utm_source&utm_medium&utm_campaign&category&sort&search&page&2
