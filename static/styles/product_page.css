@@ -70,6 +70,7 @@
 }
 
 @media (max-width: 992px) {
+
     .work-stages-container,
     .work-stages {
         flex-direction: column;
@@ -343,10 +344,14 @@
     color: #333;
     margin-left: 10px;
     font-weight: 600;
-    -webkit-touch-callout: none; /* Предотвращает появление меню на iOS при долгом нажатии */
-    -webkit-user-select: none; /* Предотвращает выделение текста на iOS */
-    user-select: none; /* Предотвращает выделение текста на всех устройствах */
-    pointer-events: none; /* Отключает события указателя, предотвращая обработку как ссылки */
+    -webkit-touch-callout: none;
+    /* Предотвращает появление меню на iOS при долгом нажатии */
+    -webkit-user-select: none;
+    /* Предотвращает выделение текста на iOS */
+    user-select: none;
+    /* Предотвращает выделение текста на всех устройствах */
+    pointer-events: none;
+    /* Отключает события указателя, предотвращая обработку как ссылки */
 }
 
 #selected-pledge {
@@ -626,7 +631,7 @@
     transition: all 0.3s ease;
     background-color: #fff;
     /*width: fit-content;*/
-    /*min-width: 150px;*/
+    min-width: 150px;
     text-align: center;
     position: relative;
     justify-content: center;
