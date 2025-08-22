@@ -117,14 +117,15 @@ def item_catalog_view(request):
     ).filter(num_items__gt=0).order_by('name')
 
     # Сортировка
+    # Сначала всегда сортируем по полю display_out_of_order, чтобы товары с этим флагом отображались первыми
     if sort == "price-low":
-        items = items.order_by("min_price")
+        items = items.order_by("-display_out_of_order", "min_price")
     elif sort == "price-high":
-        items = items.order_by("-min_price")
+        items = items.order_by("-display_out_of_order", "-min_price")
     elif sort == "popular":
-        items = items.order_by("-popularity_score", "-views_count", "-favorites_count")
+        items = items.order_by("-display_out_of_order", "-popularity_score", "-views_count", "-favorites_count")
     else:  # default to newest
-        items = items.order_by("-created_at")
+        items = items.order_by("-display_out_of_order", "-created_at")
 
     # Пагинация
     paginator = Paginator(items.distinct(), 9)
@@ -249,14 +250,15 @@ def accessory_catalog_view(request):
         accessories = accessories.filter(brand__id__in=brand_ids).distinct()
 
     # Сортировка
+    # Сначала всегда сортируем по полю display_out_of_order, чтобы товары с этим флагом отображались первыми
     if sort == "price-low":
-        accessories = accessories.order_by("min_price")
+        accessories = accessories.order_by("-display_out_of_order", "min_price")
     elif sort == "price-high":
-        accessories = accessories.order_by("-min_price")
+        accessories = accessories.order_by("-display_out_of_order", "-min_price")
     elif sort == "popular":
-        accessories = accessories.order_by("-popularity_score", "-views_count", "-favorites_count")
+        accessories = accessories.order_by("-display_out_of_order", "-popularity_score", "-views_count", "-favorites_count")
     else:
-        accessories = accessories.order_by("-created_at")
+        accessories = accessories.order_by("-display_out_of_order", "-created_at")
 
     paginator = Paginator(accessories, 9)
     page_obj = paginator.get_page(page)

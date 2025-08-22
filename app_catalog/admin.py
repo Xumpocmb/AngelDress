@@ -191,6 +191,7 @@ class ItemAdmin(admin.ModelAdmin):
         'brand',
         'min_price',
         'is_active',
+        'display_out_of_order',
         'created_at',
         'views_count',
         'colors_list',
@@ -198,6 +199,7 @@ class ItemAdmin(admin.ModelAdmin):
     )
     list_filter = (
         'is_active',
+        'display_out_of_order',
         'brand',
         'categories',
         'created_at',
@@ -223,6 +225,7 @@ class ItemAdmin(admin.ModelAdmin):
         ('Основное', {
             'fields': (
                 'is_active',
+                'display_out_of_order',
                 ('name', 'brand'),
                 "is_first_rental_promo",
                 'categories',
@@ -291,12 +294,14 @@ class AccessoryAdmin(admin.ModelAdmin):
         "name",
         "brand",
         "is_active",
+        "display_out_of_order",
         "created_at",
     )
     list_editable = ("is_active",)
     list_filter = (
         "categories",
         "colors",
+        "display_out_of_order",
     )
     search_fields = ("name", "description")
     filter_horizontal = ("categories",)
@@ -310,6 +315,7 @@ class AccessoryAdmin(admin.ModelAdmin):
                     ("name", "brand"),
                     "description",
                     "is_active",
+                    "display_out_of_order",
                 )
             },
         ),

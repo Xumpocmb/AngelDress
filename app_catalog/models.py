@@ -292,6 +292,12 @@ class Item(models.Model):
         verbose_name="Акция 'Первый прокат'",
         help_text="Если отмечено, на карточке товара будет отображаться значок акции 'первый прокат'."
     )
+    
+    display_out_of_order = models.BooleanField(
+        default=False,
+        verbose_name="Отображать вне очереди",
+        help_text="Если отмечено, товар будет отображаться перед всеми остальными товарами в каталоге."
+    )
 
     is_active = models.BooleanField(default=True, verbose_name="Активен")
 
@@ -404,6 +410,11 @@ class Accessory(models.Model):
         null=True,
         verbose_name="Детали",
         help_text="Перечислите детали через запятую",
+    )
+    display_out_of_order = models.BooleanField(
+        default=False,
+        verbose_name="Отображать вне очереди",
+        help_text="Если отмечено, товар будет отображаться перед всеми остальными товарами в каталоге."
     )
     is_active = models.BooleanField(default=True, verbose_name="Активен")
     created_at = models.DateTimeField(
