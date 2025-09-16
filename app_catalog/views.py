@@ -201,6 +201,9 @@ def item_detail_view(request, dress_id):
     else:
         rent_rules_text = "Правила аренды не определены"
 
+    # Получаем первый активный вариант цены
+    first_active_price_option = dress.price_options.filter(is_active=True).first()
+    
     context = {
         "product": dress,
         "images": images,
@@ -208,6 +211,7 @@ def item_detail_view(request, dress_id):
         "media_files": media_files,
         'catalog_params': catalog_params,
         "model_type": "dress",
+        "first_active_price_option": first_active_price_option,
         "meta_description": f"{dress.name}: прокат платьев в Москве, вечерние, свадебные, выпускные. Забронируйте прямо сейчас!",
     }
     return render(request, "app_catalog/dress_detail.html", context)

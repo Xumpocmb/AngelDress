@@ -64,17 +64,17 @@
                             <div class="price"><span id="selected-main-price">{{ product.min_price }}</span> ₽</div>
 
                             <div id="selected-pledge-container"
-                                    {% if not product.price_options.first.pledge or product.price_options.first.pledge == 0 %}
+                                    {% if not first_active_price_option.pledge or first_active_price_option.pledge == 0 %}
                                  style="display:none;"{% endif %}>
                                 Залог: <span
-                                    id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'0' }}</span>
+                                    id="selected-pledge">{{ first_active_price_option.pledge|default_if_none:'0' }}</span>
                                 ₽
                             </div>
                             <div id="selected-period-container"
-                                    {% if not product.price_options.first.rental_period_days %}
+                                    {% if not first_active_price_option.rental_period_days %}
                                  style="display:none;"{% endif %}>
                                 Срок аренды: <span
-                                    id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'0' }}</span>
+                                    id="selected-period">{{ first_active_price_option.rental_period_days|default_if_none:'0' }}</span>
                                 дн.
                             </div>
                         </div>
