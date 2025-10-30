@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  <title>{{ title|default:'Angel Dress - Каталог' }}</title>
+{% endblock %}
+
+{% block meta %}
+  {{ block.super }}
+  <meta name="csrf-token" content="{{ csrf_token }}" />
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
+  <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <div class="wrapper">
+    <div class="breadcrumbs">
+      <a href="{% url 'app_catalog:items_catalog' %}" class="breadcrumbs-link">
+        <img src="{% static 'img/icon-left.png' %}" alt="icon-left.png">Назад в Каталог</a>
+    </div>
+    <div class="product-container">
+      <!-- Левая колонка - изображения товара -->
+      <div class="product-gallery">
+        <div class="main-media-container">
+          {% if media_files %}
+            {% for media in media_files %}
+              {% if forloop.first %}
+                {% if media.video %}
+                  <video id="mainMedia" controls class="main-media" style="width: 100%">
+                    <source src="{{ media.video.url }}" type="video/mp4" />Ваш браузер не поддерживает видео.
+                  </video>
+                {% else %}
+                  <img id="mainMedia" src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="main-media" />
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="main-media" />
+          {% endif %}
+        </div>
+
+        <div class="thumbnails">
+          {% if media_files %}
+            {% for media in media_files %}
+              <div class="thumbnail {% if forloop.first %}active{% endif %}" onclick="changeMedia({{ forloop.counter0 }})">
+                {% if media.video %}
+                  <video class="thumb-video" muted loop>
+                    <source src="{{ media.video.url }}" type="video/mp4" />
+                  </video>
+                {% else %}
+                  <img src="{{ media.image.url }}" alt="{{ media.alt_text }}" class="thumbnail {% if forloop.first %}active{% endif %}" />
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% else %}
+            <img src="{% static 'img/No-Image-Placeholder.png' %}" alt="Нет изображения" class="thumbnail active" />
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Правая колонка - информация о товаре -->
+      <div class="card-product-info">
+        <h1 class="product-name">{{ product.name }}</h1>
+
+        <!-- Цена -->
+        {% if product.rental_price %}
+          <div class="price">{{ product.rental_price }} ₽</div>
+        {% endif %}
+
+        <!-- Характеристики -->
+        <div class="properties">
+          {% if product.color %}
+            <div class="property">
+              <div class="property-name">Цвет:</div>
+              <div class="property-value">{{ product.color }}</div>
+            </div>
+          {% endif %}
+
+          {% if product.length %}
+            <div class="property">
+              <div class="property-name">Длина:</div>
+              <div class="property-value">{{ product.get_length_display }}</div>
+            </div>
+          {% endif %}
+
+          {% if product.fastener_type %}
+            <div class="property">
+              <div class="property-name">Тип застёжки:</div>
+              <div class="property-value">{{ product.fastener_type }}</div>
+            </div>
+          {% endif %}
+
+          {% if product.fit %}
+            <div class="property">
+              <div class="property-name">Посадка:</div>
+              <div class="property-value">{{ product.get_fit_display }}</div>
+            </div>
+          {% endif %}
+
+          {% if product.details %}
+            <div class="property">
+              <div class="property-name">Детали:</div>
+              <div class="property-value">{{ product.details }}</div>
+            </div>
+          {% endif %}
+
+          {% if product.available_sizes %}
+            <div class="property">
+              <div class="property-name">Размеры:</div>
+              <div class="property-value">{{ product.available_sizes }}</div>
+            </div>
+          {% endif %}
+
+          <!-- Цена -->
+          <div class="price-selection">
+            <label for="price-option">Выберите вариант аренды:</label>
+            <div class="custom-select-wrapper">
+              <select id="price-option" class="custom-select">
+                {% for option in product.price_options.all %}
+                  {% if option.is_active %}
+                    <option value="{{ option.id }}"
+                            data-price="{{ option.price }}"
+                            data-pledge="{{ option.pledge|default_if_none:'' }}"
+                            data-period="{{ option.rental_period_days|default_if_none:'' }}"
+                            {% if forloop.first %}selected{% endif %}>
+                      {{ option.name }} — {{ option.price }} ₽
+                      {% if option.rental_period_days %} ({{ option.rental_period_days }} дней){% endif %}
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <div class="select-arrow"></div>
+            </div>
+
+            <div class="price-details">
+              <div>Стоимость: <span id="selected-price">{{ product.price_options.first.price }}</span> ₽</div>
+              <div id="selected-pledge-container"{% if not product.price_options.first.pledge or product.price_options.first.pledge == 0 %} style="display:none;"{% endif %}>
+                Залог: <span id="selected-pledge">{{ product.price_options.first.pledge|default_if_none:'' }}</span> ₽
+              </div>
+              <div id="selected-period-container"{% if not product.price_options.first.rental_period_days %} style="display:none;"{% endif %}>
+                Срок аренды: <span id="selected-period">{{ product.price_options.first.rental_period_days|default_if_none:'' }}</span> дн.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="buttons">
+          <input type="hidden" name="product_id" value="{{ product.id }}" />
+          <div class="button button-primary" id="rent-button" data-id="{{ product.id }}">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</div>
+          <div class="button button-secondary {% if product.id in request.session.wishlist %}in-wishlist{% endif %}" id="wishlist-btn-{{ product.id }}" onclick="toggleWishlistButton(this, {{ product.id }})">
+            {% if product.id in request.session.wishlist %}
+              ✓ В ИЗБРАННОМ
+            {% else %}
+              ДОБАВИТЬ В ИЗБРАННОЕ
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Табы -->
+        <div class="tabs">
+          <div class="tab active" data-tab="description">ОПИСАНИЕ</div>
+          <div class="tab" data-tab="additional-info">ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ</div>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="description">
+            {% if product.description %}
+              {{ product.description|linebreaks }}
+            {% else %}
+              Описание отсутствует.
+            {% endif %}
+          </div>
+
+          <div class="tab-pane" id="additional-info">
+            {% if rent_rules_text %}
+              {{ rent_rules_text|safe }}
+            {% else %}
+              Правила аренды не заданы.
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно -->
+  <div class="modal" id="rentModal" style="display: none">
+    <div class="modal-overlay" onclick="closeModal(event)"></div>
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal(event)">&times;</span>
+
+      <div class="form_container">
+        <div class="form_header">
+          <h2 class="form_title">Оставьте заявку</h2>
+          <p class="form_subtitle">Наши менеджеры свяжутся с Вами в ближайшее время для подтверждения заявки</p>
+        </div>
+
+        <form class="contact_form" id="contactForm">
+          <input type="hidden" id="item_ids" name="item_ids" value="" />
+          <div class="form_group">
+            <input type="text" id="name" name="name" placeholder="Имя и Фамилия" class="form_input" required />
+          </div>
+
+          <div class="form_group">
+            <input type="tel" id="phone" name="phone" placeholder="Номер телефона" class="form_input" required />
+          </div>
+
+          <div class="form_group">
+            <input type="email" id="email" name="email" placeholder="Email" class="form_input" required />
+          </div>
+
+          <div class="form_group checkbox_group">
+            <label class="checkbox_label">
+              <input type="checkbox" id="agreement" name="agreement" required />
+              <span class="checkmark"></span>
+              <span class="checkbox_text">Принимаю условия обработки данных</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit_btn">ЗАБРОНИРОВАТЬ ПРИМЕРКУ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/dress_tabs.js' %}"></script>
+  <script src="{% static 'js/product_rent.js' %}"></script>
+  <script src="{% static 'js/wishlist.js' %}"></script>
+  <script>
+        window.mediaList = [
+            {% for media in media_files %}
+                {
+                    is_video: {% if media.video %}true{% else %}false{% endif %},
+                    image_url: "{% if media.image %}{{ media.image.url }}{% endif %}",
+                    video_url: "{% if media.video %}{{ media.video.url }}{% endif %}",
+                    alt: "{{ media.alt_text|escapejs }}"
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ];
+
+        let currentMediaIndex = 0;
+
+        function changeMedia(index) {
+            currentMediaIndex = index;
+            const media = window.mediaList[index];
+            const mainMediaContainer = document.querySelector('.main-media-container');
+
+            const oldMedia = mainMediaContainer.querySelector('.main-media');
+            if (oldMedia) oldMedia.remove();
+
+            let newMedia;
+            if (media.is_video) {
+                newMedia = document.createElement('video');
+                newMedia.setAttribute('controls', true);
+                newMedia.classList.add('main-media');
+                newMedia.style.width = '100%';
+                newMedia.muted = true;
+                newMedia.autoplay = true;
+                newMedia.playsinline = true;
+                const source = document.createElement('source');
+                source.src = media.video_url;
+                source.type = 'video/mp4';
+                newMedia.appendChild(source);
+                newMedia.innerHTML += 'Ваш браузер не поддерживает видео.';
+            } else {
+                newMedia = document.createElement('img');
+                newMedia.src = media.image_url;
+                newMedia.alt = media.alt || '';
+                newMedia.classList.add('main-media');
+            }
+
+            newMedia.id = 'mainMedia';
+            mainMediaContainer.prepend(newMedia);
+
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+    </script>
+    <script>
+      document.getElementById('price-option').addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const price = selectedOption.getAttribute('data-price');
+        const pledge = selectedOption.getAttribute('data-pledge');
+        const period = selectedOption.getAttribute('data-period');
+    
+        document.getElementById('selected-price').textContent = price;
+    
+        const pledgeContainer = document.getElementById('selected-pledge-container');
+        const pledgeSpan = document.getElementById('selected-pledge');
+        if (pledge && parseFloat(pledge) > 0) {
+          pledgeSpan.textContent = pledge;
+          pledgeContainer.style.display = 'block';
+        } else {
+          pledgeContainer.style.display = 'none';
+        }
+    
+        const periodContainer = document.getElementById('selected-period-container');
+        const periodSpan = document.getElementById('selected-period');
+        if (period && parseInt(period) > 0) {
+          periodSpan.textContent = period;
+          periodContainer.style.display = 'block';
+        } else {
+          periodContainer.style.display = 'none';
+        }
+      });
+    </script>
+{% endblock %}
