@@ -1,0 +1,182 @@
+<style>
+    .whatsapp-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-widget:hover {
+      transform: scale(1.15);
+    }
+
+    .whatsapp-widget img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .whatsapp-chat {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 320px;
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      overflow: hidden;
+      z-index: 10000;
+      font-family: "Arial", sans-serif;
+    }
+
+    .chat-header {
+      background-color: #2a5a53;
+      color: white;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .chat-header img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+
+    .chat-header .chat-info {
+      line-height: 1.2;
+    }
+
+    .chat-header .chat-info strong {
+      font-size: 14px;
+    }
+
+    .chat-header .chat-info span {
+      font-size: 12px;
+      color: #c3f3e5;
+    }
+
+    .chat-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .chat-body {
+      padding: 15px;
+      font-size: 14px;
+      color: #333;
+      background-color: #f7f7f7;
+    }
+
+    .chat-body p {
+      margin: 0;
+    }
+
+    .chat-footer {
+      padding: 10px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    .chat-footer a {
+      background-color: #2a5a53;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .chat-footer a:hover {
+      background-color: #244e48;
+    }
+  </style>
+
+  <!-- Подключаем Яндекс.Метрику -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j=0;j<document.scripts.length;j++){if (document.scripts[j].src===r){return;}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(103565312, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103565312" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+  <!-- Иконка WhatsApp -->
+  <div class="whatsapp-widget" id="whatsappButton">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </div>
+
+  <!-- Окно чата -->
+  <div class="whatsapp-chat" id="whatsappChat">
+    <div class="chat-header">
+      <img src="https://angel-dress.ru/media/dresses/Photoroom_20250702_173405_qU8cxF2.JPG" alt="Angel-Dress">
+      <div class="chat-info">
+        <strong>Анжела</strong><br>
+        <span>Online</span>
+      </div>
+      <div class="chat-close" id="chatClose">×</div>
+    </div>
+    <div class="chat-body">
+      <p>Добрый день! 👋<br>Чем могу вам помочь?</p>
+    </div>
+    <div class="chat-footer">
+      <a href="https://wa.me/79037182815?text=Здравствуйте!%20Хочу%20уточнить%20по%20поводу%20платья."
+         target="_blank"
+         id="whatsappLink">
+        Написать в WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const button = document.getElementById('whatsappButton');
+    const chat = document.getElementById('whatsappChat');
+    const close = document.getElementById('chatClose');
+    const whatsappLink = document.getElementById('whatsappLink');
+    let lastClick = 0;
+
+    // Открытие окна чата
+    button.addEventListener('click', () => {
+      chat.style.display = chat.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Закрытие чата
+    close.addEventListener('click', () => {
+      chat.style.display = 'none';
+    });
+
+    // Отслеживание и защита от двойных кликов
+    whatsappLink.addEventListener('click', (event) => {
+      const now = Date.now();
+      if (now - lastClick < 2000) { // блокируем двойной клик
+        event.preventDefault();
+        return;
+      }
+      lastClick = now;
+
+      if (typeof ym !== 'undefined') {
+        ym(103565312, 'reachGoal', 'whatsapp_click');
+        console.log('✅ Цель whatsapp_click отправлена в Метрику');
+      }
+    });
+  </script>
