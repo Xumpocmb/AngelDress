@@ -69,3 +69,5 @@ build/
 /fixtures/
 /secrets/
 static/catalog_feed.yml
+static/admin/
+static/ckeditor/
