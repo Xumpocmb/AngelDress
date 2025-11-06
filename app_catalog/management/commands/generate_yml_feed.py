@@ -88,10 +88,13 @@ class Command(BaseCommand):
             f.write('    <offers>\n')
             
             for item in items:
-                # Получаем минимальную цену товара
-                min_price_option = item.price_options.filter(is_active=True).order_by('price').first()
-                if not min_price_option:
+                # Получаем все цены для товара
+                price_options = item.price_options.filter(is_active=True)
+                if not price_options.exists():
                     continue  # Пропускаем товары без цены
+                
+                # Для совместимости берем первую цену
+                first_price_option = price_options.first()
                 
                 # Получаем первое изображение товара
                 image = item.get_first_image_url()
@@ -104,105 +107,53 @@ class Command(BaseCommand):
                 # Запись информации о товаре
                 f.write(f'      <offer id="{item.id}" available="true">\n')
                 f.write(f'        <url>{item_url}</url>\n')
-                f.write(f'        <price>{min_price_option.price}</price>\n')
                 
-                if min_price_option.pledge:
-                    f.write(f'        <oldprice>{min_price_option.pledge}</oldprice>\n')
+                # Цена для продажи (берем из первого доступного price option)
+                f.write(f'        <price>{first_price_option.price}</price>\n')
+                
+                # Залоговая цена
+                if first_price_option.pledge:
+                    f.write(f'        <deposit>{first_price_option.pledge}</deposit>\n')
                 
                 f.write('        <currencyId>RUR</currencyId>\n')
+                
+                # Артикул
+                f.write(f'        <vendorCode>{item.id}</vendorCode>\n')
                 
                 # Категории товара
                 for category in item.categories.all():
                     if category.id in categories:
                         f.write(f'        <categoryId>{categories[category.id]["id"]}</categoryId>\n')
                 
-                # Изображение
-                f.write(f'        <picture>{image}</picture>\n')
-                
-                # Дополнительные изображения (до 10 штук)
-                additional_images = item.images.all()[1:10] if item.images.count() > 1 else []
-                for img in additional_images:
-                    img_url = img.image.url
-                    if img_url.startswith('/'):
-                        img_url = f"{site_url}{img_url}"
-                    f.write(f'        <picture>{img_url}</picture>\n')
-                
-                # Основная информация
-                f.write('        <store>true</store>\n')
-                f.write('        <pickup>true</pickup>\n')
-                f.write('        <delivery>true</delivery>\n')
-                item_name = replace_entities(item.name)
-                f.write(f'        <name><![CDATA[{item_name}]]></name>\n')
-                
-                # Бренд (если есть)
+                # Бренд
                 if item.brand:
                     brand_name = replace_entities(item.brand.name)
                     f.write(f'        <vendor><![CDATA[{brand_name}]]></vendor>\n')
                 
-                # Описание
-                if item.description:
-                    # При использовании CDATA не нужно заменять HTML-теги
-                    description = item.description
-                    # Заменяем неподдерживаемые HTML-сущности
-                    description = replace_entities(description)
-                    if len(description) > 3000:
-                        description = description[:3000] + '...'
-                    f.write(f'        <description><![CDATA[{description}]]></description>\n')
+                # Название
+                item_name = replace_entities(item.name)
+                f.write(f'        <name><![CDATA[{item_name}]]></name>\n')
                 
-                
-                # Параметры товара
                 # Размеры
                 if item.available_sizes.exists():
                     sizes = ', '.join([replace_entities(size.name) for size in item.available_sizes.all()])
-                    f.write(f'        <param name="Размеры"><![CDATA[{sizes}]]></param>\n')
+                    f.write(f'        <param name="Размер"><![CDATA[{sizes}]]></param>\n')
                 
-                # Цвета
+                # Цвет
                 if item.colors.exists():
                     colors = ', '.join([replace_entities(color.name) for color in item.colors.all()])
-                    f.write(f'        <param name="Цвета"><![CDATA[{colors}]]></param>\n')
+                    f.write(f'        <param name="Цвет"><![CDATA[{colors}]]></param>\n')
                 
-                # Материалы
-                if item.materials.exists():
-                    materials = ', '.join([replace_entities(material.name) for material in item.materials.all()])
-                    f.write(f'        <param name="Материалы"><![CDATA[{materials}]]></param>\n')
+                # Цена для аренды (берем минимальную цену аренды)
+                rental_price = min([po.price for po in price_options], default=first_price_option.price)
+                f.write(f'        <param name="Цена для аренды"><![CDATA[{rental_price}]]></param>\n')
                 
-                # Характеристики платья
-                if hasattr(item, 'characteristics'):
-                    chars = item.characteristics
-                    
-                    if chars.length:
-                        length_display = replace_entities(chars.get_length_display())
-                        f.write(f'        <param name="Длина"><![CDATA[{length_display}]]></param>\n')
-                    
-                    if chars.fit:
-                        fit_display = replace_entities(chars.get_fit_display())
-                        f.write(f'        <param name="Фасон"><![CDATA[{fit_display}]]></param>\n')
-                    
-                    if chars.sleeve:
-                        sleeve_display = replace_entities(chars.get_sleeve_display())
-                        f.write(f'        <param name="Рукав"><![CDATA[{sleeve_display}]]></param>\n')
-                    
-                    if chars.train:
-                        train_display = replace_entities(chars.get_train_display())
-                        f.write(f'        <param name="Шлейф"><![CDATA[{train_display}]]></param>\n')
+                # Цена для продажи (уже указана как основная цена)
+                f.write(f'        <param name="Цена для продажи"><![CDATA[{first_price_option.price}]]></param>\n')
                 
-                # Тип застежки
-                if item.fastener_type:
-                    fastener_type = replace_entities(item.fastener_type.name)
-                    f.write(f'        <param name="Тип застежки"><![CDATA[{fastener_type}]]></param>\n')
-                
-                # Детали
-                if item.details:
-                    details = replace_entities(item.details)
-                    f.write(f'        <param name="Детали"><![CDATA[{details}]]></param>\n')
-                
-                # Срок аренды
-                if min_price_option.rental_period_days:
-                    rental_period = replace_entities(f"{min_price_option.rental_period_days} дней")
-                    f.write(f'        <param name="Срок аренды"><![CDATA[{rental_period}]]></param>\n')
-                
-                # Тип предложения - аренда
-                f.write('        <param name="Тип предложения"><![CDATA[Аренда]]></param>\n')
+                # Цена залога
+                if first_price_option.pledge:
+                    f.write(f'        <param name="Цена залога"><![CDATA[{first_price_option.pledge}]]></param>\n')
                 
                 f.write('      </offer>\n')
             

@@ -68,3 +68,4 @@ build/
 
 /fixtures/
 /secrets/
+static/catalog_feed.yml
