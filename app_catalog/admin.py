@@ -204,11 +204,7 @@ class ItemAdmin(admin.ModelAdmin):
         'categories',
         'created_at',
     )
-    search_fields = (
-        'name',
-        'description',
-        'brand__name',
-    )
+    search_fields = ("name", "description", "brand__name", "article")
     filter_horizontal = (
         'categories',
         "colors",
@@ -309,7 +305,7 @@ class AccessoryAdmin(admin.ModelAdmin):
         "colors",
         "display_out_of_order",
     )
-    search_fields = ("name", "description")
+    search_fields = ("name", "description", "article")
     filter_horizontal = ("categories",)
 
     fieldsets = (
