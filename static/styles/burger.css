@@ -25,6 +25,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    width: 100%;
 }
 
 /* Адаптация для мобильных */

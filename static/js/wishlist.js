@@ -31,7 +31,7 @@ async function toggleWishlist(element, dressId) {
                 element.classList.remove('just-added');
             }, 500);
         }
-        updateWishlistCount(data.count);
+        // updateWishlistCount(data.count);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -110,10 +110,7 @@ async function toggleProductWishlist(iconElement, productId, modelType) {
             }, 500);
         }
 
-        // Если у тебя есть функция обновления счетчика избранного в шапке
-        if (typeof updateWishlistCount === 'function') {
-            updateWishlistCount(data.count);
-        }
+        // updateWishlistCount(data.count);
 
     } catch (error) {
         console.error('Error toggling wishlist:', error);
@@ -125,16 +122,16 @@ async function toggleProductWishlist(iconElement, productId, modelType) {
 }
 
 
-function updateWishlistCount(count) {
-    const counterElements = document.querySelectorAll('.wishlist-count');
-    counterElements.forEach(el => {
-        el.textContent = count;
-    });
-}
+// function updateWishlistCount(count) {
+//     const counterElements = document.querySelectorAll('.wishlist-count');
+//     counterElements.forEach(el => {
+//         el.textContent = count;
+//     });
+// }
 
-document.addEventListener('DOMContentLoaded', function () {
-    fetch('/wishlist/api/count/')
-        .then(response => response.json())
-        .then(data => updateWishlistCount(data.count))
-        .catch(error => console.error('Error:', error));
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     fetch('/wishlist/api/count/')
+//         .then(response => response.json())
+//         .then(data => updateWishlistCount(data.count))
+//         .catch(error => console.error('Error:', error));
+// });

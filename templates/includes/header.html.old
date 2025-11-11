@@ -17,17 +17,16 @@
             {% if header_contacts %}
                 {% for contact in header_contacts %}
                     {% if contact.type.name == 'phone' and contact.link %}
-                        
-                    <div style="display:flex;align-items:center;gap:18px;">
-                            <div class="globalnav-contact" style="display: flex;flex-direction: column;align-items: flex-end;font-size: 13px;line-height: 1.3;font-weight: 700;">
-                                <a href="tel:{{ contact.link }}" class="globalnav-phone" style="text-decoration: none;color: var(--sab-blue);font-weight: 700;font-size: 17px;transition: color 0.3s;">+7(903)718-28-15</a>
-                                <span>Вт-Вс: 11:00 - 19:00</span>
-                            </div>
-                        </div>
+                        <a href="tel:{{ contact.link }}" class="header__social-link mobile-phone-link"><img
+                                src="{% static 'img/social_icons/phone.png' %}"
+                                alt="Телефон" class="header_contact_icon"/></a>
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            
+            <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link"><img class="icon"
+                                                                                   src="{% static 'img/heart.png' %}"
+                                                                                   alt="Избранное"/></a>
+            <span class="wishlist-count">{{ wishlist_count|default:0 }}</span>
         </div>
 
         <div class="nav-container">
@@ -35,7 +34,7 @@
                 <a href="{% url 'app_home:home' %}"><img src="{% static 'img/logo/logo-text.png' %}" alt="logo"/></a>
             </div>
 
-            {% comment %} <div class="header_social_icons">
+            <div class="header_social_icons">
                 {% if header_contacts %}
                     {% for contact in header_contacts %}
                         {% if contact.link %}
@@ -57,9 +56,12 @@
                         {% endif %}
                     {% endfor %}
                 {% endif %}
-            </div> {% endcomment %}
+            </div>
 
             <ul class="nav-menu">
+                <li>
+                    <a href="{% url 'app_home:home' %}">Главная</a>
+                </li>
                 <li>
                     <a href="{% url 'app_catalog:items_catalog' %}">Платья</a>
                 </li>
@@ -67,15 +69,20 @@
                     <a href="{% url 'app_catalog:accessory_catalog' %}">Аксессуары</a>
                 </li>
                 <li>
+                    <a href="{% url 'app_blog:blog' %}">Новости</a>
+                </li>
+                <li>
+                    <a href="{% url 'app_home:about' %}">О нас</a>
+                </li>
+                <li>
                     <a href="{% url 'app_home:contacts' %}">Контакты</a>
                 </li>
             </ul>
-
-            <div style="display:flex;align-items:center;gap:18px;">
-                <div class="globalnav-contact" style="display: flex;flex-direction: column;align-items: flex-end;font-size: 13px;line-height: 1.3;font-weight: 700;">
-                    <a href="tel:+79037182815" class="globalnav-phone" style="text-decoration: none;color: var(--sab-blue);font-weight: 700;font-size: 17px;transition: color 0.3s;">+7(903)718-28-15</a>
-                    <span>Вт-Вс: 11:00 - 19:00</span>
-                </div>
+            <div class="nav-icons">
+                <a href="{% url 'app_wishlist:wishlist' %}" class="wishlist-link"><img class="icon"
+                                                                                       src="{% static 'img/heart.png' %}"
+                                                                                       alt="Избранное"/></a>
+                <span class="wishlist-count">{{ wishlist_count|default:0 }}</span>
             </div>
         </div>
     </nav>
