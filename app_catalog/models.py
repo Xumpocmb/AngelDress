@@ -398,6 +398,7 @@ class Accessory(models.Model):
         verbose_name="Бренд"
     )
     name = models.CharField(max_length=200, verbose_name="Название")
+    article = models.CharField(max_length=200, verbose_name="Артикул", null=True, blank=True)
     description = models.TextField(
         verbose_name="Описание",
         blank=True,

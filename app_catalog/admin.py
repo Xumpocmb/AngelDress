@@ -222,28 +222,34 @@ class ItemAdmin(admin.ModelAdmin):
         'created_at',
     )
     fieldsets = (
-        ('Основное', {
-            'fields': (
-                'is_active',
-                'display_out_of_order',
-                ('name', 'brand'),
-                "is_first_rental_promo",
-                'categories',
-                "suitable_for",
-                'description',
-                'details',
-                'fastener_type',
-                'min_price',
-            )
-        }),
-        ('Статистика', {
-            'classes': ('collapse',),
-            'fields': (
-                ('views_count', 'favorites_count'),
-                'popularity_score',
-                'created_at',
-            )
-        }),
+        (
+            "Основное",
+            {
+                "fields": (
+                    "is_active",
+                    "display_out_of_order",
+                    ("name", "brand", "article"),
+                    "is_first_rental_promo",
+                    "categories",
+                    "suitable_for",
+                    "description",
+                    "details",
+                    "fastener_type",
+                    "min_price",
+                )
+            },
+        ),
+        (
+            "Статистика",
+            {
+                "classes": ("collapse",),
+                "fields": (
+                    ("views_count", "favorites_count"),
+                    "popularity_score",
+                    "created_at",
+                ),
+            },
+        ),
     )
     inlines = [
         ItemCharacteristicInline,
@@ -312,7 +318,7 @@ class AccessoryAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "categories",
-                    ("name", "brand"),
+                    ("name", "brand", "article"),
                     "description",
                     "is_active",
                     "display_out_of_order",
